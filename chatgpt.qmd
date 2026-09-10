@@ -1,4 +1,4 @@
-# A Free verzió felépítése
+# ChatGPT
 
 *Frissítve: 2026. szeptember 10.*
 
@@ -10,13 +10,12 @@ Használható például fogalmak és elméletek elmagyarázására, vizsgafelké
 
 A ChatGPT ugyanakkor **nem tekintélyforrás és nem hibamentes**. Pszichológiai és tudományos használatnál különösen fontos a válaszok ellenőrzése, a források visszakeresése, valamint az adatvédelem: kliens-, páciens- vagy kutatási résztvevőhöz köthető érzékeny személyes adatot csak az adott intézmény és szolgáltatás adatkezelési szabályainak megfelelően szabad MI-rendszerbe bevinni.
 
-
 ## ChatGPT-előfizetések röviden
 
 Az elérhető funkciók és használati korlátok idővel változhatnak. Az alábbi összefoglaló a 2026. szeptember 10-i állapotot tükrözi; a tényleges ár országonként, adózástól és számlázástól függően eltérhet.
 
 | Csomag | Kinek lehet elég? | Fő különbség |
-|---|---|---|
+|------------------------|------------------------|------------------------|
 | **Free** | alkalmi használat, tanulás, kipróbálás | GPT-5.6 Luna; webes keresés, fájlfeltöltés, képgenerálás, adatelemzés és hang elérhető, de több funkció korlátozott kerettel |
 | **Go** | rendszeres hallgatói használat kedvezőbb áron | a Free-nél magasabb használati korlátok, több feltöltés és képgenerálás, hosszabb memória és kontextus; továbbra is GPT-5.6 Luna |
 | **Plus** | intenzív tanulás, kutatás, hosszabb feladatok | havi **20 USD**; hozzáférés a GPT-5.6 Sol fejlettebb gondolkodási módjaihoz, nagyobb keretek, bővebb kutatási és Work-funkciók |
@@ -30,7 +29,6 @@ Az elérhető funkciók és használati korlátok idővel változhatnak. Az alá
 Az **ingyenes csomag** már elegendő a ChatGPT alapjainak megtanulásához. A **Go** akkor lehet hasznos, ha sok fájlt töltesz fel vagy gyakran használsz képgenerálást és adatelemzést; a **Plus** pedig akkor indokolt, ha rendszeresen végzel hosszabb, összetettebb tanulási vagy kutatási feladatokat.
 
 > **Fontos:** a drágább csomag nem teszi automatikusan "igazzá" a választ. A jobb modellek és magasabb korlátok mellett is szükség van kritikus ellenőrzésre.
-
 
 # A képen látható ChatGPT-felület
 
@@ -84,21 +82,19 @@ A **Webes keresés** akkor fontos, amikor friss vagy ellenőrizhető informáci�
 
 A **Chat** a hagyományos, beszélgetésközpontú használat: kérdezel, a ChatGPT pedig válaszol és együtt dolgozik veled. A **Work** összetettebb, több lépéses feladatokra szolgálhat, például több fájl feldolgozására, kutatásra, elemzésre vagy kész munkatermék előállítására; elérhetősége csomagtól függ.
 
-
 # Egy egyszerű szabály jó promptokhoz
 
 > **Jó prompt = világos cél + elegendő kontextus + konkrét kérés**
 
 Példa:
 
-**Gyengébb:**  
+**Gyengébb:**\
 „Magyarázd el a klasszikus kondicionálást.”
 
-**Jobb:**  
+**Jobb:**\
 „Magyarázd el a klasszikus kondicionálást elsőéves pszichológia BA hallgatónak, 5–6 mondatban, Pavlov példájával, majd adj egy hétköznapi példát is.”
 
 A második változatból a ChatGPT pontosabban tudja, **kinek**, **milyen mélységben**, **milyen terjedelemben** és **milyen formában** kell válaszolnia.
-
 
 # Mit vigyünk magunkkal?
 
@@ -106,8 +102,6 @@ A ChatGPT legerősebb használati módja nem az, amikor „megkérdezzük a vál
 
 Pszichológusként ezért három alapelv különösen fontos:
 
-1. **Kérdezz pontosan.**
-2. **Ellenőrizd a választ.**
-3. **Használd felelősen az adatokat.**
-
-
+1.  **Kérdezz pontosan.**
+2.  **Ellenőrizd a választ.**
+3.  **Használd felelősen az adatokat.**

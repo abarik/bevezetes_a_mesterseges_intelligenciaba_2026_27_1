@@ -42,141 +42,141 @@
   {
     "objectID": "chatgpt.html",
     "href": "chatgpt.html",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "",
     "text": "3.1 Mit nyújthat a ChatGPT egy pszichológusnak?\nFrissítve: 2026. szeptember 10.\nA ChatGPT egy általános célú MI-asszisztens, amely szöveggel, képekkel, fájlokkal és – a csomagtól függően – webes információkkal is tud dolgozni. Pszichológushallgatóként és később szakemberként elsősorban gondolkodási, tanulási és munkaszervezési segédeszközként érdemes rá tekinteni.\nHasználható például fogalmak és elméletek elmagyarázására, vizsgafelkészülésre, szakirodalmi tájékozódásra, kutatási kérdések finomítására, kérdőív- vagy interjúötletek megvitatására, szövegek javítására, adatok értelmezésének támogatására, prezentációk és ábrák tervezésére, illetve gyakorló helyzetek vagy szerepjátékok létrehozására.\nA ChatGPT ugyanakkor nem tekintélyforrás és nem hibamentes. Pszichológiai és tudományos használatnál különösen fontos a válaszok ellenőrzése, a források visszakeresése, valamint az adatvédelem: kliens-, páciens- vagy kutatási résztvevőhöz köthető érzékeny személyes adatot csak az adott intézmény és szolgáltatás adatkezelési szabályainak megfelelően szabad MI-rendszerbe bevinni.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#chatgpt-előfizetések-röviden",
     "href": "chatgpt.html#chatgpt-előfizetések-röviden",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "3.2 ChatGPT-előfizetések röviden",
     "text": "3.2 ChatGPT-előfizetések röviden\nAz elérhető funkciók és használati korlátok idővel változhatnak. Az alábbi összefoglaló a 2026. szeptember 10-i állapotot tükrözi; a tényleges ár országonként, adózástól és számlázástól függően eltérhet.\n\n\n\n\n\n\n\n\nCsomag\nKinek lehet elég?\nFő különbség\n\n\n\n\nFree\nalkalmi használat, tanulás, kipróbálás\nGPT-5.6 Luna; webes keresés, fájlfeltöltés, képgenerálás, adatelemzés és hang elérhető, de több funkció korlátozott kerettel\n\n\nGo\nrendszeres hallgatói használat kedvezőbb áron\na Free-nél magasabb használati korlátok, több feltöltés és képgenerálás, hosszabb memória és kontextus; továbbra is GPT-5.6 Luna\n\n\nPlus\nintenzív tanulás, kutatás, hosszabb feladatok\nhavi 20 USD; hozzáférés a GPT-5.6 Sol fejlettebb gondolkodási módjaihoz, nagyobb keretek, bővebb kutatási és Work-funkciók\n\n\nPro 100\nerős napi használat, összetett kutatási és szakmai feladatok\nhavi 100 USD; Pro-képességek és kb. 5× Plus-szintű használati keret\n\n\nPro 200\nnagyon intenzív professzionális használat\nhavi 200 USD; a legmagasabb személyes használati keretek, kb. 20× Plus-szint, több GPT-6 Pro és GPT-5.6 Sol Pro használat\n\n\nBusiness\nkutatócsoportok, szervezetek\nközös, adminisztrálható és biztonságos munkatér; a szervezeti adatokon alapértelmezés szerint nincs modelltréning\n\n\nEnterprise / Edu\nnagy intézmények, egyetemek\nintézményi biztonsági, jogosultsági, adminisztrációs és skálázási lehetőségek; egyedi szerződés és keretek\n\n\n\n\n3.2.1 Mit érdemes választani hallgatóként?\nAz ingyenes csomag már elegendő a ChatGPT alapjainak megtanulásához. A Go akkor lehet hasznos, ha sok fájlt töltesz fel vagy gyakran használsz képgenerálást és adatelemzést; a Plus pedig akkor indokolt, ha rendszeresen végzel hosszabb, összetettebb tanulási vagy kutatási feladatokat.\n\nFontos: a drágább csomag nem teszi automatikusan “igazzá” a választ. A jobb modellek és magasabb korlátok mellett is szükség van kritikus ellenőrzésre.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#új-chat",
     "href": "chatgpt.html#új-chat",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.1 Új chat",
     "text": "4.1 Új chat\nAz Új chat gombbal teljesen új beszélgetést indíthatsz. Ez akkor hasznos, ha új témába kezdesz, és nem szeretnéd, hogy az előző beszélgetés kontextusa befolyásolja az új feladatot.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#oldalsáv",
     "href": "chatgpt.html#oldalsáv",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.2 Oldalsáv",
     "text": "4.2 Oldalsáv\nA bal oldali oldalsáv a ChatGPT navigációs területe. Innen érhetők el a korábbi beszélgetések, projektek, képek, ütemezett feladatok és más eszközök – a pontos lista csomagtól és aktuális felülettől függhet.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#recents",
     "href": "chatgpt.html#recents",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.3 Recents",
     "text": "4.3 Recents\nA Recents részben a legutóbbi beszélgetéseid jelennek meg. Egy címre kattintva visszatérhetsz a korábbi chathez, így nem kell minden alkalommal elölről kezdened ugyanazt a témát.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#feltöltés",
     "href": "chatgpt.html#feltöltés",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.4 Feltöltés (+)",
     "text": "4.4 Feltöltés (+)\nA + gombbal képet, PDF-et, Word-dokumentumot, táblázatot vagy más támogatott fájlt csatolhatsz. A ChatGPT ezután a fájl tartalmára támaszkodva tud összefoglalni, magyarázni, összehasonlítani vagy adatokat elemezni.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#kérdésmező",
     "href": "chatgpt.html#kérdésmező",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.5 Kérdésmező",
     "text": "4.5 Kérdésmező\nA kérdésmezőbe írjuk a promptot, vagyis azt a kérést vagy utasítást, amelyre választ várunk. A jó prompt általában tartalmazza a célt, a szükséges kontextust, és azt is, hogy milyen formában szeretnénk megkapni a választ.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#think",
     "href": "chatgpt.html#think",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.6 Think",
     "text": "4.6 Think\nA Think mód nehezebb kérdéseknél több belső feldolgozást enged a modellnek. Érdemes használni például összetettebb érvelésnél, kutatástervezésnél, módszertani összehasonlításnál vagy több feltételt tartalmazó feladatnál.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#mikrofon",
     "href": "chatgpt.html#mikrofon",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.7 Mikrofon",
     "text": "4.7 Mikrofon\nA mikrofon ikon segítségével begépelés helyett szóban is megadhatod a kérdésedet. Ez gyors jegyzetelésre, ötletelésre vagy hosszabb kérdések kényelmes bevitelére is használható.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#hangbeszélgetés",
     "href": "chatgpt.html#hangbeszélgetés",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.8 Hangbeszélgetés",
     "text": "4.8 Hangbeszélgetés\nA hangbeszélgetés mód folyamatos, beszélgetésszerű interakciót tesz lehetővé a ChatGPT-vel. Pszichológushallgatóknál különösen érdekes lehet például szóbeli vizsgára gyakorlás, idegen nyelvű szakmai kommunikáció vagy szimulált interjúhelyzetek során.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#képgenerálás",
     "href": "chatgpt.html#képgenerálás",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.9 Képgenerálás",
     "text": "4.9 Képgenerálás\nA Képgenerálás funkcióval szöveges leírás alapján illusztrációt, sematikus ábrát, infografikát vagy más vizuális anyagot készíthetsz. Oktatási használatnál érdemes pontosan megadni a célközönséget, a kívánt stílust, a feliratokat és a kép arányát.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#írás-és-szerkesztés",
     "href": "chatgpt.html#írás-és-szerkesztés",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.10 Írás és szerkesztés",
     "text": "4.10 Írás és szerkesztés\nAz Írás és szerkesztés gyorsindító a szövegalkotással kapcsolatos feladatokhoz. Használható például egy bekezdés tömörítésére, nyelvi javításra, vázlatkészítésre vagy egy szakmai szöveg közérthetőbb megfogalmazására.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#webes-keresés",
     "href": "chatgpt.html#webes-keresés",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.11 Webes keresés",
     "text": "4.11 Webes keresés\nA Webes keresés akkor fontos, amikor friss vagy ellenőrizhető információra van szükséged. Tudományos munkában azonban a webes találatokat mindig külön is értékeld, és ahol lehet, keresd meg az eredeti tanulmányt vagy hivatalos forrást.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
     "objectID": "chatgpt.html#chat-és-work-mód",
     "href": "chatgpt.html#chat-és-work-mód",
-    "title": "3  A Free verzió felépítése",
+    "title": "3  ChatGPT",
     "section": "4.12 Chat és Work mód",
     "text": "4.12 Chat és Work mód\nA Chat a hagyományos, beszélgetésközpontú használat: kérdezel, a ChatGPT pedig válaszol és együtt dolgozik veled. A Work összetettebb, több lépéses feladatokra szolgálhat, például több fájl feldolgozására, kutatásra, elemzésre vagy kész munkatermék előállítására; elérhetősége csomagtól függ.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ChatGPT</span>"
     ]
   },
   {
