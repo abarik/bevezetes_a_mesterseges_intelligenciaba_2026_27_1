@@ -2,41 +2,201 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "bevezetes_a_mesterseges_intelligenciaba_2026_27_1",
+    "title": "Bevezetés a mesterséges intelligenciába",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "1 Előszó\nKurzus: Bevezetés a mesterséges intelligenciába\nTípus: szabadon választható, gyakorlati kurzus\nHely: P/106/A\nEz a kurzus pszichológia BA hallgatóknak szól, és azt mutatja be, hogyan lehet a mesterséges intelligenciát értelmesen, kritikusan és gyakorlatiasan használni a tanulásban, a pszichológiai gondolkodásban és később a szakmai munkában.\nA kurzus célja nem az, hogy programozókat képezzen. Sokkal fontosabb, hogy megértsük:\n\nmi a mesterséges intelligencia és hogyan működik nagy vonalakban,\nmire képesek és mire nem képesek a mai MI-rendszerek,\nhogyan lehet jó kérdéseket és utasításokat megfogalmazni,\nhogyan használható az MI tanulásra, ötletelésre, szövegalkotásra, kutatási feladatokra és adatelemzési problémák támogatására,\nhogyan ellenőrizhetjük kritikusan az MI által adott válaszokat,\nés milyen etikai, adatvédelmi és pszichológiai kérdéseket vet fel az MI használata.\n\nA foglalkozások középpontjában a gyakorlati kipróbálás áll. Különböző MI-eszközökkel dolgozunk, összehasonlítjuk a válaszaikat, kísérletezünk a promptokkal, és pszichológiai példákon keresztül vizsgáljuk meg a technológia lehetőségeit és korlátait.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Előszó</span>"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
+    "objectID": "digit.html",
+    "href": "digit.html",
+    "title": "2  A digitális technológia",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. (USA) 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "2.1 A digitális technológia és a pszichológia 4 kapcsolódási pontja",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A digitális technológia</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
+    "objectID": "digit.html#a-digitális-technológia-és-a-pszichológia-4-kapcsolódási-pontja",
+    "href": "digit.html#a-digitális-technológia-és-a-pszichológia-4-kapcsolódási-pontja",
+    "title": "2  A digitális technológia",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "text": "Kapcsolódási pontok\n\n\n\nA technológia hatása az emberre\nA pszichológia vizsgálja, hogyan alakítja a digitális környezet az emberi gondolkodást, érzelmeket és viselkedést. Ide tartozik például a kiberpszichológia, a technostressz, valamint a digitális jóllét kutatása (Ancis 2020; Turóczi and Kun 2025).\nA technológia mint kutatási eszköz\nA digitális technológiák ma már a pszichológiai kutatás teljes folyamatát támogatják: az irodalomkereséstől és kutatástervezéstől az online adatgyűjtésen és adatelemzésen át egészen a publikálásig és az eredmények megosztásáig (Adjerid and Kelley 2018; Ostermann et al. 2021).\nA technológia mint beavatkozási eszköz\nA digitális technológia közvetlenül is megjelenhet a pszichológiai segítségnyújtásban. Ilyen például a távpszichológia, a mentális egészséget támogató mobilalkalmazások, a virtuális valóságon alapuló terápiás megoldások, valamint az MI-alapú rendszerek (Sharma and Devan 2023; Goharinejad et al. 2026).\nA pszichológia mint technológiatervezési alap\nA kapcsolat fordítva is működik: a pszichológiai elméletek és kutatási eredmények segítik a digitális technológiák tervezését. A fejlesztők például a kognitív pszichológia, a motiváció, a tanulás és a döntéshozatal eredményeire támaszkodnak a felhasználói élmény kialakításakor. Ennek klasszikus példái a UX-tervezés, a meggyőző technológiák és a gamifikáció (Kompaniets and Chemerys 2019; Fogg 2002; Deterding et al. 2011).",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A digitális technológia</span>"
+    ]
+  },
+  {
+    "objectID": "digit.html#digcomp-3.0-mit-jelent-a-digitális-kompetencia",
+    "href": "digit.html#digcomp-3.0-mit-jelent-a-digitális-kompetencia",
+    "title": "2  A digitális technológia",
+    "section": "2.2 DigComp 3.0 – mit jelent a digitális kompetencia?",
+    "text": "2.2 DigComp 3.0 – mit jelent a digitális kompetencia?\nA DigComp (Digital Competence Framework for Citizens) az Európai Bizottság digitáliskompetencia-keretrendszere.\nA DigComp 3.0 2025-ben jelent meg, és a digitális kompetenciát nem egyszerűen technikai tudásként értelmezi (Cosgrove and Cachia 2025).\n\nDigitális kompetencia = a digitális technológiák magabiztos, kritikus és felelősségteljes használata.\n\nEhhez három dolog együttesen szükséges:\ntudás + készségek + attitűdök\n\n2.2.1 Mi változott a DigComp 3.0-ban?\nA DigComp 3.0 több olyan területet hangsúlyosabban kezel, amely a mai digitális környezetben különösen fontossá vált (Cosgrove and Cachia 2025):\n\nmesterséges intelligencia és generatív MI\nkiberbiztonság\nadatvédelem és digitális jogok\ndigitális jóllét\nfélretájékoztatás és dezinformáció\nkritikus és etikus technológiahasználat\n\nA cél tehát nem pusztán az, hogy tudjuk használni a digitális eszközöket, hanem az is, hogy értsük, értékeljük és felelősen használjuk őket.\n\n\n2.2.2 Fontos: a DigComp technológiafüggetlen\nA DigComp 3.0 szándékosan nem mondja meg, hogy milyen konkrét programot kell használni.\nNem azt írja elő, hogy:\n\nhasználj ChatGPT-t,\nelemezz R-rel,\ndolgozz Google Drive-ban,\nvagy készíts táblázatot Excelben.\n\nEhelyett azt fogalmazza meg, hogy mire kell képesnek lennünk a digitális környezetben (Cosgrove and Cachia 2025).\n\nÍgy a keretrendszer akkor is használható marad, ha néhány év múlva már egészen más szoftvereket használunk.\n\n\n\n2.2.3 A DigComp 3.0 felépítése\nA keretrendszer hierarchikusan épül fel (Cosgrove and Cachia 2025):\n\n5 kompetenciaterület\n21 kompetencia\n4 jártassági szint\n362 kompetenciaállítás\n523 tanulási eredmény\n\nA rendszer az általános digitális kompetenciáktól halad az egyre konkrétabb, megfigyelhető tudás, készség és viselkedés felé.\n\n\n2.2.4 Az 5 digitális kompetenciaterület\n\n\nInformációkeresés, -értékelés és -kezelés\nInformációk megtalálása, hitelességük értékelése, valamint adatok és fájlok rendszerezése.\n\n\nKommunikáció és együttműködés\nDigitális kommunikáció, megosztás, együttműködés, netikett és digitális identitás.\n\n\nDigitális tartalomelőállítás\nSzöveg, kép és más digitális tartalom létrehozása, szerzői jogok kezelése és számítógépes gondolkodás.\n\n\nBiztonság, jóllét és felelős használat\nEszközök és személyes adatok védelme, valamint a digitális technológia jóllétre gyakorolt hatásának tudatos kezelése.\n\n\nProblémaazonosítás és problémamegoldás\nMegfelelő digitális eszközök kiválasztása, technikai problémák kezelése és új digitális megoldások kialakítása (Cosgrove and Cachia 2025).\n\n\n\n\n2.2.5 Négy jártassági szint\nA DigComp nem egyszerűen azt kérdezi, hogy:\n„Tudod vagy nem tudod?”\nHanem azt is, hogy milyen önállóan és milyen komplex helyzetben tudod alkalmazni a kompetenciát.\n\n\n\nSzint\nJellemző\n\n\n\n\nAlap\negyszerű feladatok, gyakran segítséggel\n\n\nKözéphaladó\njól körülhatárolt feladatok önállóan\n\n\nHaladó\nkomplex problémák önálló megoldása\n\n\nKiváló\núj megoldások létrehozása, mások támogatása\n\n\n\n(Cosgrove and Cachia 2025)\n\n\n2.2.6 Tudás, készség és attitűd\nA digitális kompetencia háromféle tanulási eredményt foglal magában (Cosgrove and Cachia 2025).\n\n2.2.6.1 🧠 Tudás\nMit tudok és mit értek?\nPéldául:\n\nfelismerem,\nazonosítom,\nmegkülönböztetem,\nle tudom írni.\n\n\n\n2.2.6.2 🛠️ Készség\nMit tudok megcsinálni?\nPéldául:\n\nhasználom,\nkiválasztom,\nalkalmazom,\nértékelem.\n\n\n\n2.2.6.3 ⚖️ Attitűd\nHogyan viszonyulok a technológiához?\nPéldául:\n\nkritikusan értékelem,\netikusan használom,\nfontosnak tartom az átláthatóságot,\nfolyamatosan tájékozódom.\n\n\n\n\n2.2.7 Hol van ebben a mesterséges intelligencia?\nA DigComp 3.0-ban az MI nem külön kompetenciaterület.\nEhelyett az MI átszövi a teljes keretrendszert (Cosgrove and Cachia 2025).\nKétféle MI-kapcsolatot jelöl:\n\n2.2.7.1 AI-E – explicit MI\nA feladat közvetlenül MI-rendszer használatáról vagy megértéséről szól.\nPélda: megfelelő prompt megfogalmazása egy chatbot számára.\n\n\n2.2.7.2 AI-I – implicit MI\nAz MI a háttérben működik, vagy része lehet az alkalmazott digitális rendszernek.\nPélda: MI-alapú kereső vagy ajánlórendszer használata.\n\n\n\n2.2.8 Mit jelent ez pszichológushallgatóként?\nA digitális kompetencia nem azt jelenti, hogy minden programot ismernünk kell.\nSokkal inkább azt, hogy képesek vagyunk:\n\nmegtalálni a megfelelő digitális eszközt,\nkritikusan értékelni az információkat,\nfelelősen kezelni adatokat,\nfelismerni az MI korlátait,\nmegvédeni a személyes adatokat,\netikusan használni a technológiát,\nés szükség esetén új eszközök használatát is megtanulni.\n\n\nNem az a cél, hogy minden technológiát ismerjünk, hanem hogy kompetensen tudjunk alkalmazkodni az új technológiákhoz.\n\n\n\n\n2.2.9 DigComp 3.0 és az MI-kurzus\nA kurzus során ezért nemcsak azt vizsgáljuk, hogy:\n„Mit tud a ChatGPT?”\nhanem azt is, hogy:\n\nMikor érdemes használni?\nMennyire megbízható a válasza?\nHogyan ellenőrizzük?\nMilyen adatot adhatunk át neki?\nMilyen torzításokat tartalmazhat?\nKi felel az MI segítségével elkészített eredményért?\n\nEz a kritikus, tudatos és felelős MI-használat a digitális kompetencia része.\n\n\n\n\nAdjerid, Idris, and Ken Kelley. 2018. “Big Data in Psychology: A Framework for Research Advancement.” American Psychologist 73 (7): 899–917. https://doi.org/10.1037/amp0000190.\n\n\nAncis, Julie R. 2020. “The Age of Cyberpsychology: An Overview.” Technology, Mind, and Behavior 1 (1): 9–23. https://doi.org/10.1037/tmb0000009.\n\n\nCosgrove, John, and Romina Cachia. 2025. DigComp 3.0: European Digital Competence Framework. Publications Office of the European Union. https://doi.org/10.2760/0001149.\n\n\nDeterding, Sebastian, Dan Dixon, Rilla Khaled, and Lennart Nacke. 2011. “From Game Design Elements to Gamefulness: Defining Gamification.” Proceedings of the 15th International Academic MindTrek Conference: Envisioning Future Media Environments, 9–15. https://doi.org/10.1145/2181037.2181040.\n\n\nFogg, B. J. 2002. “Persuasive Technology: Using Computers to Change What We Think and Do.” Ubiquity 2002 (December): 2. https://doi.org/10.1145/764008.763957.\n\n\nGoharinejad, S., S. Goharinezhad, K. Moulaei, B. Krüger, and T. Spittler. 2026. “Assessing the Impact of Virtual Reality, Augmented Reality, and Video Games on Improving Post-Traumatic Stress Disorder Symptoms: A Systematic Review and Meta-Analysis.” Inquiry: A Journal of Medical Care Organization, Provision and Financing 63: 469580251413101. https://doi.org/10.1177/00469580251413101.\n\n\nKompaniets, A., and H. Chemerys. 2019. “Generalization of the Experience of Using Research on Psychology of Behavior for Designing UX Design Software Products.” Ukrainian Journal of Educational Studies and Information Technology 7 (3): 1–10. https://doi.org/10.32919/uesit.2019.03.01.\n\n\nOstermann, Thomas, Jan P. Röer, and Martin J. Tomasik. 2021. “Digitalization in Psychology: A Bit of Challenge and a Byte of Success.” Patterns 2 (10): 100334. https://doi.org/10.1016/j.patter.2021.100334.\n\n\nSharma, G., and K. Devan. 2023. “The Effectiveness of Telepsychiatry: Thematic Review.” BJPsych Bulletin 47 (2): 82–89. https://doi.org/10.1192/bjb.2021.115.\n\n\nTuróczi, H., and Á. Kun. 2025. “A Digitális Jóllét Pozitív Pszichológiai Megközelítésben.” Magyar Pszichológiai Szemle 79 (4): 727–53. https://doi.org/10.1556/0016.2024.00098.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A digitális technológia</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html",
+    "href": "chatgpt.html",
+    "title": "3  A Free verzió felépítése",
+    "section": "",
+    "text": "3.1 Mit nyújthat a ChatGPT egy pszichológusnak?\nFrissítve: 2026. szeptember 10.\nA ChatGPT egy általános célú MI-asszisztens, amely szöveggel, képekkel, fájlokkal és – a csomagtól függően – webes információkkal is tud dolgozni. Pszichológushallgatóként és később szakemberként elsősorban gondolkodási, tanulási és munkaszervezési segédeszközként érdemes rá tekinteni.\nHasználható például fogalmak és elméletek elmagyarázására, vizsgafelkészülésre, szakirodalmi tájékozódásra, kutatási kérdések finomítására, kérdőív- vagy interjúötletek megvitatására, szövegek javítására, adatok értelmezésének támogatására, prezentációk és ábrák tervezésére, illetve gyakorló helyzetek vagy szerepjátékok létrehozására.\nA ChatGPT ugyanakkor nem tekintélyforrás és nem hibamentes. Pszichológiai és tudományos használatnál különösen fontos a válaszok ellenőrzése, a források visszakeresése, valamint az adatvédelem: kliens-, páciens- vagy kutatási résztvevőhöz köthető érzékeny személyes adatot csak az adott intézmény és szolgáltatás adatkezelési szabályainak megfelelően szabad MI-rendszerbe bevinni.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#chatgpt-előfizetések-röviden",
+    "href": "chatgpt.html#chatgpt-előfizetések-röviden",
+    "title": "3  A Free verzió felépítése",
+    "section": "3.2 ChatGPT-előfizetések röviden",
+    "text": "3.2 ChatGPT-előfizetések röviden\nAz elérhető funkciók és használati korlátok idővel változhatnak. Az alábbi összefoglaló a 2026. szeptember 10-i állapotot tükrözi; a tényleges ár országonként, adózástól és számlázástól függően eltérhet.\n\n\n\n\n\n\n\n\nCsomag\nKinek lehet elég?\nFő különbség\n\n\n\n\nFree\nalkalmi használat, tanulás, kipróbálás\nGPT-5.6 Luna; webes keresés, fájlfeltöltés, képgenerálás, adatelemzés és hang elérhető, de több funkció korlátozott kerettel\n\n\nGo\nrendszeres hallgatói használat kedvezőbb áron\na Free-nél magasabb használati korlátok, több feltöltés és képgenerálás, hosszabb memória és kontextus; továbbra is GPT-5.6 Luna\n\n\nPlus\nintenzív tanulás, kutatás, hosszabb feladatok\nhavi 20 USD; hozzáférés a GPT-5.6 Sol fejlettebb gondolkodási módjaihoz, nagyobb keretek, bővebb kutatási és Work-funkciók\n\n\nPro 100\nerős napi használat, összetett kutatási és szakmai feladatok\nhavi 100 USD; Pro-képességek és kb. 5× Plus-szintű használati keret\n\n\nPro 200\nnagyon intenzív professzionális használat\nhavi 200 USD; a legmagasabb személyes használati keretek, kb. 20× Plus-szint, több GPT-6 Pro és GPT-5.6 Sol Pro használat\n\n\nBusiness\nkutatócsoportok, szervezetek\nközös, adminisztrálható és biztonságos munkatér; a szervezeti adatokon alapértelmezés szerint nincs modelltréning\n\n\nEnterprise / Edu\nnagy intézmények, egyetemek\nintézményi biztonsági, jogosultsági, adminisztrációs és skálázási lehetőségek; egyedi szerződés és keretek\n\n\n\n\n3.2.1 Mit érdemes választani hallgatóként?\nAz ingyenes csomag már elegendő a ChatGPT alapjainak megtanulásához. A Go akkor lehet hasznos, ha sok fájlt töltesz fel vagy gyakran használsz képgenerálást és adatelemzést; a Plus pedig akkor indokolt, ha rendszeresen végzel hosszabb, összetettebb tanulási vagy kutatási feladatokat.\n\nFontos: a drágább csomag nem teszi automatikusan “igazzá” a választ. A jobb modellek és magasabb korlátok mellett is szükség van kritikus ellenőrzésre.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#új-chat",
+    "href": "chatgpt.html#új-chat",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.1 Új chat",
+    "text": "4.1 Új chat\nAz Új chat gombbal teljesen új beszélgetést indíthatsz. Ez akkor hasznos, ha új témába kezdesz, és nem szeretnéd, hogy az előző beszélgetés kontextusa befolyásolja az új feladatot.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#oldalsáv",
+    "href": "chatgpt.html#oldalsáv",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.2 Oldalsáv",
+    "text": "4.2 Oldalsáv\nA bal oldali oldalsáv a ChatGPT navigációs területe. Innen érhetők el a korábbi beszélgetések, projektek, képek, ütemezett feladatok és más eszközök – a pontos lista csomagtól és aktuális felülettől függhet.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#recents",
+    "href": "chatgpt.html#recents",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.3 Recents",
+    "text": "4.3 Recents\nA Recents részben a legutóbbi beszélgetéseid jelennek meg. Egy címre kattintva visszatérhetsz a korábbi chathez, így nem kell minden alkalommal elölről kezdened ugyanazt a témát.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#feltöltés",
+    "href": "chatgpt.html#feltöltés",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.4 Feltöltés (+)",
+    "text": "4.4 Feltöltés (+)\nA + gombbal képet, PDF-et, Word-dokumentumot, táblázatot vagy más támogatott fájlt csatolhatsz. A ChatGPT ezután a fájl tartalmára támaszkodva tud összefoglalni, magyarázni, összehasonlítani vagy adatokat elemezni.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#kérdésmező",
+    "href": "chatgpt.html#kérdésmező",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.5 Kérdésmező",
+    "text": "4.5 Kérdésmező\nA kérdésmezőbe írjuk a promptot, vagyis azt a kérést vagy utasítást, amelyre választ várunk. A jó prompt általában tartalmazza a célt, a szükséges kontextust, és azt is, hogy milyen formában szeretnénk megkapni a választ.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#think",
+    "href": "chatgpt.html#think",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.6 Think",
+    "text": "4.6 Think\nA Think mód nehezebb kérdéseknél több belső feldolgozást enged a modellnek. Érdemes használni például összetettebb érvelésnél, kutatástervezésnél, módszertani összehasonlításnál vagy több feltételt tartalmazó feladatnál.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#mikrofon",
+    "href": "chatgpt.html#mikrofon",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.7 Mikrofon",
+    "text": "4.7 Mikrofon\nA mikrofon ikon segítségével begépelés helyett szóban is megadhatod a kérdésedet. Ez gyors jegyzetelésre, ötletelésre vagy hosszabb kérdések kényelmes bevitelére is használható.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#hangbeszélgetés",
+    "href": "chatgpt.html#hangbeszélgetés",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.8 Hangbeszélgetés",
+    "text": "4.8 Hangbeszélgetés\nA hangbeszélgetés mód folyamatos, beszélgetésszerű interakciót tesz lehetővé a ChatGPT-vel. Pszichológushallgatóknál különösen érdekes lehet például szóbeli vizsgára gyakorlás, idegen nyelvű szakmai kommunikáció vagy szimulált interjúhelyzetek során.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#képgenerálás",
+    "href": "chatgpt.html#képgenerálás",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.9 Képgenerálás",
+    "text": "4.9 Képgenerálás\nA Képgenerálás funkcióval szöveges leírás alapján illusztrációt, sematikus ábrát, infografikát vagy más vizuális anyagot készíthetsz. Oktatási használatnál érdemes pontosan megadni a célközönséget, a kívánt stílust, a feliratokat és a kép arányát.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#írás-és-szerkesztés",
+    "href": "chatgpt.html#írás-és-szerkesztés",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.10 Írás és szerkesztés",
+    "text": "4.10 Írás és szerkesztés\nAz Írás és szerkesztés gyorsindító a szövegalkotással kapcsolatos feladatokhoz. Használható például egy bekezdés tömörítésére, nyelvi javításra, vázlatkészítésre vagy egy szakmai szöveg közérthetőbb megfogalmazására.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#webes-keresés",
+    "href": "chatgpt.html#webes-keresés",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.11 Webes keresés",
+    "text": "4.11 Webes keresés\nA Webes keresés akkor fontos, amikor friss vagy ellenőrizhető információra van szükséged. Tudományos munkában azonban a webes találatokat mindig külön is értékeld, és ahol lehet, keresd meg az eredeti tanulmányt vagy hivatalos forrást.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "chatgpt.html#chat-és-work-mód",
+    "href": "chatgpt.html#chat-és-work-mód",
+    "title": "3  A Free verzió felépítése",
+    "section": "4.12 Chat és Work mód",
+    "text": "4.12 Chat és Work mód\nA Chat a hagyományos, beszélgetésközpontú használat: kérdezel, a ChatGPT pedig válaszol és együtt dolgozik veled. A Work összetettebb, több lépéses feladatokra szolgálhat, például több fájl feldolgozására, kutatásra, elemzésre vagy kész munkatermék előállítására; elérhetősége csomagtól függ.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A Free verzió felépítése</span>"
+    ]
+  },
+  {
+    "objectID": "linkek.html",
+    "href": "linkek.html",
+    "title": "4  Hasznos linkek",
+    "section": "",
+    "text": "Frissítve: 2026. szeptember 10.\n\nhttps://www.youtube.com/watch?v=nrce3GwJVso",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Hasznos linkek</span>"
     ]
   },
   {
     "objectID": "references.html",
     "href": "references.html",
-    "title": "References",
+    "title": "Irodalomjegyzék",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. (USA) 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "Adjerid, Idris, and Ken Kelley. 2018. “Big Data in Psychology: A\nFramework for Research Advancement.” American\nPsychologist 73 (7): 899–917. https://doi.org/10.1037/amp0000190.\n\n\nAncis, Julie R. 2020. “The Age of Cyberpsychology: An\nOverview.” Technology, Mind, and Behavior 1 (1): 9–23.\nhttps://doi.org/10.1037/tmb0000009.\n\n\nCosgrove, John, and Romina Cachia. 2025. DigComp 3.0: European\nDigital Competence Framework. Publications Office of the European\nUnion. https://doi.org/10.2760/0001149.\n\n\nDeterding, Sebastian, Dan Dixon, Rilla Khaled, and Lennart Nacke. 2011.\n“From Game Design Elements to Gamefulness: Defining\nGamification.” Proceedings of the 15th International Academic\nMindTrek Conference: Envisioning Future Media Environments, 9–15.\nhttps://doi.org/10.1145/2181037.2181040.\n\n\nFogg, B. J. 2002. “Persuasive Technology: Using Computers to\nChange What We Think and Do.” Ubiquity 2002 (December):\n2. https://doi.org/10.1145/764008.763957.\n\n\nGoharinejad, S., S. Goharinezhad, K. Moulaei, B. Krüger, and T.\nSpittler. 2026. “Assessing the Impact of Virtual Reality,\nAugmented Reality, and Video Games on Improving Post-Traumatic Stress\nDisorder Symptoms: A Systematic Review and Meta-Analysis.”\nInquiry: A Journal of Medical Care Organization, Provision and\nFinancing 63: 469580251413101. https://doi.org/10.1177/00469580251413101.\n\n\nKompaniets, A., and H. Chemerys. 2019. “Generalization of the\nExperience of Using Research on Psychology of Behavior for Designing UX\nDesign Software Products.” Ukrainian Journal of Educational\nStudies and Information Technology 7 (3): 1–10. https://doi.org/10.32919/uesit.2019.03.01.\n\n\nOstermann, Thomas, Jan P. Röer, and Martin J. Tomasik. 2021.\n“Digitalization in Psychology: A Bit of Challenge and a Byte of\nSuccess.” Patterns 2 (10): 100334. https://doi.org/10.1016/j.patter.2021.100334.\n\n\nSharma, G., and K. Devan. 2023. “The Effectiveness of\nTelepsychiatry: Thematic Review.” BJPsych Bulletin 47\n(2): 82–89. https://doi.org/10.1192/bjb.2021.115.\n\n\nTuróczi, H., and Á. Kun. 2025. “A Digitális Jóllét Pozitív\nPszichológiai Megközelítésben.” Magyar Pszichológiai\nSzemle 79 (4): 727–53. https://doi.org/10.1556/0016.2024.00098.",
     "crumbs": [
-      "References"
+      "Irodalomjegyzék"
     ]
   }
 ]

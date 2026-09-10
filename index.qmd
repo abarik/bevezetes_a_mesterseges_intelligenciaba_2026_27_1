@@ -1,9 +1,20 @@
-# Preface {.unnumbered}
+# Előszó
 
-This is a Quarto book.
+**Kurzus:** Bevezetés a mesterséges intelligenciába  
+**Típus:** szabadon választható, gyakorlati kurzus  
+**Hely:** **P/106/A**
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Ez a kurzus pszichológia BA hallgatóknak szól, és azt mutatja be, hogyan lehet a mesterséges intelligenciát **értelmesen, kritikusan és gyakorlatiasan** használni a tanulásban, a pszichológiai gondolkodásban és később a szakmai munkában.
 
-```{r}
-1 + 1
-```
+A kurzus célja nem az, hogy programozókat képezzen. Sokkal fontosabb, hogy megértsük:
+
+- **mi a mesterséges intelligencia és hogyan működik nagy vonalakban,**
+- **mire képesek és mire nem képesek a mai MI-rendszerek,**
+- **hogyan lehet jó kérdéseket és utasításokat megfogalmazni,**
+- **hogyan használható az MI tanulásra, ötletelésre, szövegalkotásra, kutatási feladatokra és adatelemzési problémák támogatására,**
+- **hogyan ellenőrizhetjük kritikusan az MI által adott válaszokat,**
+- és **milyen etikai, adatvédelmi és pszichológiai kérdéseket vet fel az MI használata**.
+
+A foglalkozások középpontjában a **gyakorlati kipróbálás** áll. Különböző MI-eszközökkel dolgozunk, összehasonlítjuk a válaszaikat, kísérletezünk a promptokkal, és pszichológiai példákon keresztül vizsgáljuk meg a technológia lehetőségeit és korlátait.
+
+
