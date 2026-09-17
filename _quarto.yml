@@ -9,8 +9,10 @@ book:
   date: today
   chapters:
     - index.qmd
+    - diasor.qmd
     - digit.qmd
     - chatgpt.qmd
+    - gyakorlatok.qmd
     - linkek.qmd
     - references.qmd
 
@@ -24,4 +26,3 @@ format:
   pdf:
     documentclass: scrreprt
 
-editor: visual

@@ -1,0 +1,7 @@
+# A kurzus diasora
+
+- [Mi az MI?](files/MI_01.pdf)
+- [Az MI nagy pillanatai és kutatási lehetőségei](files/MI_02.pdf)
+- [Az MI megismerése](files/MI_03.pdf)
+
+

@@ -1,9 +1,12 @@
 # Hasznos linkek
 
-*Frissítve: 2026. szeptember 10.*
+*Frissítve: 2026. szeptember 17.*
 
+- Házi feladat
 
-- https://www.youtube.com/watch?v=nrce3GwJVso
+  1.  [Elbutul vagy szárnyalni fog a Z és a követő generációk az AI miatt?](https://www.youtube.com/watch?v=nrce3GwJVso){target="_blank"}
+  2.  [Az OpenAI belépett az AGI-érába, az iskolák még csak most barátkoznak az AI-használattal](https://www.youtube.com/watch?v=qyihhjN-n7A){target="_blank"}
 
+- Érdemes meghallgatni
 
-
+  - [Teljesen elbutítja az agyunkat az AI? Szász Máté neurobiológus](https://www.youtube.com/watch?v=6WG4yMa_qeI){target="_blank"}

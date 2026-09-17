@@ -1,0 +1,41 @@
+# Gyakorlatok
+
+*Frissítve: 2026. szeptember 17.*
+
+## ChatGPT projektek
+
+A ChatGPT-projektben **az instrukciókat, a háttéranyagokat, a memóriát és a hozzáférést** tudjuk alakítani. 
+
+| Beállítás vagy lehetőség       | Mire szolgál?                                                                                                                               |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Név, ikon, szín**            | A projekt azonosítása, megkülönböztetése.                                                                                                   |
+| **Projektinstrukciók**         | Megadhatod a feladatot, nyelvet, stílust, munkamenetet és válaszformátumot. A projekten belül felülírják az általános egyéni instrukciókat. |
+| **Fájlok és források**         | Jegyzeteket, cikkeket, táblázatokat, képeket és szövegeket adhatsz hozzá. A fájlkorlát előfizetésfüggő.                                     |
+| **Memória**                    | Alapértelmezett vagy csak a projektre korlátozott működés választható.                                                                      |
+| **Megosztás és jogosultságok** | Meghatározhatod, ki csatlakozhat, illetve ki beszélgethet vagy szerkeszthet.                                                                |
+| **Beszélgetések rendezése**    | Külön beszélgetéseket indíthatsz részfeladatokhoz, és meglévőket is áthelyezhetsz a projektbe.                                              |
+
+A projekt közös fájljait és instrukcióit a benne indított beszélgetések használhatják. [OpenAI: projektek és beszélgetések](https://learn.chatgpt.com/docs/projects)
+
+**A memória két módja különösen fontos:**
+
+* **Alapértelmezett memória:** személyes emlékeket is használhat; a projekten kívüli beszélgetések elérése a csomagtól és beállításoktól függ.
+* **Csak projektmemória:** a projekt beszélgetéseire támaszkodhat, a korábbi személyes emlékeket és más projektek beszélgetéseit nem használja. Megosztáskor ez automatikusan bekapcsol.
+
+**A jogosultságoknál** a *chat* hozzáférés beszélgetést és megtekintést, az *edit* hozzáférés az instrukciók és fájlok módosítását is engedi. A tagok látják a közös projekt beszélgetéseit és fájljait. [OpenAI projektútmutató](https://help.openai.com/en/articles/10169521-projects-in-chatgpt)
+
+Egy új projektnél **a projektinstrukciók megírása, a források hozzáadása és a memória tudatos kiválasztása** az első lépés.
+
+
+## Feladatok
+
+- Készítsünk projektet, amely képen megjelenő táblázatból Word táblázatot készít.
+- Készítsünk projektet, amely képen megjelenő táblázatból Markdown dokumentumot készít.
+- Készítsünk projektet, amely képen megjelenő szövegből magyar nyelvű Markdown dokumentumot készít.
+- Készítsünk projektet, amely URL/PDF tanulmányból a hivatkozásokat letölthető bib állományba másolja.
+- Készítsünk projektet, amely bib állományt Office 2007 XML hivatkozásállománnyá alakítja.
+- Készítsünk projektet, amely egy kérdőíves felmérés nyers (pl. Google Forms vagy Qualtrics CSV) adataiból automatikusan APA formátumú leíró statisztikai Word/Markdown táblázatot generál.
+- Készítsünk projektet, amely megadott témájú PDF formátumú tanulmányokból automatikusan kinyeri a résztvevők demográfiai adatait (N, átlagéletkor, nemek aránya), és kiexportálja egy Excel táblázatba.
+- Készítsünk projektet, amely egy vázlatos, hiányos bibliográfiát (pl. csak DOI számokat vagy URL-eket tartalmazó listát) automatikusan APA 7. kiadás szerinti formátumú hivatkozáslistává alakít. A kimenet legyen bib, MS Office 2007 XML, Markdown és Word.
+- Készítsünk projektet, amely megadott kulcsszavak alapján automatikusan összegyűjti a legújabb cikkek absztraktjait a PubMed vagy a Google Tudós felületéről, és Markdown formátumú irodalomkutatási naplót készít belőlük.
+
