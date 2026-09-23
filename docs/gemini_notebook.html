@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hu" xml:lang="hu"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Gemini Notebook – Bevezetés a mesterséges intelligenciába</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./felelos_mi.html" rel="next">
+<link href="./chatgpt.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a64f2b92d8b4b45ab5f5d9261e8b8c9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gemini_notebook.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Bevezetés a mesterséges intelligenciába</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Előszó</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./diasor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A kurzus diasora</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./digit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A digitális technológia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alapfogalmak.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fogalmak</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ChatGPT</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gemini_notebook.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./felelos_mi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Irodalomjegyzék</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Függelék</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kiseloadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Kiselőadás ötletek</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gyakorlatok.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Gyakorlatok</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linkek.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Hasznos linkek</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./video_magyarazat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Fogalmak videóhoz 1.</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tartalomjegyzék</h2>
+   
+  <ul>
+  <li><a href="#aktualizált-áttekintés-2026.-szeptember" id="toc-aktualizált-áttekintés-2026.-szeptember" class="nav-link active" data-scroll-target="#aktualizált-áttekintés-2026.-szeptember"><span class="header-section-number">5.1</span> Aktualizált áttekintés, 2026. szeptember</a></li>
+  <li><a href="#összefoglaló" id="toc-összefoglaló" class="nav-link" data-scroll-target="#összefoglaló"><span class="header-section-number">5.2</span> Összefoglaló</a></li>
+  <li><a href="#mi-változott-20252026-ban" id="toc-mi-változott-20252026-ban" class="nav-link" data-scroll-target="#mi-változott-20252026-ban"><span class="header-section-number">5.3</span> Mi változott 2025–2026-ban?</a></li>
+  <li><a href="#rendszerarchitektúra" id="toc-rendszerarchitektúra" class="nav-link" data-scroll-target="#rendszerarchitektúra"><span class="header-section-number">5.4</span> Rendszerarchitektúra</a>
+  <ul class="collapse">
+  <li><a href="#forrásalapú-megalapozottság" id="toc-forrásalapú-megalapozottság" class="nav-link" data-scroll-target="#forrásalapú-megalapozottság"><span class="header-section-number">5.4.1</span> Forrásalapú megalapozottság</a></li>
+  <li><a href="#mit-jelentenek-a-hivatkozások" id="toc-mit-jelentenek-a-hivatkozások" class="nav-link" data-scroll-target="#mit-jelentenek-a-hivatkozások"><span class="header-section-number">5.4.2</span> Mit jelentenek a hivatkozások?</a></li>
+  <li><a href="#a-hárompaneles-felület" id="toc-a-hárompaneles-felület" class="nav-link" data-scroll-target="#a-hárompaneles-felület"><span class="header-section-number">5.4.3</span> A hárompaneles felület</a></li>
+  </ul></li>
+  <li><a href="#támogatott-források" id="toc-támogatott-források" class="nav-link" data-scroll-target="#támogatott-források"><span class="header-section-number">5.5</span> Támogatott források</a></li>
+  <li><a href="#gemini-integráció" id="toc-gemini-integráció" class="nav-link" data-scroll-target="#gemini-integráció"><span class="header-section-number">5.6</span> Gemini-integráció</a>
+  <ul class="collapse">
+  <li><a href="#notebookok-a-gemini-alkalmazásban" id="toc-notebookok-a-gemini-alkalmazásban" class="nav-link" data-scroll-target="#notebookok-a-gemini-alkalmazásban"><span class="header-section-number">5.6.1</span> Notebookok a Gemini alkalmazásban</a></li>
+  <li><a href="#modellek" id="toc-modellek" class="nav-link" data-scroll-target="#modellek"><span class="header-section-number">5.6.2</span> Modellek</a></li>
+  </ul></li>
+  <li><a href="#kulcsfunkciók" id="toc-kulcsfunkciók" class="nav-link" data-scroll-target="#kulcsfunkciók"><span class="header-section-number">5.7</span> Kulcsfunkciók</a>
+  <ul class="collapse">
+  <li><a href="#hivatkozott-chat" id="toc-hivatkozott-chat" class="nav-link" data-scroll-target="#hivatkozott-chat"><span class="header-section-number">5.7.1</span> Hivatkozott chat</a></li>
+  <li><a href="#forrásfelfedezés-és-deep-research" id="toc-forrásfelfedezés-és-deep-research" class="nav-link" data-scroll-target="#forrásfelfedezés-és-deep-research"><span class="header-section-number">5.7.2</span> Forrásfelfedezés és Deep Research</a></li>
+  <li><a href="#audio-overview" id="toc-audio-overview" class="nav-link" data-scroll-target="#audio-overview"><span class="header-section-number">5.7.3</span> Audio Overview</a></li>
+  <li><a href="#video-overview" id="toc-video-overview" class="nav-link" data-scroll-target="#video-overview"><span class="header-section-number">5.7.4</span> Video Overview</a></li>
+  <li><a href="#stúdió-produktumok" id="toc-stúdió-produktumok" class="nav-link" data-scroll-target="#stúdió-produktumok"><span class="header-section-number">5.7.5</span> Stúdió-produktumok</a></li>
+  <li><a href="#mobilalkalmazás" id="toc-mobilalkalmazás" class="nav-link" data-scroll-target="#mobilalkalmazás"><span class="header-section-number">5.7.6</span> Mobilalkalmazás</a></li>
+  </ul></li>
+  <li><a href="#oktatási-alkalmazások" id="toc-oktatási-alkalmazások" class="nav-link" data-scroll-target="#oktatási-alkalmazások"><span class="header-section-number">5.8</span> Oktatási alkalmazások</a>
+  <ul class="collapse">
+  <li><a href="#forrásalapú-tanulás" id="toc-forrásalapú-tanulás" class="nav-link" data-scroll-target="#forrásalapú-tanulás"><span class="header-section-number">5.8.1</span> Forrásalapú tanulás</a></li>
+  <li><a href="#pszichológia-ba-s-példák" id="toc-pszichológia-ba-s-példák" class="nav-link" data-scroll-target="#pszichológia-ba-s-példák"><span class="header-section-number">5.8.2</span> Pszichológia BA-s példák</a></li>
+  <li><a href="#esszé--és-feladat-előkészítés" id="toc-esszé--és-feladat-előkészítés" class="nav-link" data-scroll-target="#esszé--és-feladat-előkészítés"><span class="header-section-number">5.8.3</span> Esszé- és feladat-előkészítés</a></li>
+  </ul></li>
+  <li><a href="#kutatási-alkalmazások" id="toc-kutatási-alkalmazások" class="nav-link" data-scroll-target="#kutatási-alkalmazások"><span class="header-section-number">5.9</span> Kutatási alkalmazások</a>
+  <ul class="collapse">
+  <li><a href="#szakirodalmi-tájékozódás" id="toc-szakirodalmi-tájékozódás" class="nav-link" data-scroll-target="#szakirodalmi-tájékozódás"><span class="header-section-number">5.9.1</span> Szakirodalmi tájékozódás</a></li>
+  <li><a href="#kvalitatív-adatok" id="toc-kvalitatív-adatok" class="nav-link" data-scroll-target="#kvalitatív-adatok"><span class="header-section-number">5.9.2</span> Kvalitatív adatok</a></li>
+  <li><a href="#multimodális-kutatás" id="toc-multimodális-kutatás" class="nav-link" data-scroll-target="#multimodális-kutatás"><span class="header-section-number">5.9.3</span> Multimodális kutatás</a></li>
+  </ul></li>
+  <li><a href="#a-ppae-hurok" id="toc-a-ppae-hurok" class="nav-link" data-scroll-target="#a-ppae-hurok"><span class="header-section-number">5.10</span> A PPAE-hurok</a>
+  <ul class="collapse">
+  <li><a href="#kutatási-változat" id="toc-kutatási-változat" class="nav-link" data-scroll-target="#kutatási-változat"><span class="header-section-number">5.10.1</span> Kutatási változat</a></li>
+  <li><a href="#tanulási-változat" id="toc-tanulási-változat" class="nav-link" data-scroll-target="#tanulási-változat"><span class="header-section-number">5.10.2</span> Tanulási változat</a></li>
+  </ul></li>
+  <li><a href="#prompttervezés" id="toc-prompttervezés" class="nav-link" data-scroll-target="#prompttervezés"><span class="header-section-number">5.11</span> Prompttervezés</a>
+  <ul class="collapse">
+  <li><a href="#ötelemű-promptmodell" id="toc-ötelemű-promptmodell" class="nav-link" data-scroll-target="#ötelemű-promptmodell"><span class="header-section-number">5.11.1</span> Ötelemű promptmodell</a></li>
+  <li><a href="#általános-sablon" id="toc-általános-sablon" class="nav-link" data-scroll-target="#általános-sablon"><span class="header-section-number">5.11.2</span> Általános sablon</a></li>
+  <li><a href="#pszichológiai-kutatási-példa" id="toc-pszichológiai-kutatási-példa" class="nav-link" data-scroll-target="#pszichológiai-kutatási-példa"><span class="header-section-number">5.11.3</span> Pszichológiai kutatási példa</a></li>
+  </ul></li>
+  <li><a href="#motiváció-és-elköteleződés" id="toc-motiváció-és-elköteleződés" class="nav-link" data-scroll-target="#motiváció-és-elköteleződés"><span class="header-section-number">5.12</span> Motiváció és elköteleződés</a></li>
+  <li><a href="#adatvédelem-és-etika" id="toc-adatvédelem-és-etika" class="nav-link" data-scroll-target="#adatvédelem-és-etika"><span class="header-section-number">5.13</span> Adatvédelem és etika</a>
+  <ul class="collapse">
+  <li><a href="#személyes-és-workspace-fiókok" id="toc-személyes-és-workspace-fiókok" class="nav-link" data-scroll-target="#személyes-és-workspace-fiókok"><span class="header-section-number">5.13.1</span> Személyes és Workspace-fiókok</a></li>
+  <li><a href="#pszichológiai-és-kvalitatív-adatok" id="toc-pszichológiai-és-kvalitatív-adatok" class="nav-link" data-scroll-target="#pszichológiai-és-kvalitatív-adatok"><span class="header-section-number">5.13.2</span> Pszichológiai és kvalitatív adatok</a></li>
+  <li><a href="#akadémiai-integritás" id="toc-akadémiai-integritás" class="nav-link" data-scroll-target="#akadémiai-integritás"><span class="header-section-number">5.13.3</span> Akadémiai integritás</a></li>
+  </ul></li>
+  <li><a href="#korlátok" id="toc-korlátok" class="nav-link" data-scroll-target="#korlátok"><span class="header-section-number">5.14</span> Korlátok</a>
+  <ul class="collapse">
+  <li><a href="#a-forráskorpusz-torzítása" id="toc-a-forráskorpusz-torzítása" class="nav-link" data-scroll-target="#a-forráskorpusz-torzítása"><span class="header-section-number">5.14.1</span> A forráskorpusz torzítása</a></li>
+  <li><a href="#forrásfeldolgozási-hibák" id="toc-forrásfeldolgozási-hibák" class="nav-link" data-scroll-target="#forrásfeldolgozási-hibák"><span class="header-section-number">5.14.2</span> Forrásfeldolgozási hibák</a></li>
+  <li><a href="#szintézis-és-okság" id="toc-szintézis-és-okság" class="nav-link" data-scroll-target="#szintézis-és-okság"><span class="header-section-number">5.14.3</span> Szintézis és okság</a></li>
+  <li><a href="#nem-helyettesít-szakértői-döntést" id="toc-nem-helyettesít-szakértői-döntést" class="nav-link" data-scroll-target="#nem-helyettesít-szakértői-döntést"><span class="header-section-number">5.14.4</span> Nem helyettesít szakértői döntést</a></li>
+  <li><a href="#reprodukálhatóság" id="toc-reprodukálhatóság" class="nav-link" data-scroll-target="#reprodukálhatóság"><span class="header-section-number">5.14.5</span> Reprodukálhatóság</a></li>
+  </ul></li>
+  <li><a href="#ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" id="toc-ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" class="nav-link" data-scroll-target="#ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak"><span class="header-section-number">5.15</span> Ajánlott munkafolyamat pszichológia BA-hallgatóknak</a>
+  <ul class="collapse">
+  <li><a href="#szemináriumi-feldolgozás" id="toc-szemináriumi-feldolgozás" class="nav-link" data-scroll-target="#szemináriumi-feldolgozás"><span class="header-section-number">5.15.1</span> Szemináriumi feldolgozás</a></li>
+  <li><a href="#mini-irodalmi-áttekintés" id="toc-mini-irodalmi-áttekintés" class="nav-link" data-scroll-target="#mini-irodalmi-áttekintés"><span class="header-section-number">5.15.2</span> Mini-irodalmi áttekintés</a></li>
+  <li><a href="#kvalitatív-gyakorlat" id="toc-kvalitatív-gyakorlat" class="nav-link" data-scroll-target="#kvalitatív-gyakorlat"><span class="header-section-number">5.15.3</span> Kvalitatív gyakorlat</a></li>
+  </ul></li>
+  <li><a href="#gyors-ellenőrzőlista" id="toc-gyors-ellenőrzőlista" class="nav-link" data-scroll-target="#gyors-ellenőrzőlista"><span class="header-section-number">5.16</span> Gyors ellenőrzőlista</a></li>
+  <li><a href="#záró-megállapítás" id="toc-záró-megállapítás" class="nav-link" data-scroll-target="#záró-megállapítás"><span class="header-section-number">5.17</span> Záró megállapítás</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Jelen összefoglaló a Perplexity AI segítségével készült.</em></p>
+<section id="aktualizált-áttekintés-2026.-szeptember" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="aktualizált-áttekintés-2026.-szeptember"><span class="header-section-number">5.1</span> Aktualizált áttekintés, 2026. szeptember</h2>
+<blockquote class="blockquote">
+<p><strong>Terminológiai frissítés:</strong> a Google 2026 júliusában a <strong>NotebookLM</strong> szolgáltatást <strong>Gemini Notebook</strong> névre nevezte át. Ugyanarról az önálló termékről van szó, a korábbi jegyzetfüzetek megmaradtak, miközben a szolgáltatás szorosabban integrálódik a Gemini alkalmazással és a Google Keresővel.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <strong>Elérés:</strong> <a href="https://notebook.google/">Gemini Notebook</a> · <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind">Google Play</a> · iOS App Store-ban „Gemini Notebook” néven kereshető.</p>
+</blockquote>
+</section>
+<section id="összefoglaló" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="összefoglaló"><span class="header-section-number">5.2</span> Összefoglaló</h2>
+<p>A Gemini Notebook forrásalapú kutatási és tanulási környezet: a felhasználó dokumentumokat és más forrásokat rendez jegyzetfüzetekbe, majd ezekről kérdezhet, összehasonlításokat készíthet, illetve különböző tanulási és kommunikációs produktumokat generálhat. A válaszokhoz kattintható szövegközi hivatkozások tartoznak, amelyek visszavezetnek a felhasznált forrásrészletekhez.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>Egy jegyzetfüzet chatje továbbra is a kiválasztott forrásokra támaszkodik, de a rendszer már <strong>Source Discovery</strong>, <strong>Fast Research</strong> és <strong>Deep Research</strong> funkciókkal maga is kereshet webes forrásokat, amelyeket a felhasználó áttekintés után importálhat a jegyzetfüzetbe. Emellett a Gemini alkalmazásban létrehozott, Gemini Notebookkal szinkronizált jegyzetfüzetek használhatják a Gemini eszközeit és webes keresését is; ezért mindig külön kell választani a <strong>jegyzetfüzet forráskorpuszát</strong> és a <strong>külső forráskeresést</strong>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>A forrásalapú működés csökkenti a témától elszakadó válaszok kockázatát és jelentősen javítja az ellenőrizhetőséget, de <strong>nem szünteti meg a hibákat</strong>. A rendszer kiválaszthat nem megfelelő részletet, félreértheti a szöveget, kihagyhat ellenpéldákat, összemoshat eltérő eredményeket, vagy pontatlanul értelmezhet táblázatot, ábrát és rosszul felismert szöveget. A Google maga is lehetőséget biztosít a pontatlan válaszok jelentésére, ezért a kattintható hivatkozást ellenőrzési eszköznek, nem igazsággaranciának kell tekinteni.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+</section>
+<section id="mi-változott-20252026-ban" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="mi-változott-20252026-ban"><span class="header-section-number">5.3</span> Mi változott 2025–2026-ban?</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Időszak</th>
+<th>Változás</th>
+<th>Módszertani jelentőség</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025. április</td>
+<td>Megjelent a <strong>Discover Sources</strong>, amely webes forrásokat keres és importálásra javasol.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></td>
+<td>A jegyzetfüzet már nem kizárólag kézzel összeállított korpuszból épülhet fel, de a forrásválogatás felelőssége a felhasználóé marad.</td>
+</tr>
+<tr class="even">
+<td>2025. július–augusztus</td>
+<td>Megjelent a <strong>Video Overview</strong>, megújult a Studio, az Audio és Video Overview pedig több mint 80 nyelvre bővült.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></td>
+<td>Ugyanaz a forrásanyag több reprezentációban tanulható, de a generált média tartalmát is ellenőrizni kell.</td>
+</tr>
+<tr class="odd">
+<td>2025. október</td>
+<td>A chat teljes, egymillió tokenes Gemini-kontextusablakot és hosszabb beszélgetési előzményt kapott.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
+<td>Nagyobb dokumentumgyűjtemények elemezhetők, de a nagyobb kapacitás nem garantál teljes körű vagy torzítatlan szintézist.</td>
+</tr>
+<tr class="even">
+<td>2025. november</td>
+<td>Megjelent a <strong>Deep Research</strong>, továbbá bővült a támogatott forrástípusok köre, például Word-, kép- és táblázatforrásokkal.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></td>
+<td>A forráskeresés és a forrásalapú feldolgozás egyetlen munkafolyamatba került.</td>
+</tr>
+<tr class="odd">
+<td>2026. március</td>
+<td>Elindult a <strong>Cinematic Video Overview</strong>, amely Gemini 3, Nano Banana Pro és Veo 3 komponenseket használ.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></td>
+<td>A narrált diákon túl összetettebb, generált vizuális magyarázatok készíthetők; kezdetben szűkebb csomag- és nyelvi hozzáféréssel.</td>
+</tr>
+<tr class="even">
+<td>2026. április–június</td>
+<td>A Gemini alkalmazás „Notebooks” munkaterei szinkronizálódni kezdtek a NotebookLM-mel.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a><a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></td>
+<td>A forrásgyűjtemény ugyanazon projektben használható forrásalapú szintézishez és általánosabb Gemini-munkához.</td>
+</tr>
+<tr class="odd">
+<td>2026. július</td>
+<td>A NotebookLM neve <strong>Gemini Notebook</strong> lett; megkezdődött a mélyebb Gemini- és Google Search-integráció.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a><a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></td>
+<td>A termék önálló maradt, de a Google ökoszisztémán belül hordozható tudásbázissá vált.</td>
+</tr>
+<tr class="even">
+<td>2026. szeptember</td>
+<td>Bejelentették a valós idejű hangbeszélgetést, az előadásrögzítést, az interaktív tanulási áttekintéseket és a rövid videós összefoglalókat.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a><a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></td>
+<td>A rendszer a dokumentumfeldolgozás mellett adaptívabb gyakorlási és multimodális tanulási környezetté fejlődik.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rendszerarchitektúra" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="rendszerarchitektúra"><span class="header-section-number">5.4</span> Rendszerarchitektúra</h2>
+<section id="forrásalapú-megalapozottság" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="forrásalapú-megalapozottság"><span class="header-section-number">5.4.1</span> Forrásalapú megalapozottság</h3>
+<p>A <strong>source grounding</strong> azt jelenti, hogy a rendszer a válasz elkészítésekor a jegyzetfüzet aktív forrásaiból keres releváns részleteket, és ezekre támaszkodva generál szöveget. Ez a visszakereséssel támogatott generálás (retrieval-augmented generation, RAG) egyik felhasználóbarát megvalósítása; oktatási környezetben tanár vagy hallgató által válogatott forráskorpuszt lehet vele a válaszadás alapjává tenni.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
+<p>A megközelítés három fő előnye:</p>
+<ul>
+<li><strong>Evidenciahatár:</strong> a jegyzetfüzet tartalma körülhatárolja, milyen anyagból készüljön a válasz.</li>
+<li><strong>Visszakereshetőség:</strong> a hivatkozás megnyitja azt a forrásrészletet, amelyet a rendszer a válaszhoz használt.<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a><a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></li>
+<li><strong>Forrásszehasonlítás:</strong> több dokumentum állításai, fogalmai, módszerei és ellentmondásai közös kérdezési térben vizsgálhatók.</li>
+</ul>
+<p>A „kizárólag a feltöltött dokumentumokból dolgozik” megfogalmazás azonban pontosításra szorul. A chat az <strong>aktuálisan kijelölt notebook-forrásokra</strong> alapozza a válaszát, de a források már nemcsak feltöltésből származhatnak: a felhasználó webes kereséssel, Fast Research vagy Deep Research segítségével is gyűjthet és importálhat anyagokat. A Gemini alkalmazásban használt, szinkronizált notebook esetén a Gemini a kézzel válogatott forrásokat saját eszközeivel és webes kereséssel együtt is használhatja.<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a><a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a><a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></p>
+</section>
+<section id="mit-jelentenek-a-hivatkozások" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="mit-jelentenek-a-hivatkozások"><span class="header-section-number">5.4.2</span> Mit jelentenek a hivatkozások?</h3>
+<p>A chatválaszokhoz kapcsolt hivatkozási elemek közvetlenül a relevánsnak ítélt forrásrészlethez vezetnek. Ez gyorsabbá teszi az állítás ellenőrzését, de nem bizonyítja automatikusan, hogy:</p>
+<ul>
+<li>a kiválasztott részlet valóban alátámasztja a teljes állítást;</li>
+<li>a forrás tudományosan megbízható;</li>
+<li>az idézett rész nem került ki a kontextusából;</li>
+<li>a rendszer minden ellentétes bizonyítékot figyelembe vett;</li>
+<li>egy másodlagos forrás pontosan közvetíti az eredeti kutatást.</li>
+</ul>
+<p>Tudományos munkában ezért minden fontos állításnál meg kell nyitni a hivatkozást, el kell olvasni a környező szöveget, majd szükség esetén az eredeti publikációt is ellenőrizni kell. A forrásalapú működés az auditálhatóságot növeli; nem alakítja át automatikusan a generált szöveget validált tudományos következtetéssé.</p>
+</section>
+<section id="a-hárompaneles-felület" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="a-hárompaneles-felület"><span class="header-section-number">5.4.3</span> A hárompaneles felület</h3>
+<p>A webes felület alapvetően három munkaterületet kapcsol össze:<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></p>
+<ol type="1">
+<li><strong>Források / Sources:</strong> források hozzáadása, áttekintése és be- vagy kikapcsolása. A jelölőnégyzetekkel meghatározható, hogy egy kérdéshez mely dokumentumok legyenek aktívak.</li>
+<li><strong>Chat:</strong> beszélgetés az aktív forrásokkal. A rendszer összefoglalót, javasolt kérdéseket és hivatkozott válaszokat adhat.</li>
+<li><strong>Stúdió / Studio:</strong> a forrásokból létrehozott produktumok helye, például Audio és Video Overview, gondolattérkép, jelentés, tanulási útmutató, kvíz, tanulókártya, infografika vagy diasor.<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a></li>
+</ol>
+<p>A három panel három külön kutatói műveletet képvisel: <strong>korpuszépítés → forrásalapú kérdezés → kommunikálható vagy tanulást támogató produktum előállítása</strong>.</p>
+</section>
+</section>
+<section id="támogatott-források" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="támogatott-források"><span class="header-section-number">5.5</span> Támogatott források</h2>
+<p>A Gemini Notebook többek között Google Docs- és Slides-fájlokat, PDF-et, egyszerű szöveget és Markdown-fájlt, weboldalt, beillesztett szöveget, nyilvános YouTube-videót és hangfájlt fogad. A 2025 végi bővítés Word-dokumentumokat, képeket, Google Sheets-tartalmat, Drive-URL-eket és közvetlenül a Drive-ból származó PDF-eket is hozzáadott.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a><a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Forrástípus</th>
+<th>Hasznos lehet</th>
+<th>Fő ellenőrzési pont</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tudományos PDF</td>
+<td>Irodalmi összevetés, módszerek és eredmények kigyűjtése</td>
+<td>Szkennelt PDF, képlet, táblázat és többhasábos tördelés felismerése</td>
+</tr>
+<tr class="even">
+<td>Google Docs / Word</td>
+<td>Jegyzet, kutatási terv, kódkönyv, kézirat</td>
+<td>Verzió és megosztási jogosultság</td>
+</tr>
+<tr class="odd">
+<td>Google Slides</td>
+<td>Előadásanyag és szemináriumi forrás</td>
+<td>A vizuális jelentés nem mindig őrződik meg pusztán szövegkinyeréssel</td>
+</tr>
+<tr class="even">
+<td>Google Sheets</td>
+<td>Strukturált adat és egyszerű összefoglalás</td>
+<td>A rendszer nem helyettesít reprodukálható statisztikai elemzést</td>
+</tr>
+<tr class="odd">
+<td>Weboldal</td>
+<td>Háttéranyag, intézményi dokumentum, szakpolitikai forrás</td>
+<td>Szerző, dátum, hitelesség, frissesség</td>
+</tr>
+<tr class="even">
+<td>YouTube</td>
+<td>Előadás vagy interjú átirata</td>
+<td>Automatikus felirat hibái, különösen neveknél és szakkifejezéseknél</td>
+</tr>
+<tr class="odd">
+<td>Hangfájl</td>
+<td>Előadás, saját jegyzet vagy engedélyezett kutatási hanganyag</td>
+<td>Átirati pontosság, hozzájárulás, adatvédelem</td>
+</tr>
+<tr class="even">
+<td>Kép</td>
+<td>Kézzel írt jegyzet, ábra vagy dokumentumfotó</td>
+<td>OCR-hiba, vizuális kontextus és olvashatóság</td>
+</tr>
+</tbody>
+</table>
+<p>Egyetlen forrás legfeljebb 500 000 szót vagy feltöltött fájl esetén 200 MB-ot tartalmazhat. A csomagtól függő notebook- és forráslimitek változhatnak; az aktuális Workspace-adminisztrációs táblázat 50–600 forrást jelez notebookonként a hozzáférési szinttől függően. A fogyasztói csomagokban 2026 szeptemberétől rugalmas, számításigény-alapú limitek is megjelentek, ezért az egyszerű, fix napi kvóták gyorsan elavulhatnak.<a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a><a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></p>
+</section>
+<section id="gemini-integráció" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="gemini-integráció"><span class="header-section-number">5.6</span> Gemini-integráció</h2>
+<section id="notebookok-a-gemini-alkalmazásban" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="notebookok-a-gemini-alkalmazásban"><span class="header-section-number">5.6.1</span> Notebookok a Gemini alkalmazásban</h3>
+<p>A Gemini alkalmazás notebookjai projekttérként szervezik a beszélgetéseket, fájlokat és állandó utasításokat. A források szinkronizálódnak a Gemini Notebook önálló felületével, így ugyanaz az anyag használható például a Gemini alkalmazásban esszévázlat készítésére, majd a Gemini Notebookban videós áttekintés vagy infografika létrehozására.<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a><a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a></p>
+<p>A két környezet szerepe nem teljesen azonos:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Környezet</th>
+<th>Elsődleges erősség</th>
+<th>Tudásforrás</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Gemini Notebook</strong></td>
+<td>Forrásalapú elemzés, hivatkozott chat, tanulási és médiaproduktumok</td>
+<td>Az aktuális notebook kiválasztott forrásai; külön indítható forráskeresés</td>
+</tr>
+<tr class="even">
+<td><strong>Gemini alkalmazás notebookja</strong></td>
+<td>Hosszabb projektfolyamat, korábbi chatek, egyedi utasítások, Gemini-eszközök</td>
+<td>Notebookforrások, Gemini-képességek és — a beállítástól függően — webes keresés<a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a></td>
+</tr>
+</tbody>
+</table>
+<p>A hozzáférés életkortól, fióktípustól, régiótól és előfizetéstől függhet. A 2026 tavaszi bevezetés kezdetben személyes, 18 év feletti, fizetős fiókokra koncentrált; az oktatási és Workspace-hozzáférés ettől eltérő ütemben és adminisztrátori beállításokkal bővülhetett.<a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a><a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a></p>
+</section>
+<section id="modellek" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="modellek"><span class="header-section-number">5.6.2</span> Modellek</h3>
+<p>A termékoldal szerint a Gemini Notebook a „legújabb Gemini-modellekre” épül, de nem célszerű a teljes szolgáltatást egyetlen konkrét modellverzióval azonosítani. A különböző funkciók eltérő modelleket és komponenseket használhatnak: a 2026-os Cinematic Video Overview esetében például a Google kifejezetten Gemini 3, Nano Banana Pro és Veo 3 együttműködését nevezte meg.<a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a><a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a><a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a></p>
+<p>Ezért a „Gemini 2.5 és 3 integrációja” helyett pontosabb azt írni, hogy <strong>a termék folyamatosan frissülő Gemini-modelleket használ, és egyes funkciókhoz a Google konkrét modellösszetételt közöl</strong>. A modellnév önmagában nem írja le a visszakeresést, a kontextuskezelést, a médiagenerálást vagy a biztonsági rétegeket.</p>
+</section>
+</section>
+<section id="kulcsfunkciók" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="kulcsfunkciók"><span class="header-section-number">5.7</span> Kulcsfunkciók</h2>
+<section id="hivatkozott-chat" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="hivatkozott-chat"><span class="header-section-number">5.7.1</span> Hivatkozott chat</h3>
+<p>A chat a kiválasztott források alapján válaszol, összefoglal, összehasonlít és kapcsolatokat keres. Az egymillió tokenes kontextusablak és a bővített beszélgetési előzmény nagyobb dokumentumgyűjtemények hosszabb elemzését támogatja. Ez nem jelenti azt, hogy minden forrást minden kérdésnél egyformán részletesen feldolgoz; a forráskijelölés és a célzott kérdés továbbra is fontos.<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a></p>
+</section>
+<section id="forrásfelfedezés-és-deep-research" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="forrásfelfedezés-és-deep-research"><span class="header-section-number">5.7.2</span> Forrásfelfedezés és Deep Research</h3>
+<p>A <strong>Source Discovery/Fast Research</strong> gyors webes forráskeresést biztosít, majd a felhasználó dönt az importálásról. A <strong>Deep Research</strong> kutatási tervet készít, nagyobb számú weboldalt jár be, forrásalapú jelentést és forrásjavaslatokat készít; ezek utána hozzáadhatók a notebookhoz és felhasználhatók további Stúdió-produktumokhoz.<a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a><a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a></p>
+<p>Ez a funkció hasznos lehet egy tématerület feltérképezésére, de nem azonos egy reprodukálható szisztematikus szakirodalmi kereséssel. A tudományos áttekintéshez továbbra is dokumentálni kell az adatbázisokat, keresőkifejezéseket, dátumot, szűrőket, beválasztási kritériumokat, duplikátumkezelést és a bírálói döntéseket.</p>
+</section>
+<section id="audio-overview" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="audio-overview"><span class="header-section-number">5.7.3</span> Audio Overview</h3>
+<p>Az Audio Overview a források alapján AI-műsorvezetők beszélgetését generálja. Több mint 80 nyelven készíthető, és a nem angol változatok 2025-ben hosszabb, részletesebb formátumot kaptak.<a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a><a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a></p>
+<p>Az <strong>Interactive Mode</strong> lehetővé teszi, hogy a hallgató kérdéssel megszakítsa a beszélgetést, majd a válasz után folytatódjon az eredeti műsor. Fontos hozzáférési pontosítás: a Google súgójának egyes nyelvi változatai még angol nyelvre korlátozottként jelzik a klasszikus Interactive Mode-ot, miközben 2026 szeptemberében a Google külön, közel 100 nyelvet támogató valós idejű notebook-beszélgetést jelentett be fokozatos bevezetéssel. A két funkció és az aktuális nyelvi hozzáférés ezért nem kezelhető automatikusan azonosként.<a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a><a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a><a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a></p>
+</section>
+<section id="video-overview" class="level3" data-number="5.7.4">
+<h3 data-number="5.7.4" class="anchored" data-anchor-id="video-overview"><span class="header-section-number">5.7.4</span> Video Overview</h3>
+<p>A Video Overview a forrásokból narrált vizuális magyarázatot készít. A klasszikus változat dokumentumokból származó képeket, diagramokat, idézeteket és számokat is felhasználhat, és célközönség, tanulási cél vagy kiemelt téma alapján alakítható. A hagyományos Video Overview 2025-ben több mint 80 nyelvre bővült.<a href="#fn57" class="footnote-ref" id="fnref57" role="doc-noteref"><sup>57</sup></a><a href="#fn58" class="footnote-ref" id="fnref58" role="doc-noteref"><sup>58</sup></a></p>
+<p>A <strong>Cinematic Video Overview</strong> ennél generatívabb, animáltabb formátum, amelyet 2026 márciusában angol nyelven, Google AI Ultra-előfizetőknek vezettek be. A 2026 szeptemberében bejelentett, körülbelül 60 másodperces <strong>Short Video Overview</strong> több mint 80 nyelven rövid, oktatási animációval kísért magyarázatokat készít.<a href="#fn59" class="footnote-ref" id="fnref59" role="doc-noteref"><sup>59</sup></a><a href="#fn60" class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a><a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a></p>
+</section>
+<section id="stúdió-produktumok" class="level3" data-number="5.7.5">
+<h3 data-number="5.7.5" class="anchored" data-anchor-id="stúdió-produktumok"><span class="header-section-number">5.7.5</span> Stúdió-produktumok</h3>
+<p>A Stúdióban a forrásokból többféle produktum állítható elő:<a href="#fn62" class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a><a href="#fn63" class="footnote-ref" id="fnref63" role="doc-noteref"><sup>63</sup></a><a href="#fn64" class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a></p>
+<ul>
+<li>Audio és Video Overview;</li>
+<li>gondolattérkép;</li>
+<li>összefoglaló jelentés, FAQ, briefing vagy tanulási útmutató;</li>
+<li>kvíz és tanulókártya, állítható nehézséggel és kérdésszámmal;</li>
+<li>infografika;</li>
+<li>diasor;</li>
+<li>2026-ban fokozatosan megjelenő interaktív tanulási áttekintés.</li>
+</ul>
+<p>A diasorok és infografikák stílusa prompttal irányítható, és meglévő forrásanyagból vizuális narratíva készíthető. A generált vizuális produktumok azonban hibás számot, félrevezető diagramot, forrás nélküli képi következtetést vagy túlzottan oksági ábrázolást tartalmazhatnak; publikálás előtt külön tartalmi és vizuális ellenőrzés szükséges.<a href="#fn65" class="footnote-ref" id="fnref65" role="doc-noteref"><sup>65</sup></a></p>
+</section>
+<section id="mobilalkalmazás" class="level3" data-number="5.7.6">
+<h3 data-number="5.7.6" class="anchored" data-anchor-id="mobilalkalmazás"><span class="header-section-number">5.7.6</span> Mobilalkalmazás</h3>
+<p>A Gemini Notebook Androidon és iOS-en is használható. A mobilalkalmazás támogatja a notebookok megnyitását és létrehozását, a kérdezést, a források megosztási menüből történő hozzáadását, az Audio Overview lejátszását és offline letöltését, továbbá több tanulási produktum elérését.<a href="#fn66" class="footnote-ref" id="fnref66" role="doc-noteref"><sup>66</sup></a><a href="#fn67" class="footnote-ref" id="fnref67" role="doc-noteref"><sup>67</sup></a><a href="#fn68" class="footnote-ref" id="fnref68" role="doc-noteref"><sup>68</sup></a></p>
+<p>A mobil- és webes funkciók nem mindig egyszerre jelennek meg. Egy funkció elérhetősége függhet az operációs rendszertől, a régiótól, a nyelvtől, a fióktól, az előfizetéstől és a fokozatos bevezetés állapotától.</p>
+</section>
+</section>
+<section id="oktatási-alkalmazások" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="oktatási-alkalmazások"><span class="header-section-number">5.8</span> Oktatási alkalmazások</h2>
+<section id="forrásalapú-tanulás" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="forrásalapú-tanulás"><span class="header-section-number">5.8.1</span> Forrásalapú tanulás</h3>
+<p>A Gemini Notebook akkor a legerősebb, ha a kurzushoz tartozó, oktató által jóváhagyott anyagokat — például tankönyvfejezetet, előadásdiát, tanulmányt és követelményrendszert — egyetlen notebookba rendezzük. Ezekből fogalmi összehasonlítás, tanulási útmutató, kvíz, tanulókártya, gondolattérkép és multimédiás áttekintés készíthető.<a href="#fn69" class="footnote-ref" id="fnref69" role="doc-noteref"><sup>69</sup></a><a href="#fn70" class="footnote-ref" id="fnref70" role="doc-noteref"><sup>70</sup></a></p>
+<p>A korábbi szövegben szereplő „80%-kal csökkenti a memorizálási terhet”, „700 fogalom helyett 15 magelmélet” és „15 alapvető elmélet” állítás nem tekinthető általánosan igazolt kutatási eredménynek. Ezek egy nem hivatalos, AP Psychologyra készült útmutató ajánlásaiból származnak, nem a Gemini Notebook általános hatásvizsgálatából. Helyesebb megfogalmazás: <strong>az eszköz támogatja a fogalmak közötti kapcsolatok gyakorlását és az alkalmazásalapú feladatokat, de a tanulási eredmény a feladat kialakításától, az előzetes tudástól és a hallgató aktív munkájától függ</strong>.<a href="#fn71" class="footnote-ref" id="fnref71" role="doc-noteref"><sup>71</sup></a></p>
+</section>
+<section id="pszichológia-ba-s-példák" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="pszichológia-ba-s-példák"><span class="header-section-number">5.8.2</span> Pszichológia BA-s példák</h3>
+<ul>
+<li><strong>Fogalmi differenciálás:</strong> „Hasonlítsd össze a negatív megerősítést és a büntetést definíció, mechanizmus, példa és gyakori tévhit szerint. Minden cellához adj forráshivatkozást.”</li>
+<li><strong>Elmélet–evidencia kapcsolat:</strong> „Mely empirikus eredmények támogatják, korlátozzák vagy mondanak ellent az X elméletnek?”</li>
+<li><strong>Kutatásmódszertan:</strong> „Azonosítsd minden tanulmány designját, mintáját, operacionalizálását, fő eredményét és korlátját egy táblázatban.”</li>
+<li><strong>Aktív felidézés:</strong> „Tegyél fel egy alkalmazási kérdést. Ne mutasd meg a választ, amíg nem válaszoltam; utána adj rövid visszajelzést és egy nehezebb kérdést.”</li>
+<li><strong>Hibajavítás:</strong> „A források alapján elemezd a válaszomat: mi pontos, mi hiányos, és mely állítás igényel korrekciót?”</li>
+<li><strong>Szóbeli vizsga:</strong> „Viselkedj vizsgáztatóként; egyszerre egy kérdést tegyél fel, majd a források alapján értékeld a fogalmi pontosságot és az indoklást.”</li>
+</ul>
+</section>
+<section id="esszé--és-feladat-előkészítés" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="esszé--és-feladat-előkészítés"><span class="header-section-number">5.8.3</span> Esszé- és feladat-előkészítés</h3>
+<p>Az eszköz használható kérdésbontásra, fogalmi térkép készítésére, bizonyítéktáblázatra és vázlatra, de a végső érvelést a hallgatónak kell kialakítania. A tanulást jobban támogatja, ha a rendszer <strong>kérdez, visszajelez, ellenpéldát ad és önálló döntést kér</strong>, mintha kész esszét ír. A pszichológiailag informált GenAI Buddy megközelítés szintén a tervezést, állhatatosságot, önbizalmat, gyakorlást és reflektív tanulást hangsúlyozza a feladatátvétel helyett.<a href="#fn72" class="footnote-ref" id="fnref72" role="doc-noteref"><sup>72</sup></a><a href="#fn73" class="footnote-ref" id="fnref73" role="doc-noteref"><sup>73</sup></a><a href="#fn74" class="footnote-ref" id="fnref74" role="doc-noteref"><sup>74</sup></a></p>
+</section>
+</section>
+<section id="kutatási-alkalmazások" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="kutatási-alkalmazások"><span class="header-section-number">5.9</span> Kutatási alkalmazások</h2>
+<section id="szakirodalmi-tájékozódás" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="szakirodalmi-tájékozódás"><span class="header-section-number">5.9.1</span> Szakirodalmi tájékozódás</h3>
+<p>A Gemini Notebook alkalmas gondosan válogatott cikkgyűjtemény összefoglalására, tanulmányok összehasonlítására, fogalmi eltérések, kutatási rések és ellentmondások előzetes azonosítására. A Google Literature Insights kísérleti szolgáltatása is erre az alapra épít: tudományos irodalmat keres, strukturált táblákba rendezi, majd forrásalapú chatet és különböző produktumokat biztosít.<a href="#fn75" class="footnote-ref" id="fnref75" role="doc-noteref"><sup>75</sup></a></p>
+<p>Nem alkalmas önmagában teljes, reprodukálható szisztematikus áttekintésre vagy metaanalízisre. A forrásfelfedezés algoritmikus rangsorolása ismeretlen lefedettségi torzításokat okozhat; a kimenetből hiányozhatnak nem angol nyelvű, negatív eredményű, kevésbé idézett vagy nehezebben hozzáférhető tanulmányok.</p>
+</section>
+<section id="kvalitatív-adatok" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="kvalitatív-adatok"><span class="header-section-number">5.9.2</span> Kvalitatív adatok</h3>
+<p>A Gemini Notebook támogathatja az interjúk és más szöveges adatok <strong>előzetes megismerését</strong>, esetösszefoglalását, idézetkeresését, lehetséges témák feltárását, csoportok összevetését, negatív esetek keresését és alternatív értelmezések megfogalmazását. A hivatkozások segítenek visszalépni az eredeti szöveghelyhez.<a href="#fn76" class="footnote-ref" id="fnref76" role="doc-noteref"><sup>76</sup></a><a href="#fn77" class="footnote-ref" id="fnref77" role="doc-noteref"><sup>77</sup></a></p>
+<p>Az „automatizált kódolás” kifejezést óvatosan kell használni. A Gemini Notebook nem helyettesíti a teljes értékű CAQDAS-rendszert, a következetesen alkalmazott kódkönyvet, a kutatói reflexivitást vagy az interpretatív döntéseket. A generált „téma” lehet csupán felszíni témacsoport; elveszhet az interjúhelyzet, a csend, a hangsúly, a nonverbális információ, a kutatói pozíció és a társadalmi kontextus.<a href="#fn78" class="footnote-ref" id="fnref78" role="doc-noteref"><sup>78</sup></a><a href="#fn79" class="footnote-ref" id="fnref79" role="doc-noteref"><sup>79</sup></a></p>
+<p>Javasolt kvalitatív munkafolyamat:</p>
+<ol type="1">
+<li>A kutató előbb ismerkedjen meg manuálisan az adatokkal, és készítsen terep- vagy reflexiós jegyzeteket.</li>
+<li>Feltöltés előtt távolítsa el a közvetlen és közvetett azonosítókat.</li>
+<li>Első körben kérjen esetenkénti, leíró összefoglalást; csak később kereszteset-összevetést.</li>
+<li>Kérjen minden kódhoz vagy témához ellenőrizhető idézetet és forráshelyet.</li>
+<li>Külön kérdezzen rá ellentmondó, ritka és a fő mintába nem illő esetekre.</li>
+<li>Vesse össze az MI-kimenetet egy manuálisan kódolt részhalmazzal.</li>
+<li>Külső naplóban őrizze meg a promptokat, forrásverziókat, döntéseket és módosításokat.<a href="#fn80" class="footnote-ref" id="fnref80" role="doc-noteref"><sup>80</sup></a><a href="#fn81" class="footnote-ref" id="fnref81" role="doc-noteref"><sup>81</sup></a></li>
+</ol>
+</section>
+<section id="multimodális-kutatás" class="level3" data-number="5.9.3">
+<h3 data-number="5.9.3" class="anchored" data-anchor-id="multimodális-kutatás"><span class="header-section-number">5.9.3</span> Multimodális kutatás</h3>
+<p>A rendszer képet, dokumentumot, prezentációt, hangot és videóátiratot is képes ugyanazon projektben feldolgozni. Ez hasznos lehet vegyes forrásanyag áttekintéséhez, de nem azonos egy validált multimodális kutatási módszerrel. A képértelmezés, OCR, automatikus átirat és generált vizualizáció mind külön hibaforrást jelent; ezek pontosságát modalitásonként kell ellenőrizni.<a href="#fn82" class="footnote-ref" id="fnref82" role="doc-noteref"><sup>82</sup></a><a href="#fn83" class="footnote-ref" id="fnref83" role="doc-noteref"><sup>83</sup></a></p>
+</section>
+</section>
+<section id="a-ppae-hurok" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="a-ppae-hurok"><span class="header-section-number">5.10</span> A PPAE-hurok</h2>
+<p>A <strong>PPAE — Perceive, Plan, Act, Evaluate</strong> hasznos általános prompt- és munkafolyamat-keret, de <strong>nem a Google hivatalos Gemini Notebook-módszertana</strong>. Egy független NotebookLM-útmutató dolgozta ki a forrásalapú munkamenetek strukturálására.<a href="#fn84" class="footnote-ref" id="fnref84" role="doc-noteref"><sup>84</sup></a><a href="#fn85" class="footnote-ref" id="fnref85" role="doc-noteref"><sup>85</sup></a></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fázis</th>
+<th>Magyarul</th>
+<th>Gemini Notebookban végzett tevékenység</th>
+<th>Ellenőrző kérdés</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>P — Perceive</strong></td>
+<td>Feltérképezés</td>
+<td>Forrásjegyzék, lefedettség, minőség, ellentmondások és hiányok azonosítása</td>
+<td>Milyen evidenciám van, és mi hiányzik?</td>
+</tr>
+<tr class="even">
+<td><strong>P — Plan</strong></td>
+<td>Tervezés</td>
+<td>Cél, forráskör, művelet, outputformátum és minőségi kritérium kijelölése</td>
+<td>Pontosan milyen döntést vagy tanulási célt szolgál a kimenet?</td>
+</tr>
+<tr class="odd">
+<td><strong>A — Act</strong></td>
+<td>Végrehajtás</td>
+<td>Több, egymásra épülő célzott prompt; kivonatolás, összevetés, szintézis, produktumkészítés</td>
+<td>A feladatot kezelhető, ellenőrizhető lépésekre bontottam?</td>
+</tr>
+<tr class="even">
+<td><strong>E — Evaluate</strong></td>
+<td>Értékelés</td>
+<td>Hivatkozások, hiányok, bizonytalanság, ellenpéldák és forráshűség ellenőrzése</td>
+<td>Mely állítást ellenőriztem az eredeti forrásban?</td>
+</tr>
+</tbody>
+</table>
+<section id="kutatási-változat" class="level3" data-number="5.10.1">
+<h3 data-number="5.10.1" class="anchored" data-anchor-id="kutatási-változat"><span class="header-section-number">5.10.1</span> Kutatási változat</h3>
+<ol type="1">
+<li><strong>Feltérképezés:</strong> „Készíts forrásleltárt: típus, év, kutatási design, populáció, relevancia és fő korlát.”</li>
+<li><strong>Tervezés:</strong> jelöld ki, mely források használhatók a konkrét kérdéshez, és milyen összehasonlítási dimenziók szükségesek.</li>
+<li><strong>Végrehajtás:</strong> előbb evidenciatáblát, utána szintézist, végül kommunikálható produktumot készíts.</li>
+<li><strong>Értékelés:</strong> ellenőrizd az összes kulcsállítást, kérj ellenpéldákat, és jelöld a bizonytalan vagy nem lefedett kérdéseket.</li>
+</ol>
+</section>
+<section id="tanulási-változat" class="level3" data-number="5.10.2">
+<h3 data-number="5.10.2" class="anchored" data-anchor-id="tanulási-változat"><span class="header-section-number">5.10.2</span> Tanulási változat</h3>
+<ol type="1">
+<li><strong>Feltérképezés:</strong> rövid diagnosztikus kérdéssorral azonosítsd a biztos, bizonytalan és hiányzó tudást.</li>
+<li><strong>Tervezés:</strong> válassz kevés, prioritást élvező tanulási célt.</li>
+<li><strong>Végrehajtás:</strong> magyarázat → saját példa → alkalmazási feladat → visszajelzés → új feladat.</li>
+<li><strong>Értékelés:</strong> új helyzetben, segítség nélkül idézd fel és alkalmazd a fogalmat.</li>
+</ol>
+</section>
+</section>
+<section id="prompttervezés" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="prompttervezés"><span class="header-section-number">5.11</span> Prompttervezés</h2>
+<p>A hatékony prompt nem elsősorban „varázsmondat”, hanem <strong>forrásalapú feladatterv</strong>. A szerep megadása csak akkor hasznos, ha ténylegesen módosítja az elvárt műveletet; ennél fontosabb a cél, az evidenciahatár, az elemzési művelet, az output és az ellenőrzési kritérium.<a href="#fn86" class="footnote-ref" id="fnref86" role="doc-noteref"><sup>86</sup></a></p>
+<section id="ötelemű-promptmodell" class="level3" data-number="5.11.1">
+<h3 data-number="5.11.1" class="anchored" data-anchor-id="ötelemű-promptmodell"><span class="header-section-number">5.11.1</span> Ötelemű promptmodell</h3>
+<ol type="1">
+<li><strong>Cél:</strong> milyen kérdésre, döntésre vagy tanulási eredményre van szükség?</li>
+<li><strong>Evidenciahatár:</strong> mely források, fejezetek, dátumok vagy csoportok használhatók?</li>
+<li><strong>Művelet:</strong> kivonatolás, összehasonlítás, osztályozás, kritika, szintézis vagy értékelés?</li>
+<li><strong>Kimenet:</strong> táblázat, lista, fogalmi térkép, kérdéssor, evidencianapló vagy vázlat?</li>
+<li><strong>Minőségellenőrzés:</strong> hivatkozás, bizonytalanság, hiányzó evidencia, ellenpélda és ellenőrzési kör?</li>
+</ol>
+</section>
+<section id="általános-sablon" class="level3" data-number="5.11.2">
+<h3 data-number="5.11.2" class="anchored" data-anchor-id="általános-sablon"><span class="header-section-number">5.11.2</span> Általános sablon</h3>
+<pre class="text"><code>Cél: [Milyen kérdést vagy tanulási célt szolgáljon a válasz?]
+
+Forráskör: Kizárólag [források/fejezetek/csoportok] használhatók.
+Ha valami nincs lefedve, írd: „A megadott források alapján nem állapítható meg.”
+
+Feladat: [Hasonlítsd össze / osztályozd / szintetizáld / értékeld] az anyagot
+[a megadott szempontok] szerint.
+
+Kimenet: [táblázat/lista/vázlat], [célközönség], [részletesség].
+
+Minőségellenőrzés:
+- minden lényegi állításhoz adj forráshivatkozást;
+- különítsd el a közvetlen forrásállítást a saját szintézisedtől;
+- jelöld az ellentmondásokat és a bizonytalanságot;
+- sorold fel, milyen információ hiányzik a biztos következtetéshez.</code></pre>
+</section>
+<section id="pszichológiai-kutatási-példa" class="level3" data-number="5.11.3">
+<h3 data-number="5.11.3" class="anchored" data-anchor-id="pszichológiai-kutatási-példa"><span class="header-section-number">5.11.3</span> Pszichológiai kutatási példa</h3>
+<pre class="text"><code>A kijelölt empirikus tanulmányok alapján hasonlítsd össze az A és B csoport
+mentális egészséggel kapcsolatos metaforáit.
+
+Készíts táblázatot ezekkel az oszlopokkal:
+1. metaforakategória;
+2. operacionális definíció;
+3. A csoportból származó példák;
+4. B csoportból származó példák;
+5. hasonlóságok és különbségek;
+6. ellenpélda vagy bizonytalan eset;
+7. forráshivatkozás.
+
+Ne állapíts meg pszichológiai állapotot pusztán a metafora alapján.
+Különítsd el a leíró mintázatot az értelmező következtetéstől.
+Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „előzetes” címkével.</code></pre>
+</section>
+</section>
+<section id="motiváció-és-elköteleződés" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="motiváció-és-elköteleződés"><span class="header-section-number">5.12</span> Motiváció és elköteleződés</h2>
+<p>Andrew J. Martin és munkatársai <strong>GenAI Motivation and Learning Buddy</strong> erőforrása nem Gemini Notebook-specifikus funkció, hanem több generatív MI-rendszerbe bemásolható, nyílt promptkészlet. A Motivációs és Elköteleződési Kerék, valamint a Load Reduction Instruction elemei alapján segíti a hallgatót tervezésben, gyakorlásban, visszajelzésben és önálló problémamegoldásban.<a href="#fn87" class="footnote-ref" id="fnref87" role="doc-noteref"><sup>87</sup></a><a href="#fn88" class="footnote-ref" id="fnref88" role="doc-noteref"><sup>88</sup></a><a href="#fn89" class="footnote-ref" id="fnref89" role="doc-noteref"><sup>89</sup></a></p>
+<p>A módszer legfontosabb elve: az MI <strong>coach</strong>, nem feladatvégrehajtó. A rendszer feladata a cél tisztázása, a feladat lépésekre bontása, célzott segítség, gyakorlás, feedback és feedforward biztosítása; a hallgató feladata továbbra is az előhívás, döntés, magyarázat és önálló teljesítés.<a href="#fn90" class="footnote-ref" id="fnref90" role="doc-noteref"><sup>90</sup></a></p>
+<p>A korábbi szöveg „11 specifikus prompt-szkript” állítását nem érdemes változatlanul megtartani. A jelenlegi leírás szerint külön promptok kapcsolódnak a Motivációs és Elköteleződési Kerék egyes részeihez, valamint öt Load Reduction Instruction-alapelvhez; a pontos csomagverziót mindig az eredeti nyílt anyagban kell ellenőrizni.<a href="#fn91" class="footnote-ref" id="fnref91" role="doc-noteref"><sup>91</sup></a><a href="#fn92" class="footnote-ref" id="fnref92" role="doc-noteref"><sup>92</sup></a></p>
+</section>
+<section id="adatvédelem-és-etika" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="adatvédelem-és-etika"><span class="header-section-number">5.13</span> Adatvédelem és etika</h2>
+<section id="személyes-és-workspace-fiókok" class="level3" data-number="5.13.1">
+<h3 data-number="5.13.1" class="anchored" data-anchor-id="személyes-és-workspace-fiókok"><span class="header-section-number">5.13.1</span> Személyes és Workspace-fiókok</h3>
+<p>A Google Workspace, Workspace for Education és közszférai ügyfelek esetében a szervezeti adatokra Workspace-védelmek vonatkoznak: az interakciók a szervezeten belül maradnak, és a tartalom engedély nélkül nem használható a domainen kívüli generatív modellek tanítására vagy emberi felülvizsgálatra.<a href="#fn93" class="footnote-ref" id="fnref93" role="doc-noteref"><sup>93</sup></a><a href="#fn94" class="footnote-ref" id="fnref94" role="doc-noteref"><sup>94</sup></a></p>
+<p>Személyes fióknál fontos kivétel a <strong>visszajelzés küldése</strong>. Ha a felhasználó pozitív vagy negatív értékelést és visszajelzést küld, a kapcsolódó promptok, források, feltöltések és generált outputok emberi felülvizsgálatra kerülhetnek, és a leválasztott adatokat akár három évig megőrizhetik. Workspace és Workspace for Education használatakor ez a visszajelzéshez kapcsolódó tartalom sem kerül emberi felülvizsgálatra vagy modelltréningre.<a href="#fn95" class="footnote-ref" id="fnref95" role="doc-noteref"><sup>95</sup></a><a href="#fn96" class="footnote-ref" id="fnref96" role="doc-noteref"><sup>96</sup></a></p>
+</section>
+<section id="pszichológiai-és-kvalitatív-adatok" class="level3" data-number="5.13.2">
+<h3 data-number="5.13.2" class="anchored" data-anchor-id="pszichológiai-és-kvalitatív-adatok"><span class="header-section-number">5.13.2</span> Pszichológiai és kvalitatív adatok</h3>
+<p>Az adatvédelmi ígéret nem helyettesíti a jogalapot, a kutatásetikai engedélyt, a résztvevői tájékoztatást, az adatminimalizálást és az intézményi szabályokat. Pszichológiai kutatásban különösen érzékeny lehet az interjú, egészségügyi információ, diagnózis, élettörténet, hangfelvétel és a közvetett módon újraazonosítható kontextus.</p>
+<p>Minimumkövetelmények:</p>
+<ul>
+<li>feltöltés előtt közvetlen és közvetett azonosítók eltávolítása;</li>
+<li>a szolgáltatás és adattovábbítás feltüntetése az adatkezelési tervben;</li>
+<li>intézményi fiók és jóváhagyott hozzáférési szint használata;</li>
+<li>a notebook megosztásának és nyilvánosságának ellenőrzése;</li>
+<li>érzékeny tartalom kizárása a személyes fiókból küldött termékvisszajelzésből;</li>
+<li>törlési, export- és hozzáférési eljárás dokumentálása;</li>
+<li>az MI szerepének rögzítése a kutatási audit trailben.</li>
+</ul>
+</section>
+<section id="akadémiai-integritás" class="level3" data-number="5.13.3">
+<h3 data-number="5.13.3" class="anchored" data-anchor-id="akadémiai-integritás"><span class="header-section-number">5.13.3</span> Akadémiai integritás</h3>
+<p>A hivatkozott válasz <strong>nem teszi automatikusan plágiummentessé</strong> a beadandót. A hallgatónak el kell olvasnia és meg kell értenie az eredeti forrást, saját érvelést kell kialakítania, pontos bibliográfiai hivatkozást kell készítenie, valamint követnie kell a kurzus és az intézmény MI-használati szabályait.</p>
+<p>A Gemini Notebook által generált Audio Overview, videó, diasor és infografika is MI-eredetű produktum. Megosztáskor célszerű ezt egyértelműen jelezni, és külön ellenőrizni a szerzői jogi, idézési, hozzáférhetőségi és tartalmi követelményeket.</p>
+</section>
+</section>
+<section id="korlátok" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="korlátok"><span class="header-section-number">5.14</span> Korlátok</h2>
+<section id="a-forráskorpusz-torzítása" class="level3" data-number="5.14.1">
+<h3 data-number="5.14.1" class="anchored" data-anchor-id="a-forráskorpusz-torzítása"><span class="header-section-number">5.14.1</span> A forráskorpusz torzítása</h3>
+<p>A rendszer legfeljebb annyira kiegyensúlyozott, amennyire a forrásgyűjtemény. Ha a notebook csak angol nyelvű, nyugati, könnyen elérhető vagy egyetlen elméleti álláspontot képviselő forrásokat tartalmaz, a szintézis is ezt a látómezőt örökli. A hiányzó perspektívát a rendszer nem tudja megbízhatóan „észrevenni”, ha nincs összehasonlítási alapja.</p>
+</section>
+<section id="forrásfeldolgozási-hibák" class="level3" data-number="5.14.2">
+<h3 data-number="5.14.2" class="anchored" data-anchor-id="forrásfeldolgozási-hibák"><span class="header-section-number">5.14.2</span> Forrásfeldolgozási hibák</h3>
+<p>Szkennelt PDF, hibás OCR, rossz YouTube-felirat, táblázat, lábjegyzet, matematikai jelölés vagy képi információ elveszhet vagy torzulhat. Feltöltés után érdemes próbakérdéssel ellenőrizni, hogy a kritikus részek valóban kereshetők-e.</p>
+</section>
+<section id="szintézis-és-okság" class="level3" data-number="5.14.3">
+<h3 data-number="5.14.3" class="anchored" data-anchor-id="szintézis-és-okság"><span class="header-section-number">5.14.3</span> Szintézis és okság</h3>
+<p>A rendszer együtt járásokat és szöveges mintázatokat foglalhat össze, de ettől még nem igazol oksági kapcsolatot. Különösen pszichológiai kutatásban kell elválasztani a résztvevői beszámolót, a kutatói interpretációt, a statisztikai asszociációt és az oksági következtetést.</p>
+</section>
+<section id="nem-helyettesít-szakértői-döntést" class="level3" data-number="5.14.4">
+<h3 data-number="5.14.4" class="anchored" data-anchor-id="nem-helyettesít-szakértői-döntést"><span class="header-section-number">5.14.4</span> Nem helyettesít szakértői döntést</h3>
+<p>A Gemini Notebook nem diagnosztikai eszköz, nem klinikai döntéstámogató rendszer és nem kutatásetikai tanácsadó. Nem használható résztvevők vagy kliensek diagnosztizálására, kockázati besorolására, érzelmi állapotának automatikus megállapítására vagy kezelésének kiválasztására validáció, megfelelő jogalap és szakmai felelősség nélkül.</p>
+</section>
+<section id="reprodukálhatóság" class="level3" data-number="5.14.5">
+<h3 data-number="5.14.5" class="anchored" data-anchor-id="reprodukálhatóság"><span class="header-section-number">5.14.5</span> Reprodukálhatóság</h3>
+<p>A generált válasz változhat a modellfrissítés, a forráskijelölés, a prompt, a beszélgetési előzmény és a szolgáltatás beállításai miatt. Kutatási használat esetén legalább a következőket kell naplózni:</p>
+<ul>
+<li>a szolgáltatás neve és a használat dátuma;</li>
+<li>fiók- vagy csomagtípus, ha a funkciót befolyásolja;</li>
+<li>a források bibliográfiai adatai és verziói;</li>
+<li>az aktív források köre;</li>
+<li>a teljes prompt és lényeges követő kérdések;</li>
+<li>az output és az utólagos emberi módosítás;</li>
+<li>az ellenőrzés és a döntés módja;</li>
+<li>az adatvédelmi és etikai intézkedések.</li>
+</ul>
+</section>
+</section>
+<section id="ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak"><span class="header-section-number">5.15</span> Ajánlott munkafolyamat pszichológia BA-hallgatóknak</h2>
+<section id="szemináriumi-feldolgozás" class="level3" data-number="5.15.1">
+<h3 data-number="5.15.1" class="anchored" data-anchor-id="szemináriumi-feldolgozás"><span class="header-section-number">5.15.1</span> Szemináriumi feldolgozás</h3>
+<ol type="1">
+<li>Hozz létre egy notebookot egyetlen kurzustémához.</li>
+<li>Töltsd fel az oktató által kijelölt, jogszerűen hozzáférhető forrásokat.</li>
+<li>Készíttess forrásleltárt és fogalomtérképet.</li>
+<li>Hasonlíttasd össze az elméleteket definíció, mechanizmus, evidencia és korlát szerint.</li>
+<li>Kérj alkalmazási kérdéseket úgy, hogy a rendszer a válasz előtt várja meg a saját megoldásodat.</li>
+<li>Ellenőrizd a visszajelzés hivatkozásait az eredeti szövegben.</li>
+<li>Zárásként, segítség nélkül írd le a fő összefüggéseket, és csak utána hasonlítsd össze a rendszer összefoglalójával.</li>
+</ol>
+</section>
+<section id="mini-irodalmi-áttekintés" class="level3" data-number="5.15.2">
+<h3 data-number="5.15.2" class="anchored" data-anchor-id="mini-irodalmi-áttekintés"><span class="header-section-number">5.15.2</span> Mini-irodalmi áttekintés</h3>
+<ol type="1">
+<li>Fogalmazz meg szűk, válaszolható kutatási kérdést.</li>
+<li>Keress szakirodalmi adatbázisban; a Gemini Notebook forrásfelfedezését kiegészítésként, ne egyedüli keresési csatornaként használd.</li>
+<li>Importáld a beválasztott teljes szövegeket, és ellenőrizd a feldolgozásukat.</li>
+<li>Készíts evidenciatáblát: minta, design, mérőeszköz, elemzés, eredmény, korlát.</li>
+<li>Kérj ellentmondás- és hiánytérképet.</li>
+<li>Nyisd meg minden lényegi állítás forráshelyét, és ellenőrizd az eredeti cikket.</li>
+<li>Saját szavaiddal készíts szintézist, szabályos bibliográfiai hivatkozásokkal.</li>
+</ol>
+</section>
+<section id="kvalitatív-gyakorlat" class="level3" data-number="5.15.3">
+<h3 data-number="5.15.3" class="anchored" data-anchor-id="kvalitatív-gyakorlat"><span class="header-section-number">5.15.3</span> Kvalitatív gyakorlat</h3>
+<ol type="1">
+<li>Csak etikai engedéllyel és megfelelő adatkezelési feltételekkel dolgozz.</li>
+<li>Deazonosítsd az átiratokat, és ellenőrizd a beszédfelismerési hibákat.</li>
+<li>Manuálisan olvass és kódolj egy részhalmazt.</li>
+<li>A Gemini Notebookkal készíttess esetösszefoglalást és lehetséges kódjavaslatokat.</li>
+<li>Minden javaslatot ellenőrizz az eredeti szövegben.</li>
+<li>Kérj negatív eseteket és alternatív magyarázatokat.</li>
+<li>A témák végső kialakítását, elnevezését és értelmezését kutatói döntésként dokumentáld.</li>
+</ol>
+</section>
+</section>
+<section id="gyors-ellenőrzőlista" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="gyors-ellenőrzőlista"><span class="header-section-number">5.16</span> Gyors ellenőrzőlista</h2>
+<p>Egy Gemini Notebook-output felhasználása előtt ellenőrizendő:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Megbízható, releváns és kellően sokoldalú források kerültek a notebookba.</label></li>
+<li><label><input type="checkbox">Az aktív források megfelelnek az aktuális kérdésnek.</label></li>
+<li><label><input type="checkbox">A hivatkozások valóban alátámasztják az állításokat.</label></li>
+<li><label><input type="checkbox">Az eredeti dokumentum környező szövege is ellenőrzésre került.</label></li>
+<li><label><input type="checkbox">A közvetlen forrásállítás elkülönül az MI szintézisétől és a kutató értelmezésétől.</label></li>
+<li><label><input type="checkbox">Az ellentmondó vagy hiányzó evidencia is megjelenik.</label></li>
+<li><label><input type="checkbox">Nincs jogosulatlan oksági, diagnosztikai vagy általánosító következtetés.</label></li>
+<li><label><input type="checkbox">Érzékeny adat csak jóváhagyott fiókban, jogalappal és deazonosítva szerepel.</label></li>
+<li><label><input type="checkbox">A promptok, források, outputok és emberi módosítások dokumentálva vannak.</label></li>
+<li><label><input type="checkbox">Az MI-használat megfelel az intézményi akadémiaiintegritás-szabályoknak.</label></li>
+</ul>
+</section>
+<section id="záró-megállapítás" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="záró-megállapítás"><span class="header-section-number">5.17</span> Záró megállapítás</h2>
+<p>A Gemini Notebook 2026-ban már nem pusztán jegyzetelő vagy dokumentum-összefoglaló alkalmazás, hanem a Google ökoszisztémájába integrált, forrásalapú kutatási és tanulási környezet. Legnagyobb értéke az, hogy egy gondosan kialakított forráskorpuszt hivatkozott párbeszéddé, összehasonlítássá, gyakorlóanyaggá és multimédiás produktummá alakít.<a href="#fn97" class="footnote-ref" id="fnref97" role="doc-noteref"><sup>97</sup></a><a href="#fn98" class="footnote-ref" id="fnref98" role="doc-noteref"><sup>98</sup></a><a href="#fn99" class="footnote-ref" id="fnref99" role="doc-noteref"><sup>99</sup></a></p>
+<p>A módszertani előny nem abból fakad, hogy a rendszer „nem hallucinál”, hanem abból, hogy a válaszai <strong>szűkebb evidenciahatáron belül születnek és gyorsabban auditálhatók</strong>. Tudományos és pszichológiai használatban a helyes szerepe ezért: <strong>forrásfeltáró, gondolkodási partner, gyakorlási környezet és előzetes elemzési segédeszköz — nem pedig szerző, autonóm kutató, kvalitatív elemző vagy szakértői döntéshozó</strong>.</p>
+<hr>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/">NotebookLM is now Gemini Notebook - Google Blog</a> - NotebookLM is now Gemini Notebook: the same standalone product with deeper Google integration and a …<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://notebook.google/">Gemini Notebook | AI Research Tool &amp; Thinking Partner</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://notebook.google/">Gemini Notebook | AI Research Tool &amp; Thinking Partner</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://edu.google.com/intl/ALL_us/ai-gemini-notebook/">Understand anything with Gemini Notebook - Google for Education</a> - Gemini Notebook helps K12 &amp; higher education create lesson plans, study guides, and quizzes grounded…<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://notebook.google/%3Fhl=pt-BR">Seu parceiro de pesquisa com tecnologia de IA - Gemini Notebook</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/">NotebookLM adds Deep Research, Docx, Sheets and more</a> - NotebookLM adds “Deep Research” for discovering sources, support for Word and PDFs, and a preview of…<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-discover-sources/">NotebookLM Discover Sources: Add web research to your notebook</a> - NotebookLM has launched Discover Sources, which lets you add sources from the web to your notebook.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/">Try notebooks in Gemini to easily keep track of projects - Google Blog</a> - Gemini’s new “notebooks” help you organize chats and files for complex projects. · Notebooks are per…<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://support.google.com/notebooklm/answer/17004255?hl=en-IN">Privacy and Terms of Use in NotebookLM</a> - What happens when you send feedback When you share thumbs up or thumbs down feedback, we’ll collect …<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://notebook.google/">Gemini Notebook | AI Research Tool &amp; Thinking Partner</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-discover-sources/">NotebookLM Discover Sources: Add web research to your notebook</a> - NotebookLM has launched Discover Sources, which lets you add sources from the web to your notebook.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-video-overviews-studio-upgrades/">What’s new in NotebookLM: Video Overviews and an upgraded Studio</a> - NotebookLM’s Video Overviews distill complex information into clear, digestible content, paired with…<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebook-lm-audio-video-overviews-more-languages-longer-content/">NotebookLM’s Video Overviews are now available in 80 languages</a> - Learn more about updates to NotebookLM’s Audio and Video Overview tools.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-custom-personas-engine-upgrade/">Chat in NotebookLM: A powerful, goal-focused AI research partner</a> - We’re rolling out changes to NotebookLM to make it fundamentally smarter and more powerful.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/">NotebookLM adds Deep Research, Docx, Sheets and more</a> - NotebookLM adds “Deep Research” for discovering sources, support for Word and PDFs, and a preview of…<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/">NotebookLM adds Cinematic Video Overviews - Google Blog</a> - Cinematic Video Overviews, This new feature moves beyond narrated slides in Video Overviews to creat…<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://blog.google/intl/de-de/produkte/suchen-entdecken/notebooks-in-gemini/">Behaltet den Überblick mit Notebooks in Gemini - Google Blog</a> - Notebooks helfen euch dabei, eure Chats und Projekte in Gemini zu organisieren, um das Lernen und Ar…<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/">NotebookLM is now Gemini Notebook - Google Blog</a> - NotebookLM is now Gemini Notebook: the same standalone product with deeper Google integration and a …<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p><a href="https://blog.google/intl/de-de/produkte/suchen-entdecken/notebooklm-wird-gemini-notebook/">NotebookLM heißt jetzt Gemini Notebook - Google Blog</a> - Während es weiterhin ein eigenständiges Produkt bleibt, wird Gemini Notebook verstärkt im Google Öko…<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/?ref=aiposthub.com">Sharpen your study routine with new Gemini Notebook tools</a> - An overview of the latest study and learning tools in Gemini Notebook.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/">Sharpen your study routine with new Gemini Notebook tools</a> - Gemini Notebook now offers new tools to help you study, including real-time voice conversations, an …<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p><a href="https://arxiv.org/html/2504.09720v2">NotebookLM: An LLM with RAG for active learning and …</a> - By grounding its responses in teacher-provided source documents, NotebookLM helps mitigate one of th…<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p><a href="https://edu.google.com/intl/ALL_us/ai-gemini-notebook/">Understand anything with Gemini Notebook - Google for Education</a> - Gemini Notebook helps K12 &amp; higher education create lesson plans, study guides, and quizzes grounded…<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p><a href="https://notebook.google/%3Fhl=pt-BR">Seu parceiro de pesquisa com tecnologia de IA - Gemini Notebook</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/">NotebookLM adds Deep Research, Docx, Sheets and more</a> - NotebookLM adds “Deep Research” for discovering sources, support for Word and PDFs, and a preview of…<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-discover-sources/">NotebookLM Discover Sources: Add web research to your notebook</a> - NotebookLM has launched Discover Sources, which lets you add sources from the web to your notebook.<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p><a href="https://support.google.com/notebooklm/answer/15731792">Dec 13 2024</a> - What’s new NotebookLM gets a new look: We’re rolling out a new design that makes it easier than ever…<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p><a href="https://support.google.com/notebooklm/answer/16206563?hl=en-GB">Create a notebook in NotebookLM - NotebookLM Help - Google Help</a> - Important: At this time, the NotebookLM mobile app may have limitations to this feature. Learn more …<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p><a href="https://blog.google/innovation-and-ai/products/notebooklm/notebooklm-google-io-2026/">Dive deeper into I/O 2026 with NotebookLM. - Google Blog</a> - Read through a Slide Deck to learn more about the biggest launches. Explore our highlights through a…<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn33"><p><a href="https://support.google.com/notebooklm/answer/16206563?hl=en-GB">Create a notebook in NotebookLM - NotebookLM Help - Google Help</a> - Important: At this time, the NotebookLM mobile app may have limitations to this feature. Learn more …<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34"><p><a href="https://workspace.google.com/products/gemini-notebook/">NotebookLM: AI-Powered Research and Learning Assistant Tool</a> - Discover how Gemini Notebook (formerly NotebookLM) helps teams learn new topics and get to insights …<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn35"><p><a href="https://workspace.google.com/intl/en_au/products/gemini-notebook/">Gemini Notebook: AI-powered research and learning assistant tool</a> - Discover how Gemini Notebook, now included in Workspace plans, helps teams learn new topics and get …<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/">NotebookLM adds Deep Research, Docx, Sheets and more</a> - NotebookLM adds “Deep Research” for discovering sources, support for Word and PDFs, and a preview of…<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37"><p><a href="https://workspace.google.com/intl/en_au/products/gemini-notebook/">Gemini Notebook: AI-powered research and learning assistant tool</a> - Discover how Gemini Notebook, now included in Workspace plans, helps teams learn new topics and get …<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn38"><p><a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users">Turn Gemini Notebook on or off for users | Google Workspace Help</a><a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/new-flexible-usage-limits/">We’re introducing flexible usage limits for Gemini Notebook.</a> - We’re introducing new flexible, compute-specific usage limits to Gemini Notebook.<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn40"><p><a href="https://blog.google/intl/de-de/produkte/suchen-entdecken/notebooks-in-gemini/">Behaltet den Überblick mit Notebooks in Gemini - Google Blog</a> - Notebooks helfen euch dabei, eure Chats und Projekte in Gemini zu organisieren, um das Lernen und Ar…<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn41"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/">Try notebooks in Gemini to easily keep track of projects - Google Blog</a> - Gemini’s new “notebooks” help you organize chats and files for complex projects. · Notebooks are per…<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn42"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn43"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn44"><p><a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users">Turn Gemini Notebook on or off for users | Google Workspace Help</a><a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn45"><p><a href="https://blog.google/intl/en-ie/products/notebooks-gemini-notebooklm/">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn46"><p><a href="https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/">NotebookLM adds Cinematic Video Overviews - Google Blog</a> - Cinematic Video Overviews, This new feature moves beyond narrated slides in Video Overviews to creat…<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn47"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/">Gemini Notebook - Google Blog</a> - Your research and thinking partner, grounded in the information you trust, built with the latest Gem…<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn48"><p><a href="https://notebook.google/">Gemini Notebook | AI Research Tool &amp; Thinking Partner</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn49"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-custom-personas-engine-upgrade/">Chat in NotebookLM: A powerful, goal-focused AI research partner</a> - We’re rolling out changes to NotebookLM to make it fundamentally smarter and more powerful.<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn50"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-discover-sources/">NotebookLM Discover Sources: Add web research to your notebook</a> - NotebookLM has launched Discover Sources, which lets you add sources from the web to your notebook.<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn51"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/">NotebookLM adds Deep Research, Docx, Sheets and more</a> - NotebookLM adds “Deep Research” for discovering sources, support for Word and PDFs, and a preview of…<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn52"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebook-lm-audio-video-overviews-more-languages-longer-content/">NotebookLM’s Video Overviews are now available in 80 languages</a> - Learn more about updates to NotebookLM’s Audio and Video Overview tools.<a href="#fnref52" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn53"><p><a href="https://blog.google/innovation-and-ai/products/developing-notebooklm/">The inside story of building NotebookLM - Google Blog</a> - Hear how Googlers developed and tested NotebookLM, your virtual research assistant — straight from t…<a href="#fnref53" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn54"><p><a href="https://support.google.com/notebooklm/answer/16212820?hl=cs&amp;sjid=18011809439271613018-EU">Vygenerování audio přehledu ve službě NotebookLM</a> - Důležité: V mobilní aplikaci NotebookLM může být tato funkce v současné době omezená. Další informac…<a href="#fnref54" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn55"><p><a href="https://support.google.com/notebooklm/answer/16212820?hl=zh-Hans&amp;authuser=77">在 NotebookLM 中生成音频概览</a> - 重要提示：目前，NotebookLM 移动应用可能无法完全支持此功能。详细了解 NotebookLM 移动应用中支持的功能。 音频概览是两位 AI 主持人之间的深入讨论，旨在对你上传的来源中的关键主题…<a href="#fnref55" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn56"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/">Sharpen your study routine with new Gemini Notebook tools</a> - Gemini Notebook now offers new tools to help you study, including real-time voice conversations, an …<a href="#fnref56" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn57"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-video-overviews-studio-upgrades/">What’s new in NotebookLM: Video Overviews and an upgraded Studio</a> - NotebookLM’s Video Overviews distill complex information into clear, digestible content, paired with…<a href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn58"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebook-lm-audio-video-overviews-more-languages-longer-content/">NotebookLM’s Video Overviews are now available in 80 languages</a> - Learn more about updates to NotebookLM’s Audio and Video Overview tools.<a href="#fnref58" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn59"><p><a href="https://blog.google/intl/ko-kr/company-news/technology/new-study-tools-september-2026-kr/">새로워진 ’제미나이 노트북’으로 학습 효율을 한층 더 높여보세요</a> - ‘제미나이 노트북(Gemini Notebook)’과 실시간으로 대화를 나누고, 집중 학습을 돕는 대화형 학습 개요를 생성하는 등, 구글이 한층 더 개인화되고 강력한 학습 경험을 제…<a href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn60"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/?ref=aiposthub.com">Sharpen your study routine with new Gemini Notebook tools</a> - An overview of the latest study and learning tools in Gemini Notebook.<a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn61"><p><a href="https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/">NotebookLM adds Cinematic Video Overviews - Google Blog</a> - Cinematic Video Overviews, This new feature moves beyond narrated slides in Video Overviews to creat…<a href="#fnref61" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn62"><p><a href="https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/">3 Google updates from Galaxy Unpacked 2026</a> - We shared how Samsung users can boost productivity and get time back on new foldables, watches, and …<a href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn63"><p><a href="https://support.google.com/notebooklm/answer/16206563?hl=en-GB">Create a notebook in NotebookLM - NotebookLM Help - Google Help</a> - Important: At this time, the NotebookLM mobile app may have limitations to this feature. Learn more …<a href="#fnref63" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn64"><p><a href="https://blog.google/innovation-and-ai/products/notebooklm/notebooklm-google-io-2026/">Dive deeper into I/O 2026 with NotebookLM. - Google Blog</a> - Read through a Slide Deck to learn more about the biggest launches. Explore our highlights through a…<a href="#fnref64" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn65"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/8-ways-to-make-the-most-out-of-slide-decks-in-notebooklm/">8 ways to make the most out of Slide Decks in NotebookLM</a> - Nano Banana Pro makes NotebookLM ever more powerful to synthesize information and create visual stor…<a href="#fnref65" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn66"><p><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind&amp;hl=en_US">Gemini Notebook - Apps on Google Play</a> - Understand anything with a personalized AI research assistant<a href="#fnref66" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn67"><p><a href="https://support.google.com/notebooklm/answer/16296687?hl=en-GB&amp;co=GENIE.Platform=Android">Get started with the NotebookLM mobile app - Google Help</a> - Our early version of the NotebookLM mobile app includes many core features of NotebookLM and is desi…<a href="#fnref67" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn68"><p><a href="https://support.google.com/notebooklm/answer/16296687?co=GENIE.Platform=iOS">Get started with the NotebookLM mobile app - iPhone &amp; iPadsupport.google.com › notebooklm › answer</a> - Our early version of the NotebookLM mobile app includes many core features of NotebookLM and is desi…<a href="#fnref68" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn69"><p><a href="https://support.google.com/notebooklm/answer/16206563?hl=en-GB">Create a notebook in NotebookLM - NotebookLM Help - Google Help</a> - Important: At this time, the NotebookLM mobile app may have limitations to this feature. Learn more …<a href="#fnref69" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn70"><p><a href="https://edu.google.com/intl/ALL_us/ai-gemini-notebook/">Understand anything with Gemini Notebook - Google for Education</a> - Gemini Notebook helps K12 &amp; higher education create lesson plans, study guides, and quizzes grounded…<a href="#fnref70" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn71"><p><a href="https://notebooklm-guide.com/ap-psychology/">AP Psychology: 100 NotebookLM AI Prompts (2026)</a> - AP Psych tests application, not recall. 100 NotebookLM prompts that connect 15 core theories to scen…<a href="#fnref71" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn72"><p><a href="https://www.psychologytoday.com/us/blog/psyched/202607/educational-psychology-improves-use-of-ai-for-learning">Educational Psychology Improves Use of AI for Learning</a> - Students will use AI. The challenge is teaching them to use it in ways that strengthen learning. Edu…<a href="#fnref72" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn73"><p><a href="https://zenodo.org/records/20533907">The GenAI Motivation and Learning Buddy: A Generative AI …</a> - The GenAI Motivation and Learning Buddy is an Open Access AI-supported coaching resource that helps …<a href="#fnref73" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn74"><p><a href="https://blog.aare.edu.au/2026/09/21/are-students-harnessing-ai-for-genuine-learning-or-just-easy-answers/">Are Students Harnessing AI for Genuine Learning or Just Easy …</a> - Psychologically-informed use of AI can help here – and we have a tremendous body of theory and resea…<a href="#fnref74" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn75"><p><a href="https://blog.google/innovation-and-ai/technology/research/gemini-for-science-io-2026/">New AI Tools for the Future of Science - Google Blog</a> - Gemini for Science is a new collection of science tools and experiments to expand the scale and prec…<a href="#fnref75" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn76"><p><a href="https://academy.evalcommunity.com/using-notebooklm-for-qualitative-analysis/">Using NotebookLM for Qualitative Analysis - EvalCommunity Academy</a> - Using NotebookLM for Qualitative Analysis – Learn more in our detailed guide for M&amp;E professionals.<a href="#fnref76" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn77"><p><a href="https://www.nesta.org.uk/blog/six-reasons-why-human-led-qualitative-research-is-safe-from-ai-for-now/">Six reasons why human-led qualitative research is safe …</a> - While NotebookLM can support researchers with qualitative data analysis, the value of the tool lies …<a href="#fnref77" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn78"><p><a href="https://www.linkedin.com/posts/dr-susanne-friese_if-youre-using-chatgpt-claude-or-notebooklm-activity-7486721931279474688-bCdm">Dr.&nbsp;Susanne Friese.’s Post - LinkedIn</a> - If you’re using ChatGPT, Claude, or NotebookLM for qualitative analysis and it feels off — this is w…<a href="#fnref78" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn79"><p><a href="https://www.nesta.org.uk/blog/six-reasons-why-human-led-qualitative-research-is-safe-from-ai-for-now/">Six reasons why human-led qualitative research is safe …</a> - While NotebookLM can support researchers with qualitative data analysis, the value of the tool lies …<a href="#fnref79" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn80"><p><a href="https://www.nesta.org.uk/blog/six-reasons-why-human-led-qualitative-research-is-safe-from-ai-for-now/">Six reasons why human-led qualitative research is safe …</a> - While NotebookLM can support researchers with qualitative data analysis, the value of the tool lies …<a href="#fnref80" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn81"><p><a href="https://academy.evalcommunity.com/using-notebooklm-for-qualitative-analysis/">Using NotebookLM for Qualitative Analysis - EvalCommunity Academy</a> - Using NotebookLM for Qualitative Analysis – Learn more in our detailed guide for M&amp;E professionals.<a href="#fnref81" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn82"><p><a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users">Turn Gemini Notebook on or off for users | Google Workspace Help</a><a href="#fnref82" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn83"><p><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/">NotebookLM adds Deep Research, Docx, Sheets and more</a> - NotebookLM adds “Deep Research” for discovering sources, support for Word and PDFs, and a preview of…<a href="#fnref83" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn84"><p><a href="https://notebooklm-guide.com/notebooklm-prompt-engineering/">Prompt Engineering Guide + 30 Templates - NotebookLM Guide</a> - The PPAE loop prevents “one-and-done” thinking. Perceive what you have, Plan your approach, Act with…<a href="#fnref84" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn85"><p><a href="https://notebooklm-guide.com/prompt-design-workflow/">Prompt Design Workflow: Canvas &amp; PPAE Method (2026)</a> - Learn to design, diagnose, and chain source-grounded NotebookLM prompts. Includes a 30-second quick …<a href="#fnref85" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn86"><p><a href="https://notebooklm-guide.com/prompt-design-workflow/">Prompt Design Workflow: Canvas &amp; PPAE Method (2026)</a> - Learn to design, diagnose, and chain source-grounded NotebookLM prompts. Includes a 30-second quick …<a href="#fnref86" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn87"><p><a href="https://zenodo.org/records/20533907">The GenAI Motivation and Learning Buddy: A Generative AI …</a> - The GenAI Motivation and Learning Buddy is an Open Access AI-supported coaching resource that helps …<a href="#fnref87" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn88"><p><a href="https://blog.aare.edu.au/2026/09/21/are-students-harnessing-ai-for-genuine-learning-or-just-easy-answers/">Are Students Harnessing AI for Genuine Learning or Just Easy …</a> - Psychologically-informed use of AI can help here – and we have a tremendous body of theory and resea…<a href="#fnref88" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn89"><p><a href="https://www.psychologytoday.com/us/blog/psyched/202607/educational-psychology-improves-use-of-ai-for-learning">Educational Psychology Improves Use of AI for Learning</a> - Students will use AI. The challenge is teaching them to use it in ways that strengthen learning. Edu…<a href="#fnref89" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn90"><p><a href="https://blog.aare.edu.au/2026/09/21/are-students-harnessing-ai-for-genuine-learning-or-just-easy-answers/">Are Students Harnessing AI for Genuine Learning or Just Easy …</a> - Psychologically-informed use of AI can help here – and we have a tremendous body of theory and resea…<a href="#fnref90" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn91"><p><a href="https://zenodo.org/records/20533907">The GenAI Motivation and Learning Buddy: A Generative AI …</a> - The GenAI Motivation and Learning Buddy is an Open Access AI-supported coaching resource that helps …<a href="#fnref91" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn92"><p><a href="https://blog.aare.edu.au/2026/09/21/are-students-harnessing-ai-for-genuine-learning-or-just-easy-answers/">Are Students Harnessing AI for Genuine Learning or Just Easy …</a> - Psychologically-informed use of AI can help here – and we have a tremendous body of theory and resea…<a href="#fnref92" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn93"><p><a href="https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub">Generative AI in Google Workspace Privacy Hub</a> - No Model Training: Your content is not reviewed by humans or otherwise used for Gemini model trainin…<a href="#fnref93" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn94"><p><a href="https://workspace.google.com/solutions/ai/">AI Tools for Business | Google Workspace</a> - Enterprise-grade security and privacy. Privacy. Your data is your data, and it’s not used to train G…<a href="#fnref94" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn95"><p><a href="https://support.google.com/notebooklm/answer/16179536?hl=en&amp;authuser=50&amp;co=GENIE.Platform=Desktop">Report a problem or send general feedback</a> - If you get a response that’s inaccurate or that you feel is unsafe, you can give feedback on that re…<a href="#fnref95" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn96"><p><a href="https://support.google.com/notebooklm/answer/17004255?hl=en-IN">Privacy and Terms of Use in NotebookLM</a> - What happens when you send feedback When you share thumbs up or thumbs down feedback, we’ll collect …<a href="#fnref96" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn97"><p><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/">NotebookLM is now Gemini Notebook - Google Blog</a> - NotebookLM is now Gemini Notebook: the same standalone product with deeper Google integration and a …<a href="#fnref97" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn98"><p><a href="https://notebook.google/">Gemini Notebook | AI Research Tool &amp; Thinking Partner</a> - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn …<a href="#fnref98" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn99"><p><a href="https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io">Try notebooks in Gemini to easily keep track of projects</a> - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc…<a href="#fnref99" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chatgpt.html" class="pagination-link" aria-label="ChatGPT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ChatGPT</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./felelos_mi.html" class="pagination-link" aria-label="Felelős MI-használat">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,648 @@
+# Fogalmak
+
+*Jelen fogalomgyűjtemény a Perplexity AI segítségével készült.*
+
+## I. Alapfogalmak {.unnumbered}
+
+### 1. Mesterséges intelligencia (MI; artificial intelligence, AI) {.unnumbered}
+
+A mesterséges intelligencia olyan számítógépes rendszerek és módszerek gyűjtőneve,
+amelyek például tanulási, problémamegoldási, következtetési, nyelvfeldolgozási,
+észlelési vagy döntéstámogatási feladatokat végeznek. Az MI nem egyetlen
+technológia, hanem több megközelítést – például szabályalapú rendszereket,
+gépi tanulást és generatív modelleket – magában foglaló terület.
+
+**Pszichológiai példa:** MI használható kérdőíves válaszok osztályozására,
+viselkedés előrejelzésére vagy interjúszövegek elemzésére.
+
+**Ajánlott források:**
+
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://artint.info/3e/html/ArtInt3e.Chx1.html)
+- [Stanford HAI: Brief Definitions of Key Terms in AI](https://hai.stanford.edu/policy/brief-definitions-of-key-terms-in-ai)
+
+---
+
+### 2. Szűk MI és általános MI (ANI és AGI) {.unnumbered}
+
+A **szűk MI** egy meghatározott feladatra vagy feladatcsoportra kialakított
+rendszer, például arcfelismerő, ajánlórendszer vagy szöveggenerátor. A
+**mesterséges általános intelligencia** (AGI) hipotetikus rendszer, amely
+különböző területeken, rugalmasan és az emberhez hasonló általánossággal lenne
+képes tanulni és problémákat megoldani; ennek pontos meghatározásáról sincs teljes
+szakmai konszenzus. [web:238][web:242]
+
+**Fontos:** Egy sokféle feladatra használható nagy nyelvi modell sem
+automatikusan AGI.
+
+**Ajánlott források:**
+
+- [IBM: Understanding the Different Types of Artificial Intelligence](https://www.ibm.com/think/topics/artificial-intelligence-types)
+- [Stanford HAI: Brief Definitions of Key Terms in AI](https://hai.stanford.edu/policy/brief-definitions-of-key-terms-in-ai)
+
+---
+
+### 3. Algoritmus és modell {.unnumbered}
+
+Az **algoritmus** egy feladat végrehajtásának formálisan megadható eljárása vagy
+lépéssorozata. A **modell** az adatokban azonosított összefüggések matematikai
+reprezentációja, amely bemenetből valamilyen kimenetet – például kategóriát,
+pontszámot vagy szöveget – állít elő. [web:153][web:211]
+
+**Egyszerű megkülönböztetés:** A tanulási algoritmus létrehozza vagy illeszti a
+modellt; az elkészült modell új adatokon előrejelzést készít.
+
+**Ajánlott források:**
+
+- [Google: Machine Learning Glossary](https://developers.google.com/machine-learning/glossary)
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://www.cs.ubc.ca/~poole/aibook/)
+
+---
+
+### 4. Gépi tanulás (machine learning, ML) {.unnumbered}
+
+A gépi tanulás az MI egyik részterülete, amelyben a rendszer adatok alapján
+tanul meg mintázatokat, szabályszerűségeket vagy előrejelzési függvényeket.
+A fejlesztő nem minden döntési szabályt programoz be kézzel; inkább meghatározza
+a tanulási feladatot, a modellcsaládot és a teljesítmény értékelésének módját.
+[web:157][web:198]
+
+**Pszichológiai példa:** Kérdőíves és viselkedési változók alapján a modell
+megbecsüli egy későbbi lemorzsolódás vagy tünetváltozás valószínűségét.
+
+**Ajánlott források:**
+
+- [Goodfellow, Bengio és Courville: Deep Learning – Machine Learning Basics](https://www.deeplearningbook.org/)
+- [Yarkoni és Westfall: Choosing Prediction Over Explanation in Psychology](https://pubmed.ncbi.nlm.nih.gov/28841086/)
+
+---
+
+### 5. Felügyelt tanulás (supervised learning) {.unnumbered}
+
+Felügyelt tanulásnál minden vagy sok megfigyeléshez ismert célváltozó, illetve
+helyesnek tekintett címke tartozik. A modell ezekből a bemenet–cél párokból
+tanulja meg, hogyan jelezze előre új esetek kimenetét.
+
+**Pszichológiai példa:** Korábban szakértők által kódolt interjúrészletekből
+megtanulni egy új szöveg érzelmi kategóriáját.
+
+**Ajánlott források:**
+
+- [Goodfellow, Bengio és Courville: Deep Learning](https://www.deeplearningbook.org/)
+- [Google: Machine Learning Glossary](https://developers.google.com/machine-learning/glossary)
+
+---
+
+### 6. Felügyelet nélküli tanulás (unsupervised learning) {.unnumbered}
+
+Felügyelet nélküli tanulásnál nincs előre megadott helyes célváltozó. Az
+algoritmus az adatok belső szerkezetét, például hasonló esetek csoportjait,
+együtt járó jellemzőket vagy alacsonyabb dimenziós reprezentációkat keresi.
+
+**Pszichológiai példa:** Viselkedési mintázatok alapján résztvevői csoportok
+feltárása. Az így kapott klaszterek nem tekinthetők automatikusan valódi
+pszichológiai típusoknak.
+
+**Ajánlott források:**
+
+- [Goodfellow, Bengio és Courville: Deep Learning](https://www.deeplearningbook.org/)
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://www.cs.ubc.ca/~poole/aibook/)
+
+---
+
+### 7. Megerősítéses tanulás (reinforcement learning, RL) {.unnumbered}
+
+A megerősítéses tanulásban egy ágens cselekvéseket választ egy környezetben, és
+jutalmak vagy büntetések alapján tanul stratégiát. A cél rendszerint a hosszabb
+távon várható összes jutalom maximalizálása, nem pusztán egy előre megadott
+helyes válasz reprodukálása.
+
+**Pszichológiai kapcsolat:** A fogalom rokonságot mutat az instrumentális
+kondicionálás és a jutalomalapú tanulás modelljeivel, de a számítógépes
+implementáció nem azonos az emberi tanulás pszichológiai elméletével.
+
+**Ajánlott források:**
+
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://www.cs.ubc.ca/~poole/aibook/)
+- [Google: Machine Learning Glossary](https://developers.google.com/machine-learning/glossary)
+
+---
+
+### 8. Klasszifikáció, regresszió és klaszterezés {.unnumbered}
+
+A **klasszifikáció** kategóriát jelez előre, például hogy egy szöveg pozitív vagy
+negatív érzelmi tartalmú-e. A **regresszió** folytonos értéket, például
+tünetpontszámot becsül. A **klaszterezés** előre megadott címkék nélkül keres
+egymáshoz hasonló esetekből álló csoportokat.
+
+**Módszertani megjegyzés:** A három feladat eltérő kutatási kérdést, értékelési
+eljárást és értelmezést igényel.
+
+**Ajánlott források:**
+
+- [Goodfellow, Bengio és Courville: Deep Learning](https://www.deeplearningbook.org/)
+- [Scikit-learn: User Guide](https://scikit-learn.org/stable/user_guide.html)
+
+---
+
+## II. Adatok és modellalkotás
+
+### 9. Jellemző és célváltozó (feature és label) {.unnumbered}
+
+A **jellemző** vagy prediktor a modell bemeneteként használt változó, például
+életkor, reakcióidő vagy egy szöveg numerikus reprezentációja. A **címke** vagy
+célváltozó az a kimenet, amelyet felügyelt tanulás során a modellnek előre kell
+jeleznie.
+
+**Pszichológiai veszély:** Ha a célváltozó rosszul operacionalizált, a modell
+legfeljebb ezt a hibás vagy korlátozott operacionalizációt tanulja meg.
+
+**Ajánlott források:**
+
+- [Google: Machine Learning Glossary](https://developers.google.com/machine-learning/glossary)
+- [Goodfellow, Bengio és Courville: Deep Learning](https://www.deeplearningbook.org/)
+
+---
+
+### 10. Tanítás és inferencia (training és inference) {.unnumbered}
+
+A **tanítás** során a rendszer adatok alapján módosítja a modell paramétereit.
+Az **inferencia** során a már betanított modellt új bemenetek feldolgozására,
+előrejelzésre vagy tartalom létrehozására használjuk. [web:212][web:221]
+
+**Példa:** Egy nyelvi modell betanítása nagy számításigényű folyamat; egy
+felhasználói kérdés megválaszolása már inferencia.
+
+**Ajánlott források:**
+
+- [Google: Machine Learning Glossary – Fundamentals](https://developers.google.com/machine-learning/glossary/fundamentals)
+- [Google: Machine Learning Glossary – Generative AI](https://developers.google.com/machine-learning/glossary/generative)
+
+---
+
+### 11. Paraméter és hiperparaméter {.unnumbered}
+
+A **paraméter** a modell által a tanítás során megtanult érték, például egy
+neurális hálózat súlya. A **hiperparamétert** a kutató vagy egy hangolási
+eljárás állítja be; ilyen lehet a tanulási ráta, a rétegek száma vagy a
+batchméret. [web:215][web:218]
+
+**Reprodukálhatóság:** A hiperparamétereket és a hangolás eljárását is
+dokumentálni kell.
+
+**Ajánlott források:**
+
+- [Google: Linear Regression – Hyperparameters](https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters)
+- [Stanford HAI: Artificial Intelligence Glossary](https://hai.stanford.edu/ai-definitions)
+
+---
+
+### 12. Veszteségfüggvény és optimalizálás {.unnumbered}
+
+A **veszteségfüggvény** számszerűsíti, mennyire tér el a modell kimenete a
+kívánt vagy megfigyelt eredménytől. Az **optimalizálás** során az algoritmus úgy
+módosítja a paramétereket, hogy csökkentse ezt a veszteséget.
+
+**Fontos:** Amit a modell optimalizál, nem feltétlenül egyezik meg azzal, amit
+pszichológiai, társadalmi vagy etikai szempontból értékesnek tartunk.
+
+**Ajánlott források:**
+
+- [Goodfellow, Bengio és Courville: Deep Learning – Optimization](https://www.deeplearningbook.org/)
+- [Google: Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
+
+---
+
+### 13. Tanító-, validációs és tesztadat {.unnumbered}
+
+A **tanítóhalmaz** alapján tanulja meg a modell a paramétereit. A
+**validációs halmaz** a modellváltozatok és hiperparaméterek kiválasztását
+segíti, míg a **teszthalmaz** a végleges modell független értékelésére szolgál.
+A tesztadatot nem szabad ismételten felhasználni a modell fejlesztéséhez.
+
+**Keresztvalidáció:** K-szeres keresztvalidációban az adatok több részre
+osztásával ismételjük meg a tanítást és validálást, majd átlagoljuk a
+teljesítményt. [web:108][web:110]
+
+**Ajánlott források:**
+
+- [Scikit-learn: Cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html)
+- [Google: Overfitting and Generalization](https://developers.google.com/machine-learning/crash-course/overfitting/overfitting)
+
+---
+
+### 14. Túlillesztés és generalizáció (overfitting és generalization) {.unnumbered}
+
+**Túlillesztéskor** a modell a tanítóadat sajátosságait, esetleges zaját is
+megtanulja, ezért az ismert adatokon jól, új adatokon viszont gyengén teljesít.
+A **generalizáció** azt jelenti, hogy a modell korábban nem látott, megfelelően
+hasonló populációból származó adatokon is jól működik. [web:106][web:110]
+
+**Pszichológiai jelentőség:** Kis, homogén vagy kényelmi mintából származó
+eredmények nem biztos, hogy más életkorokra, kultúrákra vagy klinikai
+csoportokra általánosíthatók.
+
+**Ajánlott források:**
+
+- [Google: Overfitting and Generalization](https://developers.google.com/machine-learning/crash-course/overfitting/overfitting)
+- [IBM: What Is Overfitting?](https://www.ibm.com/think/topics/overfitting)
+
+---
+
+### 15. Modellértékelési mutatók {.unnumbered}
+
+Az **accuracy** az összes helyes osztályozás aránya. A **precision** azt
+mutatja meg, hogy a pozitívnak jelzett esetek mekkora része valóban pozitív,
+a **recall vagy szenzitivitás** pedig azt, hogy a tényleges pozitív esetek
+mekkora részét találta meg a modell. Az **F1-mutató** a precision és recall
+harmonikus átlaga; a specificitás a negatív esetek helyes felismerését fejezi
+ki. [web:262][web:264]
+
+**Pszichológiai példa:** Ritka kockázati eseménynél a magas accuracy
+félrevezető lehet, ezért a téves pozitív és téves negatív döntéseket külön is
+vizsgálni kell.
+
+**Ajánlott források:**
+
+- [Google: Machine Learning Glossary – Metrics](https://developers.google.com/machine-learning/glossary/metrics)
+- [Scikit-learn: Metrics and Scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
+---
+
+## III. Neurális és nyelvi modellek {.unnumbered}
+
+### 16. Mesterséges neurális hálózat és mélytanulás {.unnumbered}
+
+A mesterséges neurális hálózat egymáshoz kapcsolt számítási egységekből és
+tanulható súlyokból álló modell. A **mélytanulás** több feldolgozási réteget
+használó neurális hálózatokra épül, amelyek az adatok egyre összetettebb
+reprezentációit tanulhatják meg.
+
+**Fontos:** A mesterséges „neuron” csak laza matematikai analógia; nem azonos
+a biológiai idegsejttel.
+
+**Ajánlott források:**
+
+- [Goodfellow, Bengio és Courville: Deep Learning](https://www.deeplearningbook.org/)
+- [Poole és Mackworth: Neural Networks and Deep Learning](https://www.cs.ubc.ca/~poole/aibook/)
+
+---
+
+### 17. Természetesnyelv-feldolgozás (NLP) {.unnumbered}
+
+A természetesnyelv-feldolgozás az emberi nyelv számítógépes elemzésével és
+előállításával foglalkozik. Feladatai közé tartozik például a szövegosztályozás,
+információkinyerés, gépi fordítás, beszédfelismerés és szöveggenerálás.
+
+**Pszichológiai alkalmazás:** Interjúk, naplóbejegyzések vagy nyílt kérdések
+elemzése; az automatizált nyelvi mutatók érvényességét azonban külön igazolni
+kell.
+
+**Ajánlott források:**
+
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://www.cs.ubc.ca/~poole/aibook/)
+
+---
+
+### 18. Token és tokenizáció {.unnumbered}
+
+A **token** az a szövegegység, amelyet a nyelvi modell feldolgoz. Lehet teljes
+szó, szórész, írásjel vagy más karaktercsoport. A **tokenizáció** a szöveget
+tokenekre bontja, majd a tokeneket numerikus azonosítókká alakítja. [web:200][web:202]
+
+**Következmény:** Egy token nem feltétlenül egy szó; a tokenek száma függ a
+modelltől és a nyelvtől.
+
+**Ajánlott források:**
+
+- [Hugging Face LLM Course: Tokenizers](https://huggingface.co/learn/llm-course/en/chapter2/4)
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+
+---
+
+### 19. Beágyazás (embedding) {.unnumbered}
+
+A beágyazás egy szó, mondat, kép vagy más objektum sűrű numerikus
+vektorreprezentációja. A tanulás célja rendszerint az, hogy az adott feladat
+szempontjából hasonló jelentésű vagy funkciójú elemek közel kerüljenek
+egymáshoz a vektortérben. [web:196][web:198]
+
+**Pszichológiai alkalmazás:** Szöveges válaszok hasonlóságának mérése vagy
+interjúk tematikus csoportosítása. A geometriai közelség nem bizonyít
+pszichológiai vagy oksági azonosságot.
+
+**Ajánlott források:**
+
+- [TensorFlow: Word Embeddings](https://www.tensorflow.org/text/tutorials/word_embeddings)
+- [Google: Machine Learning Glossary – Embedding](https://developers.google.com/machine-learning/glossary)
+
+---
+
+### 20. Figyelmi mechanizmus és Transformer {.unnumbered}
+
+A **figyelmi mechanizmus** lehetővé teszi, hogy a modell egy kimenet
+előállításakor eltérő súlyt rendeljen a bemenet különböző részeihez. A
+**Transformer** olyan neurális architektúra, amely alapvetően figyelmi
+mechanizmusokra épül, és a modern nagy nyelvi modellek egyik meghatározó
+alapja. [web:256][web:152]
+
+**Óvatosság:** A modell figyelmi súlyai nem azonosak az emberi figyelemmel, és
+önmagukban nem feltétlenül adnak teljes pszichológiai magyarázatot.
+
+**Ajánlott források:**
+
+- [Vaswani és mtsai.: Attention Is All You Need](https://ar5iv.labs.arxiv.org/html/1706.03762)
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+
+---
+
+### 21. Alapmodell (foundation model) {.unnumbered}
+
+Az alapmodell nagy és változatos adathalmazon előtanított, többféle későbbi
+feladatra adaptálható modell. Ugyanaz az alapmodell finomhangolással,
+promptokkal vagy kiegészítő komponensekkel számos alkalmazás kiindulópontja
+lehet. [web:252][web:253]
+
+**Kockázat:** Az alapmodell torzításai és hibái továbböröklődhetnek az arra
+épülő alkalmazásokba.
+
+**Ajánlott források:**
+
+- [Bommasani és mtsai.: On the Opportunities and Risks of Foundation Models](https://hci.stanford.edu/publications/paper.php?id=446)
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://www.cs.ubc.ca/~poole/aibook/)
+
+---
+
+### 22. Nagy nyelvi modell (large language model, LLM) {.unnumbered}
+
+A nagy nyelvi modell sok paraméterrel rendelkező, nagy szövegkorpuszon
+előtanított nyelvi modell. Alapművelete tipikusan a következő token
+valószínűségének becslése, de megfelelő tanítás és illesztés után számos
+nyelvi feladatot képes végrehajtani. [web:152][web:221]
+
+**Fontos:** A gördülékeny nyelvi teljesítmény nem bizonyít emberi értelemben
+vett megértést, tudatosságot vagy megbízható tárgyi tudást.
+
+**Ajánlott források:**
+
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+- [Google: Machine Learning Glossary – Generative AI](https://developers.google.com/machine-learning/glossary/generative)
+
+---
+
+### 23. Generatív mesterséges intelligencia {.unnumbered}
+
+A generatív MI tanult mintázatok alapján új szöveget, képet, hangot, videót,
+programkódot vagy más tartalmat állít elő. A kimenet statisztikailag illeszkedhet
+a tanítóadatok mintázataihoz, de ettől még nem feltétlenül igaz, eredeti,
+etikus vagy jogtisztán felhasználható. [web:252][web:279]
+
+**Pszichológiai alkalmazás:** Szimulált esetleírások vagy oktatási példák
+készítése; valódi diagnosztikai és terápiás használathoz külön validáció és
+szakmai felügyelet szükséges.
+
+**Ajánlott források:**
+
+- [NIST: Generative AI Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
+- [Bommasani és mtsai.: On the Opportunities and Risks of Foundation Models](https://hci.stanford.edu/publications/paper.php?id=446)
+
+---
+
+### 24. Prompt és kontextusablak {.unnumbered}
+
+A **prompt** a modellnek adott utasítás, kérdés, példa vagy háttéranyag. A
+**kontextusablak** azt a korlátozott tokenmennyiséget jelenti, amelyet a modell
+egy adott feldolgozási folyamatban figyelembe tud venni.
+
+**Prompttervezés:** A feladat, a kívánt formátum, a célközönség, a korlátok és
+az értékelési szempontok világos megadása javíthatja a válasz használhatóságát,
+de nem garantálja annak igazságát.
+
+**Ajánlott források:**
+
+- [Google: Machine Learning Glossary – Generative AI](https://developers.google.com/machine-learning/glossary/generative)
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+
+---
+
+### 25. Finomhangolás, igazítás és RLHF {.unnumbered}
+
+A **finomhangolás** során egy előtanított modellt kisebb, feladatspecifikus
+adathalmazon tovább tanítanak. Az **igazítás** vagy alignment célja, hogy a
+modell viselkedése jobban megfeleljen az emberi utasításoknak és elvárásoknak.
+Az RLHF emberi visszajelzésen alapuló megerősítéses tanulást jelent, amelyben
+emberek modellek válaszait értékelik vagy rangsorolják. [web:223]
+
+**Korlát:** Az emberi visszajelzés maga is tartalmazhat kulturális,
+értékelői vagy mintavételi torzításokat.
+
+**Ajánlott források:**
+
+- [Ouyang és mtsai.: Training Language Models to Follow Instructions with Human Feedback](https://arxiv.org/abs/2203.02155)
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+
+---
+
+### 26. Visszakereséssel támogatott generálás (RAG) {.unnumbered}
+
+A RAG olyan megoldás, amelyben a rendszer válaszadás előtt külső
+dokumentumokból releváns szövegrészleteket keres vissza, majd ezek
+felhasználásával generál választ. Így a modell paramétereiben tárolt
+információ kiegészíthető aktuális vagy ellenőrizhető forrásokkal. [web:254]
+
+**Korlát:** A RAG nem garantál hibátlan választ; téves lehet a visszakeresés,
+a forrás, annak értelmezése vagy a forrásra épülő generálás.
+
+**Ajánlott források:**
+
+- [Lewis és mtsai.: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://mlanthology.org/neurips/2020/lewis2020neurips-retrievalaugmented/)
+- [Jurafsky és Martin: Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+
+---
+
+### 27. Multimodális MI {.unnumbered}
+
+A multimodális modell több adattípust – például szöveget, képet, hangot,
+videót vagy szenzoradatot – képes közösen feldolgozni vagy előállítani.
+Célja a különböző modalitások közötti kapcsolatok reprezentálása. [web:184][web:186]
+
+**Pszichológiai alkalmazás:** Beszéd, arckifejezés, fiziológiai jel és
+önbeszámoló együttes elemzése. A multimodális adatkezelés különösen érzékeny
+adatvédelmi és interpretációs kérdéseket vet fel.
+
+**Ajánlott források:**
+
+- [Multimodal Foundation Models: From Specialists to General-Purpose Assistants](https://ar5iv.labs.arxiv.org/html/2309.10020)
+- [Examination of Technology – Multimodal Foundation Models](https://dp-reg.gov.au/sites/default/files/documents/2024-09/DP-REG%20-%20MFMs%20-%20Examination%20of%20Technology%20working%20paper.pdf)
+
+---
+
+### 28. MI-ágens és ágensalapú MI {.unnumbered}
+
+Az MI-ágens nemcsak választ generál, hanem célokat követhet, több lépést
+tervezhet, külső eszközöket vagy adatforrásokat használhat, és műveleteket
+hajthat végre. Az ágensalapú MI autonómiája fokozat kérdése; a rendszerek
+általában ember által kijelölt célok, jogosultságok és korlátok között
+működnek. [web:181][web:189]
+
+**Kockázat:** A hibás szöveges válasznál súlyosabb következménye lehet annak,
+ha egy hibásan működő ágens adatot módosít, üzenetet küld vagy más rendszert
+vezérel.
+
+**Ajánlott források:**
+
+- [NIST: Agentic AI](https://www.nist.gov/agentic-ai)
+- [Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents](https://www.cs.ubc.ca/~poole/aibook/)
+
+---
+
+## IV. Megbízhatóság és értelmezés {.unnumbered}
+
+### 29. Hallucináció vagy konfabuláció {.unnumbered}
+
+Az MI-konfabuláció olyan magabiztosan megfogalmazott, de téves, kitalált,
+ellentmondásos vagy a bemenettől elszakadó tartalom, amelyet a generatív modell
+hoz létre. A „hallucináció” elterjedt metafora, de félrevezető lehet, mert
+emberi mentális folyamatot tulajdonít egy tudattal nem rendelkező rendszernek.
+[web:279][web:284]
+
+**Példa:** A modell nem létező tanulmányt, DOI-azonosítót vagy mérőeszközt
+talál ki. Ezért minden hivatkozást az eredeti forrásban kell ellenőrizni.
+
+**Ajánlott források:**
+
+- [NIST: Generative AI Profile, 2.2. Confabulation](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
+- [The Language on GenAI: Personification and Anthropomorphism](https://jime.open.ac.uk/articles/10.5334/jime.983)
+
+---
+
+### 30. Értelmezhetőség és magyarázható MI (XAI) {.unnumbered}
+
+Az **értelmezhetőség** arra vonatkozik, hogy az ember mennyire képes megérteni
+a modell működését vagy döntési logikáját. A **magyarázható MI** olyan
+módszereket alkalmaz, amelyek egy előrejelzéshez ember számára követhető
+indoklást vagy közelítő magyarázatot rendelnek. [web:146][web:225]
+
+**Korlát:** Egy könnyen érthető magyarázat lehet pontatlan, részleges vagy csak
+az adott eset környezetében érvényes. A prediktor fontossága önmagában nem
+bizonyít oksági hatást.
+
+**Ajánlott források:**
+
+- [Ribeiro, Singh és Guestrin: Why Should I Trust You?](https://arxiv.org/abs/1602.04938)
+- [DARPA: Explainable Artificial Intelligence](https://www.darpa.mil/research/programs/explainable-artificial-intelligence)
+
+---
+
+### 31. Algoritmikus torzítás és méltányosság {.unnumbered}
+
+Algoritmikus torzításról beszélünk, amikor egy rendszer hibái vagy döntései
+szisztematikusan hátrányosan érintenek bizonyos személyeket vagy csoportokat.
+A torzítás eredhet a mintavételből, címkézésből, mérésből, modellalkotásból,
+a döntési küszöbből vagy az alkalmazás társadalmi környezetéből. [web:148][web:224]
+
+**Klasszikus példa:** A Gender Shades vizsgálat nagy teljesítménykülönbségeket
+talált egyes kereskedelmi arcelemző rendszerekben bőrtónus és nem szerinti
+alcsoportok között.
+
+**Ajánlott források:**
+
+- [Buolamwini és Gebru: Gender Shades](https://proceedings.mlr.press/v81/buolamwini18a.html)
+- [MIT Media Lab: Gender Shades Project](https://www.media.mit.edu/projects/gender-shades/overview/)
+
+---
+
+### 32. Adatvédelem és automatizált döntéshozatal {.unnumbered}
+
+A pszichológiai, egészségi, viselkedési és biometrikus adatok különösen
+érzékenyek. Az automatizált döntéshozatal olyan eljárás, amelyben személyeket
+érintő döntés kizárólag vagy nagyrészt automatizált adatfeldolgozásra és
+profilalkotásra támaszkodik.
+
+**Jogi háttér:** A GDPR 22. cikke korlátozza a kizárólag automatizált, jogi vagy
+hasonlóan jelentős hatással járó döntéseket, és meghatározott esetekben emberi
+beavatkozáshoz, álláspont kifejtéséhez és a döntés vitatásához kapcsolódó
+garanciákat ír elő. [web:170][web:171]
+
+**Ajánlott források:**
+
+- [EUR-Lex: Általános adatvédelmi rendelet, 22. cikk](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng)
+- [Artificial Intelligence in Positive Mental Health: A Narrative Review](https://pmc.ncbi.nlm.nih.gov/articles/PMC10982476/)
+
+---
+
+### 33. Emberi felügyelet és automatizációs torzítás {.unnumbered}
+
+Az **emberi felügyelet** azt jelenti, hogy megfelelő kompetenciával és
+jogosultsággal rendelkező személy figyeli, értelmezi, felülbírálhatja vagy
+leállíthatja az MI-rendszer működését. Az **automatizációs torzítás** az a
+tendencia, hogy az emberek túlzottan megbíznak egy automatizált rendszer
+javaslatában, akár saját tudásukkal vagy más bizonyítékokkal szemben is.
+[web:167][web:172]
+
+**Fontos:** A pusztán formális „ember a folyamatban” megoldás nem elegendő, ha
+az embernek nincs ideje, információja, szakértelme vagy valódi döntési joga.
+
+**Ajánlott források:**
+
+- [EU AI Act Service Desk: Article 14 – Human Oversight](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-14)
+- [The Role of Artificial Intelligence in Clinical Psychology](https://pmc.ncbi.nlm.nih.gov/articles/PMC12933282/)
+
+---
+
+## V. Pszichológiai alkalmazások {.unnumbered}
+
+### 34. Digitális fenotipizálás és affektív számítástechnika {.unnumbered}
+
+A **digitális fenotipizálás** digitális eszközökből – például okostelefonból
+vagy viselhető szenzorból – származó adatok alapján próbál viselkedési vagy
+pszichológiai mintázatokat mérni. Az **affektív számítástechnika** az érzelmi
+állapotok felismerésére, modellezésére vagy az azokra adott gépi reakciókra
+irányul.
+
+**Korlát:** Arckifejezésből, hangból vagy aktivitási adatból nem következik
+egyértelműen egy személy belső érzelmi állapota. A kontextus, kultúra, egyéni
+különbségek és mérési hibák figyelmen kívül hagyása téves következtetésekhez
+vezethet.
+
+**Ajánlott források:**
+
+- [D’Alfonso: AI in Mental Health](https://people.eng.unimelb.edu.au/dalfonso/articles/AI_in_mental_health.pdf)
+- [Artificial Intelligence in Positive Mental Health: A Narrative Review](https://pmc.ncbi.nlm.nih.gov/articles/PMC10982476/)
+
+---
+
+### 35. Predikció, magyarázat és okság {.unnumbered}
+
+A **prediktív modell** célja, hogy új, korábban nem látott esetek kimenetelét
+pontosan jelezze előre. A **magyarázó modell** elméleti összefüggéseket kíván
+értelmezni, míg az **oksági következtetés** arra kérdez rá, mi történne egy
+beavatkozás vagy feltétel megváltoztatása esetén. A magas prediktív pontosság
+önmagában nem bizonyít oksági kapcsolatot. [web:288][web:297]
+
+**Pszichológiai jelentőség:** Egy modell pontosan előre jelezheti a depressziós
+tüneteket anélkül, hogy azonosítaná azok okait. Az előrejelzés, az elméleti
+magyarázat és a beavatkozási döntés ezért eltérő kutatási feladat.
+
+**Ajánlott források:**
+
+- [Yarkoni és Westfall: Choosing Prediction Over Explanation in Psychology](https://pubmed.ncbi.nlm.nih.gov/28841086/)
+- [Stachl és mtsai.: Personality Research and Assessment in the Era of Machine Learning](https://epub.ub.uni-muenchen.de/75441/1/European%20J%20of%20Personality%20-%202020%20-%20Stachl%20-%20Personality%20Research%20and%20Assessment%20in%20the%20Era%20of%20Machine%20Learning.pdf)
+
+---
+
+## Rövid ellenőrzőlista {.unnumbered}
+
+Egy pszichológiai célú MI-rendszer értékelésekor legalább a következőket
+érdemes megvizsgálni:
+
+1. Pontosan milyen pszichológiai konstruktumot és hogyan operacionalizál?
+2. Milyen populációból és milyen módon gyűjtötték a tanítóadatokat?
+3. Független tesztmintán és külső populáción is validálták-e?
+4. Milyen a szenzitivitása, specificitása és hibaaránya az egyes alcsoportokban?
+5. Összekeverik-e a prediktív pontosságot az oksági vagy klinikai érvényességgel?
+6. Értelmezhető és ellenőrizhető-e az eredmény?
+7. Milyen adatvédelmi, méltányossági és biztonsági kockázatai vannak?
+8. Ki felel a döntésért, és van-e érdemi emberi felügyelet?
+9. Hogyan kezelik a bizonytalanságot, a téves válaszokat és a modell időbeli romlását?
+10. A rendszer támogatja vagy indokolatlanul helyettesíti az emberi szakértelmet?

@@ -11,18 +11,35 @@ book:
     - index.qmd
     - diasor.qmd
     - digit.qmd
+    - alapfogalmak.qmd
     - chatgpt.qmd
+    - gemini_notebook.qmd
+    - felelos_mi.qmd
+    - references.qmd
+  appendices:
+    - kiseloadas.qmd
     - gyakorlatok.qmd
     - linkek.qmd
-    - references.qmd
-
+    - video_magyarazat.qmd
+  
 bibliography: references.bib
 
 format:
   html:
+    css: css/style.css
+    cover-image: cover.png
     theme:
-      - cosmo
-      - brand
+      light: [cosmo, brand]
+      dark: [darkly, brand]
   pdf:
     documentclass: scrreprt
 
+
+published-title: "Utolsó módosítás dátuma"
+author-title: "Szerző"
+lang: hu
+toc-title: "Tartalomjegyzék"
+language:
+  section-title-appendices: "Függelék"
+crossref:
+  appendix-title: "Függelék"

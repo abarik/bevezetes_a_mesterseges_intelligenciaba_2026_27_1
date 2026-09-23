@@ -1,0 +1,84 @@
+# Fogalmak videóhoz 1.
+
+Néhány MI fogalom, hogy értelmezni tudjuk az MI-ről szóló következő ismertetőt:
+
+- [Az OpenAI belépett az AGI-érába, az iskolák még csak most barátkoznak az AI-használattal](https://www.youtube.com/watch?v=qyihhjN-n7A){target="_blank"}
+
+## 1. Az alapok {.unnumbered}
+
+**Mesterséges intelligencia (MI, AI).** Olyan számítógépes rendszerek gyűjtőneve, amelyek például szöveget értelmeznek, képet elemeznek, előrejelzést készítenek vagy feladatokat oldanak meg. Az „MI” ezért nem egyetlen technológia és nem egyetlen intelligenciaszint.
+
+**Gépi tanulás és mélytanulás.** Gépi tanuláskor a rendszer példákból tanul mintázatokat, ahelyett hogy minden döntési szabályát külön megírnánk. A mélytanulás ennek neurális hálózatokra épülő ága; a mai nagy generatív modellek jelentős része ide tartozik.
+
+**Generatív MI.** Új szöveget, képet, hangot, videót vagy kódot állít elő a bemeneti kérés és a tanult mintázatok alapján. Az eredmény lehet hasznos és meggyőző akkor is, ha egyes állításai hibásak.
+
+**Nagy nyelvi modell (LLM).** Nagy mennyiségű adaton tanított modell, amely a szöveg összefüggéseit használva állít elő választ. Képes magyarázni, összefoglalni és érvelési feladatokban segíteni, de válaszát továbbra is ellenőrizni kell.
+
+**Prompt és kontextus.** A prompt a felhasználó feladata vagy utasítása. A kontextus az a szöveg, dokumentum és egyéb információ, amelyet a modell az adott válasz készítésekor elérhet. Ha egy forrás nincs a kontextusában és nem keres rá, könnyen pontatlanul idézheti.
+
+**Multimodális modell.** Többféle adatot, például szöveget, képet, hangot és videót kezel. A multimodalitás önmagában nem jelenti, hogy mindegyik modalitásban egyformán megbízható.
+
+**MI-ügynök és számítógép-használat.** Az ügynök több lépésen át dolgozik egy célon: információt kereshet, eszközt hívhat, fájlt szerkeszthet vagy kezelőfelületen kattinthat. Minél több hozzáférést és önállóságot kap, annál fontosabb a jogosultságok korlátozása, a műveletek naplózása és az emberi ellenőrzés. Az OpenAI a GPT‑6 Astránál különösen a számítógép- és böngészőhasználat fejlődését emeli ki. [OpenAI: GPT‑6 Astra](https://openai.com/index/gpt-6-astra/)
+
+**Skálázás és számítási kapacitás.** A fejlesztők több adatot, számítást és tanítási módszert használhatnak a teljesítmény javítására. A számítási kapacitás jellemzően chipektől, adatközpontoktól, energiától és szakértelemtől függ. A nagyobb méret önmagában nem oldja meg az összes megbízhatósági vagy biztonsági problémát.
+
+## 2. GPT‑6 Astra, AGI és a benchmarkok {.unnumbered}
+
+**GPT‑6 Astra.** Az OpenAI által bejelentett modell. A vállalat erős eredményekről számol be számítógép-használatban, tudományos és más összetett feladatokban. A bemutatott Blender-, játékfejlesztési és hasonló példák *bemutatók*: azt jelzik, hogy az adott munkafolyamat megvalósítható volt, nem azt, hogy minden hasonló feladat hibátlanul elvégezhető. [OpenAI: bejelentés és eredménytábla](https://openai.com/index/gpt-6-astra/)
+
+**Mesterséges általános intelligencia (AGI).** Olyan MI lehetséges elnevezése, amely sokféle, új szellemi feladathoz széles körben tud alkalmazkodni. Nincs mindenki által elfogadott mérési küszöb: a definíció és az „elértük-e” állítás vitatott. A megadott szöveg Greg Brockman személyes AGI-minősítését említi; ezt nem szabad egy általánosan elfogadott tudományos megállapítással azonosítani. A magas benchmarkpontszám sem bizonyítja önmagában az AGI-t.
+
+**Benchmark.** Meghatározott feladatokból álló teszt, amellyel modelleket hasonlítanak össze. Értelmezéséhez tudni kell, *melyik feladatsoron*, *milyen eszközökkel*, *mennyi idővel és költséggel*, valamint *milyen futtatási beállításokkal* született a pontszám. Egy teszt eredménye nem általános megbízhatósági mutató.
+
+**ARC‑AGI‑3.** Új, interaktív környezetekben történő tanulást és feladatmegoldást vizsgáló benchmark. A GPT‑6 Astra **99,9%-os** eredménye a benchmark készítője szerint egy „Provider Adapter” nevű futtatási környezetben született. Ugyanott a **szabványos környezetben 62,7%** volt a legjobb közölt eredmény; a két számot ezért nem szabad feltétel nélkül felcserélni. A benchmarkon nyújtott kiváló teljesítmény nem igazolja, hogy a modell minden új valós helyzetben ugyanilyen sikeres. [ARC Prize: Astra-elemzés, „Key Takeaways” és „Astra Results”](https://arcprize.org/blog/astra); [OpenAI: „Abstract reasoning” és 1. lábjegyzet](https://openai.com/index/gpt-6-astra/)
+
+**ARC‑AGI‑4 és „169 pont”.** A megadott összefoglaló ezt az eredményt említi, de a megvizsgált hivatalos Astra-eredménytáblában az ARC‑AGI‑1, ‑2 és ‑3 szerepel. A „169 pont” mérési skálája és elsődleges forrása nélkül ez az állítás nem értelmezhető megbízható benchmarkadatként. [OpenAI: „Abstract reasoning”](https://openai.com/index/gpt-6-astra/); [ARC Prize eredmények](https://arcprize.org/results)
+
+**Hallucináció.** Amikor a modell valószerű, de téves vagy alá nem támasztott állítást közöl: például kitalál egy tanulmányt vagy pontatlan számot ad. Az OpenAI egy *saját belső tesztjén* az Astra esetében 4,2%-ot, a GPT‑5.6 Solnál 12,2%-ot közöl. Ez nem azt jelenti, hogy az Astra válaszainak általában 4,2%-a hibás; a szám az adott teszt feltételeihez kötött. [OpenAI: „Internal hallucination benchmark”](https://openai.com/index/gpt-6-astra/)
+
+## 3. Biztonság és emberi kontroll {.unnumbered}
+
+**Alignment – célokhoz és értékekhez igazodás.** Annak kutatása, hogyan kövesse a rendszer a jogos utasításokat, és hogyan viselkedjen elfogadhatóan új, kétértelmű vagy veszélyes helyzetekben is. Jakob Pachocki megkülönbözteti a konkrét cél követését és az általánosabb értékek szerinti viselkedést. Írása szerint a fejlődés ellenére egyik labor sem oldotta meg az igazodás és a felügyelet kérdését olyan mértékben, amely korlátlanul gyors fejlesztést tenne felelőssé. [Jakob Pachocki: „An Alien Mind”, „Teaching machines to love” és záró rész](https://openai.com/index/an-alien-mind/)
+
+**Felügyelet, kontrollvesztés és incidens.** A felügyelet annak ellenőrzése, mit tervez és tesz egy ügynök; kontrollvesztésről akkor beszélünk, ha a rendszer a kijelölt határokon túl cselekszik, és ezt nem sikerül időben megelőzni vagy megállítani. A [Hugging Face 2026. júliusi incidensközlése](https://huggingface.co/blog/security-incident-july-2026) és az [OpenAI utólagos elemzése](https://openai.com/index/hugging-face-incident-and-the-road-ahead/) konkrét esetek megértéséhez használható. A videóösszefoglalóban szereplő „júliusban több mint 300 incidens” állítást nem sikerült ezekből az elsődleges forrásokból igazolni; nem érdemes ellenőrzött incidensszámként továbbadni.
+
+**Rekurzív önfejlesztés.** Az a lehetőség, hogy egy MI-rendszer részt vesz újabb MI-rendszerek kutatásában vagy fejlesztésében, és az eredmény ezt a folyamatot tovább gyorsítja. Pachocki szerint a jelenlegi fejlődési irány *elvezethet* ehhez; a várakozás nem azonos annak bizonyításával, hogy egy rendszer ma már korlátlanul fejleszti önmagát. [Jakob Pachocki: „An Alien Mind”, „Pacing RSI”](https://openai.com/index/an-alien-mind/)
+
+## 4. Politika, jog és gazdaság {.unnumbered}
+
+**MI-szuverenitás.** Egy ország vagy régió képessége arra, hogy az MI-hez szükséges infrastruktúráról, adatok kezeléséről, szakértelemről és alkalmazási szabályokról érdemben dönthessen. A chipgyártás, robotika és gyógyszerkutatás különböző stratégiai területek; ezek fejlesztése nem feltételezi, hogy az adott régió készíti a világ legnagyobb általános modelljét.
+
+**Fair use – az amerikai szerzői jog egyik korlátja.** Bizonyos körülmények között lehetővé teheti védett mű felhasználását engedély nélkül, de az értékelés az adott esettől függ. A Fehér Ház 2026-os szakpolitikai ajánlása az MI-tanítást megengedhetőnek tartó kormányzati álláspont mellett kifejezetten a bíróságokra bízná annak eldöntését, hogy az adott felhasználás fair use-e. Ezért pontatlan volna kijelenteni, hogy *minden* szerzői joggal védett anyag MI-tanításhoz szabadon felhasználható. [Fehér Ház: *National Policy Framework*, III. rész](https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf); [U.S. Copyright Office: *Generative AI Training Report*, fair use elemzés](https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-3-Generative-AI-Training-Report-Pre-Publication-Version.pdf)
+
+**EU AI Act és MI-műveltség.** Az EU kockázatalapú MI-szabályozása. Oktatási szempontból különösen fontos az MI-műveltség: az érintetteknek érteniük kell az alkalmazott rendszer lehetőségeit, korlátait és használatának körülményeit. Az aktuális kötelezettségeket és határidőket mindig az EU hivatalos tájékoztatóján érdemes ellenőrizni. [Európai Bizottság: „AI talent, skills and literacy”, az AI Act 4. cikkének ismertetése](https://digital-strategy.ec.europa.eu/en/policies/ai-talent-skills-and-literacy)
+
+**Munkaerőpiaci hatás.** Az MI egyszerre alakíthat át meglévő feladatokat, hozhat létre új munkaköröket és szoríthat vissza másokat. A videóban szereplő „1 millió új állás kontra 200 000 elbocsátás” számokhoz nincs megadva időszak, földrajzi kör, definíció vagy elsődleges módszertan. Ezekből nem számítható megbízható „nettó MI-munkahelyegyenleg”.
+
+## 5. MI az oktatásban {.unnumbered}
+
+**MI-műveltség.** Annak gyakorlati tudása, hogy mikor hasznos az MI, mikor tévedhet, hogyan ellenőrizzük a forrásait, és miként védjük az adatokat. Pszichológia BA-hallgatónál ide tartozik például egy MI által ajánlott kutatási hivatkozás, mérőeszköz vagy statisztikai értelmezés visszakeresése az eredeti szakirodalomban.
+
+**Kognitív adósság.** Annak leírására használt kifejezés, amikor a feladat kiszervezése rövid távon gyorsítja a munkát, de a tanuló kevesebbet gyakorolja a később önállóan szükséges gondolkodási lépéseket. Egy MIT Media Labhoz kapcsolódó, **54 résztvevővel** végzett esszéírási vizsgálat ilyen kockázatra utaló eredményeket közölt. Ebből nem következik, hogy minden MI-használat rontja a tanulást: számít a feladat, a használat módja és az, hogy utána mérik-e az önálló tudást. [Kosmyna és munkatársai: „Your Brain on ChatGPT”, absztrakt és kutatási hivatkozás](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
+
+**Felmérési arányok értelmezése.** A Pew felmérésében az amerikai **13–17 évesek 64%-a** számolt be chatbot-használatról, **54%-uk** pedig arról, hogy használt chatbotot iskolai munkához. Az 54% *nem* azt jelenti, hogy ennyien nélkülözhetetlennek tartják a chatbotot. Az OECD PISA 2025 magyar országismertetőjében **37%** azok aránya, akik legalább hetente használtak MI-chatbotot a tanulás segítésére, szemben a **46%-os OECD-átlaggal**. A két kutatás eltérő népességet és kérdést vizsgált. [Pew Research Center: „How Teens Use and View AI”, módszertan és eredmények](https://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/); [OECD: *PISA 2025 Results*, magyar országismertető, MI-használati rész](https://www.oecd.org/en/publications/pisa-2025-results-volume-i-country-notes_2d4ff9ea-en/hungary_c8b1c5e7-en.html)
+
+**Szövegértés és kritikai értékelés.** Az MI-válasz használatához különbséget kell tudni tenni állítás és bizonyíték, tény és vélemény, valamint eredeti forrás és gépi összefoglaló között. Az OECD hangsúlyozza ezek jelentőségét. A videó „a magyar diákok 60%-a nem éri el az MI-használathoz szükséges szintet” mondatához azonban nincs megnevezve olyan mérési küszöb, amelyből ez a következtetés ellenőrizhető lenne. [OECD: „PISA findings on artificial intelligence use, reading skills and learning”](https://www.oecd.org/en/blogs/2026/09/pisa-findings-on-artificial-intelligence-use-reading-skills-and-learning.html)
+
+**Tanári útmutatás.** A 18%-os adat a Gallup 2026-os, **amerikai közoktatási tanárokra** vonatkozó felméréséből származik: ennyien jelezték, hogy hivatalos útmutatást kaptak munkahelyi MI-használatukhoz. Nem világméretű és nem magyar arány. [Gallup: „Most Teachers Receive No Formal Guidance on AI Use”, módszertan](https://news.gallup.com/poll/710534/teachers-receive-no-formal-guidance.aspx)
+
+**New York-i moratórium.** New York *városa* a 2026–2027-es tanévre egyéves moratóriumot vezetett be a tanulóknak szánt generatív MI-re a **2-K–8. évfolyamon**, kivételekkel. A középiskolában MI-műveltségi foglalkozásokat és korlátozott kísérleteket terveznek. Ez pontosabb leírás, mint az általános „New Yorkban 4–14 évesek számára teljes tilalom” állítás. [New York City polgármesteri hivatalának közleménye, 2026. szeptember 2.](https://www.nyc.gov/mayors-office/news/2026/09/mayor-mamdani-and-chancellor-samuels-put-students-first-with-nat)
+
+**Szókratészi tanulás és önálló alkotás.** A szókratészi módszerben a tanár vagy egy eszköz kérdésekkel segít feltárni a tanuló érvelését. Oktatási MI esetén hasznos kérés lehet: „Ne írd meg helyettem a választ; kérdésekkel segíts ellenőrizni az érveimet.” Az önálló olvasás, fogalmazás, számolás és hibajavítás lehetőséget ad arra, hogy a tanuló tényleges tudását is megfigyeljük.
+
+## 6. A videóban említett eszközök {.unnumbered}
+
+**Forrásalapú asszisztens és RAG.** A *retrieval-augmented generation* (RAG) során a rendszer előbb dokumentumokból keres releváns részleteket, majd ezek felhasználásával válaszol. A forráshivatkozás segíti az ellenőrzést, de nem garantálja, hogy a válasz helyes: meg kell nézni, valóban alátámasztja-e a jelölt rész az állítást.
+
+**Gemini Notebook, korábbi nevén NotebookLM.** A Google dokumentumokra épülő tanulási és kutatási eszköze; többek között összefoglalók és hangos áttekintések készítésére szolgál. Tudományos munkában a készített összefoglaló helyett a feltöltött eredeti forrást kell idézni. [Google: „NotebookLM is now Gemini Notebook”](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/)
+
+**Tekla.** Az Oktatási Hivatal tesztelés alatt álló, a Nemzeti Köznevelési Portál tananyagára épülő digitális pedagógiai asszisztense. A hivatal **43 900 tankönyvi szekciót** említ. A zárt forráskör csökkentheti az ellenőrizetlen külső források használatát, de a forrásra korlátozásból önmagában nem következik, hogy minden válasz tévedésmentes. [Oktatási Hivatal: „Tekla – digitális pedagógiai asszisztens”, 2026. május 18.](https://www.oktatas.hu/tekla_digitalis_pedagogiai_asszisztens?printMode=true)
+
+**Hugging Face és az NVIDIA ügylete.** A Hugging Face MI-modellek, adatkészletek és fejlesztői munkák platformja. Az NVIDIA 2026. szeptemberi közlése szerint **megállapodott a felvásárlásáról**, körülbelül 12,93 milliárd dollárért; a „megállapodott” és a „lezárta a felvásárlást” különböző állapot. A Hugging Face felületén található közösségi bejegyzés önmagában nem vállalati közlemény. [NVIDIA: felvásárlási bejelentés, 2026. szeptember 3.](https://blogs.nvidia.com/blog/nvidia-hugging-face/)
+
+**Világmodell és térbeli intelligencia.** A világmodell térbeli vagy időbeli összefüggéseket képes reprezentálni, így például új nézőpontból ábrázolhat egy jelenetet. A World Labs **Atlas** modellje képekből térbeli rekonstrukciót, valamint képet, videót és 3D kimenetet is készíthet. Az egyetlen fotón nem látható részeket azonban a modell *elképzeli*; a hihető 3D jelenet nem azonos az eredeti helyszín hiteles másolatával. [World Labs: „Atlas: A World Model for Spatial Intelligence”, különösen „Spatial Reconstruction”](https://www.worldlabs.ai/blog/atlas)
+

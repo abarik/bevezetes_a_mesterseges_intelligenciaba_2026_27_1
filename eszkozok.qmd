@@ -1,0 +1,486 @@
+# MI-eszközök pszichológia BA-hallgatóknak és kutatóknak
+
+*Jelen összefoglaló a Perplexity AI segítségével készült.*
+
+## Mire való ez az áttekintés?
+
+A jelenlegi MI-eszközök nem egyetlen kategóriába tartoznak: másra való egy általános chatbot, egy forrásokra támaszkodó kutatási asszisztens, egy irodalomszűrő rendszer, egy kódolási segéd vagy egy autonómabb ágens. Pszichológia BA-szinten a leghasznosabb megközelítés ezért nem az, hogy "melyik a legjobb MI?", hanem az, hogy **melyik munkafázishoz milyen eszköz illik, milyen bizonyítékból dolgozik, és hogyan ellenőrizhető az eredménye**.
+
+A katalógus 2026. szeptemberi állapotot tükröz. A funkciók, ingyenes keretek, előfizetések és intézményi hozzáférések gyorsan változnak; használat előtt mindig ellenőrizni kell az aktuális szolgáltatási és adatkezelési feltételeket.
+
+## Eszközcsoportok definíciói
+
+### MI-modell
+
+Az MI-modell adatokból tanult matematikai rendszer, amely bemenetekből például szöveget, képet, előrejelzést vagy ajánlást állít elő. A modell önmagában nem feltétlenül felhasználói termék: ugyanaz a modell több különböző alkalmazás, chatbot vagy ágens "motorja" lehet.
+
+### Generatív MI
+
+A generatív MI a tanult adatszerkezetekhez hasonló, új szintetikus tartalmat — például szöveget, képet, hangot, videót vagy kódot — hoz létre. Kutatási használatban fontos, hogy a nyelvileg meggyőző kimenet nem azonos az igaz, ellenőrzött vagy módszertanilag helyes eredménnyel.[^1]
+
+### Chatbot
+
+A chatbot beszélgetéses felületen válaszol a felhasználó üzeneteire. Használható fogalommagyarázatra, ötletelésre, szöveg átdolgozására és egyszerű információkeresésre, de alapformájában többnyire reaktív: a felhasználó minden lépésnél új utasítást ad. A brit kormány MI-fogalomtára a chatbotokat összefoglalásra, keresésre és írásra használható beszélgetéses asszisztensekként írja le.[^2]
+
+### MI-asszisztens vagy copilot
+
+Az MI-asszisztens egy adott munkát emberrel együtt végez: javaslatot tesz, magyaráz, kódot vagy szöveget ír, de a felhasználó irányítja és hagyja jóvá a lépéseket. A "copilot" elnevezés ezt az együttműködést hangsúlyozza; például a GitHub Copilot kódot javasol, kódbázist magyaráz és változtatásokat készít elő, miközben a felhasználó felel a felülvizsgálatért.[^3]
+
+### MI-ágens
+
+Az MI-ágens olyan szoftverrendszer, amely egy magasabb szintű célból részfeladatokat képez, tervez, információt gyűjt, eszközöket használ, műveleteket hajt végre, majd az eredmények alapján módosíthatja a következő lépést. Az ágenseket a nagyobb autonómia, a tervezés, az emlékezet és a külső eszközök használata különíti el az egyszerű chatbotoktól. Kutatásban ilyen lehet egy "deep research" szolgáltatás vagy egy adatelemző ágens, amely tervet készít, kereséseket futtat, kódot hajt végre és jelentést állít össze.[^4][^5][^6][^7][^8]
+
+### Kereső- és válaszmotor
+
+A keresőmotor dokumentumokat talál; a MI-alapú válaszmotor ezeket összegzi, és ideális esetben állításonként megmutatja a forrást is. A Perplexity például élő webes keresésből készít hivatkozott választ, míg a Consensus a tudományos szakirodalomra szakosodott. Ezek jó kiindulópontok, de nem helyettesítik az eredeti cikk elolvasását vagy a reprodukálható adatbázis-keresést.[^9][^10]
+
+### Forrásalapú asszisztens
+
+A forrásalapú vagy "grounded" asszisztens elsősorban a felhasználó által megadott dokumentumokból válaszol. Ez csökkentheti a témától elszakadó állításokat, és lehetővé teszi a válasz visszavezetését a forrásszöveghez; ugyanakkor a rendszer továbbra is félreértheti a dokumentumot. A Gemini Notebook például feltöltött forrásokból készít hivatkozott válaszokat, tanulási segédleteket és összefoglalókat.[^11]
+
+### RAG-rendszer
+
+A visszakereséssel támogatott generálás (retrieval-augmented generation, RAG) először releváns részleteket keres egy dokumentumgyűjteményben, majd ezekből generál választ. Ez nem "megtanítja" a modellt a dokumentumokra, hanem válaszadáskor biztosít számára ellenőrizhető kontextust. A RAG különösen hasznos cikkgyűjtemények, kutatási jegyzetek, interjúátiratok és intézményi dokumentumok feldolgozásában.
+
+### Specializált MI-eszköz
+
+A specializált eszköz egy szűk munkafázisra optimalizált rendszer: például szakirodalom-szűrésre, transzkripcióra, kvalitatív kódolásra, fordításra vagy prezentációkészítésre. Kutatási munkában gyakran megbízhatóbban illeszkedik a folyamathoz, mint egy általános chatbot, mert a feladat, a bemenet, a kimenet és az ellenőrzési pontok világosabban meghatározottak.
+
+## Gyors választási térkép
+
+| Feladat | Elsődleges eszköztípus | Jó kiindulópont | Emberi ellenőrzés |
+|---|---|---|---|
+| Fogalom megértése, ötletelés | Chatbot/asszisztens | ChatGPT, Claude, Gemini | Tankönyvvel vagy eredeti forrással ellenőrizni |
+| Aktuális webes tájékozódás | Válaszmotor/deep research | Perplexity, ChatGPT Deep Research, Gemini Deep Research | Minden lényeges hivatkozást megnyitni |
+| Tudományos cikkek felfedezése | Tudományos kereső | Elicit, Consensus, Semantic Scholar | Bibliográfiai adatokat és teljes szöveget ellenőrizni |
+| Irodalmi háló feltérképezése | Citációs gráf | ResearchRabbit, Scite | Kulcsszavas adatbázis-kereséssel kiegészíteni |
+| Szisztematikus szűrés | Aktív tanulás | ASReview | Protokoll, kettős szűrés és stopping rule szükséges |
+| Saját PDF-ek tanulása | Forrásalapú asszisztens | Gemini Notebook, Claude Projects | Visszalépni az idézett oldalakhoz |
+| Kvantitatív adatelemzés | Kódoló/adatelemző asszisztens | ChatGPT Data Analysis, Colab, GitHub Copilot | Kód, feltételek és output reprodukálása |
+| Kódolás nélküli ML-tanulás | Vizuális adatelemző | Orange Data Mining | Helyes adatfelosztás és mérőszámok ellenőrzése |
+| Interjúk átírása | Beszédfelismerő | Whisper, Otter | Név, szám, szakkifejezés és beszélő ellenőrzése |
+| Kvalitatív elemzés | CAQDAS + MI | MAXQDA AI Assist | Kóddefiníciók és értelmezés kutatói felülvizsgálata |
+| Nyelvi javítás, fordítás | Nyelvi MI | DeepL, Grammarly | Jelentés, terminológia és hivatkozások ellenőrzése |
+| Prezentáció és ábra | Kreatív MI | Canva, Gamma, Napkin AI | Tartalmi és vizuális pontosság ellenőrzése |
+
+## Általános asszisztensek
+
+### [ChatGPT](https://chatgpt.com/)
+
+**Típus:** multimodális chatbot, fájlelemző és kutatási asszisztens.
+
+**Mire használható?** Fogalmak magyarázatára, kutatási kérdések pontosítására, kérdőívtételek kritikai átnézésére, tanulókártyákra, PDF-ek és táblázatok feldolgozására, Python-alapú adatelemzésre, táblák és ábrák készítésére. A fájlfeltöltés dokumentumok összegzését, összevetését és adatkinyerését támogatja; a Data Analysis környezet strukturált fájlokon Python-kódot is futtathat.[^12][^13][^14]
+
+**Kutatási segítség:** A Deep Research több online forrásból dokumentált, hivatkozott jelentést készíthet; a kutatási terv felülvizsgálható, a forráskör pedig webre, feltöltött fájlokra vagy kapcsolt szolgáltatásokra korlátozható. Hasznos lehet egy tématerület kezdeti feltérképezésére vagy egymásnak ellentmondó álláspontok összegyűjtésére.[^15]
+
+**Korlát:** Nem szabad a generált hivatkozásokat, statisztikai eredményeket vagy kódot ellenőrzés nélkül átvenni. Az elemzés akkor auditálható, ha a hallgató elmenti a bemeneti adatot, a használt promptot, a létrehozott kódot és a végleges outputot.
+
+### [Claude](https://claude.ai/)
+
+**Típus:** általános chatbot, dokumentumasszisztens és alkotói munkatér.
+
+**Mire használható?** Hosszú szövegek strukturálására, tanulmányok összevetésére, érvelési hibák keresésére, interjúvázlatok vagy kódkönyvek első változatának kritikai áttekintésére. A Projects funkció dokumentumokat és állandó utasításokat szervez közös kontextusba, az Artifacts pedig külön szerkeszthető dokumentumokat, diagramokat, kódot és webes prototípusokat jelenít meg.[^16]
+
+**Kutatási segítség:** Létrehozható például egy „Kutatásmódszertan” projekt a kutatási tervvel, változólistával, elemzési tervvel és stílusutasításokkal. Ez nem teszi a rendszert kutatási társszerzővé: a konstrukciók, a döntések és az interpretáció felelőssége a kutatóé marad.
+
+### [Gemini](https://gemini.google.com/)
+
+**Típus:** multimodális asszisztens, Google-szolgáltatásokkal integrálható kutatási felület.
+
+**Mire használható?** Ötletelésre, dokumentumok és képek elemzésére, Google Drive-anyagok feldolgozására, egyedi „Gem” asszisztensek létrehozására és webes kutatásra. A Gem állandó utasításokat és feltöltött tudásfájlokat kaphat, így készíthető például APA-stílust ellenőrző vagy módszertani kérdéseket feltevő tanulási segéd.[^17][^18]
+
+**Kutatási segítség:** A Deep Research kutatási tervet készít, Google Searcht, feltöltött fájlokat, Drive-ot, Gmailt vagy Gemini notebookot is használhat, majd hivatkozott jelentést ad, amely Docsba exportálható.[^19]
+
+### [Perplexity](https://www.perplexity.ai/)
+
+**Típus:** hivatkozott webes válaszmotor és research agent.
+
+**Mire használható?** Aktuális források gyors keresésére, fogalmi térkép és kulcsszavak kialakítására, szakpolitikai vagy technológiai fejlemények követésére. A válaszokból közvetlenül megnyithatók az eredeti források; a Research mód többkörös keresésből készít összefoglalót.[^9]
+
+**Kutatási segítség:** Jó „első tájékozódási réteg”, de nem tekinthető önmagában szisztematikus keresésnek. A kutatónak meg kell nyitnia a hivatkozásokat, ellenőriznie kell, hogy ténylegesen alátámasztják-e az állítást, majd dokumentált keresést kell futtatnia releváns bibliográfiai adatbázisokban.[^20]
+
+## Saját források feldolgozása
+
+### [Gemini Notebook](https://notebook.google.com/)
+
+**Típus:** forrásalapú tanulási és kutatási asszisztens.
+
+**Mire használható?** PDF-ek, weboldalak, dokumentumok, videóátiratok és hanganyagok közös feldolgozására; kérdés–válaszra, tanulási útmutatóra, idővonalra, kvízre, gondolattérképre és audio-összefoglalóra. A válaszok a megadott forrásokhoz kötődnek, és kattintható hivatkozásokkal segítik az ellenőrzést.[^11]
+
+**BA-használat:** Egy vizsgatémához feltölthető az előadás, a tankönyvfejezet és néhány kötelező cikk, majd kérhető fogalmi összehasonlítás vagy önellenőrző kérdéssor. Kutatásban cikkcsomag vagy saját projekt-dokumentáció áttekintésére használható, de a forráskorpuszt a felhasználó válogatása torzíthatja.
+
+## Tudományos irodalom keresése
+
+### [Elicit](https://elicit.com/)
+
+**Típus:** tudományos kutatási asszisztens és evidence-synthesis platform.
+
+**Mire használható?** Tanulmányok keresésére, összehasonlító táblák készítésére, adatok kinyerésére, cikkekkel folytatott kérdés–válaszra és vezetett szisztematikus áttekintésre. A Systematic Review munkafolyamat keresést, cím/absztrakt- és teljes szöveges szűrést, adatkinyerést, valamint jelentéskészítést fog össze, miközben a kutató szabályozhatja a bevont cikkeket és mezőket.[^21]
+
+**BA-használat:** Kiváló kutatási kérdések finomítására és egy tématerület gyors áttekintésére. Szisztematikus áttekintésben az Elicit csak a protokoll része lehet: a keresési stratégiát, adatbázisokat, duplikátumszűrést, kizárási okokat és ellenőrzést külön dokumentálni kell.
+
+### [Consensus](https://consensus.app/)
+
+**Típus:** tudományos válaszmotor.
+
+**Mire használható?** Természetes nyelvű kérdés alapján szakirodalom keresésére és a kutatási eredmények hivatkozott összegzésére. Különösen alkalmas olyan kezdeti kérdésekhez, mint „Milyen kapcsolatot találtak az alváshiány és a végrehajtó funkciók között?”, majd a találatok módszertani szűrésére.[^10][^22]
+
+**Korlát:** Az automatikus konszenzus- vagy összefoglaló jelző nem pótolja a populáció, design, mérőeszköz, hatásnagyság és bizonytalanság vizsgálatát. A „hány tanulmány támogatja?” kérdés nem azonos a bizonyíték minőségével.
+
+### [Semantic Scholar](https://www.semanticscholar.org/)
+
+**Típus:** tudományos kereső és MI-támogatott cikkfelfedező.
+
+**Mire használható?** Cikkek, szerzők és hivatkozási kapcsolatok keresésére. A TLDR funkció egy mondatos gépi összegzéssel segíti a relevancia gyors megítélését, de nem helyettesíti az absztrakt és a módszertan elolvasását.[^23]
+
+### [ResearchRabbit](https://www.researchrabbit.ai/)
+
+**Típus:** citációs háló- és irodalomfelfedező.
+
+**Mire használható?** Kiinduló cikkekből kapcsolódó tanulmányok, szerzők, előzmények és későbbi munkák vizuális feltérképezésére. Interaktív térképeken jeleníti meg a cikkek, szerzők és fogalmak kapcsolatait, valamint a felhasználó felfedezési mintáiból személyre szabott ajánlásokat készít.[^24][^25]
+
+**BA-használat:** Segít megtalálni egy elmélet klasszikus és újabb csomópontjait. Mivel a citációs háló a már erősen hivatkozott irányokat emelheti ki, kulcsszavas és adatbázis-alapú kereséssel kell kiegészíteni.
+
+### [Scite](https://scite.ai/)
+
+**Típus:** citációk kontextusát elemző kutatási platform.
+
+**Mire használható?** Megmutatja, milyen szövegkörnyezetben hivatkoznak egy tanulmányra, és a hivatkozást támogató, ellentmondó vagy pusztán említő kategóriába sorolhatja. Használható egy sokat idézett állítás utóéletének, kritikáinak és esetleges visszavonási jelzéseinek vizsgálatára.[^26]
+
+**Korlát:** A gépi citációs kategória nem egyenlő a teljes tanulmány módszertani minősítésével. Az ellentmondás lehet eltérő populáció, operacionalizálás vagy design következménye is.
+
+### [ASReview LAB](https://asreview.nl/)
+
+**Típus:** nyílt forráskódú, aktív tanulásra épülő szakirodalom-szűrő.
+
+**Mire használható?** Nagy cím- és absztrakthalmazok prioritásos szűrésére szisztematikus áttekintésben vagy metaanalízisben. A kutató adja a releváns/nem releváns címkéket, a modell pedig folyamatosan előresorolja a várhatóan releváns rekordokat; ez „researcher-in-the-loop” munkafolyamat.[^27][^28]
+
+**Előny:** Ingyenes, nyílt forráskódú és helyben telepíthető; a döntések és projektek exportálhatók. **Korlát:** Nem keres helyettünk, és nem oldja meg a hibás beválasztási kritériumot. Előre rögzített protokoll, megfelelő kezdőrekordok, stopping rule és lehetőség szerint több bíráló szükséges.[^29][^30]
+
+## Kvantitatív elemzés és kód
+
+### ChatGPT Data Analysis
+
+**Típus:** beszélgetéses, kódfuttatásos adatelemző környezet.
+
+**Mire használható?** CSV- és Excel-fájlok tisztítására, leíró statisztikára, grafikonokra, átalakításokra és Python-alapú elemzésre. A rendszer által írt kód megtekinthető, ami lehetőséget ad az ellenőrzésre.[^13]
+
+**Pszichológiai munkafolyamat:** Kérhető változószótár, hiányzóérték-összesítő, skálapontszám-képzés, megbízhatósági elemzés vagy regressziós vázlat. Az MI-nek azonban nem szabad önállóan eldöntenie az elemzési tervet; ellenőrizni kell a mérési szintet, feltételeket, kódolást, kizárásokat, hatásnagyságot és bizonytalanságot.
+
+### [Google Colab](https://colab.research.google.com/)
+
+**Típus:** felhőalapú notebook és MI-támogatott kódoló/adatelemző környezet.
+
+**Mire használható?** Python-kód, szöveg, képlet, ábra és eredmény egyetlen reprodukálható notebookban tartható. A beépített Gemini természetes nyelvből kódot generálhat, hibát magyarázhat, meglévő kódot alakíthat át, és adatelemzési tervet hajthat végre.[^31][^5]
+
+**BA-használat:** Jó átmenet a menüvezérelt statisztika és a reprodukálható programozás között. A generált kód minden sorát érteni kell; a notebookban rögzíteni érdemes a csomagverziókat, random seedet és az adat-előkészítés lépéseit.
+
+### [GitHub Copilot](https://github.com/features/copilot)
+
+**Típus:** kódolási copilot és kódoló ágens.
+
+**Mire használható?** R-, Python-, JavaScript- vagy más kód írására, magyarázatára, tesztelésére és javítására. Asszisztív módban javaslatot tesz; ágensmódban több fájlt módosíthat, teszteket futtath és pull requestet készíthet, amelyet embernek kell jóváhagynia.[^32][^3]
+
+**Pszichológiai kutatás:** Segíthet reproducibilis elemzési projekt, online kísérlet, adatellenőrző szkript vagy dokumentáció készítésében. A kód működése és statisztikai érvényessége két külön kérdés: a hibamentesen futó program is megvalósíthat rossz modellt.
+
+### [Orange Data Mining](https://orangedatamining.com/)
+
+**Típus:** vizuális, alacsony kódigényű gépi tanulási és adatvizualizációs eszköz.
+
+**Mire használható?** Adatbetöltő, előfeldolgozó, modellező és kiértékelő „widgetek” összekapcsolásával osztályozás, regresszió, klaszterezés és vizualizáció építhető kódírás nélkül. Többek között döntési fákat, random forestet, logisztikus regressziót, neurális hálót, confusion matrixot és ROC-elemzést kínál.[^33][^34]
+
+**BA-használat:** Kifejezetten jó a gépi tanulás alapfogalmainak szemléltetésére. Oktatási egyszerűsége ellenére ugyanúgy kerülni kell az adatszivárgást, a teszthalmaz többszöri használatát és az accuracy kizárólagos értékelését.
+
+## Kvalitatív kutatás
+
+### [MAXQDA AI Assist](https://www.maxqda.com/products/ai-assist)
+
+**Típus:** kvalitatív adatelemző szoftverbe integrált MI-asszisztens.
+
+**Mire használható?** Dokumentumok és kódolt szegmensek összegzésére, kód- és alkódkategória-javaslatokra, MI-támogatott kódolásra, fordításra, fogalommagyarázatra és a saját adatokkal folytatott kérdés–válaszra. A válaszokat eredeti szövegrészekhez kapcsolódó jelölések kísérhetik, ami támogatja az auditálást.[^35][^36]
+
+**Pszichológiai munkafolyamat:** Az MI adhat alternatív kódcímkéket vagy kereshet eltérő eseteket, de nem helyettesíti a reflexivitást, a kóddefiníciókat, a memóírást és az interpretatív felelősséget. Jó gyakorlat az MI-javaslatok külön jelölése, az elfogadás/elutasítás indoklása és egy manuálisan kódolt részhalmazzal való összevetés.
+
+## Hang és transzkripció
+
+### [OpenAI Whisper](https://github.com/openai/whisper)
+
+**Típus:** nyílt forráskódú automatikus beszédfelismerő modell.
+
+**Mire használható?** Többnyelvű beszéd átírására, nyelvazonosításra és bizonyos modellekkel angolra fordításra. A Whisper nagy, soknyelvű hanganyagon tanult, és a modellkód nyíltan hozzáférhető.[^37][^38]
+
+**Pszichológiai kutatás:** Interjúk és fókuszcsoportok első gépi átiratára alkalmas, különösen helyi futtatással, ha ezt az etikai és informatikai környezet támogatja. A végleges átiratot vissza kell hallgatni; neveket, számokat, negációkat, szaknyelvet, beszélőváltásokat és érzelmi megnyilvánulásokat különösen gondosan kell ellenőrizni.
+
+### [Otter.ai](https://otter.ai/)
+
+**Típus:** felhőalapú meeting- és transzkripciós asszisztens.
+
+**Mire használható?** Valós idejű átírásra, beszélőazonosításra, kereshető jegyzetre, összefoglalóra és teendőlistára. Oktatási megbeszéléseknél és nem érzékeny csoportmunkában kényelmes lehet.[^39][^40]
+
+**Korlát:** Kutatási interjú vagy kliensbeszélgetés feltöltése előtt ellenőrizni kell a hozzájárulást, az intézményi engedélyt, az adattárolás helyét és a szolgáltató adatfelhasználási feltételeit. A kényelmes felhőszolgáltatás nem automatikusan megfelelő érzékeny pszichológiai adatokhoz.
+
+## Írás és nyelv
+
+### [DeepL](https://www.deepl.com/)
+
+**Típus:** gépi fordító és nyelvi írássegéd.
+
+**Mire használható?** Szövegek és dokumentumok fordítására, terminológiai glosszáriumok használatára, valamint nyelvtan, mondatszerkezet, szóválasztás és hangnem javítására.[^41][^42]
+
+**BA-használat:** Segíthet angol absztrakt vagy magyar–angol szaknyelvi vázlat készítésében. Validált mérőeszköz tételeit azonban nem szabad egyszerű gépi fordítással adaptálni: ehhez engedély, szakértői fordítás, visszafordítás vagy más adaptációs eljárás és pszichometriai vizsgálat szükséges.
+
+### [Grammarly](https://www.grammarly.com/)
+
+**Típus:** angol nyelvű írássegéd és hivatkozási asszisztens.
+
+**Mire használható?** Nyelvhelyesség, tömörség, világosság és hangnem javítására, plágiumellenőrzésre, valamint APA-, MLA- és Chicago-hivatkozások formázására. A Citation Finder jelölheti a forrást igénylő állításokat és forrásjavaslatot adhat.[^43][^44][^45]
+
+**Korlát:** A formailag helyesnek látszó hivatkozást is ellenőrizni kell az eredeti dokumentumban és az APA-szabályzatban. A nyelvi simítás nem javítja ki automatikusan a gyenge érvelést vagy a hibás módszertant.
+
+## Prezentáció és vizualizáció
+
+### [Canva](https://www.canva.com/ai-assistant/)
+
+**Típus:** MI-támogatott vizuális tervezőplatform.
+
+**Mire használható?** Prezentációk, poszterek, infografikák, képek és tanulási anyagok első változatának létrehozására. Szöveges leírásból egységes prezentációvázat és vizuális stílust készíthet, valamint képi és szöveges tartalmat alakíthat át.[^46][^47]
+
+**BA-használat:** Kutatási poszter vagy szemináriumi prezentáció vázához hasznos. Az automatikus design nem garantálja a tudományos ábrák pontosságát, ezért a tengelyeket, értékeket, forrásokat, képfeliratokat és licenceket külön ellenőrizni kell.
+
+### [Gamma](https://gamma.app/)
+
+**Típus:** MI-alapú prezentáció-, dokumentum- és weboldalkészítő.
+
+**Mire használható?** Témából, vázlatból vagy feltöltött anyagból szerkeszthető prezentációt készíthet, majd beszélgetéses utasításokkal módosítható a szerkezet, a részletesség és a megjelenés. Az elkészült anyag weben megosztható vagy több formátumba exportálható.[^48][^49]
+
+**BA-használat:** Jó lehet egy már ellenőrzött szakmai vázlat vizuális formába öntésére. Nem célszerű rábízni a szakirodalmi állítások megfogalmazását vagy a hivatkozások létrehozását; a tartalmat előbb kell elkészíteni és ellenőrizni, mint a diát.
+
+### [Napkin AI](https://www.napkin.ai/)
+
+**Típus:** szövegből szerkeszthető vizuális magyarázatot készítő eszköz.
+
+**Mire használható?** Szövegből folyamatábrát, gondolattérképet, infografikát, diagramot vagy prezentációelemet javasol, amely szerkeszthető és PNG-, PDF-, PPT- vagy SVG-formátumba exportálható.[^50]
+
+**BA-használat:** Jól szemléltethető vele egy kutatási folyamat, elméleti modell vagy fogalmi hierarchia. Az ábra azonban nem lehet pusztán „jól kinéző”: ellenőrizni kell, hogy az irányok, kategóriák és okságot sugalló nyilak valóban megfelelnek-e az elméletnek.
+
+## Kérdőív és szöveges válasz
+
+### [Qualtrics](https://www.qualtrics.com/)
+
+**Típus:** online adatfelvételi és élménymenedzsment-platform MI-funkciókkal.
+
+**Mire használható?** Kérdőívek lebonyolítására, nyílt válaszok témáinak és kategóriáinak automatikus feltárására, valamint nagy szöveges visszajelzés-állományok rendezésére. A Qualtrics szövegelemzése nyílt kérdésekből és más szövegforrásokból témákat azonosíthat és kategorizálhat.[^51]
+
+**Korlát:** Az MI által javasolt kérdőívtétel nem validált mérőeszköz. Új tételnél vizsgálni kell a tartalmi érvényességet, érthetőséget, válaszfolyamatot és pszichometriai működést; létező skála módosításához pedig szerzői jogi és adaptációs szempontok is tartoznak.
+
+## Mit ne használjunk diagnózisra?
+
+Az általános chatbotokat, érzelemfelismerő alkalmazásokat, személyiséget „leolvasó” rendszereket és nem validált mentális egészségügyi appokat nem szabad diagnosztikai eszközként kezelni. A klinikai vagy egészségpszichológiai alkalmazáshoz célpopuláción végzett tudományos validáció, megfelelő szakmai kompetencia, tájékozott beleegyezés, adatvédelem, torzításvizsgálat és emberi felügyelet szükséges. Az APA útmutatója szerint az MI használatát közölni kell, a releváns kockázatokat és előnyöket el kell magyarázni, az outputokat kritikusan ellenőrizni kell, és a szakmai felelősség az emberi pszichológusnál marad.[^52][^53][^54]
+
+Az EU AI Act tiltja a biometrikus adatokból történő érzelemkövetkeztetést munkahelyi és oktatási környezetben, az orvosi és biztonsági célú kivételektől eltekintve. Ez különösen fontos pszichológiaoktatásban: arckifejezésből, hangból vagy testtartásból nem szabad hallgatói figyelmet, motivációt vagy érzelmi állapotot automatikusan értékelő rendszert bevezetni.[^55][^56][^57]
+
+## Adatvédelmi döntési szabály
+
+MI-szolgáltatásba csak olyan adat kerüljön, amelynek feldolgozására jogalap, megfelelő tájékoztatás és intézményi engedély van. **Valódi kliensadatot, azonosítható kutatási adatot, nyers interjúhangot, egészségügyi információt vagy vizsgálati jegyzőkönyvet általános fogyasztói chatbotba nem szabad feltölteni.** Az APA külön kiemeli az érzékeny viselkedési-egészségügyi adatok adatvédelmi és biztonsági kockázatait, valamint a célhoz illő biztonsági megfelelés szükségességét.[^54]
+
+Használat előtt legalább ezeket kell ellenőrizni:
+
+- Ki az adatkezelő és adatfeldolgozó?
+- Hol tárolják és dolgozzák fel az adatot?
+- Felhasználják-e modellfejlesztésre vagy emberi ellenőrzésre?
+- Mennyi ideig őrzik meg, és törölhető-e?
+- Van-e intézményi szerződés, adatfeldolgozási megállapodás és hozzáférés-szabályozás?
+- Engedélyezi-e az etikai kérelem és a résztvevői tájékoztató ezt a konkrét feldolgozást?
+- Elvégezhető-e a feladat anonimizált, pszeudonimizált vagy szintetikus oktatási adaton?
+
+## Tudományos ellenőrzőlista
+
+### Forrásellenőrzés
+
+- Nyisd meg az összes fontos hivatkozást; ne elégedj meg a link vagy DOI puszta létezésével.
+- Ellenőrizd, hogy a forrás valóban alátámasztja-e a hozzá kapcsolt állítást.
+- Keresd meg az eredeti tanulmányt a másodlagos összefoglaló helyett.
+- Vizsgáld meg a populációt, mintaméretet, design-t, mérőeszközt, hatásnagyságot és bizonytalanságot.
+- Nézd meg, van-e korrekció, visszavonás vagy későbbi ellentmondó bizonyíték.
+
+### Elemzés-ellenőrzés
+
+- Az elemzési tervet lehetőleg az MI használata előtt rögzítsd.
+- Őrizd meg a nyers adatot változatlanul, és dolgozz másolaton.
+- Mentsd a promptot, a modell/szolgáltatás nevét, a dátumot, a kódot és az outputot.
+- Futtasd újra az elemzést reprodukálható környezetben.
+- Ellenőrizd a skálaképzést, hiányzó értékeket, kizárásokat, feltételeket és érzékenységi elemzéseket.
+- Ne válassz eredményt csak azért, mert az MI azt találta „érdekesnek”.
+
+### Írás-ellenőrzés
+
+- Az MI-t ötlet- és visszajelző partnerként használd, ne rejtett szerzőként.
+- Ne adj be olyan mondatot, amelynek jelentését és forrását nem érted.
+- Kövesd az egyetem, oktató és folyóirat MI-használati szabályait.
+- Tüntesd fel az MI használatát, ha azt a helyi szabályzat vagy a publikációs irányelv előírja.
+- Ne használj MI-t adat, idézet, eredmény vagy bibliográfiai tétel kitalálására.
+
+## Ajánlott BA-munkafolyamat
+
+### Szakdolgozati témakeresés
+
+1. Általános chatbot segítségével készíts fogalmi térképet és szinonimalistát.
+2. Perplexity vagy egy deep research eszköz segítségével azonosíts aktuális vitákat és kulcsforrásokat.
+3. Elicit, Consensus és Semantic Scholar segítségével keress tudományos tanulmányokat.
+4. ResearchRabbit vagy Scite segítségével térképezd fel a citációs környezetet.
+5. Végezz dokumentált keresést a könyvtár által biztosított szakadatbázisokban.
+6. A bevont cikkeket NotebookLM-ben vagy forrásalapú projektben hasonlítsd össze, de minden adatot ellenőrizz az eredeti PDF-ben.
+
+### Empirikus kutatás
+
+1. A kutatási kérdést, hipotézist, operacionalizálást és elemzési tervet emberi szakmai döntéssel rögzítsd.
+2. A chatbotot kritikus kérdések generálására használd: alternatív magyarázatok, konfúzorok, mérési problémák.
+3. Az adatfelvételnél csak intézményileg jóváhagyott, adatvédelmileg megfelelő rendszert használj.
+4. Az elemzést Colabban, R-ben vagy Pythonban reprodukálható kóddal végezd; a copilot által írt kódot soronként vizsgáld át.
+5. A szöveges eredményértelmezést vesd össze a tényleges táblákkal, ábrákkal és modelloutputtal.
+6. A jelentésben dokumentáld az MI szerepét, de a módszertani döntéseket saját érvekkel indokold.
+
+### Kvalitatív kutatás
+
+1. Készíts kutatói pozicionálást, interjúvázlatot és előzetes adatkezelési tervet.
+2. Átirathoz használhatsz helyben futó Whisper-modellt vagy jóváhagyott szolgáltatást, majd manuálisan ellenőrizd.
+3. A kódkönyv első változatát ember készítse vagy ember–MI összevetésben alakítsd ki.
+4. A MAXQDA AI Assist javaslatait hipotézisként kezeld; külön jelöld, melyiket fogadtad el.
+5. Keress negatív eseteket, alternatív értelmezéseket és az MI által figyelmen kívül hagyott kontextust.
+6. Tarts meg audit trailt a promptokról, MI-outputokról és kutatói döntésekről.
+
+## Minimális eszközkészlet
+
+Egy BA-hallgatónak nem kell minden rendszert használnia. Egy átlátható kezdőkészlet lehet:
+
+- **Általános gondolkodási partner:** ChatGPT, Claude vagy Gemini közül egy.
+- **Hivatkozott aktuális keresés:** Perplexity vagy az asszisztens deep research módja.
+- **Tudományos felfedezés:** Elicit vagy Consensus, kiegészítve Semantic Scholarral.
+- **Saját cikkek tanulása:** Gemini Notebook.
+- **Reprodukálható elemzés:** Google Colab, szükség esetén ChatGPT vagy GitHub Copilot segítségével.
+- **Kvalitatív projekt:** MAXQDA AI Assist, ha az intézmény biztosít hozzáférést és az adatkezelés engedélyezett.
+- **Transzkripció:** helyben futó Whisper, ha az adatérzékenység és az informatikai feltételek ezt indokolják.
+- **Prezentáció:** Canva, Gamma vagy Napkin AI, kizárólag ellenőrzött tartalomból.
+
+A legfontosabb kompetencia nem a sok eszköz ismerete, hanem a **feladat–eszköz illesztés, forráskritika, módszertani ellenőrzés, adatvédelem és reprodukálható dokumentálás**. A WHO szerint az MI-vel támogatott egészségkutatás etikai felügyeletének a teljes kutatási életciklusban kezelnie kell az átláthatóság, torzítás, méltányosság, elszámoltathatóság, magánszféra és lehetséges károk kérdéseit.[^58]
+
+---
+
+## References
+
+1. [[PDF] Artificial Intelligence Risk Management Framework: Generative ...](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
+
+2. [Artificial Intelligence (AI) glossary and prompt library](https://analysisfunction.civilservice.gov.uk/ai-hub/ai-glossary/)
+
+3. [About GitHub Copilot](https://docs.github.com/en/copilot/get-started/about-github-copilot) - Understand how GitHub Copilot helps you ship software faster, how it works, and how to get access.
+
+4. [Gemini Deep Research agent | Gemini API | Google AI for Developers](https://ai.google.dev/gemini-api/docs/deep-research) - Deep Research is an agent designed to perform complex, long-running context gathering and synthesis ...
+
+5. [Google Colab](https://research.google.com/colaboratory/faq.html)
+
+6. [Data Cloud Agents: Automating workflows and insights](https://cloud.google.com/use-cases/data-cloud-agents) - Learn how AI agents for data cloud to automate data engineering, streamline data science, and provid...
+
+7. [What are AI agents? Definition, examples, and types](https://cloud.google.com/discover/what-are-ai-agents) - AI agents are software systems that use AI to pursue goals and complete tasks on behalf of users. Le...
+
+8. [Core concepts of AI agents](https://cloud.google.com/resources/core-concepts-ai-agents) - Requirements for scaling a functional agent prototype for production to handle complex demands of gl...
+
+9. [Ways to search](https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work) - See how Perplexity works: it interprets your question, searches the web with AI models like GPT-5 an...
+
+10. [Doctors & Clinicians](https://consensus.app/home/research-organizations/) - Consensus is the AI-powered research platform designed to help the world understand, create and shar...
+
+11. [Notebook LLM: Home - AI - UF Business Library - University of Florida](https://businesslibrary.uflib.ufl.edu/notebook-llm_revised) - Learn the basics and recent features
+
+12. [ChatGPT Capabilities Overview - OpenAI Help Center](https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview) - Learn about ChatGPT's capabilities and features
+
+13. [Data analysis with ChatGPT - OpenAI Help Center](https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt) - Use ChatGPT to inspect uploaded data, create tables and charts, and review code-backed analysis.
+
+14. [File Uploads FAQ - OpenAI Help Center](https://help.openai.com/en/articles/8555545-file-uploads-faq) - File Uploads FAQ
+
+15. [Deep research in ChatGPT](https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt) - All deep research outputs include citations or source links so you can verify the information. Compl...
+
+16. [Collaborate with Claude on Projects](https://www.anthropic.com/news/projects) - Claude Pro and Team users can now organize chats into Projects. Projects bring together internal kno...
+
+17. [Tips for creating custom Gems - Gemini Apps Help](https://support.google.com/gemini/answer/15235603?hl=en)
+
+18. [Use Gems in Gemini Apps - Computer - Google Help](https://support.google.com/gemini/answer/15146780?hl=en&co=GENIE.Platform=Desktop) - You can create and save Gems to customize responses in Gemini Apps to your specific needs. What you ...
+
+19. [Use Deep Research in Gemini Apps - Android - Google Help](https://support.google.com/gemini/answer/15719111?hl=en) - You can conduct in-depth and real-time research on almost any subject with Deep Research in Gemini A...
+
+20. [Perplexity AI for Research: A Practical Guide](https://www.educatorstechnology.com/2026/02/perplexity-ai-for-research.html) - Perplexity AI for research can find sources, analyze papers, and create reports. Learn its features,...
+
+21. [Getting started with Elicit: Which workflow or tool should I use?](https://support.elicit.com/en/articles/14757543-getting-started-with-elicit-which-workflow-or-tool-should-i-use) - Which Elicit workflow or tool fits your question: Find Papers, Research Report, Systematic Review, E...
+
+22. [Consensus: AI for Research - Apps on Google Play](https://play.google.com/store/apps/details?id=app.consensus.android) - Run literature reviews across 250M+ peer-reviewed papers — every claim cited.
+
+23. [TLDR Feature - Semantic Scholar](https://www.semanticscholar.org/product/tldr) - The new TLDR feature in Semantic Scholar automatically generates single-sentence paper summaries usi...
+
+24. [Features | ResearchRabbit](https://www.researchrabbit.ai/features) - Explore the powerful features that make ResearchRabbit unique — interactive maps, personalized recom...
+
+25. [For Researchers | ResearchRabbit](https://www.researchrabbit.ai/solutions/for-researchers) - Elevate your research workflow. Use ResearchRabbit to track new publications, visualize paper networ...
+
+26. [Home - Scite - LibGuides at National Institute of Education](https://libguides.nie.edu.sg/c.php?g=975525&p=7104956) - LibGuides: Scite: Home
+
+27. [Introduction - The ASReview LAB documentation](https://asreview.readthedocs.io/en/latest/lab/about.html)
+
+28. [Get Started](https://asreview.readthedocs.io/en/latest/about.html)
+
+29. [Faster Literature Screening with ASReview LAB](https://asreview.nl/screeners/) - Our software ASReview is designed to accelerate the step of screening abstracts and titles with a mi...
+
+30. [ASReview](https://github.com/asreview) - ASReview - Active learning for Systematic Reviews. ASReview has 34 repositories available. Follow th...
+
+31. [Colab | Google for Developers](https://developers.google.com/colab) - Colab notebooks let you combine executable code and rich text in a single document, along with image...
+
+32. [Customize Your Experience...](https://docs.github.com/en/copilot/responsible-use/copilot-coding-agent) - Learn how to use Copilot coding agent on GitHub.com responsibly by understanding its purposes, capab...
+
+33. [Orange Data Mining](https://orangedatamining.com/) - Orange Data Mining Toolbox
+
+34. [Widget Catalog - Orange Data Mining](https://orangedatamining.com/widget-catalog/) - Orange Data Mining Toolbox
+
+35. [AI Assist for qualitative data analysis](https://www.maxqda.com/products/ai-assist) - Discover AI Assist, MAXQDA's AI-powered qualitative research assistant, your partner in uncovering m...
+
+36. [What is MAXQDA AI Assist?](https://help.maxqda.com/en/support/solutions/articles/80001135283-what-is-maxqda-ai-assist-) - MAXQDA AI Assist is a new AI add-on. It is designed to support researchers by generating summaries, ...
+
+37. [Introducing Whisper](https://openai.com/index/whisper/) - Whisper is an automatic speech recognition (ASR) system trained on 680,000 hours of multilingual and...
+
+38. [openai/whisper: Robust Speech Recognition via Large- ...](https://github.com/openai/whisper) - Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse a...
+
+39. [Otter's Voice Meeting & Real-time Transcription Features - Otter.ai](https://otter.ai/features) - Otter has features built to empower users with real-time meeting notes that are shareable, searchabl...
+
+40. [Otter Meeting Agent - AI Notetaker, Transcription, Insights](https://otter.ai/) - Otter AI Meeting Agent supports real-time transcription, live chat, automated summaries, insights, a...
+
+41. [DeepL AI Platform: Translation, Voice & API](https://www.deepl.com/en) - Explore our AI suite and get more done: Translate speech, text, and media, or integrate the DeepL AP...
+
+42. [Powering the future of AI-driven communication - DeepL Translate](https://www.deepl.com/en/products-overview) - Explore DeepL’s AI-powered suite for translation, writing, and voice. See how businesses worldwide u...
+
+43. [Why Students Love Grammarly](https://www.grammarly.com/ai-agents/citation-finder) - Strengthen your writing with Citation Finder. Find credible sources, verify facts, and generate accu...
+
+44. [Research Paper Writing Tips | Grammarly](https://www.grammarly.com/research-paper) - Take the guesswork out of writing your research paper with the resources and tools you need to creat...
+
+45. [AI writing assistance that enhances student learning](https://www.grammarly.com/educators) - Grammarly acts as a trusted partner for students in every stage of their writing process—helping the...
+
+46. [Introducing Magic Studio: the power of AI, all in one place](https://www.canva.com/newsroom/news/magic-studio/) - We're excited to unveil the future of Canva with our most game-changing launch ever: Introducing Mag...
+
+47. [Meet Magic Studio | Canva's AI Tools](https://www.canva.com/magic/) - Discover how Canva's new AI-powered tools can help you and your team work with more ease, speed, and...
+
+48. [AI for Teachers | Create Engaging Lessons & Materials | Gamma.app](https://gamma.app/solutions/educators) - Build lesson plans, assignments, and visuals in seconds with Gamma’s AI—perfect for any learning env...
+
+49. [Gamma AI Presentation Guide](https://gamma.app/explore/content/guides/what-is-gamma-and-how-does-it-use-ai-to-build-presentations) - Learn what Gamma is and how it uses AI to build presentations automatically — with smart layouts, in...
+
+50. [Napkin AI - Turn Text into AI Diagrams and Visuals](https://www.napkin.ai/) - Just paste your text, and Napkin AI instantly turns it into flowcharts, mind maps, infographics, dia...
+
+51. [Ai Response Task](https://www.qualtrics.com/articles/customer-experience/qualtrics-ai-field-guide/) - A practical guide for CX teams to learn when and how to use features available now to transform your...
+
+52. [Ethical Guidance for AI in the Professional Practice of ...](https://www.apa.org/topics/artificial-intelligence-machine-learning/ethical-guidance-professional-practice.pdf)
+
+53. [Top 10 Principles for Understanding Artificial Intelligence in ...](https://www.apa.org/international/networks/global-psychology-alliance/principles-artificial-intelligence.pdf)
+
+54. [Ethical Guidance for AI in the Professional Practice of ...](https://www.apa.org/topics/artificial-intelligence-machine-learning/ethical-guidance-professional-practice-infographic.pdf)
+
+55. [AI Act | Shaping Europe's digital future - European Union](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) - The AI Act is the first-ever legal framework on AI, which addresses the risks of AI and positions Eu...
+
+56. [Is emotion recognition prohibited in workplace/education ...](https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/emotion-recognition-prohibited-workplaceeducation-settings-or-these-purposes-eg-employee)
+
+57. [Article 5: Prohibited AI practices | AI Act Service Desk](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5)
+
+58. [New WHO report calls for stronger ethics oversight of AI ...](https://www.who.int/news/item/21-09-2026-new-who-report-calls-for-stronger-ethics-oversight-of-ai-related-health-research) - A new WHO report, Artificial Intelligence-related health research: ethics review and oversight, prov...
+

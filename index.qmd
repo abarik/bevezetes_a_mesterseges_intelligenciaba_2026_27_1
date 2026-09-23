@@ -1,4 +1,4 @@
-# Előszó
+# Előszó {.unnumbered}
 
 **Kurzus:** Bevezetés a mesterséges intelligenciába  
 **Típus:** szabadon választható, gyakorlati kurzus  

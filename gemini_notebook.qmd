@@ -1,0 +1,495 @@
+# Gemini Notebook
+
+*Jelen összefoglaló a Perplexity AI segítségével készült.*
+
+## Aktualizált áttekintés, 2026. szeptember
+
+> **Terminológiai frissítés:** a Google 2026 júliusában a **NotebookLM** szolgáltatást **Gemini Notebook** névre nevezte át. Ugyanarról az önálló termékről van szó, a korábbi jegyzetfüzetek megmaradtak, miközben a szolgáltatás szorosabban integrálódik a Gemini alkalmazással és a Google Keresővel.[^1][^2]
+> **Elérés:** [Gemini Notebook](https://notebook.google/) · [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind) · iOS App Store-ban „Gemini Notebook” néven kereshető.
+
+## Összefoglaló
+
+A Gemini Notebook forrásalapú kutatási és tanulási környezet: a felhasználó dokumentumokat és más forrásokat rendez jegyzetfüzetekbe, majd ezekről kérdezhet, összehasonlításokat készíthet, illetve különböző tanulási és kommunikációs produktumokat generálhat. A válaszokhoz kattintható szövegközi hivatkozások tartoznak, amelyek visszavezetnek a felhasznált forrásrészletekhez.[^2][^3][^4]
+
+Egy jegyzetfüzet chatje továbbra is a kiválasztott forrásokra támaszkodik, de a rendszer már **Source Discovery**, **Fast Research** és **Deep Research** funkciókkal maga is kereshet webes forrásokat, amelyeket a felhasználó áttekintés után importálhat a jegyzetfüzetbe. Emellett a Gemini alkalmazásban létrehozott, Gemini Notebookkal szinkronizált jegyzetfüzetek használhatják a Gemini eszközeit és webes keresését is; ezért mindig külön kell választani a **jegyzetfüzet forráskorpuszát** és a **külső forráskeresést**.[^5][^6][^7][^8]
+
+A forrásalapú működés csökkenti a témától elszakadó válaszok kockázatát és jelentősen javítja az ellenőrizhetőséget, de **nem szünteti meg a hibákat**. A rendszer kiválaszthat nem megfelelő részletet, félreértheti a szöveget, kihagyhat ellenpéldákat, összemoshat eltérő eredményeket, vagy pontatlanul értelmezhet táblázatot, ábrát és rosszul felismert szöveget. A Google maga is lehetőséget biztosít a pontatlan válaszok jelentésére, ezért a kattintható hivatkozást ellenőrzési eszköznek, nem igazsággaranciának kell tekinteni.[^9][^2]
+
+## Mi változott 2025–2026-ban?
+
+| Időszak | Változás | Módszertani jelentőség |
+|---|---|---|
+| 2025. április | Megjelent a **Discover Sources**, amely webes forrásokat keres és importálásra javasol.[^7] | A jegyzetfüzet már nem kizárólag kézzel összeállított korpuszból épülhet fel, de a forrásválogatás felelőssége a felhasználóé marad. |
+| 2025. július–augusztus | Megjelent a **Video Overview**, megújult a Studio, az Audio és Video Overview pedig több mint 80 nyelvre bővült.[^10][^11] | Ugyanaz a forrásanyag több reprezentációban tanulható, de a generált média tartalmát is ellenőrizni kell. |
+| 2025. október | A chat teljes, egymillió tokenes Gemini-kontextusablakot és hosszabb beszélgetési előzményt kapott.[^12] | Nagyobb dokumentumgyűjtemények elemezhetők, de a nagyobb kapacitás nem garantál teljes körű vagy torzítatlan szintézist. |
+| 2025. november | Megjelent a **Deep Research**, továbbá bővült a támogatott forrástípusok köre, például Word-, kép- és táblázatforrásokkal.[^6] | A forráskeresés és a forrásalapú feldolgozás egyetlen munkafolyamatba került. |
+| 2026. március | Elindult a **Cinematic Video Overview**, amely Gemini 3, Nano Banana Pro és Veo 3 komponenseket használ.[^13] | A narrált diákon túl összetettebb, generált vizuális magyarázatok készíthetők; kezdetben szűkebb csomag- és nyelvi hozzáféréssel. |
+| 2026. április–június | A Gemini alkalmazás „Notebooks” munkaterei szinkronizálódni kezdtek a NotebookLM-mel.[^14][^5] | A forrásgyűjtemény ugyanazon projektben használható forrásalapú szintézishez és általánosabb Gemini-munkához. |
+| 2026. július | A NotebookLM neve **Gemini Notebook** lett; megkezdődött a mélyebb Gemini- és Google Search-integráció.[^1][^15] | A termék önálló maradt, de a Google ökoszisztémán belül hordozható tudásbázissá vált. |
+| 2026. szeptember | Bejelentették a valós idejű hangbeszélgetést, az előadásrögzítést, az interaktív tanulási áttekintéseket és a rövid videós összefoglalókat.[^16][^17] | A rendszer a dokumentumfeldolgozás mellett adaptívabb gyakorlási és multimodális tanulási környezetté fejlődik. |
+
+## Rendszerarchitektúra
+
+### Forrásalapú megalapozottság
+
+A **source grounding** azt jelenti, hogy a rendszer a válasz elkészítésekor a jegyzetfüzet aktív forrásaiból keres releváns részleteket, és ezekre támaszkodva generál szöveget. Ez a visszakereséssel támogatott generálás (retrieval-augmented generation, RAG) egyik felhasználóbarát megvalósítása; oktatási környezetben tanár vagy hallgató által válogatott forráskorpuszt lehet vele a válaszadás alapjává tenni.[^18]
+
+A megközelítés három fő előnye:
+
+- **Evidenciahatár:** a jegyzetfüzet tartalma körülhatárolja, milyen anyagból készüljön a válasz.
+- **Visszakereshetőség:** a hivatkozás megnyitja azt a forrásrészletet, amelyet a rendszer a válaszhoz használt.[^3][^4]
+- **Forrásszehasonlítás:** több dokumentum állításai, fogalmai, módszerei és ellentmondásai közös kérdezési térben vizsgálhatók.
+
+A „kizárólag a feltöltött dokumentumokból dolgozik” megfogalmazás azonban pontosításra szorul. A chat az **aktuálisan kijelölt notebook-forrásokra** alapozza a válaszát, de a források már nemcsak feltöltésből származhatnak: a felhasználó webes kereséssel, Fast Research vagy Deep Research segítségével is gyűjthet és importálhat anyagokat. A Gemini alkalmazásban használt, szinkronizált notebook esetén a Gemini a kézzel válogatott forrásokat saját eszközeivel és webes kereséssel együtt is használhatja.[^6][^7][^5]
+
+### Mit jelentenek a hivatkozások?
+
+A chatválaszokhoz kapcsolt hivatkozási elemek közvetlenül a relevánsnak ítélt forrásrészlethez vezetnek. Ez gyorsabbá teszi az állítás ellenőrzését, de nem bizonyítja automatikusan, hogy:
+
+- a kiválasztott részlet valóban alátámasztja a teljes állítást;
+- a forrás tudományosan megbízható;
+- az idézett rész nem került ki a kontextusából;
+- a rendszer minden ellentétes bizonyítékot figyelembe vett;
+- egy másodlagos forrás pontosan közvetíti az eredeti kutatást.
+
+Tudományos munkában ezért minden fontos állításnál meg kell nyitni a hivatkozást, el kell olvasni a környező szöveget, majd szükség esetén az eredeti publikációt is ellenőrizni kell. A forrásalapú működés az auditálhatóságot növeli; nem alakítja át automatikusan a generált szöveget validált tudományos következtetéssé.
+
+### A hárompaneles felület
+
+A webes felület alapvetően három munkaterületet kapcsol össze:[^19][^20]
+
+1. **Források / Sources:** források hozzáadása, áttekintése és be- vagy kikapcsolása. A jelölőnégyzetekkel meghatározható, hogy egy kérdéshez mely dokumentumok legyenek aktívak.
+2. **Chat:** beszélgetés az aktív forrásokkal. A rendszer összefoglalót, javasolt kérdéseket és hivatkozott válaszokat adhat.
+3. **Stúdió / Studio:** a forrásokból létrehozott produktumok helye, például Audio és Video Overview, gondolattérkép, jelentés, tanulási útmutató, kvíz, tanulókártya, infografika vagy diasor.[^21][^20]
+
+A három panel három külön kutatói műveletet képvisel: **korpuszépítés → forrásalapú kérdezés → kommunikálható vagy tanulást támogató produktum előállítása**.
+
+## Támogatott források
+
+A Gemini Notebook többek között Google Docs- és Slides-fájlokat, PDF-et, egyszerű szöveget és Markdown-fájlt, weboldalt, beillesztett szöveget, nyilvános YouTube-videót és hangfájlt fogad. A 2025 végi bővítés Word-dokumentumokat, képeket, Google Sheets-tartalmat, Drive-URL-eket és közvetlenül a Drive-ból származó PDF-eket is hozzáadott.[^22][^23][^6]
+
+| Forrástípus | Hasznos lehet | Fő ellenőrzési pont |
+|---|---|---|
+| Tudományos PDF | Irodalmi összevetés, módszerek és eredmények kigyűjtése | Szkennelt PDF, képlet, táblázat és többhasábos tördelés felismerése |
+| Google Docs / Word | Jegyzet, kutatási terv, kódkönyv, kézirat | Verzió és megosztási jogosultság |
+| Google Slides | Előadásanyag és szemináriumi forrás | A vizuális jelentés nem mindig őrződik meg pusztán szövegkinyeréssel |
+| Google Sheets | Strukturált adat és egyszerű összefoglalás | A rendszer nem helyettesít reprodukálható statisztikai elemzést |
+| Weboldal | Háttéranyag, intézményi dokumentum, szakpolitikai forrás | Szerző, dátum, hitelesség, frissesség |
+| YouTube | Előadás vagy interjú átirata | Automatikus felirat hibái, különösen neveknél és szakkifejezéseknél |
+| Hangfájl | Előadás, saját jegyzet vagy engedélyezett kutatási hanganyag | Átirati pontosság, hozzájárulás, adatvédelem |
+| Kép | Kézzel írt jegyzet, ábra vagy dokumentumfotó | OCR-hiba, vizuális kontextus és olvashatóság |
+
+Egyetlen forrás legfeljebb 500 000 szót vagy feltöltött fájl esetén 200 MB-ot tartalmazhat. A csomagtól függő notebook- és forráslimitek változhatnak; az aktuális Workspace-adminisztrációs táblázat 50–600 forrást jelez notebookonként a hozzáférési szinttől függően. A fogyasztói csomagokban 2026 szeptemberétől rugalmas, számításigény-alapú limitek is megjelentek, ezért az egyszerű, fix napi kvóták gyorsan elavulhatnak.[^23][^24][^25]
+
+## Gemini-integráció
+
+### Notebookok a Gemini alkalmazásban
+
+A Gemini alkalmazás notebookjai projekttérként szervezik a beszélgetéseket, fájlokat és állandó utasításokat. A források szinkronizálódnak a Gemini Notebook önálló felületével, így ugyanaz az anyag használható például a Gemini alkalmazásban esszévázlat készítésére, majd a Gemini Notebookban videós áttekintés vagy infografika létrehozására.[^14][^8][^5]
+
+A két környezet szerepe nem teljesen azonos:
+
+| Környezet | Elsődleges erősség | Tudásforrás |
+|---|---|---|
+| **Gemini Notebook** | Forrásalapú elemzés, hivatkozott chat, tanulási és médiaproduktumok | Az aktuális notebook kiválasztott forrásai; külön indítható forráskeresés |
+| **Gemini alkalmazás notebookja** | Hosszabb projektfolyamat, korábbi chatek, egyedi utasítások, Gemini-eszközök | Notebookforrások, Gemini-képességek és — a beállítástól függően — webes keresés[^5] |
+
+A hozzáférés életkortól, fióktípustól, régiótól és előfizetéstől függhet. A 2026 tavaszi bevezetés kezdetben személyes, 18 év feletti, fizetős fiókokra koncentrált; az oktatási és Workspace-hozzáférés ettől eltérő ütemben és adminisztrátori beállításokkal bővülhetett.[^24][^26]
+
+### Modellek
+
+A termékoldal szerint a Gemini Notebook a „legújabb Gemini-modellekre” épül, de nem célszerű a teljes szolgáltatást egyetlen konkrét modellverzióval azonosítani. A különböző funkciók eltérő modelleket és komponenseket használhatnak: a 2026-os Cinematic Video Overview esetében például a Google kifejezetten Gemini 3, Nano Banana Pro és Veo 3 együttműködését nevezte meg.[^13][^27][^2]
+
+Ezért a „Gemini 2.5 és 3 integrációja” helyett pontosabb azt írni, hogy **a termék folyamatosan frissülő Gemini-modelleket használ, és egyes funkciókhoz a Google konkrét modellösszetételt közöl**. A modellnév önmagában nem írja le a visszakeresést, a kontextuskezelést, a médiagenerálást vagy a biztonsági rétegeket.
+
+## Kulcsfunkciók
+
+### Hivatkozott chat
+
+A chat a kiválasztott források alapján válaszol, összefoglal, összehasonlít és kapcsolatokat keres. Az egymillió tokenes kontextusablak és a bővített beszélgetési előzmény nagyobb dokumentumgyűjtemények hosszabb elemzését támogatja. Ez nem jelenti azt, hogy minden forrást minden kérdésnél egyformán részletesen feldolgoz; a forráskijelölés és a célzott kérdés továbbra is fontos.[^12]
+
+### Forrásfelfedezés és Deep Research
+
+A **Source Discovery/Fast Research** gyors webes forráskeresést biztosít, majd a felhasználó dönt az importálásról. A **Deep Research** kutatási tervet készít, nagyobb számú weboldalt jár be, forrásalapú jelentést és forrásjavaslatokat készít; ezek utána hozzáadhatók a notebookhoz és felhasználhatók további Stúdió-produktumokhoz.[^7][^6]
+
+Ez a funkció hasznos lehet egy tématerület feltérképezésére, de nem azonos egy reprodukálható szisztematikus szakirodalmi kereséssel. A tudományos áttekintéshez továbbra is dokumentálni kell az adatbázisokat, keresőkifejezéseket, dátumot, szűrőket, beválasztási kritériumokat, duplikátumkezelést és a bírálói döntéseket.
+
+### Audio Overview
+
+Az Audio Overview a források alapján AI-műsorvezetők beszélgetését generálja. Több mint 80 nyelven készíthető, és a nem angol változatok 2025-ben hosszabb, részletesebb formátumot kaptak.[^11][^28]
+
+Az **Interactive Mode** lehetővé teszi, hogy a hallgató kérdéssel megszakítsa a beszélgetést, majd a válasz után folytatódjon az eredeti műsor. Fontos hozzáférési pontosítás: a Google súgójának egyes nyelvi változatai még angol nyelvre korlátozottként jelzik a klasszikus Interactive Mode-ot, miközben 2026 szeptemberében a Google külön, közel 100 nyelvet támogató valós idejű notebook-beszélgetést jelentett be fokozatos bevezetéssel. A két funkció és az aktuális nyelvi hozzáférés ezért nem kezelhető automatikusan azonosként.[^29][^30][^17]
+
+### Video Overview
+
+A Video Overview a forrásokból narrált vizuális magyarázatot készít. A klasszikus változat dokumentumokból származó képeket, diagramokat, idézeteket és számokat is felhasználhat, és célközönség, tanulási cél vagy kiemelt téma alapján alakítható. A hagyományos Video Overview 2025-ben több mint 80 nyelvre bővült.[^10][^11]
+
+A **Cinematic Video Overview** ennél generatívabb, animáltabb formátum, amelyet 2026 márciusában angol nyelven, Google AI Ultra-előfizetőknek vezettek be. A 2026 szeptemberében bejelentett, körülbelül 60 másodperces **Short Video Overview** több mint 80 nyelven rövid, oktatási animációval kísért magyarázatokat készít.[^31][^16][^13]
+
+### Stúdió-produktumok
+
+A Stúdióban a forrásokból többféle produktum állítható elő:[^32][^20][^21]
+
+- Audio és Video Overview;
+- gondolattérkép;
+- összefoglaló jelentés, FAQ, briefing vagy tanulási útmutató;
+- kvíz és tanulókártya, állítható nehézséggel és kérdésszámmal;
+- infografika;
+- diasor;
+- 2026-ban fokozatosan megjelenő interaktív tanulási áttekintés.
+
+A diasorok és infografikák stílusa prompttal irányítható, és meglévő forrásanyagból vizuális narratíva készíthető. A generált vizuális produktumok azonban hibás számot, félrevezető diagramot, forrás nélküli képi következtetést vagy túlzottan oksági ábrázolást tartalmazhatnak; publikálás előtt külön tartalmi és vizuális ellenőrzés szükséges.[^33]
+
+### Mobilalkalmazás
+
+A Gemini Notebook Androidon és iOS-en is használható. A mobilalkalmazás támogatja a notebookok megnyitását és létrehozását, a kérdezést, a források megosztási menüből történő hozzáadását, az Audio Overview lejátszását és offline letöltését, továbbá több tanulási produktum elérését.[^34][^35][^36]
+
+A mobil- és webes funkciók nem mindig egyszerre jelennek meg. Egy funkció elérhetősége függhet az operációs rendszertől, a régiótól, a nyelvtől, a fióktól, az előfizetéstől és a fokozatos bevezetés állapotától.
+
+## Oktatási alkalmazások
+
+### Forrásalapú tanulás
+
+A Gemini Notebook akkor a legerősebb, ha a kurzushoz tartozó, oktató által jóváhagyott anyagokat — például tankönyvfejezetet, előadásdiát, tanulmányt és követelményrendszert — egyetlen notebookba rendezzük. Ezekből fogalmi összehasonlítás, tanulási útmutató, kvíz, tanulókártya, gondolattérkép és multimédiás áttekintés készíthető.[^20][^3]
+
+A korábbi szövegben szereplő „80%-kal csökkenti a memorizálási terhet”, „700 fogalom helyett 15 magelmélet” és „15 alapvető elmélet” állítás nem tekinthető általánosan igazolt kutatási eredménynek. Ezek egy nem hivatalos, AP Psychologyra készült útmutató ajánlásaiból származnak, nem a Gemini Notebook általános hatásvizsgálatából. Helyesebb megfogalmazás: **az eszköz támogatja a fogalmak közötti kapcsolatok gyakorlását és az alkalmazásalapú feladatokat, de a tanulási eredmény a feladat kialakításától, az előzetes tudástól és a hallgató aktív munkájától függ**.[^37]
+
+### Pszichológia BA-s példák
+
+- **Fogalmi differenciálás:** „Hasonlítsd össze a negatív megerősítést és a büntetést definíció, mechanizmus, példa és gyakori tévhit szerint. Minden cellához adj forráshivatkozást.”
+- **Elmélet–evidencia kapcsolat:** „Mely empirikus eredmények támogatják, korlátozzák vagy mondanak ellent az X elméletnek?”
+- **Kutatásmódszertan:** „Azonosítsd minden tanulmány designját, mintáját, operacionalizálását, fő eredményét és korlátját egy táblázatban.”
+- **Aktív felidézés:** „Tegyél fel egy alkalmazási kérdést. Ne mutasd meg a választ, amíg nem válaszoltam; utána adj rövid visszajelzést és egy nehezebb kérdést.”
+- **Hibajavítás:** „A források alapján elemezd a válaszomat: mi pontos, mi hiányos, és mely állítás igényel korrekciót?”
+- **Szóbeli vizsga:** „Viselkedj vizsgáztatóként; egyszerre egy kérdést tegyél fel, majd a források alapján értékeld a fogalmi pontosságot és az indoklást.”
+
+### Esszé- és feladat-előkészítés
+
+Az eszköz használható kérdésbontásra, fogalmi térkép készítésére, bizonyítéktáblázatra és vázlatra, de a végső érvelést a hallgatónak kell kialakítania. A tanulást jobban támogatja, ha a rendszer **kérdez, visszajelez, ellenpéldát ad és önálló döntést kér**, mintha kész esszét ír. A pszichológiailag informált GenAI Buddy megközelítés szintén a tervezést, állhatatosságot, önbizalmat, gyakorlást és reflektív tanulást hangsúlyozza a feladatátvétel helyett.[^38][^39][^40]
+
+## Kutatási alkalmazások
+
+### Szakirodalmi tájékozódás
+
+A Gemini Notebook alkalmas gondosan válogatott cikkgyűjtemény összefoglalására, tanulmányok összehasonlítására, fogalmi eltérések, kutatási rések és ellentmondások előzetes azonosítására. A Google Literature Insights kísérleti szolgáltatása is erre az alapra épít: tudományos irodalmat keres, strukturált táblákba rendezi, majd forrásalapú chatet és különböző produktumokat biztosít.[^41]
+
+Nem alkalmas önmagában teljes, reprodukálható szisztematikus áttekintésre vagy metaanalízisre. A forrásfelfedezés algoritmikus rangsorolása ismeretlen lefedettségi torzításokat okozhat; a kimenetből hiányozhatnak nem angol nyelvű, negatív eredményű, kevésbé idézett vagy nehezebben hozzáférhető tanulmányok.
+
+### Kvalitatív adatok
+
+A Gemini Notebook támogathatja az interjúk és más szöveges adatok **előzetes megismerését**, esetösszefoglalását, idézetkeresését, lehetséges témák feltárását, csoportok összevetését, negatív esetek keresését és alternatív értelmezések megfogalmazását. A hivatkozások segítenek visszalépni az eredeti szöveghelyhez.[^42][^43]
+
+Az „automatizált kódolás” kifejezést óvatosan kell használni. A Gemini Notebook nem helyettesíti a teljes értékű CAQDAS-rendszert, a következetesen alkalmazott kódkönyvet, a kutatói reflexivitást vagy az interpretatív döntéseket. A generált „téma” lehet csupán felszíni témacsoport; elveszhet az interjúhelyzet, a csend, a hangsúly, a nonverbális információ, a kutatói pozíció és a társadalmi kontextus.[^44][^43]
+
+Javasolt kvalitatív munkafolyamat:
+
+1. A kutató előbb ismerkedjen meg manuálisan az adatokkal, és készítsen terep- vagy reflexiós jegyzeteket.
+2. Feltöltés előtt távolítsa el a közvetlen és közvetett azonosítókat.
+3. Első körben kérjen esetenkénti, leíró összefoglalást; csak később kereszteset-összevetést.
+4. Kérjen minden kódhoz vagy témához ellenőrizhető idézetet és forráshelyet.
+5. Külön kérdezzen rá ellentmondó, ritka és a fő mintába nem illő esetekre.
+6. Vesse össze az MI-kimenetet egy manuálisan kódolt részhalmazzal.
+7. Külső naplóban őrizze meg a promptokat, forrásverziókat, döntéseket és módosításokat.[^43][^42]
+
+### Multimodális kutatás
+
+A rendszer képet, dokumentumot, prezentációt, hangot és videóátiratot is képes ugyanazon projektben feldolgozni. Ez hasznos lehet vegyes forrásanyag áttekintéséhez, de nem azonos egy validált multimodális kutatási módszerrel. A képértelmezés, OCR, automatikus átirat és generált vizualizáció mind külön hibaforrást jelent; ezek pontosságát modalitásonként kell ellenőrizni.[^24][^6]
+
+## A PPAE-hurok
+
+A **PPAE — Perceive, Plan, Act, Evaluate** hasznos általános prompt- és munkafolyamat-keret, de **nem a Google hivatalos Gemini Notebook-módszertana**. Egy független NotebookLM-útmutató dolgozta ki a forrásalapú munkamenetek strukturálására.[^45][^46]
+
+| Fázis | Magyarul | Gemini Notebookban végzett tevékenység | Ellenőrző kérdés |
+|---|---|---|---|
+| **P — Perceive** | Feltérképezés | Forrásjegyzék, lefedettség, minőség, ellentmondások és hiányok azonosítása | Milyen evidenciám van, és mi hiányzik? |
+| **P — Plan** | Tervezés | Cél, forráskör, művelet, outputformátum és minőségi kritérium kijelölése | Pontosan milyen döntést vagy tanulási célt szolgál a kimenet? |
+| **A — Act** | Végrehajtás | Több, egymásra épülő célzott prompt; kivonatolás, összevetés, szintézis, produktumkészítés | A feladatot kezelhető, ellenőrizhető lépésekre bontottam? |
+| **E — Evaluate** | Értékelés | Hivatkozások, hiányok, bizonytalanság, ellenpéldák és forráshűség ellenőrzése | Mely állítást ellenőriztem az eredeti forrásban? |
+
+### Kutatási változat
+
+1. **Feltérképezés:** „Készíts forrásleltárt: típus, év, kutatási design, populáció, relevancia és fő korlát.”
+2. **Tervezés:** jelöld ki, mely források használhatók a konkrét kérdéshez, és milyen összehasonlítási dimenziók szükségesek.
+3. **Végrehajtás:** előbb evidenciatáblát, utána szintézist, végül kommunikálható produktumot készíts.
+4. **Értékelés:** ellenőrizd az összes kulcsállítást, kérj ellenpéldákat, és jelöld a bizonytalan vagy nem lefedett kérdéseket.
+
+### Tanulási változat
+
+1. **Feltérképezés:** rövid diagnosztikus kérdéssorral azonosítsd a biztos, bizonytalan és hiányzó tudást.
+2. **Tervezés:** válassz kevés, prioritást élvező tanulási célt.
+3. **Végrehajtás:** magyarázat → saját példa → alkalmazási feladat → visszajelzés → új feladat.
+4. **Értékelés:** új helyzetben, segítség nélkül idézd fel és alkalmazd a fogalmat.
+
+## Prompttervezés
+
+A hatékony prompt nem elsősorban „varázsmondat”, hanem **forrásalapú feladatterv**. A szerep megadása csak akkor hasznos, ha ténylegesen módosítja az elvárt műveletet; ennél fontosabb a cél, az evidenciahatár, az elemzési művelet, az output és az ellenőrzési kritérium.[^46]
+
+### Ötelemű promptmodell
+
+1. **Cél:** milyen kérdésre, döntésre vagy tanulási eredményre van szükség?
+2. **Evidenciahatár:** mely források, fejezetek, dátumok vagy csoportok használhatók?
+3. **Művelet:** kivonatolás, összehasonlítás, osztályozás, kritika, szintézis vagy értékelés?
+4. **Kimenet:** táblázat, lista, fogalmi térkép, kérdéssor, evidencianapló vagy vázlat?
+5. **Minőségellenőrzés:** hivatkozás, bizonytalanság, hiányzó evidencia, ellenpélda és ellenőrzési kör?
+
+### Általános sablon
+
+```text
+Cél: [Milyen kérdést vagy tanulási célt szolgáljon a válasz?]
+
+Forráskör: Kizárólag [források/fejezetek/csoportok] használhatók.
+Ha valami nincs lefedve, írd: „A megadott források alapján nem állapítható meg.”
+
+Feladat: [Hasonlítsd össze / osztályozd / szintetizáld / értékeld] az anyagot
+[a megadott szempontok] szerint.
+
+Kimenet: [táblázat/lista/vázlat], [célközönség], [részletesség].
+
+Minőségellenőrzés:
+- minden lényegi állításhoz adj forráshivatkozást;
+- különítsd el a közvetlen forrásállítást a saját szintézisedtől;
+- jelöld az ellentmondásokat és a bizonytalanságot;
+- sorold fel, milyen információ hiányzik a biztos következtetéshez.
+```
+
+### Pszichológiai kutatási példa
+
+```text
+A kijelölt empirikus tanulmányok alapján hasonlítsd össze az A és B csoport
+mentális egészséggel kapcsolatos metaforáit.
+
+Készíts táblázatot ezekkel az oszlopokkal:
+1. metaforakategória;
+2. operacionális definíció;
+3. A csoportból származó példák;
+4. B csoportból származó példák;
+5. hasonlóságok és különbségek;
+6. ellenpélda vagy bizonytalan eset;
+7. forráshivatkozás.
+
+Ne állapíts meg pszichológiai állapotot pusztán a metafora alapján.
+Különítsd el a leíró mintázatot az értelmező következtetéstől.
+Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „előzetes” címkével.
+```
+
+## Motiváció és elköteleződés
+
+Andrew J. Martin és munkatársai **GenAI Motivation and Learning Buddy** erőforrása nem Gemini Notebook-specifikus funkció, hanem több generatív MI-rendszerbe bemásolható, nyílt promptkészlet. A Motivációs és Elköteleződési Kerék, valamint a Load Reduction Instruction elemei alapján segíti a hallgatót tervezésben, gyakorlásban, visszajelzésben és önálló problémamegoldásban.[^39][^40][^38]
+
+A módszer legfontosabb elve: az MI **coach**, nem feladatvégrehajtó. A rendszer feladata a cél tisztázása, a feladat lépésekre bontása, célzott segítség, gyakorlás, feedback és feedforward biztosítása; a hallgató feladata továbbra is az előhívás, döntés, magyarázat és önálló teljesítés.[^40]
+
+A korábbi szöveg „11 specifikus prompt-szkript” állítását nem érdemes változatlanul megtartani. A jelenlegi leírás szerint külön promptok kapcsolódnak a Motivációs és Elköteleződési Kerék egyes részeihez, valamint öt Load Reduction Instruction-alapelvhez; a pontos csomagverziót mindig az eredeti nyílt anyagban kell ellenőrizni.[^39][^40]
+
+## Adatvédelem és etika
+
+### Személyes és Workspace-fiókok
+
+A Google Workspace, Workspace for Education és közszférai ügyfelek esetében a szervezeti adatokra Workspace-védelmek vonatkoznak: az interakciók a szervezeten belül maradnak, és a tartalom engedély nélkül nem használható a domainen kívüli generatív modellek tanítására vagy emberi felülvizsgálatra.[^47][^48]
+
+Személyes fióknál fontos kivétel a **visszajelzés küldése**. Ha a felhasználó pozitív vagy negatív értékelést és visszajelzést küld, a kapcsolódó promptok, források, feltöltések és generált outputok emberi felülvizsgálatra kerülhetnek, és a leválasztott adatokat akár három évig megőrizhetik. Workspace és Workspace for Education használatakor ez a visszajelzéshez kapcsolódó tartalom sem kerül emberi felülvizsgálatra vagy modelltréningre.[^49][^9]
+
+### Pszichológiai és kvalitatív adatok
+
+Az adatvédelmi ígéret nem helyettesíti a jogalapot, a kutatásetikai engedélyt, a résztvevői tájékoztatást, az adatminimalizálást és az intézményi szabályokat. Pszichológiai kutatásban különösen érzékeny lehet az interjú, egészségügyi információ, diagnózis, élettörténet, hangfelvétel és a közvetett módon újraazonosítható kontextus.
+
+Minimumkövetelmények:
+
+- feltöltés előtt közvetlen és közvetett azonosítók eltávolítása;
+- a szolgáltatás és adattovábbítás feltüntetése az adatkezelési tervben;
+- intézményi fiók és jóváhagyott hozzáférési szint használata;
+- a notebook megosztásának és nyilvánosságának ellenőrzése;
+- érzékeny tartalom kizárása a személyes fiókból küldött termékvisszajelzésből;
+- törlési, export- és hozzáférési eljárás dokumentálása;
+- az MI szerepének rögzítése a kutatási audit trailben.
+
+### Akadémiai integritás
+
+A hivatkozott válasz **nem teszi automatikusan plágiummentessé** a beadandót. A hallgatónak el kell olvasnia és meg kell értenie az eredeti forrást, saját érvelést kell kialakítania, pontos bibliográfiai hivatkozást kell készítenie, valamint követnie kell a kurzus és az intézmény MI-használati szabályait.
+
+A Gemini Notebook által generált Audio Overview, videó, diasor és infografika is MI-eredetű produktum. Megosztáskor célszerű ezt egyértelműen jelezni, és külön ellenőrizni a szerzői jogi, idézési, hozzáférhetőségi és tartalmi követelményeket.
+
+## Korlátok
+
+### A forráskorpusz torzítása
+
+A rendszer legfeljebb annyira kiegyensúlyozott, amennyire a forrásgyűjtemény. Ha a notebook csak angol nyelvű, nyugati, könnyen elérhető vagy egyetlen elméleti álláspontot képviselő forrásokat tartalmaz, a szintézis is ezt a látómezőt örökli. A hiányzó perspektívát a rendszer nem tudja megbízhatóan „észrevenni”, ha nincs összehasonlítási alapja.
+
+### Forrásfeldolgozási hibák
+
+Szkennelt PDF, hibás OCR, rossz YouTube-felirat, táblázat, lábjegyzet, matematikai jelölés vagy képi információ elveszhet vagy torzulhat. Feltöltés után érdemes próbakérdéssel ellenőrizni, hogy a kritikus részek valóban kereshetők-e.
+
+### Szintézis és okság
+
+A rendszer együtt járásokat és szöveges mintázatokat foglalhat össze, de ettől még nem igazol oksági kapcsolatot. Különösen pszichológiai kutatásban kell elválasztani a résztvevői beszámolót, a kutatói interpretációt, a statisztikai asszociációt és az oksági következtetést.
+
+### Nem helyettesít szakértői döntést
+
+A Gemini Notebook nem diagnosztikai eszköz, nem klinikai döntéstámogató rendszer és nem kutatásetikai tanácsadó. Nem használható résztvevők vagy kliensek diagnosztizálására, kockázati besorolására, érzelmi állapotának automatikus megállapítására vagy kezelésének kiválasztására validáció, megfelelő jogalap és szakmai felelősség nélkül.
+
+### Reprodukálhatóság
+
+A generált válasz változhat a modellfrissítés, a forráskijelölés, a prompt, a beszélgetési előzmény és a szolgáltatás beállításai miatt. Kutatási használat esetén legalább a következőket kell naplózni:
+
+- a szolgáltatás neve és a használat dátuma;
+- fiók- vagy csomagtípus, ha a funkciót befolyásolja;
+- a források bibliográfiai adatai és verziói;
+- az aktív források köre;
+- a teljes prompt és lényeges követő kérdések;
+- az output és az utólagos emberi módosítás;
+- az ellenőrzés és a döntés módja;
+- az adatvédelmi és etikai intézkedések.
+
+## Ajánlott munkafolyamat pszichológia BA-hallgatóknak
+
+### Szemináriumi feldolgozás
+
+1. Hozz létre egy notebookot egyetlen kurzustémához.
+2. Töltsd fel az oktató által kijelölt, jogszerűen hozzáférhető forrásokat.
+3. Készíttess forrásleltárt és fogalomtérképet.
+4. Hasonlíttasd össze az elméleteket definíció, mechanizmus, evidencia és korlát szerint.
+5. Kérj alkalmazási kérdéseket úgy, hogy a rendszer a válasz előtt várja meg a saját megoldásodat.
+6. Ellenőrizd a visszajelzés hivatkozásait az eredeti szövegben.
+7. Zárásként, segítség nélkül írd le a fő összefüggéseket, és csak utána hasonlítsd össze a rendszer összefoglalójával.
+
+### Mini-irodalmi áttekintés
+
+1. Fogalmazz meg szűk, válaszolható kutatási kérdést.
+2. Keress szakirodalmi adatbázisban; a Gemini Notebook forrásfelfedezését kiegészítésként, ne egyedüli keresési csatornaként használd.
+3. Importáld a beválasztott teljes szövegeket, és ellenőrizd a feldolgozásukat.
+4. Készíts evidenciatáblát: minta, design, mérőeszköz, elemzés, eredmény, korlát.
+5. Kérj ellentmondás- és hiánytérképet.
+6. Nyisd meg minden lényegi állítás forráshelyét, és ellenőrizd az eredeti cikket.
+7. Saját szavaiddal készíts szintézist, szabályos bibliográfiai hivatkozásokkal.
+
+### Kvalitatív gyakorlat
+
+1. Csak etikai engedéllyel és megfelelő adatkezelési feltételekkel dolgozz.
+2. Deazonosítsd az átiratokat, és ellenőrizd a beszédfelismerési hibákat.
+3. Manuálisan olvass és kódolj egy részhalmazt.
+4. A Gemini Notebookkal készíttess esetösszefoglalást és lehetséges kódjavaslatokat.
+5. Minden javaslatot ellenőrizz az eredeti szövegben.
+6. Kérj negatív eseteket és alternatív magyarázatokat.
+7. A témák végső kialakítását, elnevezését és értelmezését kutatói döntésként dokumentáld.
+
+## Gyors ellenőrzőlista
+
+Egy Gemini Notebook-output felhasználása előtt ellenőrizendő:
+
+- [ ] Megbízható, releváns és kellően sokoldalú források kerültek a notebookba.
+- [ ] Az aktív források megfelelnek az aktuális kérdésnek.
+- [ ] A hivatkozások valóban alátámasztják az állításokat.
+- [ ] Az eredeti dokumentum környező szövege is ellenőrzésre került.
+- [ ] A közvetlen forrásállítás elkülönül az MI szintézisétől és a kutató értelmezésétől.
+- [ ] Az ellentmondó vagy hiányzó evidencia is megjelenik.
+- [ ] Nincs jogosulatlan oksági, diagnosztikai vagy általánosító következtetés.
+- [ ] Érzékeny adat csak jóváhagyott fiókban, jogalappal és deazonosítva szerepel.
+- [ ] A promptok, források, outputok és emberi módosítások dokumentálva vannak.
+- [ ] Az MI-használat megfelel az intézményi akadémiaiintegritás-szabályoknak.
+
+## Záró megállapítás
+
+A Gemini Notebook 2026-ban már nem pusztán jegyzetelő vagy dokumentum-összefoglaló alkalmazás, hanem a Google ökoszisztémájába integrált, forrásalapú kutatási és tanulási környezet. Legnagyobb értéke az, hogy egy gondosan kialakított forráskorpuszt hivatkozott párbeszéddé, összehasonlítássá, gyakorlóanyaggá és multimédiás produktummá alakít.[^1][^2][^5]
+
+A módszertani előny nem abból fakad, hogy a rendszer „nem hallucinál”, hanem abból, hogy a válaszai **szűkebb evidenciahatáron belül születnek és gyorsabban auditálhatók**. Tudományos és pszichológiai használatban a helyes szerepe ezért: **forrásfeltáró, gondolkodási partner, gyakorlási környezet és előzetes elemzési segédeszköz — nem pedig szerző, autonóm kutató, kvalitatív elemző vagy szakértői döntéshozó**.
+
+---
+
+
+[^1]: [NotebookLM is now Gemini Notebook - Google Blog](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/) - NotebookLM is now Gemini Notebook: the same standalone product with deeper Google integration and a ...
+
+[^2]: [Gemini Notebook | AI Research Tool & Thinking Partner](https://notebook.google/) - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn ...
+
+[^3]: [Understand anything with Gemini Notebook - Google for Education](https://edu.google.com/intl/ALL_us/ai-gemini-notebook/) - Gemini Notebook helps K12 & higher education create lesson plans, study guides, and quizzes grounded...
+
+[^4]: [Seu parceiro de pesquisa com tecnologia de IA - Gemini Notebook](https://notebook.google/%3Fhl=pt-BR) - Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn ...
+
+[^5]: [Try notebooks in Gemini to easily keep track of projects](https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/?ref=blockbrain-internal-ai-updates.ghost.io) - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc...
+
+[^6]: [NotebookLM adds Deep Research, Docx, Sheets and more](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-deep-research-file-types/) - NotebookLM adds "Deep Research" for discovering sources, support for Word and PDFs, and a preview of...
+
+[^7]: [NotebookLM Discover Sources: Add web research to your notebook](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-discover-sources/) - NotebookLM has launched Discover Sources, which lets you add sources from the web to your notebook.
+
+[^8]: [Try notebooks in Gemini to easily keep track of projects - Google Blog](https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/) - Gemini's new "notebooks" help you organize chats and files for complex projects. · Notebooks are per...
+
+[^9]: [Privacy and Terms of Use in NotebookLM](https://support.google.com/notebooklm/answer/17004255?hl=en-IN) - What happens when you send feedback When you share thumbs up or thumbs down feedback, we’ll collect ...
+
+[^10]: [What's new in NotebookLM: Video Overviews and an upgraded Studio](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-video-overviews-studio-upgrades/) - NotebookLM's Video Overviews distill complex information into clear, digestible content, paired with...
+
+[^11]: [NotebookLM's Video Overviews are now available in 80 languages](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebook-lm-audio-video-overviews-more-languages-longer-content/) - Learn more about updates to NotebookLM’s Audio and Video Overview tools.
+
+[^12]: [Chat in NotebookLM: A powerful, goal-focused AI research partner](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-custom-personas-engine-upgrade/) - We’re rolling out changes to NotebookLM to make it fundamentally smarter and more powerful.
+
+[^13]: [NotebookLM adds Cinematic Video Overviews - Google Blog](https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/) - Cinematic Video Overviews, This new feature moves beyond narrated slides in Video Overviews to creat...
+
+[^14]: [Behaltet den Überblick mit Notebooks in Gemini - Google Blog](https://blog.google/intl/de-de/produkte/suchen-entdecken/notebooks-in-gemini/) - Notebooks helfen euch dabei, eure Chats und Projekte in Gemini zu organisieren, um das Lernen und Ar...
+
+[^15]: [NotebookLM heißt jetzt Gemini Notebook - Google Blog](https://blog.google/intl/de-de/produkte/suchen-entdecken/notebooklm-wird-gemini-notebook/) - Während es weiterhin ein eigenständiges Produkt bleibt, wird Gemini Notebook verstärkt im Google Öko...
+
+[^16]: [Sharpen your study routine with new Gemini Notebook tools](https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/?ref=aiposthub.com) - An overview of the latest study and learning tools in Gemini Notebook.
+
+[^17]: [Sharpen your study routine with new Gemini Notebook tools](https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/) - Gemini Notebook now offers new tools to help you study, including real-time voice conversations, an ...
+
+[^18]: [NotebookLM: An LLM with RAG for active learning and ...](https://arxiv.org/html/2504.09720v2) - By grounding its responses in teacher-provided source documents, NotebookLM helps mitigate one of th...
+
+[^19]: [Dec 13 2024](https://support.google.com/notebooklm/answer/15731792) - What's new NotebookLM gets a new look: We’re rolling out a new design that makes it easier than ever...
+
+[^20]: [Create a notebook in NotebookLM - NotebookLM Help - Google Help](https://support.google.com/notebooklm/answer/16206563?hl=en-GB) - Important: At this time, the NotebookLM mobile app may have limitations to this feature. Learn more ...
+
+[^21]: [Dive deeper into I/O 2026 with NotebookLM. - Google Blog](https://blog.google/innovation-and-ai/products/notebooklm/notebooklm-google-io-2026/) - Read through a Slide Deck to learn more about the biggest launches. Explore our highlights through a...
+
+[^22]: [NotebookLM: AI-Powered Research and Learning Assistant Tool](https://workspace.google.com/products/gemini-notebook/) - Discover how Gemini Notebook (formerly NotebookLM) helps teams learn new topics and get to insights ...
+
+[^23]: [Gemini Notebook: AI-powered research and learning assistant tool](https://workspace.google.com/intl/en_au/products/gemini-notebook/) - Discover how Gemini Notebook, now included in Workspace plans, helps teams learn new topics and get ...
+
+[^24]: [Turn Gemini Notebook on or off for users | Google Workspace Help](https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/turn-gemini-notebook-on-or-off-for-users)
+
+[^25]: [We're introducing flexible usage limits for Gemini Notebook.](https://blog.google/innovation-and-ai/products/gemini-notebook/new-flexible-usage-limits/) - We’re introducing new flexible, compute-specific usage limits to Gemini Notebook.
+
+[^26]: [Try notebooks in Gemini to easily keep track of projects](https://blog.google/intl/en-ie/products/notebooks-gemini-notebooklm/) - Notebooks in Gemini give you a project base that connects the Gemini app with our AI-powered researc...
+
+[^27]: [Gemini Notebook - Google Blog](https://blog.google/innovation-and-ai/products/gemini-notebook/) - Your research and thinking partner, grounded in the information you trust, built with the latest Gem...
+
+[^28]: [The inside story of building NotebookLM - Google Blog](https://blog.google/innovation-and-ai/products/developing-notebooklm/) - Hear how Googlers developed and tested NotebookLM, your virtual research assistant — straight from t...
+
+[^29]: [Vygenerování audio přehledu ve službě NotebookLM](https://support.google.com/notebooklm/answer/16212820?hl=cs&sjid=18011809439271613018-EU) - Důležité: V mobilní aplikaci NotebookLM může být tato funkce v současné době omezená. Další informac...
+
+[^30]: [在 NotebookLM 中生成音频概览](https://support.google.com/notebooklm/answer/16212820?hl=zh-Hans&authuser=77) - 重要提示：目前，NotebookLM 移动应用可能无法完全支持此功能。详细了解 NotebookLM 移动应用中支持的功能。 音频概览是两位 AI 主持人之间的深入讨论，旨在对你上传的来源中的关键主题...
+
+[^31]: [새로워진 '제미나이 노트북'으로 학습 효율을 한층 더 높여보세요](https://blog.google/intl/ko-kr/company-news/technology/new-study-tools-september-2026-kr/) - ‘제미나이 노트북(Gemini Notebook)’과 실시간으로 대화를 나누고, 집중 학습을 돕는 대화형 학습 개요를 생성하는 등, 구글이 한층 더 개인화되고 강력한 학습 경험을 제...
+
+[^32]: [3 Google updates from Galaxy Unpacked 2026](https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/) - We shared how Samsung users can boost productivity and get time back on new foldables, watches, and ...
+
+[^33]: [8 ways to make the most out of Slide Decks in NotebookLM](https://blog.google/innovation-and-ai/models-and-research/google-labs/8-ways-to-make-the-most-out-of-slide-decks-in-notebooklm/) - Nano Banana Pro makes NotebookLM ever more powerful to synthesize information and create visual stor...
+
+[^34]: [Gemini Notebook - Apps on Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind&hl=en_US) - Understand anything with a personalized AI research assistant
+
+[^35]: [Get started with the NotebookLM mobile app - Google Help](https://support.google.com/notebooklm/answer/16296687?hl=en-GB&co=GENIE.Platform=Android) - Our early version of the NotebookLM mobile app includes many core features of NotebookLM and is desi...
+
+[^36]: [Get started with the NotebookLM mobile app - iPhone & iPadsupport.google.com › notebooklm › answer](https://support.google.com/notebooklm/answer/16296687?co=GENIE.Platform=iOS) - Our early version of the NotebookLM mobile app includes many core features of NotebookLM and is desi...
+
+[^37]: [AP Psychology: 100 NotebookLM AI Prompts (2026)](https://notebooklm-guide.com/ap-psychology/) - AP Psych tests application, not recall. 100 NotebookLM prompts that connect 15 core theories to scen...
+
+[^38]: [Educational Psychology Improves Use of AI for Learning](https://www.psychologytoday.com/us/blog/psyched/202607/educational-psychology-improves-use-of-ai-for-learning) - Students will use AI. The challenge is teaching them to use it in ways that strengthen learning. Edu...
+
+[^39]: [The GenAI Motivation and Learning Buddy: A Generative AI ...](https://zenodo.org/records/20533907) - The GenAI Motivation and Learning Buddy is an Open Access AI-supported coaching resource that helps ...
+
+[^40]: [Are Students Harnessing AI for Genuine Learning or Just Easy ...](https://blog.aare.edu.au/2026/09/21/are-students-harnessing-ai-for-genuine-learning-or-just-easy-answers/) - Psychologically-informed use of AI can help here – and we have a tremendous body of theory and resea...
+
+[^41]: [New AI Tools for the Future of Science - Google Blog](https://blog.google/innovation-and-ai/technology/research/gemini-for-science-io-2026/) - Gemini for Science is a new collection of science tools and experiments to expand the scale and prec...
+
+[^42]: [Using NotebookLM for Qualitative Analysis - EvalCommunity Academy](https://academy.evalcommunity.com/using-notebooklm-for-qualitative-analysis/) - Using NotebookLM for Qualitative Analysis – Learn more in our detailed guide for M&E professionals.
+
+[^43]: [Six reasons why human-led qualitative research is safe ...](https://www.nesta.org.uk/blog/six-reasons-why-human-led-qualitative-research-is-safe-from-ai-for-now/) - While NotebookLM can support researchers with qualitative data analysis, the value of the tool lies ...
+
+[^44]: [Dr. Susanne Friese.'s Post - LinkedIn](https://www.linkedin.com/posts/dr-susanne-friese_if-youre-using-chatgpt-claude-or-notebooklm-activity-7486721931279474688-bCdm) - If you're using ChatGPT, Claude, or NotebookLM for qualitative analysis and it feels off — this is w...
+
+[^45]: [Prompt Engineering Guide + 30 Templates - NotebookLM Guide](https://notebooklm-guide.com/notebooklm-prompt-engineering/) - The PPAE loop prevents "one-and-done" thinking. Perceive what you have, Plan your approach, Act with...
+
+[^46]: [Prompt Design Workflow: Canvas & PPAE Method (2026)](https://notebooklm-guide.com/prompt-design-workflow/) - Learn to design, diagnose, and chain source-grounded NotebookLM prompts. Includes a 30-second quick ...
+
+[^47]: [Generative AI in Google Workspace Privacy Hub](https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub) - No Model Training: Your content is not reviewed by humans or otherwise used for Gemini model trainin...
+
+[^48]: [AI Tools for Business | Google Workspace](https://workspace.google.com/solutions/ai/) - Enterprise-grade security and privacy. Privacy. Your data is your data, and it's not used to train G...
+
+[^49]: [Report a problem or send general feedback](https://support.google.com/notebooklm/answer/16179536?hl=en&authuser=50&co=GENIE.Platform=Desktop) - If you get a response that’s inaccurate or that you feel is unsafe, you can give feedback on that re...
+

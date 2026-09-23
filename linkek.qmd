@@ -6,7 +6,14 @@
 
   1.  [Elbutul vagy szárnyalni fog a Z és a követő generációk az AI miatt?](https://www.youtube.com/watch?v=nrce3GwJVso){target="_blank"}
   2.  [Az OpenAI belépett az AGI-érába, az iskolák még csak most barátkoznak az AI-használattal](https://www.youtube.com/watch?v=qyihhjN-n7A){target="_blank"}
+      - [Fogalmak a videó értelmezéséhez](video_magyarazat.qmd){target="_blank"}
+  3. [Reinventing Teaching After The Introduction Of AI | Amy Bruckman | TEDxWeber School Youth](https://www.youtube.com/watch?v=sI6LBouiIZo){target="_blank"}
 
 - Érdemes meghallgatni
 
-  - [Teljesen elbutítja az agyunkat az AI? Szász Máté neurobiológus](https://www.youtube.com/watch?v=6WG4yMa_qeI){target="_blank"}
+    - [Teljesen elbutítja az agyunkat az AI? Szász Máté neurobiológus](https://www.youtube.com/watch?v=6WG4yMa_qeI){target="_blank"}
+
+
+- MI és az oktatás
+
+    - [Csalás vagy segítség? – AI a felsőoktatásban | MI ÉS MÁS](https://www.youtube.com/watch?v=q75yEYDuipI){target="_blank"}

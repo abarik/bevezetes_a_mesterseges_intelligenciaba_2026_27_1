@@ -1,0 +1,22 @@
+# Kiselőadás ötletek
+
+| Téma – javasolt előadáscím | Mit tartalmazzon az előadás? |
+|------------------------------------|------------------------------------|
+| **1. Mit mér egy MI-benchmark?** | Vesse össze a benchmarkot a pszichológiai képességteszttel: feladat, pontszám, validitás és általánosíthatóság. Egy magas pontszámból mire *nem* következtethetünk? |
+| **2. AI, AGI és ASI** | Mi a fogalmak jelentése, mikor érhetjük el ezeket a szinteket? |
+| **3. Az MI „intelligens”?** | Hasonlítsa össze az emberi intelligencia pszichológiai fogalmát az AGI különböző értelmezéseivel. Milyen bizonyíték kellene egy erős állításhoz? |
+| **4. Mi a különbség a jó válasz és a megértés között?** | Egy jól megírt MI-válaszon keresztül tárgyalja, milyen viselkedéses bizonyíték alapján tulajdonítunk megértést embernek vagy gépnek. |
+| **5. Hallucináció vagy emberi emlékezeti hiba?** | Hasonlítsa össze az MI kitalált hivatkozását az emberi téves emlékezettel. Hol hasznos az analógia, és hol félrevezető? |
+| **6. Miért bízunk a magabiztos MI-válaszban?** | Mutassa be egy példán az automatizálási torzítást: hogyan hat a választékos fogalmazás a hitelesség megítélésére? |
+| **7. Mikor válik az MI-tanulás „kognitív kiszervezéssé”?** | Hasonlítsa össze az önálló esszéírást, az MI-vel közös munkát és a kész válasz átvételét. A „kognitív adósság” kutatását a vizsgálat korlátaival együtt ismertesse. [MIT Media Lab](https://www.media.mit.edu/publications/your-brain-on-chatgpt/) |
+| **8. Tud-e jól kérdezni egy MI-tutor?** | Rövid bemutatóval vesse össze a kész megoldást adó chatbotot egy olyannal, amely kérdésekkel vezeti a tanulót. Melyik helyzetben tanul többet a hallgató? |
+| **9. Antropomorfizáljuk-e a chatbotokat?** | Mutassa be, miért tulajdoníthat valaki szándékot, empátiát vagy „személyiséget” egy beszélgető rendszernek. |
+| **10. Lehet-e egy chatbot lelki támasz?** | Különítse el az együttérző hangvételt a szakmai felelősségtől és a terápiás kapcsolattól. Egy rövid példán mutassa be a lehetőségeket és a határokat. |
+| **11. Az MI felismeri az érzelmeket az arcról?** | Válassza szét az arckifejezés osztályozását és a belső érzelmi állapotra következtetést. Milyen bizonyíték hiányozhat a kettő közötti ugráshoz? |
+| **12. Kulturálisan elfogult lehet-e egy chatbot?** | Ugyanazt a kérdést fogalmazza meg eltérő társas vagy kulturális helyzetekben, majd vizsgálja meg a válaszokat. |
+| **13. Segíthet-e az MI egy pszichológiai mérőeszköz fordításában?** | Például három kérdőívtételen mutassa be: a nyelvileg gördülékeny fordítás még nem bizonyítja a mérési egyenértékűséget. |
+| **14. Hogyan találjunk meg egy MI által idézett tanulmányt?** | Mutasson be egy ellenőrzési folyamatot: szerző, cím, DOI, eredeti cikk, majd az állítás és a cikk tényleges eredményének összevetése. |
+| **15. Mire jó egy forrásalapú MI-asszisztens?** | Ugyanarra a kérdésre kérjen választ általános chatbottól és feltöltött szövegre támaszkodó eszköztől. Ellenőrizze, valóban alátámasztják-e a hivatkozások a választ. |
+| **16. Mit kezdhet a pszichológus az MI-vel a kutatástervezésben?** | Egy kutatási kérdésen mutassa be, hogyan segíthet ötletelni a változókról, zavaró tényezőkről és alternatív magyarázatokról. |
+| **17. Kié a döntés, ha az MI tanácsot ad?** | Egy oktatási vagy kutatási helyzeten keresztül mutassa be az emberi felügyelet, a felelősség és az *alignment* jelentését. [NIST: generatív MI kockázati profil](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) |
+| **18. Mit jelentenek valójában a diákok MI-használatáról szóló százalékok?** | Válasszon két felmérést, és vesse össze: kit kérdeztek, mit neveztek „használatnak”, és milyen időtávra kérdeztek rá? A magyar PISA-adatok jó kiindulópontot adnak. [OECD: magyar országismertető](https://www.oecd.org/en/publications/pisa-2025-results-volume-i-country-notes_2d4ff9ea-en/hungary_c8b1c5e7-en.html) |

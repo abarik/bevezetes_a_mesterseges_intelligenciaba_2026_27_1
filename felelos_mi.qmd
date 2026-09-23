@@ -1,0 +1,550 @@
+# Felelős MI-használat
+
+*Jelen fogalomgyűjtemény a Perplexity AI segítségével készült.*
+
+## Bevezetés
+
+A generatív mesterséges intelligencia (MI) segíthet ötletelésben, fogalmak tisztázásában, tanulókérdések készítésében, szövegek szerkesztésében, programkód ellenőrzésében és kutatási anyagok előzetes rendszerezésében. Hatása azonban nem automatikusan kedvező: a teljesítménynyereség függ a feladattól, a felhasználó tudásától és az ellenőrzés minőségétől. Munkahelyi kísérletekben az MI egyes feladatoknál növelte a gyorsaságot és a minőséget, más, a rendszer képességhatárán kívüli feladatoknál viszont rontotta a pontosságot.[^1][^2]
+
+Az MI ezért elsősorban **a munka minőségét támogató eszköz**, nem a hallgató gondolkodásának, szakértelmének vagy felelősségének helyettesítője. Használata nem feltétlenül rövidíti le a teljes munkafolyamatot: a jó eredményhez időt kell fordítani a feladat meghatározására, a források ellenőrzésére, az eredmény javítására és a használat dokumentálására. A generatív MI a kritikai gondolkodást is átalakítja: a hangsúly részben az információ előállításáról annak ellenőrzésére, integrálására és felügyeletére kerül.[^3][^4]
+
+> **Alapelv:** Az MI javasolhat, rendszerezhet és visszajelzést adhat, de a hallgató vagy kutató határozza meg a célt, ellenőrzi a bizonyítékokat, meghozza a döntést, és felelősséget vállal a végső munkáért.
+
+A felelős használat három kérdéssel kezdődik:
+
+1. **Megengedett?** Összhangban áll az oktatói, kurzus-, intézményi, kutatásetikai és adatvédelmi szabályokkal?
+2. **Megbízható?** Ellenőrizték a tényeket, forrásokat, számításokat és következtetéseket?
+3. **Vállalható?** A hallgató megérti, saját szavaival el tudja magyarázni, dokumentálni tudja, és névvel vállalná az eredményt?
+
+## 1. Hallucináció és konfabuláció
+
+### Mit jelent?
+
+Az MI-hallucináció olyan gördülékenyen és gyakran magabiztosan megfogalmazott kimenet, amely téves, kitalált, nem igazolható, a forrásnak ellentmondó vagy belsőleg következetlen. A NIST a pontosabb **konfabuláció** kifejezést használja, mert a „hallucináció” emberi tudatállapotot sugallhat egy tudattal nem rendelkező rendszer esetében.[^5][^6]
+
+A nyelvi modell alapvetően nem igaz állításokat keres egy hiteles adatbázisban, hanem a bemenet és a tanult statisztikai mintázatok alapján valószínű szövegfolytatást generál. A nyelvi hihetőség ezért nem azonos a tényszerű igazsággal: egy hibás válasz ugyanolyan magabiztosnak és szakmainak tűnhet, mint egy helyes.[^7][^5]
+
+### Miért fordul elő?
+
+A hallucinációt nem lehet egyetlen okra visszavezetni. A legfontosabb tényezők:
+
+- **A generálás működésmódja:** a modell tokenről tokenre valószínű folytatást állít elő, nem pedig minden mondat előtt automatikus tényellenőrzést végez.[^5]
+- **Hiányos vagy zajos tanítóadat:** a tanítóanyag tartalmazhat tévedéseket, elavult információkat, társadalmi torzításokat és egymásnak ellentmondó állításokat.[^8][^7]
+- **A tudáshatár felismerésének nehézsége:** a modell akkor is megpróbálhat válaszolni, amikor a kérdéshez nincs elegendő vagy megbízható ismerete.[^7]
+- **Homályos vagy félrevezető prompt:** a nem egyértelmű feladat találgatásra kényszerítheti a rendszert, bár jó prompt mellett sem tűnik el a hallucináció lehetősége.[^8]
+- **Összetett, hosszú vagy szakértelmet igénylő feladat:** nőhet az egymásra épülő hibák, a kihagyások és a belső ellentmondások kockázata, különösen nyitott végű kérdéseknél.[^5]
+- **Hibás visszakeresés:** internetes keresést vagy dokumentum-visszakeresést használó rendszer is választhat irreleváns vagy gyenge minőségű forrást, amelynek hibája továbbterjed a válaszba.[^7]
+- **Frissességi probléma:** a modell belső tudása nem feltétlenül tartalmazza a legújabb eseményeket, szabályokat vagy kutatási eredményeket.
+
+Nem pontos tehát azt állítani, hogy az MI egyszerűen „összefüggéshálózaton keresztül gondolkodik”, vagy hogy csak rossz kérdés esetén téved. A modellek valóban tanulnak statisztikai kapcsolatokat, de nem emberi módon gondolkodnak; hibájuk az adatok, a tanítás, a visszakeresés, a generálás és a feladatmegadás kölcsönhatásából származhat.[^9][^7]
+
+### Miben tévedhet?
+
+| Hibatípus | Példa | Ellenőrzés |
+|---|---|---|
+| **Ténybeli hiba** | Rossz születési dátum, helyszín, kutatási eredmény vagy fogalommeghatározás | Elsődleges vagy intézményi forrás megnyitása |
+| **Forráshiba** | Nem létező cikk, DOI, szerző, idézet vagy oldalszám | DOI/Crossref, kiadói oldal, könyvtári katalógus vagy adatbázis ellenőrzése |
+| **Forráshűségi hiba** | A cikk létezik, de nem azt állítja, amit az MI neki tulajdonít | Absztrakt helyett a releváns teljes szövegrész elolvasása |
+| **Logikai hiba** | Életszerűnek tűnő, de a cél szempontjából értelmetlen tanács | Feltételek, cél és következtetés külön vizsgálata |
+| **Számítási hiba** | Rossz százalék, hibás képlet vagy következetlen táblázat | Kézi ellenőrzés vagy reprodukálható szoftveres számítás |
+| **Kihagyás** | Fontos ellenérv, alternatív elmélet vagy mintavételi korlát kimarad | Ellenpéldák és hiányzó nézőpontok célzott keresése |
+| **Túláltalánosítás** | Egy kis mintás eredményt minden emberre érvényesnek mutat be | Minta, populáció, design és külső validitás ellenőrzése |
+| **Oksági tévedés** | Korrelációból ok-okozati kapcsolatot állapít meg | Kutatási design és alternatív magyarázatok vizsgálata |
+| **Torzítás** | Kulturálisan egyoldalú vagy csoportokra nézve sztereotip következtetés | Alcsoportok, mérési invariancia és kulturális kontextus vizsgálata |
+
+### Pszichológiai példa
+
+Ha egy modell azt állítja, hogy egy bizonyos arckifejezés „biztosan depressziót jelez”, egyszerre követhet el konstruktum-, mérési és általánosítási hibát. Egy megfigyelhető viselkedés nem azonos egy belső pszichológiai állapottal vagy klinikai diagnózissal; az értelmezéshez kontextus, validált mérés, differenciáldiagnosztika és megfelelő szakértelem szükséges.
+
+## 2. Forráskezelés
+
+### Az MI nem tudományos forrás
+
+Egy chatbot válasza nem helyettesíti a tankönyvet, a lektorált tanulmányt, a kézikönyvet, az adatbázist vagy a hivatalos dokumentumot. Használható keresőkifejezések és kiinduló forrásjelöltek létrehozására, de a generatív MI nem tökéletes keresőmotor: a találati kör nem feltétlenül teljes, reprodukálható vagy átlátható, és a hivatkozások is lehetnek hamisak vagy félreértelmezettek.[^10][^11][^12]
+
+> **A hivatkozás megléte nem bizonyíték.** A forrásnak léteznie kell, elérhetőnek kell lennie, és valóban alá kell támasztania az adott állítást.
+
+### Három lépés a megbízhatóbb válaszhoz
+
+1. **Kattints a forrásra.** Ellenőrizd, hogy a link valódi, a szerző és a cím egyezik, továbbá az anyag megfelelő típusú és kellően friss.
+2. **Olvasd el az eredetit.** Ne elégedj meg az MI összefoglalójával vagy a kereső találati részletével; keresd meg a releváns bekezdést, módszert és eredményt.
+3. **Keress független megerősítést.** Fontos állításnál keress második, megfelelő minőségű forrást — lehetőleg elsődleges kutatást, hivatalos dokumentumot vagy megbízható szintézist.
+
+Egy másik MI-modell megkérdezése hasznos **hibakeresési technika**, de nem független bizonyítás. A modellek használhatnak átfedő tanítóadatokat, azonos internetes forrásokat és hasonló generálási elveket, ezért ugyanazt a tévedést is megismételhetik. A valódi megerősítést nem a modellek egyetértése, hanem az ellenőrizhető bizonyíték adja.
+
+### Forráshierarchia
+
+Pszichológiai kérdésben általában a következő sorrend segít:
+
+1. **Elsődleges forrás:** eredeti empirikus tanulmány, hivatalos jogszabály, tesztkézikönyv, adatbázisrekord.
+2. **Magas minőségű szintézis:** szisztematikus áttekintés, metaanalízis, szakmai irányelv.
+3. **Tankönyv vagy kézikönyv:** megalapozott összefoglalás, amely azonban elavulhat.
+4. **Intézményi tájékoztató:** egyetem, szakmai szervezet vagy hatóság dokumentuma.
+5. **Ismeretterjesztő cikk:** tájékozódásra jó lehet, de tudományos állítás alapjául ritkán elegendő.
+6. **MI-válasz:** kiindulópont vagy segédanyag, nem önálló tudományos evidencia.
+
+### Idézetek ellenőrzése
+
+A „szó szerint idézd” utasítás önmagában nem kényszeríti pontosságra a modellt: idézőjelek között is előállíthat kitalált vagy pontatlan szöveget. Szó szerinti idézetet csak akkor használj, ha azt az eredeti dokumentumban megtaláltad, ellenőrizted a szövegkörnyezetét, és rögzítetted az oldalszámot vagy más helyjelölőt.
+
+## 3. Hogyan növelhető a pontosság?
+
+### Pontosságot támogatni lehet, garantálni nem
+
+Nincs olyan prompt, amely egy általános célú generatív modellt tévedhetetlenné tesz. Az olyan utasítások, mint „ne találj ki semmit” vagy „csak valós forrásokat adj”, jelzik az elvárást, de nem jelentenek technikai garanciát. A megbízhatóságot a feladat körülhatárolása, a jó minőségű források, a lépésekre bontás és az emberi ellenőrzés együtt növeli.[^13][^5]
+
+### Jó feladatmegadás
+
+Egy jól használható prompt legalább öt elemet tartalmaz:
+
+| Elem | Kérdés | Példa |
+|---|---|---|
+| **Cél** | Mire kell az eredmény? | „Vizsgafelkészüléshez szeretném megérteni…” |
+| **Kontextus** | Milyen szinten és helyzetben? | „Pszichológia BA másodéves hallgató vagyok…” |
+| **Feladat** | Mit tegyen a rendszer? | „Hasonlítsd össze a két elméletet…” |
+| **Korlát** | Mit ne tegyen, milyen forrásból dolgozzon? | „Csak a feltöltött tanulmányokat használd…” |
+| **Kimenet** | Milyen formában válaszoljon? | „Készíts négyoszlopos táblázatot…” |
+
+Hasznos, ha a prompt meghatározza a bizonytalanság kezelését is:
+
+```text
+Ha a megadott forrásokból nem állapítható meg a válasz, írd ezt:
+„A rendelkezésre álló források alapján nem állapítható meg.”
+
+Külön jelöld:
+1. a közvetlenül forrásból származó állításokat;
+2. a saját szintézisedet;
+3. a bizonytalan vagy vitatott pontokat;
+4. a hiányzó információt.
+```
+
+### Összetett feladatok felbontása
+
+Nagy feladat helyett használj ellenőrizhető részlépéseket:
+
+1. a kérdés és a kulcsfogalmak tisztázása;
+2. a felhasználható források kijelölése;
+3. információk kigyűjtése;
+4. összehasonlítás vagy elemzés;
+5. ellenpéldák és hiányok keresése;
+6. szintézis;
+7. forrás- és minőségellenőrzés.
+
+Nem szükséges a modell „belső gondolatmenetének” részletes feltárását kérni. Célszerűbb **rövid, ellenőrizhető indoklást**, felhasznált evidenciát, számítási lépéseket vagy döntési kritériumokat kérni.
+
+### Visszakérdezés
+
+A „Biztos vagy benne?” kérdés néha javítást vált ki, de előfordulhat, hogy a modell ugyanazt a hibát még magabiztosabban ismétli meg. Hatékonyabbak a konkrét ellenőrző kérdések:
+
+- „Melyik eredeti forrás melyik szövegrésze támasztja alá ezt az állítást?”
+- „Mely állításaid bizonytalanok vagy közvetett következtetések?”
+- „Mi szól a válaszod ellen?”
+- „Milyen adat hiányzik ahhoz, hogy ezt biztosan kijelenthessük?”
+- „Különítsd el a korrelációt az oksági állítástól.”
+- „Ellenőrizd, hogy minden DOI valóban a megadott cikkhez tartozik-e; amit nem tudsz igazolni, hagyd ki.”
+
+### Az eredmény lektorálása
+
+Ha már elkészült egy saját szöveg, az MI használható ellenőrző partnerként:
+
+- keressen belső ellentmondást és homályos fogalmat;
+- jelölje a bizonyíték nélküli vagy túl erős állításokat;
+- vegye fel az „ördög ügyvédje” nézőpontját;
+- keressen alternatív magyarázatot és ellenpéldát;
+- ellenőrizze a szerkezetet, közérthetőséget és következetességet;
+- hasonlítsa a szöveget egy értékelési rubrikához.
+
+A második modell hasznos lehet eltérések felfedezésére, de a végső lektorálás alapja továbbra is az eredeti forrás, a módszertani tudás és szükség esetén emberi szakértő.
+
+### Ellenőrző prompt
+
+```text
+Vizsgáld meg kritikusan az előző válaszodat.
+
+Készíts táblázatot ezekkel az oszlopokkal:
+- állítás;
+- bizonyíték vagy pontos forráshely;
+- bizonyosság szintje;
+- lehetséges ellenérv;
+- hiányzó információ;
+- szükséges emberi ellenőrzés.
+
+Ne írj új forrást pusztán emlékezetből. Ha nem tudod igazolni,
+jelöld „nem ellenőrzött” minősítéssel.
+```
+
+## 4. Adatbiztonság és adatvédelem
+
+### Alapszabály
+
+> **Amit nem töltenél fel nyilvános vagy külső felhőszolgáltatásba, azt jóváhagyás nélkül ne írd be generatív MI-rendszerbe sem.**
+
+A promptok, feltöltött fájlok és generált válaszok is tartalmazhatnak személyes adatot. A személyes adatok MI-rendszerben történő kezelése ugyanúgy megfelelő célt, jogalapot, adatminimalizálást, átláthatóságot és biztonsági intézkedéseket igényelhet, mint más adatfeldolgozás.[^14][^15][^16]
+
+Pszichológiai környezetben különösen érzékenyek lehetnek:
+
+- mentális és fizikai egészségre vonatkozó adatok;
+- diagnózis, tünet, teszteredmény és terápiás információ;
+- interjú- vagy fókuszcsoport-átirat;
+- hang- és videófelvétel;
+- élettörténeti, családi vagy traumatikus információ;
+- név, e-mail-cím, Neptun-kód, telefonszám és IP-cím;
+- ritka tulajdonságok kombinációja, amely közvetetten azonosíthat valakit.
+
+### Nem minden fizetős fiók egyformán biztonságos
+
+A „fizetős fiók biztonságosabb az ingyenesnél” állítás túl általános. A döntő különbség nem pusztán az ár, hanem a **szerződéses csomag, az adatkezelési feltétel, a beállítás, a megőrzési idő, az adminisztrátori kontroll és az intézményi jóváhagyás**. Egy személyes fizetős fogyasztói csomag nem feltétlenül nyújt vállalati vagy oktatási adatvédelmet.
+
+Egyes üzleti és oktatási szolgáltatások alapértelmezésben nem használják az ügyfél bemenetét és kimenetét alapmodellek tanítására; fogyasztói szolgáltatásnál viszont előfordulhat modellfejlesztési felhasználás vagy emberi ellenőrzés, amely bizonyos esetekben kikapcsolható. A „nem használják tanításra” ugyanakkor nem feltétlenül jelenti azt, hogy az adatot egyáltalán nem továbbítják, nem naplózzák vagy nem őrzik meg.[^17][^18][^19]
+
+Az „ingyenes szolgáltatásnál te vagy a termék” szlogen helyett mindig az aktuális adatvédelmi tájékoztatót és intézményi szerződést kell ellenőrizni. A szolgáltató mérete vagy ismertsége önmagában nem garancia arra, hogy az adott fiók és felhasználási mód megfelel egy pszichológiai kutatás követelményeinek.
+
+### Adatosztályozási jelzőlámpa
+
+A következő jelzőlámpa **gyakorlati intézményi heurisztika**, nem az EU AI Act hivatalos adatosztályozása. Az AI Act MI-műveltségi és bizonyos magas kockázatú rendszereknél emberi felügyeleti követelményeket tartalmaz, de nem határoz meg általános „zöld–sárga–piros” promptkategóriákat.[^20][^21][^22]
+
+| Szint | Példák | Teendő |
+|---|---|---|
+| **Zöld** | Nyilvános jogszabály, nyílt hozzáférésű cikk, saját kitalált példa, nem bizalmas tananyag | Általában használható, de a szerzői jogot és a kurzusszabályt ellenőrizni kell. |
+| **Sárga** | Belső jegyzet, még nem publikált kézirat, pszeudonimizált kutatási adat, belső szabályzat | Csak jóváhagyott intézményi eszközben, céllal, jogosultsággal és adatminimalizálással. |
+| **Piros** | Azonosítható résztvevői vagy kliensadat, egészségügyi adat, terápiás jegyzet, jelszó, vizsgafeladat, üzleti titok, hozzáférési kulcs | Nyilvános vagy nem jóváhagyott MI-be nem tölthető fel; külön jogalap, etikai és intézményi engedély szükséges lehet. |
+
+### Anonimizálás és pszeudonimizálás
+
+- **Pszeudonimizálás:** a nevet kódra cseréljük, de külön kulccsal a személy visszaazonosítható. Ez továbbra is személyes adat.
+- **Anonimizálás:** a személy észszerűen alkalmazható módszerekkel már nem azonosítható, nem különíthető el, nem kapcsolható más rekordhoz, és nem következtethető ki a személyazonossága. Ez lényegesen szigorúbb követelmény.[^23][^24]
+
+Feltöltés előtt:
+
+- töröld a közvetlen azonosítókat;
+- cseréld a neveket következetes kódokra;
+- általánosítsd a szükségtelenül pontos életkort, dátumot, települést és foglalkozást;
+- távolítsd el a ritka eseményeket vagy kombinációkat, amelyek újraazonosítást tesznek lehetővé;
+- a kódkulcsot elkülönítve, biztonságosan tárold;
+- ellenőrizd, hogy az anonimizálás nem semmisíti-e meg az elemzéshez szükséges jelentést;
+- kérj intézményi vagy adatvédelmi jóváhagyást, ha bizonytalan vagy.
+
+### Fiókbiztonság
+
+- Használj hosszú, egyedi jelszót és jelszókezelőt.
+- Kapcsold be a többtényezős hitelesítést.
+- Munkahelyi vagy egyetemi feladathoz a jóváhagyott intézményi fiókot használd, ne a személyeset.
+- Rendszeresen ellenőrizd az aktív munkameneteket, integrációkat és csatlakoztatott alkalmazásokat.
+- Csak a feladathoz szükséges jogosultságot add egy MI-ágensnek vagy bővítménynek.
+- Ne adj meg jelszót, API-kulcsot vagy hozzáférési tokent chatüzenetben.
+- Ismeretlen MI-bővítményt ne kapcsolj Drive-, e-mail- vagy kutatási adattárhoz.
+
+## 5. Shadow AI
+
+### Fogalma
+
+A **shadow AI** olyan MI-eszköz, modell, böngészőbővítmény vagy ágens munkahelyi, egyetemi vagy kutatási használata, amely kívül esik a szervezet jóváhagyott rendszerein és eljárásain. A probléma nem önmagában az, hogy az eszköz ingyenes vagy kevéssé ismert, hanem hogy nincs megfelelő engedélyezés, adatkezelési áttekintés, hozzáférés-szabályozás és auditálhatóság.[^25][^26]
+
+### Fő kockázatai
+
+- **Adatszivárgás:** bizalmas, személyes vagy szerzői joggal védett anyag kerül külső rendszerbe.
+- **Láthatatlanság:** az intézmény nem tudja, milyen adat hová került, meddig őrzik és mire használják.
+- **Jogszabályi vagy etikai probléma:** megkerülhető a kutatásetikai engedély, a GDPR, a titoktartás vagy a résztvevői tájékoztatás.
+- **Biztonsági rés:** nem ellenőrzött bővítmény vagy ágens túl széles hozzáférést kaphat.
+- **Auditálhatatlanság:** nem rekonstruálható, mely modell, prompt, adat és beállítás hozta létre az eredményt.
+- **Szellemi tulajdon elvesztése:** kézirat, mérőeszköz, programkód vagy kutatási ötlet jogosulatlanul kerülhet harmadik félhez.[^27][^26][^25]
+
+### Mit tegyen a hallgató?
+
+1. Ellenőrizze az egyetem és a kurzus MI-szabályzatát.
+2. Kutatási adatnál kérdezze meg a témavezetőt vagy adatkezelésért felelős személyt.
+3. Csak jóváhagyott fiókot és eszközt használjon.
+4. A minimálisan szükséges adatot adja át.
+5. Dokumentálja az eszköz nevét, a használat célját és a lényeges promptokat.
+6. Ha véletlenül érzékeny adat került nem jóváhagyott rendszerbe, ne próbálja eltitkolni; kövesse az intézményi incidensjelentési eljárást.
+
+## 6. AI slop és workslop
+
+### Fogalmak
+
+Az **AI slop** nagy mennyiségben előállított, alacsony minőségű, pontatlan, sablonos vagy érdemi érték nélküli MI-tartalom. A **workslop** ennek munkahelyi változata: olyan MI-vel létrehozott e-mail, jelentés, diasor, táblázat vagy más produktum, amely első pillantásra kidolgozottnak tűnik, de nem viszi előre érdemben a feladatot, ezért az ellenőrzés és javítás terhét a címzettre hárítja.[^28][^29]
+
+Pontosítás: 2025-ben a **„slop”**, nem pedig a „workslop” lett a Merriam-Webster év szava; a „workslop” kifejezést a BetterUp Labs és a Stanford Social Media Lab kutatói tették ismertté 2025-ben.[^30][^31]
+
+Egy 1150 amerikai teljes munkaidős dolgozóra épülő felmérésben 40% számolt be arról, hogy az előző hónapban workslopot kapott; a tanulmány önbeszámolós és amerikai munkahelyi mintára épült, ezért az adatok nem általánosíthatók automatikusan minden országra és egyetemi környezetre.[^32][^33]
+
+### Hatásai
+
+- növeli az információs zajt;
+- az időmegtakarítást a szerzőtől a javítást végző címzetthez helyezi át;
+- csökkentheti a szakmai bizalmat;
+- frusztrációt és együttműködési problémát okozhat;
+- elfedheti, hogy a szerző valójában nem értette meg a feladatot;
+- nagyobb mennyiségű, de kisebb értékű munkát eredményezhet.[^33][^28][^32]
+
+### Felismerése
+
+A workslop nem attól rossz, hogy hosszú vagy MI írta, hanem attól, hogy nem felel meg a feladatnak. Figyelmeztető jelek:
+
+- sok általánosság, kevés konkrétum vagy bizonyíték;
+- indokolatlanul hosszú, ismétlődő szöveg;
+- magabiztos állítás forrás és bizonytalanságjelzés nélkül;
+- a célközönség, helyzet vagy intézményi kontextus figyelmen kívül hagyása;
+- nem létező hivatkozás vagy ellenőrizhetetlen adat;
+- látványos diasor, amelynek nincs világos érve vagy tanulási célja;
+- robotikus, személytelen e-mail, amelyből hiányzik a konkrét kérés vagy döntés;
+- ugyanaz a tartalom több megfogalmazásban;
+- olyan produktum, amelyet a beküldő nem tud saját szavaival megmagyarázni.
+
+### Megelőzése
+
+Mielőtt MI-vel létrehozott tartalmat átadsz másnak, kérdezd meg:
+
+- Mi a produktum célja és milyen döntést segít?
+- Mi az a három állítás, amelyet a címzettnek meg kell jegyeznie?
+- Minden fontos állítás ellenőrzött és forrásolt?
+- Törölhető-e a szöveg harmada információvesztés nélkül?
+- Tartalmaz-e olyan kontextust, amelyet csak a feladat gazdája ismer?
+- A címzettnek kevesebb vagy több munkája lesz tőle?
+- Saját szavaimmal meg tudom-e védeni az egészet?
+
+## 7. A rossz minőségű MI-tartalom felismerése
+
+### Tartalmi vörös zászlók
+
+- **Túlzott bizonyosság:** kategorikus kijelentések ott is, ahol a tudományos eredmények vegyesek.
+- **Pontatlan szakkifejezés:** közeli jelentésű, de nem azonos pszichológiai fogalmak összemosása.
+- **Módszertani vakság:** nincs szó mintáról, mérésről, kutatási designról vagy korlátokról.
+- **Korreláció–okság tévedés:** együtt járásból automatikusan okot következtet.
+- **Hamis egyensúly:** egy megalapozott konszenzust és egy gyenge ellenállítást azonos súlyúnak mutat.
+- **Kitalált precizitás:** pontos százalék, idézet vagy oldalszám ellenőrizhető eredet nélkül.
+- **Kulturális egyoldalúság:** egy szűk populáció eredményeit univerzális emberi sajátosságként kezeli.
+- **Körkörös magyarázat:** ugyanazt a jelenséget más szavakkal ismétli meg okként.
+- **Forrásdekoráció:** sok hivatkozás látszatot kelt, de egyik sem támasztja alá pontosan az állítást.
+
+### Stilisztikai jelek
+
+A stilisztikai jelek önmagukban nem bizonyítják az MI-használatot. A túl sok alcím, az ismétlődő fordulat, a semleges hang vagy a hosszú felsorolás emberi szövegben is előfordulhat. A cél nem az MI „leleplezése”, hanem a minőség, a forráshűség és a szerzői felelősség értékelése.
+
+### Gyors CRAAP–MI ellenőrzés
+
+| Szempont | Ellenőrző kérdés |
+|---|---|
+| **Frissesség** | Aktuális az információ, és mikor ellenőrizték utoljára? |
+| **Relevancia** | Valóban a kutatási vagy tanulási kérdésre válaszol? |
+| **Hitelesség** | Van azonosítható, megfelelő szakértelmű szerző vagy intézmény? |
+| **Pontosság** | Ellenőrizhető az eredeti adat, idézet, módszer és forrás? |
+| **Cél** | Tájékoztat, meggyőz, reklámoz vagy pusztán gördülékeny választ generál? |
+| **MI-sajátosság** | Elkülönül a forrásállítás, a modell szintézise és a felhasználó értelmezése? |
+
+## 8. Human-in-the-loop
+
+A **human-in-the-loop** megközelítésben ember vesz részt az MI-rendszer feladatának meghatározásában, kimenetének ellenőrzésében és a döntés meghozatalában. Az EU AI Act magas kockázatú rendszereknél olyan emberi felügyeletet ír le, amelyben a felügyelő érti a rendszer korlátait, felismeri az automatizációs torzítás veszélyét, helyesen értelmezi a kimenetet, és szükség esetén figyelmen kívül hagyhatja, felülbírálhatja vagy leállíthatja a rendszert.[^34][^21]
+
+> **Az MI javasol; a hozzáértő ember ellenőriz és dönt.**
+
+Az emberi részvétel csak akkor valódi kontroll, ha az ember:
+
+- rendelkezik a döntéshez szükséges tudással;
+- hozzáfér az eredeti adatokhoz és forrásokhoz;
+- elegendő időt kap az ellenőrzésre;
+- észleli az automatizációs torzítás lehetőségét;
+- jogosult az MI-kimenet elutasítására vagy módosítására;
+- dokumentálja a döntés indokát;
+- vállalja a szakmai felelősséget.
+
+A puszta „jóváhagyás” nem elegendő, ha a felhasználó nem érti a feladatot vagy automatikusan elfogadja a rendszer javaslatát. A magas MI-bizalom kisebb kritikai erőfeszítéssel járhat együtt, ezért a felügyeletet tudatosan kell megtervezni.[^4][^3]
+
+### Ha az MI téved
+
+Az MI-rendszer nem szerző és nem erkölcsi vagy szakmai felelős. A COPE szerint az MI nem felel meg a szerzőség feltételeinek, mert nem tud felelősséget vállalni, összeférhetetlenséget nyilatkozni vagy szerzői jogi megállapodást kötni; a munkát benyújtó ember felel az MI által támogatott részekért is.[^35]
+
+A „jogi felelősség mindig az emberé” kijelentés ugyanakkor túl egyszerű. A konkrét jogi felelősség a helyzettől függően megoszolhat felhasználó, intézmény, adatkezelő, alkalmazó és szolgáltató között. Hallgatói szempontból a biztos szabály: **ne add le, ne publikáld és ne alkalmazd azt, amit nem ellenőriztél és nem tudsz szakmailag megvédeni**.
+
+## 9. Akadémiai integritás
+
+### Megengedett és tiltott használat
+
+Mindig a kurzus és az oktató aktuális szabálya az elsődleges. Ugyanaz a tevékenység — például nyelvi javítás, ötletelés vagy vázlatkészítés — egyik kurzusban engedélyezett, másikban bejelentésköteles vagy tiltott lehet.[^36]
+
+Általában felelősebb felhasználás:
+
+- saját vázlat kritikája;
+- gyakorlókérdések készítése;
+- fogalmak összehasonlítása ellenőrzött tananyag alapján;
+- keresőkifejezések generálása;
+- saját kód hibakeresése;
+- nyelvi és szerkezeti visszajelzés;
+- alternatív érvek és ellenpéldák keresése.
+
+Külön engedély nélkül problémás lehet:
+
+- kész beadandó vagy vizsgaválasz generáltatása és sajátként beadása;
+- nem ellenőrzött MI-források beépítése;
+- más személy adatának feltöltése;
+- mérőeszköz, vizsgafeladat vagy jogvédett tartalom jogosulatlan megosztása;
+- adatok vagy kutatási eredmények kitalálása;
+- MI-output elhallgatott használata ott, ahol kötelező a közzététel.
+
+### Átláthatóság
+
+Az APA útmutatása szerint kutatásban célszerű a Módszer vagy annak megfelelő részben leírni, hogyan használták az MI-eszközt; esszénél az ismertetés kerülhet a bevezetésbe vagy külön MI-használati nyilatkozatba. Az MI nem helyettesíti az eredeti szakirodalmi hivatkozást, és a helyi intézményi szabály elsőbbséget élvez.[^37][^10]
+
+Példa MI-használati nyilatkozatra:
+
+```text
+A dolgozat elkészítése során [eszköz neve] rendszert használtam
+[a használat dátuma] időpontban, [ötletelés / keresőkifejezések kialakítása /
+nyelvi javítás / kódellenőrzés] céljából. A generált javaslatokat az eredeti
+szakirodalom alapján ellenőriztem, a végső szöveget és következtetéseket
+önállóan készítettem, és azokért teljes felelősséget vállalok.
+```
+
+Kutatásban célszerű megőrizni:
+
+- az eszköz és — ha ismert — a modell nevét;
+- a hozzáférés dátumát;
+- a lényeges promptokat;
+- a felhasznált forrásokat és adatverziót;
+- az eredeti outputot;
+- az emberi javításokat;
+- az ellenőrzés módját;
+- az adatvédelmi és etikai engedélyeket.
+
+A pszichológiai kutatásetikai ajánlások hangsúlyozzák az etikai jóváhagyást, a résztvevők megfelelő tájékoztatását, az adatvédelem biztosítását, a módszer átlátható dokumentálását és az MI korlátainak közlését.[^38]
+
+## 10. Pszichológiai vörös vonalak
+
+BA-hallgató általános célú generatív MI-re ne bízza önállóan:
+
+- kliens vagy kutatási résztvevő diagnosztizálását;
+- öngyilkossági vagy más klinikai kockázat megítélését;
+- kezelési javaslat kialakítását;
+- pszichológiai teszt eredményének szakmai értelmezését;
+- felvételi, alkalmassági vagy más, személyt lényegesen érintő döntést;
+- érzelmi állapot biztos megállapítását arcból, hangból vagy szövegből;
+- kutatásetikai vagy adatvédelmi jóváhagyás helyettesítését;
+- kvalitatív témák végső, reflektálatlan meghatározását;
+- statisztikai eredmények validálatlan közlését.
+
+Magas kockázatú vagy személyeket érintő helyzetben szakember, oktató, témavezető, etikai bizottság vagy adatvédelmi felelős bevonása szükséges. Az UNESCO az oktatási és kutatási MI-használatban az emberi cselekvőképesség, az adatvédelem, a kritikai ellenőrzés és az emberi elszámoltathatóság megőrzését hangsúlyozza.[^39][^13]
+
+## 11. A felelős MI-használat öt pillére
+
+### 1. Ismerd a kockázatot
+
+Tudd, hogy az MI tévedhet, forrást találhat ki, torzítást erősíthet fel, adatot szivárogtathat, és csökkentheti az önálló gondolkodás gyakorlását. A kockázatot a feladat tétje alapján kezeld: egy gyakorlókérdés és egy klinikai döntés nem azonos ellenőrzést igényel.
+
+### 2. Ellenőrizd a bizonyítékot
+
+Nyisd meg a forrást, olvasd el az eredeti szöveget, és keress független megerősítést. A modell, a keresési találat és a hivatkozás nem helyettesíti az eredeti evidenciát.
+
+### 3. Adj világos feladatot
+
+Határozd meg a célt, kontextust, feladatot, forráskört, korlátot és kívánt kimenetet. Bontsd a komplex feladatot ellenőrizhető lépésekre, és kérd a bizonytalanság, ellenérvek és hiányok jelölését.
+
+### 4. Tartsd meg az emberi kontrollt
+
+Az MI támogassa, ne helyettesítse a megértést és döntést. Csak olyan eredményt használj, amelyet saját tudásoddal értelmezni, ellenőrizni, módosítani és szükség esetén elutasítani tudsz.
+
+### 5. Vállalj felelősséget
+
+Védd a személyes és kutatási adatokat, tartsd be a kurzus- és intézményi szabályokat, dokumentáld és jelentsd az MI használatát, és ne hárítsd a hibát az eszközre. Az MI-műveltség az EU AI Act szerint is magában foglalja a lehetőségek, kockázatok és lehetséges károk megértését.[^22][^20]
+
+## 12. Leadás előtti ellenőrzőlista
+
+- [ ] A feladatban megengedett volt az MI használata.
+- [ ] Pontosan tudom, mire és hogyan használtam az eszközt.
+- [ ] A végső szöveg minden állítását megértem és meg tudom védeni.
+- [ ] Minden tényt, idézetet, DOI-t és bibliográfiai adatot ellenőriztem.
+- [ ] Megnyitottam és elolvastam a lényeges eredeti forrásokat.
+- [ ] Az MI-t nem használtam tudományos forrás helyett.
+- [ ] Ellenőriztem a logikát, a számításokat és az oksági állításokat.
+- [ ] Kerestem ellenérvet, alternatív magyarázatot és hiányzó információt.
+- [ ] Nem töltöttem fel jogosulatlanul személyes, egészségügyi, bizalmas vagy jogvédett adatot.
+- [ ] A pszeudonimizált adatot nem tekintettem automatikusan anonimnak.
+- [ ] Jóváhagyott fiókot és eszközt használtam.
+- [ ] Nem adok át másnak ellenőrizetlen, alacsony értékű workslopot.
+- [ ] Az MI használatát a helyi szabály szerint feltüntettem.
+- [ ] Megőriztem a szükséges promptokat, outputokat és ellenőrzési nyomot.
+- [ ] A végső szakmai, etikai és akadémiai felelősséget vállalom.
+
+> **Röviden:** A felelős MI-használó nem attól kompetens, hogy gyorsan tud választ generáltatni, hanem attól, hogy megfelelő feladatra választ eszközt, védi az adatokat, ellenőrzi a bizonyítékokat, felismeri a bizonytalanságot, és megtartja az emberi döntést és felelősséget.
+
+---
+
+## References
+
+[^1]: [NBER WORKING PAPER SERIES GENERATIVE AI AT ...](https://www.nber.org/system/files/working_papers/w31161/w31161.pdf) - by E Brynjolfsson · 2023 · Cited by 5172 — We study the impact of generative AI on productivity and ...
+
+[^2]: [Back to the Beginnings of AI at Work](https://aiinstitute.hbs.edu/back-to-the-beginnings-of-ai-at-work/) - What a Landmark AI Study Tells Us About When to Trust, and When Not to Trust, AI Listen to this arti...
+
+[^3]: [The Impact of Generative AI on Critical Thinking](https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf) - by HPH Lee · 2025 · Cited by 1319 — Abstract. The rise of Generative AI (GenAI) in knowledge workflo...
+
+[^4]: [The Impact of Generative AI on Critical Thinking - Microsoft](https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/) - The rise of Generative AI (GenAI) in knowledge workflows raises questions about its impact on critic...
+
+[^5]: [[PDF] Artificial Intelligence Risk Management Framework: Generative ...](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
+
+[^6]: [[PDF] NIST.AI.600-1.GenAI-Profile.ipd.pdf](https://airc.nist.gov/docs/NIST.AI.600-1.GenAI-Profile.ipd.pdf)
+
+[^7]: [[2311.05232] A Survey on Hallucination in Large Language Models](https://ar5iv.labs.arxiv.org/html/2311.05232) - The emergence of large language models (LLMs) has marked a significant breakthrough in natural langu...
+
+[^8]: [Survey and analysis of hallucinations in large language models](https://pmc.ncbi.nlm.nih.gov/articles/PMC12518350/) - Hallucination in Large Language Models (LLMs) refers to outputs that appear fluent and coherent but ...
+
+[^9]: [A Survey on Hallucination in Large Language Models](https://www.alphaxiv.org/abs/2311.05232) - Researchers from Harbin Institute of Technology and Huawei Inc. present a comprehensive survey of ha...
+
+[^10]: [How to cite ChatGPT - APA Style](https://apastyle.apa.org/blog/how-to-cite-chatgpt) - This post outlines how to create references for large language model AI tools like ChatGPT and how t...
+
+[^11]: [APA Citations for Content Generated by Artificial ...](https://www.normandale.edu/_files/documents/library/ai-apa.pdf) - Text AI tools like ChatGPT write responses without concern for factual accuracy. These tools do not ...
+
+[^12]: [Citing generative AI - Research guides at University of Ottawa](https://uottawa.libguides.com/generative_ai/citing) - generative AI tools are not scholarly sources. APA Style recommends crediting the generative AI tool...
+
+[^13]: [Guidance for generative AI in education and research](https://unesdoc.unesco.org/ark:/48223/pf0000386693) - UNESCO Digital Library
+
+[^14]: [1](https://www.edps.europa.eu/system/files/2024-06/EDPS-2024-09-Generative-AI-guidelines_EN.pdf)
+
+[^15]: [How to use it](https://www.edps.europa.eu/system/files/2023-12/23-11-30_presentation_on_generative_ai_en.pdf)
+
+[^16]: [Generative AI and the EUDPR. Orientations for ensuring data ...](https://www.edps.europa.eu/system/files/2025-10/25-10_28_revised_genai_orientations_en.pdf)
+
+[^17]: [Turn the Gemini App on or off - Google Workspace Help](https://knowledge.workspace.google.com/admin/generative-ai/gemini-app/turn-the-gemini-app-on-or-off)
+
+[^18]: [How your data is used to improve model performance](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance) - Learn how content from OpenAI’s services may be used to improve models and how to manage your availa...
+
+[^19]: [Protecting the Data of our Commercial and Public Sector Customers ...](https://techcommunity.microsoft.com/blog/microsoft-security-blog/faq-protecting-the-data-of-our-commercial-and-public-sector-customers-in-the-ai-/4097231) - Microsoft addresses key questions and concerns about data protection in the context of its Generativ...
+
+[^20]: [Article 4: AI literacy | EU Artificial Intelligence Act](https://artificialintelligenceact.eu/article/4/) - Providers and deployers of AI systems shall take measures to support the development of AI literacy ...
+
+[^21]: [EU AI Act Article 14: Human Oversight](https://www.euaiact.com/article/14) - 1. High-risk AI systems shall be designed and developed in such a way, including with appropriate hu...
+
+[^22]: [1 - Ai Literate Workers For...](https://digital-strategy.ec.europa.eu/en/policies/ai-talent-skills-and-literacy) - The Commission aims to increase the number of AI experts by training and attracting more researchers...
+
+[^23]: [EDPB sheds light on anonymisation and web scraping for ...](https://www.edpb.europa.eu/news/edpb-sheds-light-on-anonymisation-and-web-scraping-for-generative-ai-and-adopts-final-version_en) - Brussels, 8 July– During its latest plenary, the EDPB has adopted guidelines on anonymisation and gu...
+
+[^24]: [3.2 Secondary use of healthcare data; groundwork for Q&A](https://www.ema.europa.eu/en/documents/presentation/presentation-32-electronic-health-record-access-share-expand-project-secondary-use-healthcare-data-groundwork-qa-o-eotvos_en.pdf)
+
+[^25]: [The hidden risks of shadow AI](https://www.ncsc.gov.uk/blogs/the-hidden-risks-of-shadow-ai) - What are the cyber security risks of shadow AI? · Sensitive information may be exposed · Organisatio...
+
+[^26]: [What Is Shadow AI? How It Happens and What to Do About It](https://www.paloaltonetworks.com/cyberpedia/what-is-shadow-ai) - Shadow AI is a GenAI security risk focused on unauthorized use of AI tools, which can directly impac...
+
+[^27]: [[PDF] The hidden risks of shadow AI | National Cyber Security Centre](https://www.ncsc.gov.uk/sites/default/files/2026-09/The-hidden-risks-of-shadow-AI.pdf)
+
+[^28]: [Beware co-workers who produce AI-generated 'workslop'](https://techcrunch.com/2025/09/27/beware-coworkers-who-produce-ai-generated-workslop/) - BetterUp Labs researchers suggest that workslop could be one explanation for the 95% of organization...
+
+[^29]: [What is AI workslop? Research on costs and solutions](https://www.betterup.com/blog/hidden-costs-workslop) - Workslop is AI-generated content that looks polished and complete — but is actually unhelpful, low-q...
+
+[^30]: [10 AI Buzzword Terms Every Leader Needs To Know In Today's ...](https://www.forbes.com/sites/dianehamilton/2026/09/01/10-ai-buzzword-terms-every-leader-needs-to-know-in-todays-workplace/) - From meat proxies to AI fatigue, these 10 AI buzzwords reveal what leaders need to know about trust,...
+
+[^31]: [Beyond workslop: How AI is shaping workplace ...](https://www.hr-brew.com/stories/2026/02/10/workslop-ai-workplace-communication) - And what HR leaders should guard against.
+
+[^32]: [AI "workslop" is crushing workplace efficiency, study finds - Axios](https://www.axios.com/2025/09/24/ai-workslop-workplace-efficiency-study) - Vacuous AI-generated deliverables just make more work for the humans who receive them.
+
+[^33]: [AI-generated 'workslop' is here. It's killing teamwork and causing a multimillion dollar productivity problem, researchers say](https://www.cnbc.com/2025/09/23/ai-generated-workslop-is-destroying-productivity-and-teams-researchers-say.html) - Some 40% of people say they've received workslop in the last month.
+
+[^34]: [‘Human oversight’ in the EU artificial intelligence act: what, when and by whom?](https://www.tandfonline.com/doi/full/10.1080/17579961.2023.2245683) - Human oversight has been much stressed and discussed as a safeguarding measure to ensure human centr...
+
+[^35]: [Authorship and AI tools | COPE](https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools) - COPE joins organisations, such as WAME and the JAMA Network among others, to state that AI tools can...
+
+[^36]: [APA 7 & AI - AI in Academic Research and Writing - Guides](https://info.library.okstate.edu/AI/APA) - Guides: AI in Academic Research and Writing: APA 7 & AI
+
+[^37]: [The promise and perils of using AI for research and writing](https://www.apa.org/topics/artificial-intelligence-machine-learning/ai-research-writing) - Psychologists and students may tap AI tools for an assist in some scenarios, but human oversight—inc...
+
+[^38]: [[PDF] More Questions Than Answers: Ethical Considerations at the ...](https://www.apa.org/pubs/journals/features/tps-tps0000400.pdf)
+
+[^39]: [Guidance for generative AI in education and research - UNESCO](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research) - UNESCO’s first global guidance on GenAI in education aims to support countries to implement immediat...
+

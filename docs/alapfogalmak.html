@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hu" xml:lang="hu"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Fogalmak – Bevezetés a mesterséges intelligenciába</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chatgpt.html" rel="next">
+<link href="./digit.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a64f2b92d8b4b45ab5f5d9261e8b8c9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./alapfogalmak.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fogalmak</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Bevezetés a mesterséges intelligenciába</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Előszó</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./diasor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A kurzus diasora</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./digit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A digitális technológia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alapfogalmak.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fogalmak</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ChatGPT</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gemini_notebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./felelos_mi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Irodalomjegyzék</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Függelék</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kiseloadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Kiselőadás ötletek</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gyakorlatok.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Gyakorlatok</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linkek.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Hasznos linkek</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./video_magyarazat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Fogalmak videóhoz 1.</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tartalomjegyzék</h2>
+   
+  <ul>
+  <li><a href="#i.-alapfogalmak" id="toc-i.-alapfogalmak" class="nav-link active" data-scroll-target="#i.-alapfogalmak">I. Alapfogalmak</a>
+  <ul class="collapse">
+  <li><a href="#mesterséges-intelligencia-mi-artificial-intelligence-ai" id="toc-mesterséges-intelligencia-mi-artificial-intelligence-ai" class="nav-link" data-scroll-target="#mesterséges-intelligencia-mi-artificial-intelligence-ai">1. Mesterséges intelligencia (MI; artificial intelligence, AI)</a></li>
+  <li><a href="#szűk-mi-és-általános-mi-ani-és-agi" id="toc-szűk-mi-és-általános-mi-ani-és-agi" class="nav-link" data-scroll-target="#szűk-mi-és-általános-mi-ani-és-agi">2. Szűk MI és általános MI (ANI és AGI)</a></li>
+  <li><a href="#algoritmus-és-modell" id="toc-algoritmus-és-modell" class="nav-link" data-scroll-target="#algoritmus-és-modell">3. Algoritmus és modell</a></li>
+  <li><a href="#gépi-tanulás-machine-learning-ml" id="toc-gépi-tanulás-machine-learning-ml" class="nav-link" data-scroll-target="#gépi-tanulás-machine-learning-ml">4. Gépi tanulás (machine learning, ML)</a></li>
+  <li><a href="#felügyelt-tanulás-supervised-learning" id="toc-felügyelt-tanulás-supervised-learning" class="nav-link" data-scroll-target="#felügyelt-tanulás-supervised-learning">5. Felügyelt tanulás (supervised learning)</a></li>
+  <li><a href="#felügyelet-nélküli-tanulás-unsupervised-learning" id="toc-felügyelet-nélküli-tanulás-unsupervised-learning" class="nav-link" data-scroll-target="#felügyelet-nélküli-tanulás-unsupervised-learning">6. Felügyelet nélküli tanulás (unsupervised learning)</a></li>
+  <li><a href="#megerősítéses-tanulás-reinforcement-learning-rl" id="toc-megerősítéses-tanulás-reinforcement-learning-rl" class="nav-link" data-scroll-target="#megerősítéses-tanulás-reinforcement-learning-rl">7. Megerősítéses tanulás (reinforcement learning, RL)</a></li>
+  <li><a href="#klasszifikáció-regresszió-és-klaszterezés" id="toc-klasszifikáció-regresszió-és-klaszterezés" class="nav-link" data-scroll-target="#klasszifikáció-regresszió-és-klaszterezés">8. Klasszifikáció, regresszió és klaszterezés</a></li>
+  </ul></li>
+  <li><a href="#ii.-adatok-és-modellalkotás" id="toc-ii.-adatok-és-modellalkotás" class="nav-link" data-scroll-target="#ii.-adatok-és-modellalkotás"><span class="header-section-number">3.1</span> II. Adatok és modellalkotás</a>
+  <ul class="collapse">
+  <li><a href="#jellemző-és-célváltozó-feature-és-label" id="toc-jellemző-és-célváltozó-feature-és-label" class="nav-link" data-scroll-target="#jellemző-és-célváltozó-feature-és-label">9. Jellemző és célváltozó (feature és label)</a></li>
+  <li><a href="#tanítás-és-inferencia-training-és-inference" id="toc-tanítás-és-inferencia-training-és-inference" class="nav-link" data-scroll-target="#tanítás-és-inferencia-training-és-inference">10. Tanítás és inferencia (training és inference)</a></li>
+  <li><a href="#paraméter-és-hiperparaméter" id="toc-paraméter-és-hiperparaméter" class="nav-link" data-scroll-target="#paraméter-és-hiperparaméter">11. Paraméter és hiperparaméter</a></li>
+  <li><a href="#veszteségfüggvény-és-optimalizálás" id="toc-veszteségfüggvény-és-optimalizálás" class="nav-link" data-scroll-target="#veszteségfüggvény-és-optimalizálás">12. Veszteségfüggvény és optimalizálás</a></li>
+  <li><a href="#tanító--validációs-és-tesztadat" id="toc-tanító--validációs-és-tesztadat" class="nav-link" data-scroll-target="#tanító--validációs-és-tesztadat">13. Tanító-, validációs és tesztadat</a></li>
+  <li><a href="#túlillesztés-és-generalizáció-overfitting-és-generalization" id="toc-túlillesztés-és-generalizáció-overfitting-és-generalization" class="nav-link" data-scroll-target="#túlillesztés-és-generalizáció-overfitting-és-generalization">14. Túlillesztés és generalizáció (overfitting és generalization)</a></li>
+  <li><a href="#modellértékelési-mutatók" id="toc-modellértékelési-mutatók" class="nav-link" data-scroll-target="#modellértékelési-mutatók">15. Modellértékelési mutatók</a></li>
+  </ul></li>
+  <li><a href="#iii.-neurális-és-nyelvi-modellek" id="toc-iii.-neurális-és-nyelvi-modellek" class="nav-link" data-scroll-target="#iii.-neurális-és-nyelvi-modellek">III. Neurális és nyelvi modellek</a>
+  <ul class="collapse">
+  <li><a href="#mesterséges-neurális-hálózat-és-mélytanulás" id="toc-mesterséges-neurális-hálózat-és-mélytanulás" class="nav-link" data-scroll-target="#mesterséges-neurális-hálózat-és-mélytanulás">16. Mesterséges neurális hálózat és mélytanulás</a></li>
+  <li><a href="#természetesnyelv-feldolgozás-nlp" id="toc-természetesnyelv-feldolgozás-nlp" class="nav-link" data-scroll-target="#természetesnyelv-feldolgozás-nlp">17. Természetesnyelv-feldolgozás (NLP)</a></li>
+  <li><a href="#token-és-tokenizáció" id="toc-token-és-tokenizáció" class="nav-link" data-scroll-target="#token-és-tokenizáció">18. Token és tokenizáció</a></li>
+  <li><a href="#beágyazás-embedding" id="toc-beágyazás-embedding" class="nav-link" data-scroll-target="#beágyazás-embedding">19. Beágyazás (embedding)</a></li>
+  <li><a href="#figyelmi-mechanizmus-és-transformer" id="toc-figyelmi-mechanizmus-és-transformer" class="nav-link" data-scroll-target="#figyelmi-mechanizmus-és-transformer">20. Figyelmi mechanizmus és Transformer</a></li>
+  <li><a href="#alapmodell-foundation-model" id="toc-alapmodell-foundation-model" class="nav-link" data-scroll-target="#alapmodell-foundation-model">21. Alapmodell (foundation model)</a></li>
+  <li><a href="#nagy-nyelvi-modell-large-language-model-llm" id="toc-nagy-nyelvi-modell-large-language-model-llm" class="nav-link" data-scroll-target="#nagy-nyelvi-modell-large-language-model-llm">22. Nagy nyelvi modell (large language model, LLM)</a></li>
+  <li><a href="#generatív-mesterséges-intelligencia" id="toc-generatív-mesterséges-intelligencia" class="nav-link" data-scroll-target="#generatív-mesterséges-intelligencia">23. Generatív mesterséges intelligencia</a></li>
+  <li><a href="#prompt-és-kontextusablak" id="toc-prompt-és-kontextusablak" class="nav-link" data-scroll-target="#prompt-és-kontextusablak">24. Prompt és kontextusablak</a></li>
+  <li><a href="#finomhangolás-igazítás-és-rlhf" id="toc-finomhangolás-igazítás-és-rlhf" class="nav-link" data-scroll-target="#finomhangolás-igazítás-és-rlhf">25. Finomhangolás, igazítás és RLHF</a></li>
+  <li><a href="#visszakereséssel-támogatott-generálás-rag" id="toc-visszakereséssel-támogatott-generálás-rag" class="nav-link" data-scroll-target="#visszakereséssel-támogatott-generálás-rag">26. Visszakereséssel támogatott generálás (RAG)</a></li>
+  <li><a href="#multimodális-mi" id="toc-multimodális-mi" class="nav-link" data-scroll-target="#multimodális-mi">27. Multimodális MI</a></li>
+  <li><a href="#mi-ágens-és-ágensalapú-mi" id="toc-mi-ágens-és-ágensalapú-mi" class="nav-link" data-scroll-target="#mi-ágens-és-ágensalapú-mi">28. MI-ágens és ágensalapú MI</a></li>
+  </ul></li>
+  <li><a href="#iv.-megbízhatóság-és-értelmezés" id="toc-iv.-megbízhatóság-és-értelmezés" class="nav-link" data-scroll-target="#iv.-megbízhatóság-és-értelmezés">IV. Megbízhatóság és értelmezés</a>
+  <ul class="collapse">
+  <li><a href="#hallucináció-vagy-konfabuláció" id="toc-hallucináció-vagy-konfabuláció" class="nav-link" data-scroll-target="#hallucináció-vagy-konfabuláció">29. Hallucináció vagy konfabuláció</a></li>
+  <li><a href="#értelmezhetőség-és-magyarázható-mi-xai" id="toc-értelmezhetőség-és-magyarázható-mi-xai" class="nav-link" data-scroll-target="#értelmezhetőség-és-magyarázható-mi-xai">30. Értelmezhetőség és magyarázható MI (XAI)</a></li>
+  <li><a href="#algoritmikus-torzítás-és-méltányosság" id="toc-algoritmikus-torzítás-és-méltányosság" class="nav-link" data-scroll-target="#algoritmikus-torzítás-és-méltányosság">31. Algoritmikus torzítás és méltányosság</a></li>
+  <li><a href="#adatvédelem-és-automatizált-döntéshozatal" id="toc-adatvédelem-és-automatizált-döntéshozatal" class="nav-link" data-scroll-target="#adatvédelem-és-automatizált-döntéshozatal">32. Adatvédelem és automatizált döntéshozatal</a></li>
+  <li><a href="#emberi-felügyelet-és-automatizációs-torzítás" id="toc-emberi-felügyelet-és-automatizációs-torzítás" class="nav-link" data-scroll-target="#emberi-felügyelet-és-automatizációs-torzítás">33. Emberi felügyelet és automatizációs torzítás</a></li>
+  </ul></li>
+  <li><a href="#v.-pszichológiai-alkalmazások" id="toc-v.-pszichológiai-alkalmazások" class="nav-link" data-scroll-target="#v.-pszichológiai-alkalmazások">V. Pszichológiai alkalmazások</a>
+  <ul class="collapse">
+  <li><a href="#digitális-fenotipizálás-és-affektív-számítástechnika" id="toc-digitális-fenotipizálás-és-affektív-számítástechnika" class="nav-link" data-scroll-target="#digitális-fenotipizálás-és-affektív-számítástechnika">34. Digitális fenotipizálás és affektív számítástechnika</a></li>
+  <li><a href="#predikció-magyarázat-és-okság" id="toc-predikció-magyarázat-és-okság" class="nav-link" data-scroll-target="#predikció-magyarázat-és-okság">35. Predikció, magyarázat és okság</a></li>
+  </ul></li>
+  <li><a href="#rövid-ellenőrzőlista" id="toc-rövid-ellenőrzőlista" class="nav-link" data-scroll-target="#rövid-ellenőrzőlista">Rövid ellenőrzőlista</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fogalmak</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Jelen fogalomgyűjtemény a Perplexity AI segítségével készült.</em></p>
+<section id="i.-alapfogalmak" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="i.-alapfogalmak">I. Alapfogalmak</h2>
+<section id="mesterséges-intelligencia-mi-artificial-intelligence-ai" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mesterséges-intelligencia-mi-artificial-intelligence-ai">1. Mesterséges intelligencia (MI; artificial intelligence, AI)</h3>
+<p>A mesterséges intelligencia olyan számítógépes rendszerek és módszerek gyűjtőneve, amelyek például tanulási, problémamegoldási, következtetési, nyelvfeldolgozási, észlelési vagy döntéstámogatási feladatokat végeznek. Az MI nem egyetlen technológia, hanem több megközelítést – például szabályalapú rendszereket, gépi tanulást és generatív modelleket – magában foglaló terület.</p>
+<p><strong>Pszichológiai példa:</strong> MI használható kérdőíves válaszok osztályozására, viselkedés előrejelzésére vagy interjúszövegek elemzésére.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://artint.info/3e/html/ArtInt3e.Chx1.html">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+<li><a href="https://hai.stanford.edu/policy/brief-definitions-of-key-terms-in-ai">Stanford HAI: Brief Definitions of Key Terms in AI</a></li>
+</ul>
+<hr>
+</section>
+<section id="szűk-mi-és-általános-mi-ani-és-agi" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="szűk-mi-és-általános-mi-ani-és-agi">2. Szűk MI és általános MI (ANI és AGI)</h3>
+<p>A <strong>szűk MI</strong> egy meghatározott feladatra vagy feladatcsoportra kialakított rendszer, például arcfelismerő, ajánlórendszer vagy szöveggenerátor. A <strong>mesterséges általános intelligencia</strong> (AGI) hipotetikus rendszer, amely különböző területeken, rugalmasan és az emberhez hasonló általánossággal lenne képes tanulni és problémákat megoldani; ennek pontos meghatározásáról sincs teljes szakmai konszenzus. [web:238][web:242]</p>
+<p><strong>Fontos:</strong> Egy sokféle feladatra használható nagy nyelvi modell sem automatikusan AGI.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.ibm.com/think/topics/artificial-intelligence-types">IBM: Understanding the Different Types of Artificial Intelligence</a></li>
+<li><a href="https://hai.stanford.edu/policy/brief-definitions-of-key-terms-in-ai">Stanford HAI: Brief Definitions of Key Terms in AI</a></li>
+</ul>
+<hr>
+</section>
+<section id="algoritmus-és-modell" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="algoritmus-és-modell">3. Algoritmus és modell</h3>
+<p>Az <strong>algoritmus</strong> egy feladat végrehajtásának formálisan megadható eljárása vagy lépéssorozata. A <strong>modell</strong> az adatokban azonosított összefüggések matematikai reprezentációja, amely bemenetből valamilyen kimenetet – például kategóriát, pontszámot vagy szöveget – állít elő. [web:153][web:211]</p>
+<p><strong>Egyszerű megkülönböztetés:</strong> A tanulási algoritmus létrehozza vagy illeszti a modellt; az elkészült modell új adatokon előrejelzést készít.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/glossary">Google: Machine Learning Glossary</a></li>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+</ul>
+<hr>
+</section>
+<section id="gépi-tanulás-machine-learning-ml" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="gépi-tanulás-machine-learning-ml">4. Gépi tanulás (machine learning, ML)</h3>
+<p>A gépi tanulás az MI egyik részterülete, amelyben a rendszer adatok alapján tanul meg mintázatokat, szabályszerűségeket vagy előrejelzési függvényeket. A fejlesztő nem minden döntési szabályt programoz be kézzel; inkább meghatározza a tanulási feladatot, a modellcsaládot és a teljesítmény értékelésének módját. [web:157][web:198]</p>
+<p><strong>Pszichológiai példa:</strong> Kérdőíves és viselkedési változók alapján a modell megbecsüli egy későbbi lemorzsolódás vagy tünetváltozás valószínűségét.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning – Machine Learning Basics</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/28841086/">Yarkoni és Westfall: Choosing Prediction Over Explanation in Psychology</a></li>
+</ul>
+<hr>
+</section>
+<section id="felügyelt-tanulás-supervised-learning" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="felügyelt-tanulás-supervised-learning">5. Felügyelt tanulás (supervised learning)</h3>
+<p>Felügyelt tanulásnál minden vagy sok megfigyeléshez ismert célváltozó, illetve helyesnek tekintett címke tartozik. A modell ezekből a bemenet–cél párokból tanulja meg, hogyan jelezze előre új esetek kimenetét.</p>
+<p><strong>Pszichológiai példa:</strong> Korábban szakértők által kódolt interjúrészletekből megtanulni egy új szöveg érzelmi kategóriáját.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning</a></li>
+<li><a href="https://developers.google.com/machine-learning/glossary">Google: Machine Learning Glossary</a></li>
+</ul>
+<hr>
+</section>
+<section id="felügyelet-nélküli-tanulás-unsupervised-learning" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="felügyelet-nélküli-tanulás-unsupervised-learning">6. Felügyelet nélküli tanulás (unsupervised learning)</h3>
+<p>Felügyelet nélküli tanulásnál nincs előre megadott helyes célváltozó. Az algoritmus az adatok belső szerkezetét, például hasonló esetek csoportjait, együtt járó jellemzőket vagy alacsonyabb dimenziós reprezentációkat keresi.</p>
+<p><strong>Pszichológiai példa:</strong> Viselkedési mintázatok alapján résztvevői csoportok feltárása. Az így kapott klaszterek nem tekinthetők automatikusan valódi pszichológiai típusoknak.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning</a></li>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+</ul>
+<hr>
+</section>
+<section id="megerősítéses-tanulás-reinforcement-learning-rl" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="megerősítéses-tanulás-reinforcement-learning-rl">7. Megerősítéses tanulás (reinforcement learning, RL)</h3>
+<p>A megerősítéses tanulásban egy ágens cselekvéseket választ egy környezetben, és jutalmak vagy büntetések alapján tanul stratégiát. A cél rendszerint a hosszabb távon várható összes jutalom maximalizálása, nem pusztán egy előre megadott helyes válasz reprodukálása.</p>
+<p><strong>Pszichológiai kapcsolat:</strong> A fogalom rokonságot mutat az instrumentális kondicionálás és a jutalomalapú tanulás modelljeivel, de a számítógépes implementáció nem azonos az emberi tanulás pszichológiai elméletével.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+<li><a href="https://developers.google.com/machine-learning/glossary">Google: Machine Learning Glossary</a></li>
+</ul>
+<hr>
+</section>
+<section id="klasszifikáció-regresszió-és-klaszterezés" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="klasszifikáció-regresszió-és-klaszterezés">8. Klasszifikáció, regresszió és klaszterezés</h3>
+<p>A <strong>klasszifikáció</strong> kategóriát jelez előre, például hogy egy szöveg pozitív vagy negatív érzelmi tartalmú-e. A <strong>regresszió</strong> folytonos értéket, például tünetpontszámot becsül. A <strong>klaszterezés</strong> előre megadott címkék nélkül keres egymáshoz hasonló esetekből álló csoportokat.</p>
+<p><strong>Módszertani megjegyzés:</strong> A három feladat eltérő kutatási kérdést, értékelési eljárást és értelmezést igényel.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning</a></li>
+<li><a href="https://scikit-learn.org/stable/user_guide.html">Scikit-learn: User Guide</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="ii.-adatok-és-modellalkotás" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="ii.-adatok-és-modellalkotás"><span class="header-section-number">3.1</span> II. Adatok és modellalkotás</h2>
+<section id="jellemző-és-célváltozó-feature-és-label" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="jellemző-és-célváltozó-feature-és-label">9. Jellemző és célváltozó (feature és label)</h3>
+<p>A <strong>jellemző</strong> vagy prediktor a modell bemeneteként használt változó, például életkor, reakcióidő vagy egy szöveg numerikus reprezentációja. A <strong>címke</strong> vagy célváltozó az a kimenet, amelyet felügyelt tanulás során a modellnek előre kell jeleznie.</p>
+<p><strong>Pszichológiai veszély:</strong> Ha a célváltozó rosszul operacionalizált, a modell legfeljebb ezt a hibás vagy korlátozott operacionalizációt tanulja meg.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/glossary">Google: Machine Learning Glossary</a></li>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning</a></li>
+</ul>
+<hr>
+</section>
+<section id="tanítás-és-inferencia-training-és-inference" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="tanítás-és-inferencia-training-és-inference">10. Tanítás és inferencia (training és inference)</h3>
+<p>A <strong>tanítás</strong> során a rendszer adatok alapján módosítja a modell paramétereit. Az <strong>inferencia</strong> során a már betanított modellt új bemenetek feldolgozására, előrejelzésre vagy tartalom létrehozására használjuk. [web:212][web:221]</p>
+<p><strong>Példa:</strong> Egy nyelvi modell betanítása nagy számításigényű folyamat; egy felhasználói kérdés megválaszolása már inferencia.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/glossary/fundamentals">Google: Machine Learning Glossary – Fundamentals</a></li>
+<li><a href="https://developers.google.com/machine-learning/glossary/generative">Google: Machine Learning Glossary – Generative AI</a></li>
+</ul>
+<hr>
+</section>
+<section id="paraméter-és-hiperparaméter" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="paraméter-és-hiperparaméter">11. Paraméter és hiperparaméter</h3>
+<p>A <strong>paraméter</strong> a modell által a tanítás során megtanult érték, például egy neurális hálózat súlya. A <strong>hiperparamétert</strong> a kutató vagy egy hangolási eljárás állítja be; ilyen lehet a tanulási ráta, a rétegek száma vagy a batchméret. [web:215][web:218]</p>
+<p><strong>Reprodukálhatóság:</strong> A hiperparamétereket és a hangolás eljárását is dokumentálni kell.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters">Google: Linear Regression – Hyperparameters</a></li>
+<li><a href="https://hai.stanford.edu/ai-definitions">Stanford HAI: Artificial Intelligence Glossary</a></li>
+</ul>
+<hr>
+</section>
+<section id="veszteségfüggvény-és-optimalizálás" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="veszteségfüggvény-és-optimalizálás">12. Veszteségfüggvény és optimalizálás</h3>
+<p>A <strong>veszteségfüggvény</strong> számszerűsíti, mennyire tér el a modell kimenete a kívánt vagy megfigyelt eredménytől. Az <strong>optimalizálás</strong> során az algoritmus úgy módosítja a paramétereket, hogy csökkentse ezt a veszteséget.</p>
+<p><strong>Fontos:</strong> Amit a modell optimalizál, nem feltétlenül egyezik meg azzal, amit pszichológiai, társadalmi vagy etikai szempontból értékesnek tartunk.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning – Optimization</a></li>
+<li><a href="https://developers.google.com/machine-learning/crash-course">Google: Machine Learning Crash Course</a></li>
+</ul>
+<hr>
+</section>
+<section id="tanító--validációs-és-tesztadat" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="tanító--validációs-és-tesztadat">13. Tanító-, validációs és tesztadat</h3>
+<p>A <strong>tanítóhalmaz</strong> alapján tanulja meg a modell a paramétereit. A <strong>validációs halmaz</strong> a modellváltozatok és hiperparaméterek kiválasztását segíti, míg a <strong>teszthalmaz</strong> a végleges modell független értékelésére szolgál. A tesztadatot nem szabad ismételten felhasználni a modell fejlesztéséhez.</p>
+<p><strong>Keresztvalidáció:</strong> K-szeres keresztvalidációban az adatok több részre osztásával ismételjük meg a tanítást és validálást, majd átlagoljuk a teljesítményt. [web:108][web:110]</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/cross_validation.html">Scikit-learn: Cross-validation</a></li>
+<li><a href="https://developers.google.com/machine-learning/crash-course/overfitting/overfitting">Google: Overfitting and Generalization</a></li>
+</ul>
+<hr>
+</section>
+<section id="túlillesztés-és-generalizáció-overfitting-és-generalization" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="túlillesztés-és-generalizáció-overfitting-és-generalization">14. Túlillesztés és generalizáció (overfitting és generalization)</h3>
+<p><strong>Túlillesztéskor</strong> a modell a tanítóadat sajátosságait, esetleges zaját is megtanulja, ezért az ismert adatokon jól, új adatokon viszont gyengén teljesít. A <strong>generalizáció</strong> azt jelenti, hogy a modell korábban nem látott, megfelelően hasonló populációból származó adatokon is jól működik. [web:106][web:110]</p>
+<p><strong>Pszichológiai jelentőség:</strong> Kis, homogén vagy kényelmi mintából származó eredmények nem biztos, hogy más életkorokra, kultúrákra vagy klinikai csoportokra általánosíthatók.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/crash-course/overfitting/overfitting">Google: Overfitting and Generalization</a></li>
+<li><a href="https://www.ibm.com/think/topics/overfitting">IBM: What Is Overfitting?</a></li>
+</ul>
+<hr>
+</section>
+<section id="modellértékelési-mutatók" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="modellértékelési-mutatók">15. Modellértékelési mutatók</h3>
+<p>Az <strong>accuracy</strong> az összes helyes osztályozás aránya. A <strong>precision</strong> azt mutatja meg, hogy a pozitívnak jelzett esetek mekkora része valóban pozitív, a <strong>recall vagy szenzitivitás</strong> pedig azt, hogy a tényleges pozitív esetek mekkora részét találta meg a modell. Az <strong>F1-mutató</strong> a precision és recall harmonikus átlaga; a specificitás a negatív esetek helyes felismerését fejezi ki. [web:262][web:264]</p>
+<p><strong>Pszichológiai példa:</strong> Ritka kockázati eseménynél a magas accuracy félrevezető lehet, ezért a téves pozitív és téves negatív döntéseket külön is vizsgálni kell.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/glossary/metrics">Google: Machine Learning Glossary – Metrics</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html">Scikit-learn: Metrics and Scoring</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="iii.-neurális-és-nyelvi-modellek" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="iii.-neurális-és-nyelvi-modellek">III. Neurális és nyelvi modellek</h2>
+<section id="mesterséges-neurális-hálózat-és-mélytanulás" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mesterséges-neurális-hálózat-és-mélytanulás">16. Mesterséges neurális hálózat és mélytanulás</h3>
+<p>A mesterséges neurális hálózat egymáshoz kapcsolt számítási egységekből és tanulható súlyokból álló modell. A <strong>mélytanulás</strong> több feldolgozási réteget használó neurális hálózatokra épül, amelyek az adatok egyre összetettebb reprezentációit tanulhatják meg.</p>
+<p><strong>Fontos:</strong> A mesterséges „neuron” csak laza matematikai analógia; nem azonos a biológiai idegsejttel.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.deeplearningbook.org/">Goodfellow, Bengio és Courville: Deep Learning</a></li>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Neural Networks and Deep Learning</a></li>
+</ul>
+<hr>
+</section>
+<section id="természetesnyelv-feldolgozás-nlp" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="természetesnyelv-feldolgozás-nlp">17. Természetesnyelv-feldolgozás (NLP)</h3>
+<p>A természetesnyelv-feldolgozás az emberi nyelv számítógépes elemzésével és előállításával foglalkozik. Feladatai közé tartozik például a szövegosztályozás, információkinyerés, gépi fordítás, beszédfelismerés és szöveggenerálás.</p>
+<p><strong>Pszichológiai alkalmazás:</strong> Interjúk, naplóbejegyzések vagy nyílt kérdések elemzése; az automatizált nyelvi mutatók érvényességét azonban külön igazolni kell.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+</ul>
+<hr>
+</section>
+<section id="token-és-tokenizáció" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="token-és-tokenizáció">18. Token és tokenizáció</h3>
+<p>A <strong>token</strong> az a szövegegység, amelyet a nyelvi modell feldolgoz. Lehet teljes szó, szórész, írásjel vagy más karaktercsoport. A <strong>tokenizáció</strong> a szöveget tokenekre bontja, majd a tokeneket numerikus azonosítókká alakítja. [web:200][web:202]</p>
+<p><strong>Következmény:</strong> Egy token nem feltétlenül egy szó; a tokenek száma függ a modelltől és a nyelvtől.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://huggingface.co/learn/llm-course/en/chapter2/4">Hugging Face LLM Course: Tokenizers</a></li>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+</ul>
+<hr>
+</section>
+<section id="beágyazás-embedding" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="beágyazás-embedding">19. Beágyazás (embedding)</h3>
+<p>A beágyazás egy szó, mondat, kép vagy más objektum sűrű numerikus vektorreprezentációja. A tanulás célja rendszerint az, hogy az adott feladat szempontjából hasonló jelentésű vagy funkciójú elemek közel kerüljenek egymáshoz a vektortérben. [web:196][web:198]</p>
+<p><strong>Pszichológiai alkalmazás:</strong> Szöveges válaszok hasonlóságának mérése vagy interjúk tematikus csoportosítása. A geometriai közelség nem bizonyít pszichológiai vagy oksági azonosságot.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.tensorflow.org/text/tutorials/word_embeddings">TensorFlow: Word Embeddings</a></li>
+<li><a href="https://developers.google.com/machine-learning/glossary">Google: Machine Learning Glossary – Embedding</a></li>
+</ul>
+<hr>
+</section>
+<section id="figyelmi-mechanizmus-és-transformer" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="figyelmi-mechanizmus-és-transformer">20. Figyelmi mechanizmus és Transformer</h3>
+<p>A <strong>figyelmi mechanizmus</strong> lehetővé teszi, hogy a modell egy kimenet előállításakor eltérő súlyt rendeljen a bemenet különböző részeihez. A <strong>Transformer</strong> olyan neurális architektúra, amely alapvetően figyelmi mechanizmusokra épül, és a modern nagy nyelvi modellek egyik meghatározó alapja. [web:256][web:152]</p>
+<p><strong>Óvatosság:</strong> A modell figyelmi súlyai nem azonosak az emberi figyelemmel, és önmagukban nem feltétlenül adnak teljes pszichológiai magyarázatot.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://ar5iv.labs.arxiv.org/html/1706.03762">Vaswani és mtsai.: Attention Is All You Need</a></li>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+</ul>
+<hr>
+</section>
+<section id="alapmodell-foundation-model" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="alapmodell-foundation-model">21. Alapmodell (foundation model)</h3>
+<p>Az alapmodell nagy és változatos adathalmazon előtanított, többféle későbbi feladatra adaptálható modell. Ugyanaz az alapmodell finomhangolással, promptokkal vagy kiegészítő komponensekkel számos alkalmazás kiindulópontja lehet. [web:252][web:253]</p>
+<p><strong>Kockázat:</strong> Az alapmodell torzításai és hibái továbböröklődhetnek az arra épülő alkalmazásokba.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://hci.stanford.edu/publications/paper.php?id=446">Bommasani és mtsai.: On the Opportunities and Risks of Foundation Models</a></li>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+</ul>
+<hr>
+</section>
+<section id="nagy-nyelvi-modell-large-language-model-llm" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="nagy-nyelvi-modell-large-language-model-llm">22. Nagy nyelvi modell (large language model, LLM)</h3>
+<p>A nagy nyelvi modell sok paraméterrel rendelkező, nagy szövegkorpuszon előtanított nyelvi modell. Alapművelete tipikusan a következő token valószínűségének becslése, de megfelelő tanítás és illesztés után számos nyelvi feladatot képes végrehajtani. [web:152][web:221]</p>
+<p><strong>Fontos:</strong> A gördülékeny nyelvi teljesítmény nem bizonyít emberi értelemben vett megértést, tudatosságot vagy megbízható tárgyi tudást.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+<li><a href="https://developers.google.com/machine-learning/glossary/generative">Google: Machine Learning Glossary – Generative AI</a></li>
+</ul>
+<hr>
+</section>
+<section id="generatív-mesterséges-intelligencia" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="generatív-mesterséges-intelligencia">23. Generatív mesterséges intelligencia</h3>
+<p>A generatív MI tanult mintázatok alapján új szöveget, képet, hangot, videót, programkódot vagy más tartalmat állít elő. A kimenet statisztikailag illeszkedhet a tanítóadatok mintázataihoz, de ettől még nem feltétlenül igaz, eredeti, etikus vagy jogtisztán felhasználható. [web:252][web:279]</p>
+<p><strong>Pszichológiai alkalmazás:</strong> Szimulált esetleírások vagy oktatási példák készítése; valódi diagnosztikai és terápiás használathoz külön validáció és szakmai felügyelet szükséges.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST: Generative AI Profile</a></li>
+<li><a href="https://hci.stanford.edu/publications/paper.php?id=446">Bommasani és mtsai.: On the Opportunities and Risks of Foundation Models</a></li>
+</ul>
+<hr>
+</section>
+<section id="prompt-és-kontextusablak" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="prompt-és-kontextusablak">24. Prompt és kontextusablak</h3>
+<p>A <strong>prompt</strong> a modellnek adott utasítás, kérdés, példa vagy háttéranyag. A <strong>kontextusablak</strong> azt a korlátozott tokenmennyiséget jelenti, amelyet a modell egy adott feldolgozási folyamatban figyelembe tud venni.</p>
+<p><strong>Prompttervezés:</strong> A feladat, a kívánt formátum, a célközönség, a korlátok és az értékelési szempontok világos megadása javíthatja a válasz használhatóságát, de nem garantálja annak igazságát.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://developers.google.com/machine-learning/glossary/generative">Google: Machine Learning Glossary – Generative AI</a></li>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+</ul>
+<hr>
+</section>
+<section id="finomhangolás-igazítás-és-rlhf" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="finomhangolás-igazítás-és-rlhf">25. Finomhangolás, igazítás és RLHF</h3>
+<p>A <strong>finomhangolás</strong> során egy előtanított modellt kisebb, feladatspecifikus adathalmazon tovább tanítanak. Az <strong>igazítás</strong> vagy alignment célja, hogy a modell viselkedése jobban megfeleljen az emberi utasításoknak és elvárásoknak. Az RLHF emberi visszajelzésen alapuló megerősítéses tanulást jelent, amelyben emberek modellek válaszait értékelik vagy rangsorolják. [web:223]</p>
+<p><strong>Korlát:</strong> Az emberi visszajelzés maga is tartalmazhat kulturális, értékelői vagy mintavételi torzításokat.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://arxiv.org/abs/2203.02155">Ouyang és mtsai.: Training Language Models to Follow Instructions with Human Feedback</a></li>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+</ul>
+<hr>
+</section>
+<section id="visszakereséssel-támogatott-generálás-rag" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="visszakereséssel-támogatott-generálás-rag">26. Visszakereséssel támogatott generálás (RAG)</h3>
+<p>A RAG olyan megoldás, amelyben a rendszer válaszadás előtt külső dokumentumokból releváns szövegrészleteket keres vissza, majd ezek felhasználásával generál választ. Így a modell paramétereiben tárolt információ kiegészíthető aktuális vagy ellenőrizhető forrásokkal. [web:254]</p>
+<p><strong>Korlát:</strong> A RAG nem garantál hibátlan választ; téves lehet a visszakeresés, a forrás, annak értelmezése vagy a forrásra épülő generálás.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://mlanthology.org/neurips/2020/lewis2020neurips-retrievalaugmented/">Lewis és mtsai.: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></li>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Jurafsky és Martin: Speech and Language Processing</a></li>
+</ul>
+<hr>
+</section>
+<section id="multimodális-mi" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="multimodális-mi">27. Multimodális MI</h3>
+<p>A multimodális modell több adattípust – például szöveget, képet, hangot, videót vagy szenzoradatot – képes közösen feldolgozni vagy előállítani. Célja a különböző modalitások közötti kapcsolatok reprezentálása. [web:184][web:186]</p>
+<p><strong>Pszichológiai alkalmazás:</strong> Beszéd, arckifejezés, fiziológiai jel és önbeszámoló együttes elemzése. A multimodális adatkezelés különösen érzékeny adatvédelmi és interpretációs kérdéseket vet fel.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://ar5iv.labs.arxiv.org/html/2309.10020">Multimodal Foundation Models: From Specialists to General-Purpose Assistants</a></li>
+<li><a href="https://dp-reg.gov.au/sites/default/files/documents/2024-09/DP-REG%20-%20MFMs%20-%20Examination%20of%20Technology%20working%20paper.pdf">Examination of Technology – Multimodal Foundation Models</a></li>
+</ul>
+<hr>
+</section>
+<section id="mi-ágens-és-ágensalapú-mi" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mi-ágens-és-ágensalapú-mi">28. MI-ágens és ágensalapú MI</h3>
+<p>Az MI-ágens nemcsak választ generál, hanem célokat követhet, több lépést tervezhet, külső eszközöket vagy adatforrásokat használhat, és műveleteket hajthat végre. Az ágensalapú MI autonómiája fokozat kérdése; a rendszerek általában ember által kijelölt célok, jogosultságok és korlátok között működnek. [web:181][web:189]</p>
+<p><strong>Kockázat:</strong> A hibás szöveges válasznál súlyosabb következménye lehet annak, ha egy hibásan működő ágens adatot módosít, üzenetet küld vagy más rendszert vezérel.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://www.nist.gov/agentic-ai">NIST: Agentic AI</a></li>
+<li><a href="https://www.cs.ubc.ca/~poole/aibook/">Poole és Mackworth: Artificial Intelligence – Foundations of Computational Agents</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="iv.-megbízhatóság-és-értelmezés" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="iv.-megbízhatóság-és-értelmezés">IV. Megbízhatóság és értelmezés</h2>
+<section id="hallucináció-vagy-konfabuláció" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="hallucináció-vagy-konfabuláció">29. Hallucináció vagy konfabuláció</h3>
+<p>Az MI-konfabuláció olyan magabiztosan megfogalmazott, de téves, kitalált, ellentmondásos vagy a bemenettől elszakadó tartalom, amelyet a generatív modell hoz létre. A „hallucináció” elterjedt metafora, de félrevezető lehet, mert emberi mentális folyamatot tulajdonít egy tudattal nem rendelkező rendszernek. [web:279][web:284]</p>
+<p><strong>Példa:</strong> A modell nem létező tanulmányt, DOI-azonosítót vagy mérőeszközt talál ki. Ezért minden hivatkozást az eredeti forrásban kell ellenőrizni.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST: Generative AI Profile, 2.2. Confabulation</a></li>
+<li><a href="https://jime.open.ac.uk/articles/10.5334/jime.983">The Language on GenAI: Personification and Anthropomorphism</a></li>
+</ul>
+<hr>
+</section>
+<section id="értelmezhetőség-és-magyarázható-mi-xai" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="értelmezhetőség-és-magyarázható-mi-xai">30. Értelmezhetőség és magyarázható MI (XAI)</h3>
+<p>Az <strong>értelmezhetőség</strong> arra vonatkozik, hogy az ember mennyire képes megérteni a modell működését vagy döntési logikáját. A <strong>magyarázható MI</strong> olyan módszereket alkalmaz, amelyek egy előrejelzéshez ember számára követhető indoklást vagy közelítő magyarázatot rendelnek. [web:146][web:225]</p>
+<p><strong>Korlát:</strong> Egy könnyen érthető magyarázat lehet pontatlan, részleges vagy csak az adott eset környezetében érvényes. A prediktor fontossága önmagában nem bizonyít oksági hatást.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://arxiv.org/abs/1602.04938">Ribeiro, Singh és Guestrin: Why Should I Trust You?</a></li>
+<li><a href="https://www.darpa.mil/research/programs/explainable-artificial-intelligence">DARPA: Explainable Artificial Intelligence</a></li>
+</ul>
+<hr>
+</section>
+<section id="algoritmikus-torzítás-és-méltányosság" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="algoritmikus-torzítás-és-méltányosság">31. Algoritmikus torzítás és méltányosság</h3>
+<p>Algoritmikus torzításról beszélünk, amikor egy rendszer hibái vagy döntései szisztematikusan hátrányosan érintenek bizonyos személyeket vagy csoportokat. A torzítás eredhet a mintavételből, címkézésből, mérésből, modellalkotásból, a döntési küszöbből vagy az alkalmazás társadalmi környezetéből. [web:148][web:224]</p>
+<p><strong>Klasszikus példa:</strong> A Gender Shades vizsgálat nagy teljesítménykülönbségeket talált egyes kereskedelmi arcelemző rendszerekben bőrtónus és nem szerinti alcsoportok között.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://proceedings.mlr.press/v81/buolamwini18a.html">Buolamwini és Gebru: Gender Shades</a></li>
+<li><a href="https://www.media.mit.edu/projects/gender-shades/overview/">MIT Media Lab: Gender Shades Project</a></li>
+</ul>
+<hr>
+</section>
+<section id="adatvédelem-és-automatizált-döntéshozatal" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="adatvédelem-és-automatizált-döntéshozatal">32. Adatvédelem és automatizált döntéshozatal</h3>
+<p>A pszichológiai, egészségi, viselkedési és biometrikus adatok különösen érzékenyek. Az automatizált döntéshozatal olyan eljárás, amelyben személyeket érintő döntés kizárólag vagy nagyrészt automatizált adatfeldolgozásra és profilalkotásra támaszkodik.</p>
+<p><strong>Jogi háttér:</strong> A GDPR 22. cikke korlátozza a kizárólag automatizált, jogi vagy hasonlóan jelentős hatással járó döntéseket, és meghatározott esetekben emberi beavatkozáshoz, álláspont kifejtéséhez és a döntés vitatásához kapcsolódó garanciákat ír elő. [web:170][web:171]</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng">EUR-Lex: Általános adatvédelmi rendelet, 22. cikk</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10982476/">Artificial Intelligence in Positive Mental Health: A Narrative Review</a></li>
+</ul>
+<hr>
+</section>
+<section id="emberi-felügyelet-és-automatizációs-torzítás" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="emberi-felügyelet-és-automatizációs-torzítás">33. Emberi felügyelet és automatizációs torzítás</h3>
+<p>Az <strong>emberi felügyelet</strong> azt jelenti, hogy megfelelő kompetenciával és jogosultsággal rendelkező személy figyeli, értelmezi, felülbírálhatja vagy leállíthatja az MI-rendszer működését. Az <strong>automatizációs torzítás</strong> az a tendencia, hogy az emberek túlzottan megbíznak egy automatizált rendszer javaslatában, akár saját tudásukkal vagy más bizonyítékokkal szemben is. [web:167][web:172]</p>
+<p><strong>Fontos:</strong> A pusztán formális „ember a folyamatban” megoldás nem elegendő, ha az embernek nincs ideje, információja, szakértelme vagy valódi döntési joga.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-14">EU AI Act Service Desk: Article 14 – Human Oversight</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12933282/">The Role of Artificial Intelligence in Clinical Psychology</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="v.-pszichológiai-alkalmazások" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v.-pszichológiai-alkalmazások">V. Pszichológiai alkalmazások</h2>
+<section id="digitális-fenotipizálás-és-affektív-számítástechnika" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="digitális-fenotipizálás-és-affektív-számítástechnika">34. Digitális fenotipizálás és affektív számítástechnika</h3>
+<p>A <strong>digitális fenotipizálás</strong> digitális eszközökből – például okostelefonból vagy viselhető szenzorból – származó adatok alapján próbál viselkedési vagy pszichológiai mintázatokat mérni. Az <strong>affektív számítástechnika</strong> az érzelmi állapotok felismerésére, modellezésére vagy az azokra adott gépi reakciókra irányul.</p>
+<p><strong>Korlát:</strong> Arckifejezésből, hangból vagy aktivitási adatból nem következik egyértelműen egy személy belső érzelmi állapota. A kontextus, kultúra, egyéni különbségek és mérési hibák figyelmen kívül hagyása téves következtetésekhez vezethet.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://people.eng.unimelb.edu.au/dalfonso/articles/AI_in_mental_health.pdf">D’Alfonso: AI in Mental Health</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10982476/">Artificial Intelligence in Positive Mental Health: A Narrative Review</a></li>
+</ul>
+<hr>
+</section>
+<section id="predikció-magyarázat-és-okság" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="predikció-magyarázat-és-okság">35. Predikció, magyarázat és okság</h3>
+<p>A <strong>prediktív modell</strong> célja, hogy új, korábban nem látott esetek kimenetelét pontosan jelezze előre. A <strong>magyarázó modell</strong> elméleti összefüggéseket kíván értelmezni, míg az <strong>oksági következtetés</strong> arra kérdez rá, mi történne egy beavatkozás vagy feltétel megváltoztatása esetén. A magas prediktív pontosság önmagában nem bizonyít oksági kapcsolatot. [web:288][web:297]</p>
+<p><strong>Pszichológiai jelentőség:</strong> Egy modell pontosan előre jelezheti a depressziós tüneteket anélkül, hogy azonosítaná azok okait. Az előrejelzés, az elméleti magyarázat és a beavatkozási döntés ezért eltérő kutatási feladat.</p>
+<p><strong>Ajánlott források:</strong></p>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/28841086/">Yarkoni és Westfall: Choosing Prediction Over Explanation in Psychology</a></li>
+<li><a href="https://epub.ub.uni-muenchen.de/75441/1/European%20J%20of%20Personality%20-%202020%20-%20Stachl%20-%20Personality%20Research%20and%20Assessment%20in%20the%20Era%20of%20Machine%20Learning.pdf">Stachl és mtsai.: Personality Research and Assessment in the Era of Machine Learning</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="rövid-ellenőrzőlista" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="rövid-ellenőrzőlista">Rövid ellenőrzőlista</h2>
+<p>Egy pszichológiai célú MI-rendszer értékelésekor legalább a következőket érdemes megvizsgálni:</p>
+<ol type="1">
+<li>Pontosan milyen pszichológiai konstruktumot és hogyan operacionalizál?</li>
+<li>Milyen populációból és milyen módon gyűjtötték a tanítóadatokat?</li>
+<li>Független tesztmintán és külső populáción is validálták-e?</li>
+<li>Milyen a szenzitivitása, specificitása és hibaaránya az egyes alcsoportokban?</li>
+<li>Összekeverik-e a prediktív pontosságot az oksági vagy klinikai érvényességgel?</li>
+<li>Értelmezhető és ellenőrizhető-e az eredmény?</li>
+<li>Milyen adatvédelmi, méltányossági és biztonsági kockázatai vannak?</li>
+<li>Ki felel a döntésért, és van-e érdemi emberi felügyelet?</li>
+<li>Hogyan kezelik a bizonytalanságot, a téves válaszokat és a modell időbeli romlását?</li>
+<li>A rendszer támogatja vagy indokolatlanul helyettesíti az emberi szakértelmet?</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./digit.html" class="pagination-link" aria-label="A digitális technológia">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A digitális technológia</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chatgpt.html" class="pagination-link" aria-label="ChatGPT">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ChatGPT</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
