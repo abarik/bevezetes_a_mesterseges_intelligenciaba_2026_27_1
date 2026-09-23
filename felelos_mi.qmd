@@ -2,7 +2,7 @@
 
 *Jelen fogalomgyűjtemény a Perplexity AI segítségével készült.*
 
-## Bevezetés
+## Bevezetés {.unnumbered}
 
 A generatív mesterséges intelligencia (MI) segíthet ötletelésben, fogalmak tisztázásában, tanulókérdések készítésében, szövegek szerkesztésében, programkód ellenőrzésében és kutatási anyagok előzetes rendszerezésében. Hatása azonban nem automatikusan kedvező: a teljesítménynyereség függ a feladattól, a felhasználó tudásától és az ellenőrzés minőségétől. Munkahelyi kísérletekben az MI egyes feladatoknál növelte a gyorsaságot és a minőséget, más, a rendszer képességhatárán kívüli feladatoknál viszont rontotta a pontosságot.[^1][^2]
 
@@ -16,15 +16,15 @@ A felelős használat három kérdéssel kezdődik:
 2. **Megbízható?** Ellenőrizték a tényeket, forrásokat, számításokat és következtetéseket?
 3. **Vállalható?** A hallgató megérti, saját szavaival el tudja magyarázni, dokumentálni tudja, és névvel vállalná az eredményt?
 
-## 1. Hallucináció és konfabuláció
+## 1. Hallucináció és konfabuláció {.unnumbered}
 
-### Mit jelent?
+### Mit jelent? {.unnumbered}
 
 Az MI-hallucináció olyan gördülékenyen és gyakran magabiztosan megfogalmazott kimenet, amely téves, kitalált, nem igazolható, a forrásnak ellentmondó vagy belsőleg következetlen. A NIST a pontosabb **konfabuláció** kifejezést használja, mert a „hallucináció” emberi tudatállapotot sugallhat egy tudattal nem rendelkező rendszer esetében.[^5][^6]
 
 A nyelvi modell alapvetően nem igaz állításokat keres egy hiteles adatbázisban, hanem a bemenet és a tanult statisztikai mintázatok alapján valószínű szövegfolytatást generál. A nyelvi hihetőség ezért nem azonos a tényszerű igazsággal: egy hibás válasz ugyanolyan magabiztosnak és szakmainak tűnhet, mint egy helyes.[^7][^5]
 
-### Miért fordul elő?
+### Miért fordul elő? {.unnumbered}
 
 A hallucinációt nem lehet egyetlen okra visszavezetni. A legfontosabb tényezők:
 
@@ -38,7 +38,7 @@ A hallucinációt nem lehet egyetlen okra visszavezetni. A legfontosabb tényez�
 
 Nem pontos tehát azt állítani, hogy az MI egyszerűen „összefüggéshálózaton keresztül gondolkodik”, vagy hogy csak rossz kérdés esetén téved. A modellek valóban tanulnak statisztikai kapcsolatokat, de nem emberi módon gondolkodnak; hibájuk az adatok, a tanítás, a visszakeresés, a generálás és a feladatmegadás kölcsönhatásából származhat.[^9][^7]
 
-### Miben tévedhet?
+### Miben tévedhet? {.unnumbered}
 
 | Hibatípus | Példa | Ellenőrzés |
 |---|---|---|
@@ -52,19 +52,19 @@ Nem pontos tehát azt állítani, hogy az MI egyszerűen „összefüggésháló
 | **Oksági tévedés** | Korrelációból ok-okozati kapcsolatot állapít meg | Kutatási design és alternatív magyarázatok vizsgálata |
 | **Torzítás** | Kulturálisan egyoldalú vagy csoportokra nézve sztereotip következtetés | Alcsoportok, mérési invariancia és kulturális kontextus vizsgálata |
 
-### Pszichológiai példa
+### Pszichológiai példa {.unnumbered}
 
 Ha egy modell azt állítja, hogy egy bizonyos arckifejezés „biztosan depressziót jelez”, egyszerre követhet el konstruktum-, mérési és általánosítási hibát. Egy megfigyelhető viselkedés nem azonos egy belső pszichológiai állapottal vagy klinikai diagnózissal; az értelmezéshez kontextus, validált mérés, differenciáldiagnosztika és megfelelő szakértelem szükséges.
 
-## 2. Forráskezelés
+## 2. Forráskezelés {.unnumbered}
 
-### Az MI nem tudományos forrás
+### Az MI nem tudományos forrás {.unnumbered}
 
 Egy chatbot válasza nem helyettesíti a tankönyvet, a lektorált tanulmányt, a kézikönyvet, az adatbázist vagy a hivatalos dokumentumot. Használható keresőkifejezések és kiinduló forrásjelöltek létrehozására, de a generatív MI nem tökéletes keresőmotor: a találati kör nem feltétlenül teljes, reprodukálható vagy átlátható, és a hivatkozások is lehetnek hamisak vagy félreértelmezettek.[^10][^11][^12]
 
 > **A hivatkozás megléte nem bizonyíték.** A forrásnak léteznie kell, elérhetőnek kell lennie, és valóban alá kell támasztania az adott állítást.
 
-### Három lépés a megbízhatóbb válaszhoz
+### Három lépés a megbízhatóbb válaszhoz {.unnumbered}
 
 1. **Kattints a forrásra.** Ellenőrizd, hogy a link valódi, a szerző és a cím egyezik, továbbá az anyag megfelelő típusú és kellően friss.
 2. **Olvasd el az eredetit.** Ne elégedj meg az MI összefoglalójával vagy a kereső találati részletével; keresd meg a releváns bekezdést, módszert és eredményt.
@@ -72,7 +72,7 @@ Egy chatbot válasza nem helyettesíti a tankönyvet, a lektorált tanulmányt, 
 
 Egy másik MI-modell megkérdezése hasznos **hibakeresési technika**, de nem független bizonyítás. A modellek használhatnak átfedő tanítóadatokat, azonos internetes forrásokat és hasonló generálási elveket, ezért ugyanazt a tévedést is megismételhetik. A valódi megerősítést nem a modellek egyetértése, hanem az ellenőrizhető bizonyíték adja.
 
-### Forráshierarchia
+### Forráshierarchia {.unnumbered}
 
 Pszichológiai kérdésben általában a következő sorrend segít:
 
@@ -83,17 +83,17 @@ Pszichológiai kérdésben általában a következő sorrend segít:
 5. **Ismeretterjesztő cikk:** tájékozódásra jó lehet, de tudományos állítás alapjául ritkán elegendő.
 6. **MI-válasz:** kiindulópont vagy segédanyag, nem önálló tudományos evidencia.
 
-### Idézetek ellenőrzése
+### Idézetek ellenőrzése {.unnumbered}
 
 A „szó szerint idézd” utasítás önmagában nem kényszeríti pontosságra a modellt: idézőjelek között is előállíthat kitalált vagy pontatlan szöveget. Szó szerinti idézetet csak akkor használj, ha azt az eredeti dokumentumban megtaláltad, ellenőrizted a szövegkörnyezetét, és rögzítetted az oldalszámot vagy más helyjelölőt.
 
-## 3. Hogyan növelhető a pontosság?
+## 3. Hogyan növelhető a pontosság? {.unnumbered}
 
-### Pontosságot támogatni lehet, garantálni nem
+### Pontosságot támogatni lehet, garantálni nem {.unnumbered}
 
 Nincs olyan prompt, amely egy általános célú generatív modellt tévedhetetlenné tesz. Az olyan utasítások, mint „ne találj ki semmit” vagy „csak valós forrásokat adj”, jelzik az elvárást, de nem jelentenek technikai garanciát. A megbízhatóságot a feladat körülhatárolása, a jó minőségű források, a lépésekre bontás és az emberi ellenőrzés együtt növeli.[^13][^5]
 
-### Jó feladatmegadás
+### Jó feladatmegadás {.unnumbered}
 
 Egy jól használható prompt legalább öt elemet tartalmaz:
 
@@ -118,7 +118,7 @@ Külön jelöld:
 4. a hiányzó információt.
 ```
 
-### Összetett feladatok felbontása
+### Összetett feladatok felbontása {.unnumbered}
 
 Nagy feladat helyett használj ellenőrizhető részlépéseket:
 
@@ -132,7 +132,7 @@ Nagy feladat helyett használj ellenőrizhető részlépéseket:
 
 Nem szükséges a modell „belső gondolatmenetének” részletes feltárását kérni. Célszerűbb **rövid, ellenőrizhető indoklást**, felhasznált evidenciát, számítási lépéseket vagy döntési kritériumokat kérni.
 
-### Visszakérdezés
+### Visszakérdezés {.unnumbered}
 
 A „Biztos vagy benne?” kérdés néha javítást vált ki, de előfordulhat, hogy a modell ugyanazt a hibát még magabiztosabban ismétli meg. Hatékonyabbak a konkrét ellenőrző kérdések:
 
@@ -143,7 +143,7 @@ A „Biztos vagy benne?” kérdés néha javítást vált ki, de előfordulhat,
 - „Különítsd el a korrelációt az oksági állítástól.”
 - „Ellenőrizd, hogy minden DOI valóban a megadott cikkhez tartozik-e; amit nem tudsz igazolni, hagyd ki.”
 
-### Az eredmény lektorálása
+### Az eredmény lektorálása {.unnumbered}
 
 Ha már elkészült egy saját szöveg, az MI használható ellenőrző partnerként:
 
@@ -156,7 +156,7 @@ Ha már elkészült egy saját szöveg, az MI használható ellenőrző partnerk
 
 A második modell hasznos lehet eltérések felfedezésére, de a végső lektorálás alapja továbbra is az eredeti forrás, a módszertani tudás és szükség esetén emberi szakértő.
 
-### Ellenőrző prompt
+### Ellenőrző prompt {.unnumbered}
 
 ```text
 Vizsgáld meg kritikusan az előző válaszodat.
@@ -173,9 +173,9 @@ Ne írj új forrást pusztán emlékezetből. Ha nem tudod igazolni,
 jelöld „nem ellenőrzött” minősítéssel.
 ```
 
-## 4. Adatbiztonság és adatvédelem
+## 4. Adatbiztonság és adatvédelem {.unnumbered}
 
-### Alapszabály
+### Alapszabály {.unnumbered}
 
 > **Amit nem töltenél fel nyilvános vagy külső felhőszolgáltatásba, azt jóváhagyás nélkül ne írd be generatív MI-rendszerbe sem.**
 
@@ -191,7 +191,7 @@ Pszichológiai környezetben különösen érzékenyek lehetnek:
 - név, e-mail-cím, Neptun-kód, telefonszám és IP-cím;
 - ritka tulajdonságok kombinációja, amely közvetetten azonosíthat valakit.
 
-### Nem minden fizetős fiók egyformán biztonságos
+### Nem minden fizetős fiók egyformán biztonságos {.unnumbered}
 
 A „fizetős fiók biztonságosabb az ingyenesnél” állítás túl általános. A döntő különbség nem pusztán az ár, hanem a **szerződéses csomag, az adatkezelési feltétel, a beállítás, a megőrzési idő, az adminisztrátori kontroll és az intézményi jóváhagyás**. Egy személyes fizetős fogyasztói csomag nem feltétlenül nyújt vállalati vagy oktatási adatvédelmet.
 
@@ -199,7 +199,7 @@ Egyes üzleti és oktatási szolgáltatások alapértelmezésben nem használjá
 
 Az „ingyenes szolgáltatásnál te vagy a termék” szlogen helyett mindig az aktuális adatvédelmi tájékoztatót és intézményi szerződést kell ellenőrizni. A szolgáltató mérete vagy ismertsége önmagában nem garancia arra, hogy az adott fiók és felhasználási mód megfelel egy pszichológiai kutatás követelményeinek.
 
-### Adatosztályozási jelzőlámpa
+### Adatosztályozási jelzőlámpa {.unnumbered}
 
 A következő jelzőlámpa **gyakorlati intézményi heurisztika**, nem az EU AI Act hivatalos adatosztályozása. Az AI Act MI-műveltségi és bizonyos magas kockázatú rendszereknél emberi felügyeleti követelményeket tartalmaz, de nem határoz meg általános „zöld–sárga–piros” promptkategóriákat.[^20][^21][^22]
 
@@ -209,7 +209,7 @@ A következő jelzőlámpa **gyakorlati intézményi heurisztika**, nem az EU AI
 | **Sárga** | Belső jegyzet, még nem publikált kézirat, pszeudonimizált kutatási adat, belső szabályzat | Csak jóváhagyott intézményi eszközben, céllal, jogosultsággal és adatminimalizálással. |
 | **Piros** | Azonosítható résztvevői vagy kliensadat, egészségügyi adat, terápiás jegyzet, jelszó, vizsgafeladat, üzleti titok, hozzáférési kulcs | Nyilvános vagy nem jóváhagyott MI-be nem tölthető fel; külön jogalap, etikai és intézményi engedély szükséges lehet. |
 
-### Anonimizálás és pszeudonimizálás
+### Anonimizálás és pszeudonimizálás {.unnumbered}
 
 - **Pszeudonimizálás:** a nevet kódra cseréljük, de külön kulccsal a személy visszaazonosítható. Ez továbbra is személyes adat.
 - **Anonimizálás:** a személy észszerűen alkalmazható módszerekkel már nem azonosítható, nem különíthető el, nem kapcsolható más rekordhoz, és nem következtethető ki a személyazonossága. Ez lényegesen szigorúbb követelmény.[^23][^24]
@@ -224,7 +224,7 @@ Feltöltés előtt:
 - ellenőrizd, hogy az anonimizálás nem semmisíti-e meg az elemzéshez szükséges jelentést;
 - kérj intézményi vagy adatvédelmi jóváhagyást, ha bizonytalan vagy.
 
-### Fiókbiztonság
+### Fiókbiztonság {.unnumbered}
 
 - Használj hosszú, egyedi jelszót és jelszókezelőt.
 - Kapcsold be a többtényezős hitelesítést.
@@ -234,13 +234,13 @@ Feltöltés előtt:
 - Ne adj meg jelszót, API-kulcsot vagy hozzáférési tokent chatüzenetben.
 - Ismeretlen MI-bővítményt ne kapcsolj Drive-, e-mail- vagy kutatási adattárhoz.
 
-## 5. Shadow AI
+## 5. Shadow AI {.unnumbered}
 
-### Fogalma
+### Fogalma {.unnumbered}
 
 A **shadow AI** olyan MI-eszköz, modell, böngészőbővítmény vagy ágens munkahelyi, egyetemi vagy kutatási használata, amely kívül esik a szervezet jóváhagyott rendszerein és eljárásain. A probléma nem önmagában az, hogy az eszköz ingyenes vagy kevéssé ismert, hanem hogy nincs megfelelő engedélyezés, adatkezelési áttekintés, hozzáférés-szabályozás és auditálhatóság.[^25][^26]
 
-### Fő kockázatai
+### Fő kockázatai {.unnumbered}
 
 - **Adatszivárgás:** bizalmas, személyes vagy szerzői joggal védett anyag kerül külső rendszerbe.
 - **Láthatatlanság:** az intézmény nem tudja, milyen adat hová került, meddig őrzik és mire használják.
@@ -249,7 +249,7 @@ A **shadow AI** olyan MI-eszköz, modell, böngészőbővítmény vagy ágens mu
 - **Auditálhatatlanság:** nem rekonstruálható, mely modell, prompt, adat és beállítás hozta létre az eredményt.
 - **Szellemi tulajdon elvesztése:** kézirat, mérőeszköz, programkód vagy kutatási ötlet jogosulatlanul kerülhet harmadik félhez.[^27][^26][^25]
 
-### Mit tegyen a hallgató?
+### Mit tegyen a hallgató? {.unnumbered}
 
 1. Ellenőrizze az egyetem és a kurzus MI-szabályzatát.
 2. Kutatási adatnál kérdezze meg a témavezetőt vagy adatkezelésért felelős személyt.
@@ -258,7 +258,7 @@ A **shadow AI** olyan MI-eszköz, modell, böngészőbővítmény vagy ágens mu
 5. Dokumentálja az eszköz nevét, a használat célját és a lényeges promptokat.
 6. Ha véletlenül érzékeny adat került nem jóváhagyott rendszerbe, ne próbálja eltitkolni; kövesse az intézményi incidensjelentési eljárást.
 
-## 6. AI slop és workslop
+## 6. AI slop és workslop {.unnumbered}
 
 ### Fogalmak
 
@@ -268,7 +268,7 @@ Pontosítás: 2025-ben a **„slop”**, nem pedig a „workslop” lett a Merri
 
 Egy 1150 amerikai teljes munkaidős dolgozóra épülő felmérésben 40% számolt be arról, hogy az előző hónapban workslopot kapott; a tanulmány önbeszámolós és amerikai munkahelyi mintára épült, ezért az adatok nem általánosíthatók automatikusan minden országra és egyetemi környezetre.[^32][^33]
 
-### Hatásai
+### Hatásai {.unnumbered}
 
 - növeli az információs zajt;
 - az időmegtakarítást a szerzőtől a javítást végző címzetthez helyezi át;
@@ -277,7 +277,7 @@ Egy 1150 amerikai teljes munkaidős dolgozóra épülő felmérésben 40% számo
 - elfedheti, hogy a szerző valójában nem értette meg a feladatot;
 - nagyobb mennyiségű, de kisebb értékű munkát eredményezhet.[^33][^28][^32]
 
-### Felismerése
+### Felismerése {.unnumbered}
 
 A workslop nem attól rossz, hogy hosszú vagy MI írta, hanem attól, hogy nem felel meg a feladatnak. Figyelmeztető jelek:
 
@@ -291,7 +291,7 @@ A workslop nem attól rossz, hogy hosszú vagy MI írta, hanem attól, hogy nem 
 - ugyanaz a tartalom több megfogalmazásban;
 - olyan produktum, amelyet a beküldő nem tud saját szavaival megmagyarázni.
 
-### Megelőzése
+### Megelőzése {.unnumbered}
 
 Mielőtt MI-vel létrehozott tartalmat átadsz másnak, kérdezd meg:
 
@@ -303,9 +303,9 @@ Mielőtt MI-vel létrehozott tartalmat átadsz másnak, kérdezd meg:
 - A címzettnek kevesebb vagy több munkája lesz tőle?
 - Saját szavaimmal meg tudom-e védeni az egészet?
 
-## 7. A rossz minőségű MI-tartalom felismerése
+## 7. A rossz minőségű MI-tartalom felismerése {.unnumbered}
 
-### Tartalmi vörös zászlók
+### Tartalmi vörös zászlók {.unnumbered}
 
 - **Túlzott bizonyosság:** kategorikus kijelentések ott is, ahol a tudományos eredmények vegyesek.
 - **Pontatlan szakkifejezés:** közeli jelentésű, de nem azonos pszichológiai fogalmak összemosása.
@@ -317,11 +317,11 @@ Mielőtt MI-vel létrehozott tartalmat átadsz másnak, kérdezd meg:
 - **Körkörös magyarázat:** ugyanazt a jelenséget más szavakkal ismétli meg okként.
 - **Forrásdekoráció:** sok hivatkozás látszatot kelt, de egyik sem támasztja alá pontosan az állítást.
 
-### Stilisztikai jelek
+### Stilisztikai jelek {.unnumbered}
 
 A stilisztikai jelek önmagukban nem bizonyítják az MI-használatot. A túl sok alcím, az ismétlődő fordulat, a semleges hang vagy a hosszú felsorolás emberi szövegben is előfordulhat. A cél nem az MI „leleplezése”, hanem a minőség, a forráshűség és a szerzői felelősség értékelése.
 
-### Gyors CRAAP–MI ellenőrzés
+### Gyors CRAAP–MI ellenőrzés {.unnumbered}
 
 | Szempont | Ellenőrző kérdés |
 |---|---|
@@ -332,7 +332,7 @@ A stilisztikai jelek önmagukban nem bizonyítják az MI-használatot. A túl so
 | **Cél** | Tájékoztat, meggyőz, reklámoz vagy pusztán gördülékeny választ generál? |
 | **MI-sajátosság** | Elkülönül a forrásállítás, a modell szintézise és a felhasználó értelmezése? |
 
-## 8. Human-in-the-loop
+## 8. Human-in-the-loop {.unnumbered}
 
 A **human-in-the-loop** megközelítésben ember vesz részt az MI-rendszer feladatának meghatározásában, kimenetének ellenőrzésében és a döntés meghozatalában. Az EU AI Act magas kockázatú rendszereknél olyan emberi felügyeletet ír le, amelyben a felügyelő érti a rendszer korlátait, felismeri az automatizációs torzítás veszélyét, helyesen értelmezi a kimenetet, és szükség esetén figyelmen kívül hagyhatja, felülbírálhatja vagy leállíthatja a rendszert.[^34][^21]
 
@@ -350,15 +350,15 @@ Az emberi részvétel csak akkor valódi kontroll, ha az ember:
 
 A puszta „jóváhagyás” nem elegendő, ha a felhasználó nem érti a feladatot vagy automatikusan elfogadja a rendszer javaslatát. A magas MI-bizalom kisebb kritikai erőfeszítéssel járhat együtt, ezért a felügyeletet tudatosan kell megtervezni.[^4][^3]
 
-### Ha az MI téved
+### Ha az MI téved {.unnumbered}
 
 Az MI-rendszer nem szerző és nem erkölcsi vagy szakmai felelős. A COPE szerint az MI nem felel meg a szerzőség feltételeinek, mert nem tud felelősséget vállalni, összeférhetetlenséget nyilatkozni vagy szerzői jogi megállapodást kötni; a munkát benyújtó ember felel az MI által támogatott részekért is.[^35]
 
 A „jogi felelősség mindig az emberé” kijelentés ugyanakkor túl egyszerű. A konkrét jogi felelősség a helyzettől függően megoszolhat felhasználó, intézmény, adatkezelő, alkalmazó és szolgáltató között. Hallgatói szempontból a biztos szabály: **ne add le, ne publikáld és ne alkalmazd azt, amit nem ellenőriztél és nem tudsz szakmailag megvédeni**.
 
-## 9. Akadémiai integritás
+## 9. Akadémiai integritás {.unnumbered}
 
-### Megengedett és tiltott használat
+### Megengedett és tiltott használat {.unnumbered}
 
 Mindig a kurzus és az oktató aktuális szabálya az elsődleges. Ugyanaz a tevékenység — például nyelvi javítás, ötletelés vagy vázlatkészítés — egyik kurzusban engedélyezett, másikban bejelentésköteles vagy tiltott lehet.[^36]
 
@@ -381,7 +381,7 @@ Külön engedély nélkül problémás lehet:
 - adatok vagy kutatási eredmények kitalálása;
 - MI-output elhallgatott használata ott, ahol kötelező a közzététel.
 
-### Átláthatóság
+### Átláthatóság {.unnumbered}
 
 Az APA útmutatása szerint kutatásban célszerű a Módszer vagy annak megfelelő részben leírni, hogyan használták az MI-eszközt; esszénél az ismertetés kerülhet a bevezetésbe vagy külön MI-használati nyilatkozatba. Az MI nem helyettesíti az eredeti szakirodalmi hivatkozást, és a helyi intézményi szabály elsőbbséget élvez.[^37][^10]
 
@@ -408,7 +408,7 @@ Kutatásban célszerű megőrizni:
 
 A pszichológiai kutatásetikai ajánlások hangsúlyozzák az etikai jóváhagyást, a résztvevők megfelelő tájékoztatását, az adatvédelem biztosítását, a módszer átlátható dokumentálását és az MI korlátainak közlését.[^38]
 
-## 10. Pszichológiai vörös vonalak
+## 10. Pszichológiai vörös vonalak {.unnumbered}
 
 BA-hallgató általános célú generatív MI-re ne bízza önállóan:
 
@@ -424,29 +424,29 @@ BA-hallgató általános célú generatív MI-re ne bízza önállóan:
 
 Magas kockázatú vagy személyeket érintő helyzetben szakember, oktató, témavezető, etikai bizottság vagy adatvédelmi felelős bevonása szükséges. Az UNESCO az oktatási és kutatási MI-használatban az emberi cselekvőképesség, az adatvédelem, a kritikai ellenőrzés és az emberi elszámoltathatóság megőrzését hangsúlyozza.[^39][^13]
 
-## 11. A felelős MI-használat öt pillére
+## 11. A felelős MI-használat öt pillére {.unnumbered}
 
-### 1. Ismerd a kockázatot
+### 1. Ismerd a kockázatot {.unnumbered}
 
 Tudd, hogy az MI tévedhet, forrást találhat ki, torzítást erősíthet fel, adatot szivárogtathat, és csökkentheti az önálló gondolkodás gyakorlását. A kockázatot a feladat tétje alapján kezeld: egy gyakorlókérdés és egy klinikai döntés nem azonos ellenőrzést igényel.
 
-### 2. Ellenőrizd a bizonyítékot
+### 2. Ellenőrizd a bizonyítékot {.unnumbered}
 
 Nyisd meg a forrást, olvasd el az eredeti szöveget, és keress független megerősítést. A modell, a keresési találat és a hivatkozás nem helyettesíti az eredeti evidenciát.
 
-### 3. Adj világos feladatot
+### 3. Adj világos feladatot {.unnumbered}
 
 Határozd meg a célt, kontextust, feladatot, forráskört, korlátot és kívánt kimenetet. Bontsd a komplex feladatot ellenőrizhető lépésekre, és kérd a bizonytalanság, ellenérvek és hiányok jelölését.
 
-### 4. Tartsd meg az emberi kontrollt
+### 4. Tartsd meg az emberi kontrollt {.unnumbered}
 
 Az MI támogassa, ne helyettesítse a megértést és döntést. Csak olyan eredményt használj, amelyet saját tudásoddal értelmezni, ellenőrizni, módosítani és szükség esetén elutasítani tudsz.
 
-### 5. Vállalj felelősséget
+### 5. Vállalj felelősséget {.unnumbered}
 
 Védd a személyes és kutatási adatokat, tartsd be a kurzus- és intézményi szabályokat, dokumentáld és jelentsd az MI használatát, és ne hárítsd a hibát az eszközre. Az MI-műveltség az EU AI Act szerint is magában foglalja a lehetőségek, kockázatok és lehetséges károk megértését.[^22][^20]
 
-## 12. Leadás előtti ellenőrzőlista
+## 12. Leadás előtti ellenőrzőlista {.unnumbered}
 
 - [ ] A feladatban megengedett volt az MI használata.
 - [ ] Pontosan tudom, mire és hogyan használtam az eszközt.
@@ -468,7 +468,7 @@ Védd a személyes és kutatási adatokat, tartsd be a kurzus- és intézményi 
 
 ---
 
-## References
+## References {.unnumbered}
 
 [^1]: [NBER WORKING PAPER SERIES GENERATIVE AI AT ...](https://www.nber.org/system/files/working_papers/w31161/w31161.pdf) - by E Brynjolfsson · 2023 · Cited by 5172 — We study the impact of generative AI on productivity and ...
 
