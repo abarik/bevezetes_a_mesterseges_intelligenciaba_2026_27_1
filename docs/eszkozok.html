@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hu" xml:lang="hu"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; MI-eszközök – Bevezetés a mesterséges intelligenciába</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chatgpt.html" rel="next">
+<link href="./alapfogalmak.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a64f2b92d8b4b45ab5f5d9261e8b8c9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./eszkozok.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MI-eszközök</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Bevezetés a mesterséges intelligenciába</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Előszó</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./diasor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A kurzus diasora</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./digit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A digitális technológia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./alapfogalmak.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fogalmak</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eszkozok.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MI-eszközök</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ChatGPT</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gemini_notebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./felelos_mi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Irodalomjegyzék</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Függelék</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kiseloadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Kiselőadás ötletek</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gyakorlatok.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Gyakorlatok</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linkek.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Hasznos linkek</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./video_magyarazat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Fogalmak videóhoz 1.</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tartalomjegyzék</h2>
+   
+  <ul>
+  <li><a href="#mire-való-ez-az-áttekintés" id="toc-mire-való-ez-az-áttekintés" class="nav-link active" data-scroll-target="#mire-való-ez-az-áttekintés"><span class="header-section-number">4.1</span> Mire való ez az áttekintés?</a></li>
+  <li><a href="#eszközcsoportok-definíciói" id="toc-eszközcsoportok-definíciói" class="nav-link" data-scroll-target="#eszközcsoportok-definíciói"><span class="header-section-number">4.2</span> Eszközcsoportok definíciói</a>
+  <ul class="collapse">
+  <li><a href="#mi-modell" id="toc-mi-modell" class="nav-link" data-scroll-target="#mi-modell"><span class="header-section-number">4.2.1</span> MI-modell</a></li>
+  <li><a href="#generatív-mi" id="toc-generatív-mi" class="nav-link" data-scroll-target="#generatív-mi"><span class="header-section-number">4.2.2</span> Generatív MI</a></li>
+  <li><a href="#chatbot" id="toc-chatbot" class="nav-link" data-scroll-target="#chatbot"><span class="header-section-number">4.2.3</span> Chatbot</a></li>
+  <li><a href="#mi-asszisztens-vagy-copilot" id="toc-mi-asszisztens-vagy-copilot" class="nav-link" data-scroll-target="#mi-asszisztens-vagy-copilot"><span class="header-section-number">4.2.4</span> MI-asszisztens vagy copilot</a></li>
+  <li><a href="#mi-ágens" id="toc-mi-ágens" class="nav-link" data-scroll-target="#mi-ágens"><span class="header-section-number">4.2.5</span> MI-ágens</a></li>
+  <li><a href="#kereső--és-válaszmotor" id="toc-kereső--és-válaszmotor" class="nav-link" data-scroll-target="#kereső--és-válaszmotor"><span class="header-section-number">4.2.6</span> Kereső- és válaszmotor</a></li>
+  <li><a href="#forrásalapú-asszisztens" id="toc-forrásalapú-asszisztens" class="nav-link" data-scroll-target="#forrásalapú-asszisztens"><span class="header-section-number">4.2.7</span> Forrásalapú asszisztens</a></li>
+  <li><a href="#rag-rendszer" id="toc-rag-rendszer" class="nav-link" data-scroll-target="#rag-rendszer"><span class="header-section-number">4.2.8</span> RAG-rendszer</a></li>
+  <li><a href="#specializált-mi-eszköz" id="toc-specializált-mi-eszköz" class="nav-link" data-scroll-target="#specializált-mi-eszköz"><span class="header-section-number">4.2.9</span> Specializált MI-eszköz</a></li>
+  </ul></li>
+  <li><a href="#gyors-választási-térkép" id="toc-gyors-választási-térkép" class="nav-link" data-scroll-target="#gyors-választási-térkép"><span class="header-section-number">4.3</span> Gyors választási térkép</a></li>
+  <li><a href="#általános-asszisztensek" id="toc-általános-asszisztensek" class="nav-link" data-scroll-target="#általános-asszisztensek"><span class="header-section-number">4.4</span> Általános asszisztensek</a>
+  <ul class="collapse">
+  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt"><span class="header-section-number">4.4.1</span> ChatGPT</a></li>
+  <li><a href="#claude" id="toc-claude" class="nav-link" data-scroll-target="#claude"><span class="header-section-number">4.4.2</span> Claude</a></li>
+  <li><a href="#gemini" id="toc-gemini" class="nav-link" data-scroll-target="#gemini"><span class="header-section-number">4.4.3</span> Gemini</a></li>
+  <li><a href="#perplexity" id="toc-perplexity" class="nav-link" data-scroll-target="#perplexity"><span class="header-section-number">4.4.4</span> Perplexity</a></li>
+  </ul></li>
+  <li><a href="#saját-források-feldolgozása" id="toc-saját-források-feldolgozása" class="nav-link" data-scroll-target="#saját-források-feldolgozása"><span class="header-section-number">4.5</span> Saját források feldolgozása</a>
+  <ul class="collapse">
+  <li><a href="#gemini-notebook" id="toc-gemini-notebook" class="nav-link" data-scroll-target="#gemini-notebook"><span class="header-section-number">4.5.1</span> Gemini Notebook</a></li>
+  </ul></li>
+  <li><a href="#tudományos-irodalom-keresése" id="toc-tudományos-irodalom-keresése" class="nav-link" data-scroll-target="#tudományos-irodalom-keresése"><span class="header-section-number">4.6</span> Tudományos irodalom keresése</a>
+  <ul class="collapse">
+  <li><a href="#elicit" id="toc-elicit" class="nav-link" data-scroll-target="#elicit"><span class="header-section-number">4.6.1</span> Elicit</a></li>
+  <li><a href="#consensus" id="toc-consensus" class="nav-link" data-scroll-target="#consensus"><span class="header-section-number">4.6.2</span> Consensus</a></li>
+  <li><a href="#semantic-scholar" id="toc-semantic-scholar" class="nav-link" data-scroll-target="#semantic-scholar"><span class="header-section-number">4.6.3</span> Semantic Scholar</a></li>
+  <li><a href="#researchrabbit" id="toc-researchrabbit" class="nav-link" data-scroll-target="#researchrabbit"><span class="header-section-number">4.6.4</span> ResearchRabbit</a></li>
+  <li><a href="#scite" id="toc-scite" class="nav-link" data-scroll-target="#scite"><span class="header-section-number">4.6.5</span> Scite</a></li>
+  <li><a href="#asreview-lab" id="toc-asreview-lab" class="nav-link" data-scroll-target="#asreview-lab"><span class="header-section-number">4.6.6</span> ASReview LAB</a></li>
+  </ul></li>
+  <li><a href="#kvantitatív-elemzés-és-kód" id="toc-kvantitatív-elemzés-és-kód" class="nav-link" data-scroll-target="#kvantitatív-elemzés-és-kód"><span class="header-section-number">4.7</span> Kvantitatív elemzés és kód</a>
+  <ul class="collapse">
+  <li><a href="#chatgpt-data-analysis" id="toc-chatgpt-data-analysis" class="nav-link" data-scroll-target="#chatgpt-data-analysis"><span class="header-section-number">4.7.1</span> ChatGPT Data Analysis</a></li>
+  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab"><span class="header-section-number">4.7.2</span> Google Colab</a></li>
+  <li><a href="#github-copilot" id="toc-github-copilot" class="nav-link" data-scroll-target="#github-copilot"><span class="header-section-number">4.7.3</span> GitHub Copilot</a></li>
+  <li><a href="#orange-data-mining" id="toc-orange-data-mining" class="nav-link" data-scroll-target="#orange-data-mining"><span class="header-section-number">4.7.4</span> Orange Data Mining</a></li>
+  </ul></li>
+  <li><a href="#kvalitatív-kutatás" id="toc-kvalitatív-kutatás" class="nav-link" data-scroll-target="#kvalitatív-kutatás"><span class="header-section-number">4.8</span> Kvalitatív kutatás</a>
+  <ul class="collapse">
+  <li><a href="#maxqda-ai-assist" id="toc-maxqda-ai-assist" class="nav-link" data-scroll-target="#maxqda-ai-assist"><span class="header-section-number">4.8.1</span> MAXQDA AI Assist</a></li>
+  </ul></li>
+  <li><a href="#hang-és-transzkripció" id="toc-hang-és-transzkripció" class="nav-link" data-scroll-target="#hang-és-transzkripció"><span class="header-section-number">4.9</span> Hang és transzkripció</a>
+  <ul class="collapse">
+  <li><a href="#openai-whisper" id="toc-openai-whisper" class="nav-link" data-scroll-target="#openai-whisper"><span class="header-section-number">4.9.1</span> OpenAI Whisper</a></li>
+  <li><a href="#otter.ai" id="toc-otter.ai" class="nav-link" data-scroll-target="#otter.ai"><span class="header-section-number">4.9.2</span> Otter.ai</a></li>
+  </ul></li>
+  <li><a href="#írás-és-nyelv" id="toc-írás-és-nyelv" class="nav-link" data-scroll-target="#írás-és-nyelv"><span class="header-section-number">4.10</span> Írás és nyelv</a>
+  <ul class="collapse">
+  <li><a href="#deepl" id="toc-deepl" class="nav-link" data-scroll-target="#deepl"><span class="header-section-number">4.10.1</span> DeepL</a></li>
+  <li><a href="#grammarly" id="toc-grammarly" class="nav-link" data-scroll-target="#grammarly"><span class="header-section-number">4.10.2</span> Grammarly</a></li>
+  </ul></li>
+  <li><a href="#prezentáció-és-vizualizáció" id="toc-prezentáció-és-vizualizáció" class="nav-link" data-scroll-target="#prezentáció-és-vizualizáció"><span class="header-section-number">4.11</span> Prezentáció és vizualizáció</a>
+  <ul class="collapse">
+  <li><a href="#canva" id="toc-canva" class="nav-link" data-scroll-target="#canva"><span class="header-section-number">4.11.1</span> Canva</a></li>
+  <li><a href="#gamma" id="toc-gamma" class="nav-link" data-scroll-target="#gamma"><span class="header-section-number">4.11.2</span> Gamma</a></li>
+  <li><a href="#napkin-ai" id="toc-napkin-ai" class="nav-link" data-scroll-target="#napkin-ai"><span class="header-section-number">4.11.3</span> Napkin AI</a></li>
+  </ul></li>
+  <li><a href="#kérdőív-és-szöveges-válasz" id="toc-kérdőív-és-szöveges-válasz" class="nav-link" data-scroll-target="#kérdőív-és-szöveges-válasz"><span class="header-section-number">4.12</span> Kérdőív és szöveges válasz</a>
+  <ul class="collapse">
+  <li><a href="#qualtrics" id="toc-qualtrics" class="nav-link" data-scroll-target="#qualtrics"><span class="header-section-number">4.12.1</span> Qualtrics</a></li>
+  </ul></li>
+  <li><a href="#mit-ne-használjunk-diagnózisra" id="toc-mit-ne-használjunk-diagnózisra" class="nav-link" data-scroll-target="#mit-ne-használjunk-diagnózisra"><span class="header-section-number">4.13</span> Mit ne használjunk diagnózisra?</a></li>
+  <li><a href="#adatvédelmi-döntési-szabály" id="toc-adatvédelmi-döntési-szabály" class="nav-link" data-scroll-target="#adatvédelmi-döntési-szabály"><span class="header-section-number">4.14</span> Adatvédelmi döntési szabály</a></li>
+  <li><a href="#tudományos-ellenőrzőlista" id="toc-tudományos-ellenőrzőlista" class="nav-link" data-scroll-target="#tudományos-ellenőrzőlista"><span class="header-section-number">4.15</span> Tudományos ellenőrzőlista</a>
+  <ul class="collapse">
+  <li><a href="#forrásellenőrzés" id="toc-forrásellenőrzés" class="nav-link" data-scroll-target="#forrásellenőrzés"><span class="header-section-number">4.15.1</span> Forrásellenőrzés</a></li>
+  <li><a href="#elemzés-ellenőrzés" id="toc-elemzés-ellenőrzés" class="nav-link" data-scroll-target="#elemzés-ellenőrzés"><span class="header-section-number">4.15.2</span> Elemzés-ellenőrzés</a></li>
+  <li><a href="#írás-ellenőrzés" id="toc-írás-ellenőrzés" class="nav-link" data-scroll-target="#írás-ellenőrzés"><span class="header-section-number">4.15.3</span> Írás-ellenőrzés</a></li>
+  </ul></li>
+  <li><a href="#ajánlott-ba-munkafolyamat" id="toc-ajánlott-ba-munkafolyamat" class="nav-link" data-scroll-target="#ajánlott-ba-munkafolyamat"><span class="header-section-number">4.16</span> Ajánlott BA-munkafolyamat</a>
+  <ul class="collapse">
+  <li><a href="#szakdolgozati-témakeresés" id="toc-szakdolgozati-témakeresés" class="nav-link" data-scroll-target="#szakdolgozati-témakeresés"><span class="header-section-number">4.16.1</span> Szakdolgozati témakeresés</a></li>
+  <li><a href="#empirikus-kutatás" id="toc-empirikus-kutatás" class="nav-link" data-scroll-target="#empirikus-kutatás"><span class="header-section-number">4.16.2</span> Empirikus kutatás</a></li>
+  <li><a href="#kvalitatív-kutatás-1" id="toc-kvalitatív-kutatás-1" class="nav-link" data-scroll-target="#kvalitatív-kutatás-1"><span class="header-section-number">4.16.3</span> Kvalitatív kutatás</a></li>
+  </ul></li>
+  <li><a href="#minimális-eszközkészlet" id="toc-minimális-eszközkészlet" class="nav-link" data-scroll-target="#minimális-eszközkészlet"><span class="header-section-number">4.17</span> Minimális eszközkészlet</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.18</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MI-eszközök</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Jelen összefoglaló a Perplexity AI segítségével készült.</em></p>
+<section id="mire-való-ez-az-áttekintés" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="mire-való-ez-az-áttekintés"><span class="header-section-number">4.1</span> Mire való ez az áttekintés?</h2>
+<p>A jelenlegi MI-eszközök nem egyetlen kategóriába tartoznak: másra való egy általános chatbot, egy forrásokra támaszkodó kutatási asszisztens, egy irodalomszűrő rendszer, egy kódolási segéd vagy egy autonómabb ágens. Pszichológia BA-szinten a leghasznosabb megközelítés ezért nem az, hogy “melyik a legjobb MI?”, hanem az, hogy <strong>melyik munkafázishoz milyen eszköz illik, milyen bizonyítékból dolgozik, és hogyan ellenőrizhető az eredménye</strong>.</p>
+<p>A katalógus 2026. szeptemberi állapotot tükröz. A funkciók, ingyenes keretek, előfizetések és intézményi hozzáférések gyorsan változnak; használat előtt mindig ellenőrizni kell az aktuális szolgáltatási és adatkezelési feltételeket.</p>
+</section>
+<section id="eszközcsoportok-definíciói" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="eszközcsoportok-definíciói"><span class="header-section-number">4.2</span> Eszközcsoportok definíciói</h2>
+<section id="mi-modell" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="mi-modell"><span class="header-section-number">4.2.1</span> MI-modell</h3>
+<p>Az MI-modell adatokból tanult matematikai rendszer, amely bemenetekből például szöveget, képet, előrejelzést vagy ajánlást állít elő. A modell önmagában nem feltétlenül felhasználói termék: ugyanaz a modell több különböző alkalmazás, chatbot vagy ágens “motorja” lehet.</p>
+</section>
+<section id="generatív-mi" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="generatív-mi"><span class="header-section-number">4.2.2</span> Generatív MI</h3>
+<p>A generatív MI a tanult adatszerkezetekhez hasonló, új szintetikus tartalmat — például szöveget, képet, hangot, videót vagy kódot — hoz létre. Kutatási használatban fontos, hogy a nyelvileg meggyőző kimenet nem azonos az igaz, ellenőrzött vagy módszertanilag helyes eredménnyel.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="chatbot" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="chatbot"><span class="header-section-number">4.2.3</span> Chatbot</h3>
+<p>A chatbot beszélgetéses felületen válaszol a felhasználó üzeneteire. Használható fogalommagyarázatra, ötletelésre, szöveg átdolgozására és egyszerű információkeresésre, de alapformájában többnyire reaktív: a felhasználó minden lépésnél új utasítást ad. A brit kormány MI-fogalomtára a chatbotokat összefoglalásra, keresésre és írásra használható beszélgetéses asszisztensekként írja le.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</section>
+<section id="mi-asszisztens-vagy-copilot" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="mi-asszisztens-vagy-copilot"><span class="header-section-number">4.2.4</span> MI-asszisztens vagy copilot</h3>
+<p>Az MI-asszisztens egy adott munkát emberrel együtt végez: javaslatot tesz, magyaráz, kódot vagy szöveget ír, de a felhasználó irányítja és hagyja jóvá a lépéseket. A “copilot” elnevezés ezt az együttműködést hangsúlyozza; például a GitHub Copilot kódot javasol, kódbázist magyaráz és változtatásokat készít elő, miközben a felhasználó felel a felülvizsgálatért.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+</section>
+<section id="mi-ágens" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="mi-ágens"><span class="header-section-number">4.2.5</span> MI-ágens</h3>
+<p>Az MI-ágens olyan szoftverrendszer, amely egy magasabb szintű célból részfeladatokat képez, tervez, információt gyűjt, eszközöket használ, műveleteket hajt végre, majd az eredmények alapján módosíthatja a következő lépést. Az ágenseket a nagyobb autonómia, a tervezés, az emlékezet és a külső eszközök használata különíti el az egyszerű chatbotoktól. Kutatásban ilyen lehet egy “deep research” szolgáltatás vagy egy adatelemző ágens, amely tervet készít, kereséseket futtat, kódot hajt végre és jelentést állít össze.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+</section>
+<section id="kereső--és-válaszmotor" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="kereső--és-válaszmotor"><span class="header-section-number">4.2.6</span> Kereső- és válaszmotor</h3>
+<p>A keresőmotor dokumentumokat talál; a MI-alapú válaszmotor ezeket összegzi, és ideális esetben állításonként megmutatja a forrást is. A Perplexity például élő webes keresésből készít hivatkozott választ, míg a Consensus a tudományos szakirodalomra szakosodott. Ezek jó kiindulópontok, de nem helyettesítik az eredeti cikk elolvasását vagy a reprodukálható adatbázis-keresést.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+</section>
+<section id="forrásalapú-asszisztens" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="forrásalapú-asszisztens"><span class="header-section-number">4.2.7</span> Forrásalapú asszisztens</h3>
+<p>A forrásalapú vagy “grounded” asszisztens elsősorban a felhasználó által megadott dokumentumokból válaszol. Ez csökkentheti a témától elszakadó állításokat, és lehetővé teszi a válasz visszavezetését a forrásszöveghez; ugyanakkor a rendszer továbbra is félreértheti a dokumentumot. A Gemini Notebook például feltöltött forrásokból készít hivatkozott válaszokat, tanulási segédleteket és összefoglalókat.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+</section>
+<section id="rag-rendszer" class="level3" data-number="4.2.8">
+<h3 data-number="4.2.8" class="anchored" data-anchor-id="rag-rendszer"><span class="header-section-number">4.2.8</span> RAG-rendszer</h3>
+<p>A visszakereséssel támogatott generálás (retrieval-augmented generation, RAG) először releváns részleteket keres egy dokumentumgyűjteményben, majd ezekből generál választ. Ez nem “megtanítja” a modellt a dokumentumokra, hanem válaszadáskor biztosít számára ellenőrizhető kontextust. A RAG különösen hasznos cikkgyűjtemények, kutatási jegyzetek, interjúátiratok és intézményi dokumentumok feldolgozásában.</p>
+</section>
+<section id="specializált-mi-eszköz" class="level3" data-number="4.2.9">
+<h3 data-number="4.2.9" class="anchored" data-anchor-id="specializált-mi-eszköz"><span class="header-section-number">4.2.9</span> Specializált MI-eszköz</h3>
+<p>A specializált eszköz egy szűk munkafázisra optimalizált rendszer: például szakirodalom-szűrésre, transzkripcióra, kvalitatív kódolásra, fordításra vagy prezentációkészítésre. Kutatási munkában gyakran megbízhatóbban illeszkedik a folyamathoz, mint egy általános chatbot, mert a feladat, a bemenet, a kimenet és az ellenőrzési pontok világosabban meghatározottak.</p>
+</section>
+</section>
+<section id="gyors-választási-térkép" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="gyors-választási-térkép"><span class="header-section-number">4.3</span> Gyors választási térkép</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feladat</th>
+<th>Elsődleges eszköztípus</th>
+<th>Jó kiindulópont</th>
+<th>Emberi ellenőrzés</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fogalom megértése, ötletelés</td>
+<td>Chatbot/asszisztens</td>
+<td>ChatGPT, Claude, Gemini</td>
+<td>Tankönyvvel vagy eredeti forrással ellenőrizni</td>
+</tr>
+<tr class="even">
+<td>Aktuális webes tájékozódás</td>
+<td>Válaszmotor/deep research</td>
+<td>Perplexity, ChatGPT Deep Research, Gemini Deep Research</td>
+<td>Minden lényeges hivatkozást megnyitni</td>
+</tr>
+<tr class="odd">
+<td>Tudományos cikkek felfedezése</td>
+<td>Tudományos kereső</td>
+<td>Elicit, Consensus, Semantic Scholar</td>
+<td>Bibliográfiai adatokat és teljes szöveget ellenőrizni</td>
+</tr>
+<tr class="even">
+<td>Irodalmi háló feltérképezése</td>
+<td>Citációs gráf</td>
+<td>ResearchRabbit, Scite</td>
+<td>Kulcsszavas adatbázis-kereséssel kiegészíteni</td>
+</tr>
+<tr class="odd">
+<td>Szisztematikus szűrés</td>
+<td>Aktív tanulás</td>
+<td>ASReview</td>
+<td>Protokoll, kettős szűrés és stopping rule szükséges</td>
+</tr>
+<tr class="even">
+<td>Saját PDF-ek tanulása</td>
+<td>Forrásalapú asszisztens</td>
+<td>Gemini Notebook, Claude Projects</td>
+<td>Visszalépni az idézett oldalakhoz</td>
+</tr>
+<tr class="odd">
+<td>Kvantitatív adatelemzés</td>
+<td>Kódoló/adatelemző asszisztens</td>
+<td>ChatGPT Data Analysis, Colab, GitHub Copilot</td>
+<td>Kód, feltételek és output reprodukálása</td>
+</tr>
+<tr class="even">
+<td>Kódolás nélküli ML-tanulás</td>
+<td>Vizuális adatelemző</td>
+<td>Orange Data Mining</td>
+<td>Helyes adatfelosztás és mérőszámok ellenőrzése</td>
+</tr>
+<tr class="odd">
+<td>Interjúk átírása</td>
+<td>Beszédfelismerő</td>
+<td>Whisper, Otter</td>
+<td>Név, szám, szakkifejezés és beszélő ellenőrzése</td>
+</tr>
+<tr class="even">
+<td>Kvalitatív elemzés</td>
+<td>CAQDAS + MI</td>
+<td>MAXQDA AI Assist</td>
+<td>Kóddefiníciók és értelmezés kutatói felülvizsgálata</td>
+</tr>
+<tr class="odd">
+<td>Nyelvi javítás, fordítás</td>
+<td>Nyelvi MI</td>
+<td>DeepL, Grammarly</td>
+<td>Jelentés, terminológia és hivatkozások ellenőrzése</td>
+</tr>
+<tr class="even">
+<td>Prezentáció és ábra</td>
+<td>Kreatív MI</td>
+<td>Canva, Gamma, Napkin AI</td>
+<td>Tartalmi és vizuális pontosság ellenőrzése</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="általános-asszisztensek" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="általános-asszisztensek"><span class="header-section-number">4.4</span> Általános asszisztensek</h2>
+<section id="chatgpt" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">4.4.1</span> <a href="https://chatgpt.com/">ChatGPT</a></h3>
+<p><strong>Típus:</strong> multimodális chatbot, fájlelemző és kutatási asszisztens.</p>
+<p><strong>Mire használható?</strong> Fogalmak magyarázatára, kutatási kérdések pontosítására, kérdőívtételek kritikai átnézésére, tanulókártyákra, PDF-ek és táblázatok feldolgozására, Python-alapú adatelemzésre, táblák és ábrák készítésére. A fájlfeltöltés dokumentumok összegzését, összevetését és adatkinyerését támogatja; a Data Analysis környezet strukturált fájlokon Python-kódot is futtathat.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
+<p><strong>Kutatási segítség:</strong> A Deep Research több online forrásból dokumentált, hivatkozott jelentést készíthet; a kutatási terv felülvizsgálható, a forráskör pedig webre, feltöltött fájlokra vagy kapcsolt szolgáltatásokra korlátozható. Hasznos lehet egy tématerület kezdeti feltérképezésére vagy egymásnak ellentmondó álláspontok összegyűjtésére.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
+<p><strong>Korlát:</strong> Nem szabad a generált hivatkozásokat, statisztikai eredményeket vagy kódot ellenőrzés nélkül átvenni. Az elemzés akkor auditálható, ha a hallgató elmenti a bemeneti adatot, a használt promptot, a létrehozott kódot és a végleges outputot.</p>
+</section>
+<section id="claude" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="claude"><span class="header-section-number">4.4.2</span> <a href="https://claude.ai/">Claude</a></h3>
+<p><strong>Típus:</strong> általános chatbot, dokumentumasszisztens és alkotói munkatér.</p>
+<p><strong>Mire használható?</strong> Hosszú szövegek strukturálására, tanulmányok összevetésére, érvelési hibák keresésére, interjúvázlatok vagy kódkönyvek első változatának kritikai áttekintésére. A Projects funkció dokumentumokat és állandó utasításokat szervez közös kontextusba, az Artifacts pedig külön szerkeszthető dokumentumokat, diagramokat, kódot és webes prototípusokat jelenít meg.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
+<p><strong>Kutatási segítség:</strong> Létrehozható például egy „Kutatásmódszertan” projekt a kutatási tervvel, változólistával, elemzési tervvel és stílusutasításokkal. Ez nem teszi a rendszert kutatási társszerzővé: a konstrukciók, a döntések és az interpretáció felelőssége a kutatóé marad.</p>
+</section>
+<section id="gemini" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="gemini"><span class="header-section-number">4.4.3</span> <a href="https://gemini.google.com/">Gemini</a></h3>
+<p><strong>Típus:</strong> multimodális asszisztens, Google-szolgáltatásokkal integrálható kutatási felület.</p>
+<p><strong>Mire használható?</strong> Ötletelésre, dokumentumok és képek elemzésére, Google Drive-anyagok feldolgozására, egyedi „Gem” asszisztensek létrehozására és webes kutatásra. A Gem állandó utasításokat és feltöltött tudásfájlokat kaphat, így készíthető például APA-stílust ellenőrző vagy módszertani kérdéseket feltevő tanulási segéd.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a><a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></p>
+<p><strong>Kutatási segítség:</strong> A Deep Research kutatási tervet készít, Google Searcht, feltöltött fájlokat, Drive-ot, Gmailt vagy Gemini notebookot is használhat, majd hivatkozott jelentést ad, amely Docsba exportálható.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
+</section>
+<section id="perplexity" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="perplexity"><span class="header-section-number">4.4.4</span> <a href="https://www.perplexity.ai/">Perplexity</a></h3>
+<p><strong>Típus:</strong> hivatkozott webes válaszmotor és research agent.</p>
+<p><strong>Mire használható?</strong> Aktuális források gyors keresésére, fogalmi térkép és kulcsszavak kialakítására, szakpolitikai vagy technológiai fejlemények követésére. A válaszokból közvetlenül megnyithatók az eredeti források; a Research mód többkörös keresésből készít összefoglalót.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></p>
+<p><strong>Kutatási segítség:</strong> Jó „első tájékozódási réteg”, de nem tekinthető önmagában szisztematikus keresésnek. A kutatónak meg kell nyitnia a hivatkozásokat, ellenőriznie kell, hogy ténylegesen alátámasztják-e az állítást, majd dokumentált keresést kell futtatnia releváns bibliográfiai adatbázisokban.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></p>
+</section>
+</section>
+<section id="saját-források-feldolgozása" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="saját-források-feldolgozása"><span class="header-section-number">4.5</span> Saját források feldolgozása</h2>
+<section id="gemini-notebook" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="gemini-notebook"><span class="header-section-number">4.5.1</span> <a href="https://notebook.google.com/">Gemini Notebook</a></h3>
+<p><strong>Típus:</strong> forrásalapú tanulási és kutatási asszisztens.</p>
+<p><strong>Mire használható?</strong> PDF-ek, weboldalak, dokumentumok, videóátiratok és hanganyagok közös feldolgozására; kérdés–válaszra, tanulási útmutatóra, idővonalra, kvízre, gondolattérképre és audio-összefoglalóra. A válaszok a megadott forrásokhoz kötődnek, és kattintható hivatkozásokkal segítik az ellenőrzést.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></p>
+<p><strong>BA-használat:</strong> Egy vizsgatémához feltölthető az előadás, a tankönyvfejezet és néhány kötelező cikk, majd kérhető fogalmi összehasonlítás vagy önellenőrző kérdéssor. Kutatásban cikkcsomag vagy saját projekt-dokumentáció áttekintésére használható, de a forráskorpuszt a felhasználó válogatása torzíthatja.</p>
+</section>
+</section>
+<section id="tudományos-irodalom-keresése" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="tudományos-irodalom-keresése"><span class="header-section-number">4.6</span> Tudományos irodalom keresése</h2>
+<section id="elicit" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="elicit"><span class="header-section-number">4.6.1</span> <a href="https://elicit.com/">Elicit</a></h3>
+<p><strong>Típus:</strong> tudományos kutatási asszisztens és evidence-synthesis platform.</p>
+<p><strong>Mire használható?</strong> Tanulmányok keresésére, összehasonlító táblák készítésére, adatok kinyerésére, cikkekkel folytatott kérdés–válaszra és vezetett szisztematikus áttekintésre. A Systematic Review munkafolyamat keresést, cím/absztrakt- és teljes szöveges szűrést, adatkinyerést, valamint jelentéskészítést fog össze, miközben a kutató szabályozhatja a bevont cikkeket és mezőket.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></p>
+<p><strong>BA-használat:</strong> Kiváló kutatási kérdések finomítására és egy tématerület gyors áttekintésére. Szisztematikus áttekintésben az Elicit csak a protokoll része lehet: a keresési stratégiát, adatbázisokat, duplikátumszűrést, kizárási okokat és ellenőrzést külön dokumentálni kell.</p>
+</section>
+<section id="consensus" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="consensus"><span class="header-section-number">4.6.2</span> <a href="https://consensus.app/">Consensus</a></h3>
+<p><strong>Típus:</strong> tudományos válaszmotor.</p>
+<p><strong>Mire használható?</strong> Természetes nyelvű kérdés alapján szakirodalom keresésére és a kutatási eredmények hivatkozott összegzésére. Különösen alkalmas olyan kezdeti kérdésekhez, mint „Milyen kapcsolatot találtak az alváshiány és a végrehajtó funkciók között?”, majd a találatok módszertani szűrésére.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a><a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></p>
+<p><strong>Korlát:</strong> Az automatikus konszenzus- vagy összefoglaló jelző nem pótolja a populáció, design, mérőeszköz, hatásnagyság és bizonytalanság vizsgálatát. A „hány tanulmány támogatja?” kérdés nem azonos a bizonyíték minőségével.</p>
+</section>
+<section id="semantic-scholar" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="semantic-scholar"><span class="header-section-number">4.6.3</span> <a href="https://www.semanticscholar.org/">Semantic Scholar</a></h3>
+<p><strong>Típus:</strong> tudományos kereső és MI-támogatott cikkfelfedező.</p>
+<p><strong>Mire használható?</strong> Cikkek, szerzők és hivatkozási kapcsolatok keresésére. A TLDR funkció egy mondatos gépi összegzéssel segíti a relevancia gyors megítélését, de nem helyettesíti az absztrakt és a módszertan elolvasását.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></p>
+</section>
+<section id="researchrabbit" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="researchrabbit"><span class="header-section-number">4.6.4</span> <a href="https://www.researchrabbit.ai/">ResearchRabbit</a></h3>
+<p><strong>Típus:</strong> citációs háló- és irodalomfelfedező.</p>
+<p><strong>Mire használható?</strong> Kiinduló cikkekből kapcsolódó tanulmányok, szerzők, előzmények és későbbi munkák vizuális feltérképezésére. Interaktív térképeken jeleníti meg a cikkek, szerzők és fogalmak kapcsolatait, valamint a felhasználó felfedezési mintáiból személyre szabott ajánlásokat készít.<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a><a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></p>
+<p><strong>BA-használat:</strong> Segít megtalálni egy elmélet klasszikus és újabb csomópontjait. Mivel a citációs háló a már erősen hivatkozott irányokat emelheti ki, kulcsszavas és adatbázis-alapú kereséssel kell kiegészíteni.</p>
+</section>
+<section id="scite" class="level3" data-number="4.6.5">
+<h3 data-number="4.6.5" class="anchored" data-anchor-id="scite"><span class="header-section-number">4.6.5</span> <a href="https://scite.ai/">Scite</a></h3>
+<p><strong>Típus:</strong> citációk kontextusát elemző kutatási platform.</p>
+<p><strong>Mire használható?</strong> Megmutatja, milyen szövegkörnyezetben hivatkoznak egy tanulmányra, és a hivatkozást támogató, ellentmondó vagy pusztán említő kategóriába sorolhatja. Használható egy sokat idézett állítás utóéletének, kritikáinak és esetleges visszavonási jelzéseinek vizsgálatára.<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></p>
+<p><strong>Korlát:</strong> A gépi citációs kategória nem egyenlő a teljes tanulmány módszertani minősítésével. Az ellentmondás lehet eltérő populáció, operacionalizálás vagy design következménye is.</p>
+</section>
+<section id="asreview-lab" class="level3" data-number="4.6.6">
+<h3 data-number="4.6.6" class="anchored" data-anchor-id="asreview-lab"><span class="header-section-number">4.6.6</span> <a href="https://asreview.nl/">ASReview LAB</a></h3>
+<p><strong>Típus:</strong> nyílt forráskódú, aktív tanulásra épülő szakirodalom-szűrő.</p>
+<p><strong>Mire használható?</strong> Nagy cím- és absztrakthalmazok prioritásos szűrésére szisztematikus áttekintésben vagy metaanalízisben. A kutató adja a releváns/nem releváns címkéket, a modell pedig folyamatosan előresorolja a várhatóan releváns rekordokat; ez „researcher-in-the-loop” munkafolyamat.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></p>
+<p><strong>Előny:</strong> Ingyenes, nyílt forráskódú és helyben telepíthető; a döntések és projektek exportálhatók. <strong>Korlát:</strong> Nem keres helyettünk, és nem oldja meg a hibás beválasztási kritériumot. Előre rögzített protokoll, megfelelő kezdőrekordok, stopping rule és lehetőség szerint több bíráló szükséges.<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a></p>
+</section>
+</section>
+<section id="kvantitatív-elemzés-és-kód" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="kvantitatív-elemzés-és-kód"><span class="header-section-number">4.7</span> Kvantitatív elemzés és kód</h2>
+<section id="chatgpt-data-analysis" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="chatgpt-data-analysis"><span class="header-section-number">4.7.1</span> ChatGPT Data Analysis</h3>
+<p><strong>Típus:</strong> beszélgetéses, kódfuttatásos adatelemző környezet.</p>
+<p><strong>Mire használható?</strong> CSV- és Excel-fájlok tisztítására, leíró statisztikára, grafikonokra, átalakításokra és Python-alapú elemzésre. A rendszer által írt kód megtekinthető, ami lehetőséget ad az ellenőrzésre.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></p>
+<p><strong>Pszichológiai munkafolyamat:</strong> Kérhető változószótár, hiányzóérték-összesítő, skálapontszám-képzés, megbízhatósági elemzés vagy regressziós vázlat. Az MI-nek azonban nem szabad önállóan eldöntenie az elemzési tervet; ellenőrizni kell a mérési szintet, feltételeket, kódolást, kizárásokat, hatásnagyságot és bizonytalanságot.</p>
+</section>
+<section id="google-colab" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="google-colab"><span class="header-section-number">4.7.2</span> <a href="https://colab.research.google.com/">Google Colab</a></h3>
+<p><strong>Típus:</strong> felhőalapú notebook és MI-támogatott kódoló/adatelemző környezet.</p>
+<p><strong>Mire használható?</strong> Python-kód, szöveg, képlet, ábra és eredmény egyetlen reprodukálható notebookban tartható. A beépített Gemini természetes nyelvből kódot generálhat, hibát magyarázhat, meglévő kódot alakíthat át, és adatelemzési tervet hajthat végre.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></p>
+<p><strong>BA-használat:</strong> Jó átmenet a menüvezérelt statisztika és a reprodukálható programozás között. A generált kód minden sorát érteni kell; a notebookban rögzíteni érdemes a csomagverziókat, random seedet és az adat-előkészítés lépéseit.</p>
+</section>
+<section id="github-copilot" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="github-copilot"><span class="header-section-number">4.7.3</span> <a href="https://github.com/features/copilot">GitHub Copilot</a></h3>
+<p><strong>Típus:</strong> kódolási copilot és kódoló ágens.</p>
+<p><strong>Mire használható?</strong> R-, Python-, JavaScript- vagy más kód írására, magyarázatára, tesztelésére és javítására. Asszisztív módban javaslatot tesz; ágensmódban több fájlt módosíthat, teszteket futtath és pull requestet készíthet, amelyet embernek kell jóváhagynia.<a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></p>
+<p><strong>Pszichológiai kutatás:</strong> Segíthet reproducibilis elemzési projekt, online kísérlet, adatellenőrző szkript vagy dokumentáció készítésében. A kód működése és statisztikai érvényessége két külön kérdés: a hibamentesen futó program is megvalósíthat rossz modellt.</p>
+</section>
+<section id="orange-data-mining" class="level3" data-number="4.7.4">
+<h3 data-number="4.7.4" class="anchored" data-anchor-id="orange-data-mining"><span class="header-section-number">4.7.4</span> <a href="https://orangedatamining.com/">Orange Data Mining</a></h3>
+<p><strong>Típus:</strong> vizuális, alacsony kódigényű gépi tanulási és adatvizualizációs eszköz.</p>
+<p><strong>Mire használható?</strong> Adatbetöltő, előfeldolgozó, modellező és kiértékelő „widgetek” összekapcsolásával osztályozás, regresszió, klaszterezés és vizualizáció építhető kódírás nélkül. Többek között döntési fákat, random forestet, logisztikus regressziót, neurális hálót, confusion matrixot és ROC-elemzést kínál.<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a><a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a></p>
+<p><strong>BA-használat:</strong> Kifejezetten jó a gépi tanulás alapfogalmainak szemléltetésére. Oktatási egyszerűsége ellenére ugyanúgy kerülni kell az adatszivárgást, a teszthalmaz többszöri használatát és az accuracy kizárólagos értékelését.</p>
+</section>
+</section>
+<section id="kvalitatív-kutatás" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="kvalitatív-kutatás"><span class="header-section-number">4.8</span> Kvalitatív kutatás</h2>
+<section id="maxqda-ai-assist" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="maxqda-ai-assist"><span class="header-section-number">4.8.1</span> <a href="https://www.maxqda.com/products/ai-assist">MAXQDA AI Assist</a></h3>
+<p><strong>Típus:</strong> kvalitatív adatelemző szoftverbe integrált MI-asszisztens.</p>
+<p><strong>Mire használható?</strong> Dokumentumok és kódolt szegmensek összegzésére, kód- és alkódkategória-javaslatokra, MI-támogatott kódolásra, fordításra, fogalommagyarázatra és a saját adatokkal folytatott kérdés–válaszra. A válaszokat eredeti szövegrészekhez kapcsolódó jelölések kísérhetik, ami támogatja az auditálást.<a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a></p>
+<p><strong>Pszichológiai munkafolyamat:</strong> Az MI adhat alternatív kódcímkéket vagy kereshet eltérő eseteket, de nem helyettesíti a reflexivitást, a kóddefiníciókat, a memóírást és az interpretatív felelősséget. Jó gyakorlat az MI-javaslatok külön jelölése, az elfogadás/elutasítás indoklása és egy manuálisan kódolt részhalmazzal való összevetés.</p>
+</section>
+</section>
+<section id="hang-és-transzkripció" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="hang-és-transzkripció"><span class="header-section-number">4.9</span> Hang és transzkripció</h2>
+<section id="openai-whisper" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="openai-whisper"><span class="header-section-number">4.9.1</span> <a href="https://github.com/openai/whisper">OpenAI Whisper</a></h3>
+<p><strong>Típus:</strong> nyílt forráskódú automatikus beszédfelismerő modell.</p>
+<p><strong>Mire használható?</strong> Többnyelvű beszéd átírására, nyelvazonosításra és bizonyos modellekkel angolra fordításra. A Whisper nagy, soknyelvű hanganyagon tanult, és a modellkód nyíltan hozzáférhető.<a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a><a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a></p>
+<p><strong>Pszichológiai kutatás:</strong> Interjúk és fókuszcsoportok első gépi átiratára alkalmas, különösen helyi futtatással, ha ezt az etikai és informatikai környezet támogatja. A végleges átiratot vissza kell hallgatni; neveket, számokat, negációkat, szaknyelvet, beszélőváltásokat és érzelmi megnyilvánulásokat különösen gondosan kell ellenőrizni.</p>
+</section>
+<section id="otter.ai" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="otter.ai"><span class="header-section-number">4.9.2</span> <a href="https://otter.ai/">Otter.ai</a></h3>
+<p><strong>Típus:</strong> felhőalapú meeting- és transzkripciós asszisztens.</p>
+<p><strong>Mire használható?</strong> Valós idejű átírásra, beszélőazonosításra, kereshető jegyzetre, összefoglalóra és teendőlistára. Oktatási megbeszéléseknél és nem érzékeny csoportmunkában kényelmes lehet.<a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a><a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a></p>
+<p><strong>Korlát:</strong> Kutatási interjú vagy kliensbeszélgetés feltöltése előtt ellenőrizni kell a hozzájárulást, az intézményi engedélyt, az adattárolás helyét és a szolgáltató adatfelhasználási feltételeit. A kényelmes felhőszolgáltatás nem automatikusan megfelelő érzékeny pszichológiai adatokhoz.</p>
+</section>
+</section>
+<section id="írás-és-nyelv" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="írás-és-nyelv"><span class="header-section-number">4.10</span> Írás és nyelv</h2>
+<section id="deepl" class="level3" data-number="4.10.1">
+<h3 data-number="4.10.1" class="anchored" data-anchor-id="deepl"><span class="header-section-number">4.10.1</span> <a href="https://www.deepl.com/">DeepL</a></h3>
+<p><strong>Típus:</strong> gépi fordító és nyelvi írássegéd.</p>
+<p><strong>Mire használható?</strong> Szövegek és dokumentumok fordítására, terminológiai glosszáriumok használatára, valamint nyelvtan, mondatszerkezet, szóválasztás és hangnem javítására.<a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a><a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a></p>
+<p><strong>BA-használat:</strong> Segíthet angol absztrakt vagy magyar–angol szaknyelvi vázlat készítésében. Validált mérőeszköz tételeit azonban nem szabad egyszerű gépi fordítással adaptálni: ehhez engedély, szakértői fordítás, visszafordítás vagy más adaptációs eljárás és pszichometriai vizsgálat szükséges.</p>
+</section>
+<section id="grammarly" class="level3" data-number="4.10.2">
+<h3 data-number="4.10.2" class="anchored" data-anchor-id="grammarly"><span class="header-section-number">4.10.2</span> <a href="https://www.grammarly.com/">Grammarly</a></h3>
+<p><strong>Típus:</strong> angol nyelvű írássegéd és hivatkozási asszisztens.</p>
+<p><strong>Mire használható?</strong> Nyelvhelyesség, tömörség, világosság és hangnem javítására, plágiumellenőrzésre, valamint APA-, MLA- és Chicago-hivatkozások formázására. A Citation Finder jelölheti a forrást igénylő állításokat és forrásjavaslatot adhat.<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a><a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a><a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a></p>
+<p><strong>Korlát:</strong> A formailag helyesnek látszó hivatkozást is ellenőrizni kell az eredeti dokumentumban és az APA-szabályzatban. A nyelvi simítás nem javítja ki automatikusan a gyenge érvelést vagy a hibás módszertant.</p>
+</section>
+</section>
+<section id="prezentáció-és-vizualizáció" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="prezentáció-és-vizualizáció"><span class="header-section-number">4.11</span> Prezentáció és vizualizáció</h2>
+<section id="canva" class="level3" data-number="4.11.1">
+<h3 data-number="4.11.1" class="anchored" data-anchor-id="canva"><span class="header-section-number">4.11.1</span> <a href="https://www.canva.com/ai-assistant/">Canva</a></h3>
+<p><strong>Típus:</strong> MI-támogatott vizuális tervezőplatform.</p>
+<p><strong>Mire használható?</strong> Prezentációk, poszterek, infografikák, képek és tanulási anyagok első változatának létrehozására. Szöveges leírásból egységes prezentációvázat és vizuális stílust készíthet, valamint képi és szöveges tartalmat alakíthat át.<a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a><a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a></p>
+<p><strong>BA-használat:</strong> Kutatási poszter vagy szemináriumi prezentáció vázához hasznos. Az automatikus design nem garantálja a tudományos ábrák pontosságát, ezért a tengelyeket, értékeket, forrásokat, képfeliratokat és licenceket külön ellenőrizni kell.</p>
+</section>
+<section id="gamma" class="level3" data-number="4.11.2">
+<h3 data-number="4.11.2" class="anchored" data-anchor-id="gamma"><span class="header-section-number">4.11.2</span> <a href="https://gamma.app/">Gamma</a></h3>
+<p><strong>Típus:</strong> MI-alapú prezentáció-, dokumentum- és weboldalkészítő.</p>
+<p><strong>Mire használható?</strong> Témából, vázlatból vagy feltöltött anyagból szerkeszthető prezentációt készíthet, majd beszélgetéses utasításokkal módosítható a szerkezet, a részletesség és a megjelenés. Az elkészült anyag weben megosztható vagy több formátumba exportálható.<a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a><a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a></p>
+<p><strong>BA-használat:</strong> Jó lehet egy már ellenőrzött szakmai vázlat vizuális formába öntésére. Nem célszerű rábízni a szakirodalmi állítások megfogalmazását vagy a hivatkozások létrehozását; a tartalmat előbb kell elkészíteni és ellenőrizni, mint a diát.</p>
+</section>
+<section id="napkin-ai" class="level3" data-number="4.11.3">
+<h3 data-number="4.11.3" class="anchored" data-anchor-id="napkin-ai"><span class="header-section-number">4.11.3</span> <a href="https://www.napkin.ai/">Napkin AI</a></h3>
+<p><strong>Típus:</strong> szövegből szerkeszthető vizuális magyarázatot készítő eszköz.</p>
+<p><strong>Mire használható?</strong> Szövegből folyamatábrát, gondolattérképet, infografikát, diagramot vagy prezentációelemet javasol, amely szerkeszthető és PNG-, PDF-, PPT- vagy SVG-formátumba exportálható.<a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a></p>
+<p><strong>BA-használat:</strong> Jól szemléltethető vele egy kutatási folyamat, elméleti modell vagy fogalmi hierarchia. Az ábra azonban nem lehet pusztán „jól kinéző”: ellenőrizni kell, hogy az irányok, kategóriák és okságot sugalló nyilak valóban megfelelnek-e az elméletnek.</p>
+</section>
+</section>
+<section id="kérdőív-és-szöveges-válasz" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="kérdőív-és-szöveges-válasz"><span class="header-section-number">4.12</span> Kérdőív és szöveges válasz</h2>
+<section id="qualtrics" class="level3" data-number="4.12.1">
+<h3 data-number="4.12.1" class="anchored" data-anchor-id="qualtrics"><span class="header-section-number">4.12.1</span> <a href="https://www.qualtrics.com/">Qualtrics</a></h3>
+<p><strong>Típus:</strong> online adatfelvételi és élménymenedzsment-platform MI-funkciókkal.</p>
+<p><strong>Mire használható?</strong> Kérdőívek lebonyolítására, nyílt válaszok témáinak és kategóriáinak automatikus feltárására, valamint nagy szöveges visszajelzés-állományok rendezésére. A Qualtrics szövegelemzése nyílt kérdésekből és más szövegforrásokból témákat azonosíthat és kategorizálhat.<a href="#fn57" class="footnote-ref" id="fnref57" role="doc-noteref"><sup>57</sup></a></p>
+<p><strong>Korlát:</strong> Az MI által javasolt kérdőívtétel nem validált mérőeszköz. Új tételnél vizsgálni kell a tartalmi érvényességet, érthetőséget, válaszfolyamatot és pszichometriai működést; létező skála módosításához pedig szerzői jogi és adaptációs szempontok is tartoznak.</p>
+</section>
+</section>
+<section id="mit-ne-használjunk-diagnózisra" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="mit-ne-használjunk-diagnózisra"><span class="header-section-number">4.13</span> Mit ne használjunk diagnózisra?</h2>
+<p>Az általános chatbotokat, érzelemfelismerő alkalmazásokat, személyiséget „leolvasó” rendszereket és nem validált mentális egészségügyi appokat nem szabad diagnosztikai eszközként kezelni. A klinikai vagy egészségpszichológiai alkalmazáshoz célpopuláción végzett tudományos validáció, megfelelő szakmai kompetencia, tájékozott beleegyezés, adatvédelem, torzításvizsgálat és emberi felügyelet szükséges. Az APA útmutatója szerint az MI használatát közölni kell, a releváns kockázatokat és előnyöket el kell magyarázni, az outputokat kritikusan ellenőrizni kell, és a szakmai felelősség az emberi pszichológusnál marad.<a href="#fn58" class="footnote-ref" id="fnref58" role="doc-noteref"><sup>58</sup></a><a href="#fn59" class="footnote-ref" id="fnref59" role="doc-noteref"><sup>59</sup></a><a href="#fn60" class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a></p>
+<p>Az EU AI Act tiltja a biometrikus adatokból történő érzelemkövetkeztetést munkahelyi és oktatási környezetben, az orvosi és biztonsági célú kivételektől eltekintve. Ez különösen fontos pszichológiaoktatásban: arckifejezésből, hangból vagy testtartásból nem szabad hallgatói figyelmet, motivációt vagy érzelmi állapotot automatikusan értékelő rendszert bevezetni.<a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a><a href="#fn62" class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a><a href="#fn63" class="footnote-ref" id="fnref63" role="doc-noteref"><sup>63</sup></a></p>
+</section>
+<section id="adatvédelmi-döntési-szabály" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="adatvédelmi-döntési-szabály"><span class="header-section-number">4.14</span> Adatvédelmi döntési szabály</h2>
+<p>MI-szolgáltatásba csak olyan adat kerüljön, amelynek feldolgozására jogalap, megfelelő tájékoztatás és intézményi engedély van. <strong>Valódi kliensadatot, azonosítható kutatási adatot, nyers interjúhangot, egészségügyi információt vagy vizsgálati jegyzőkönyvet általános fogyasztói chatbotba nem szabad feltölteni.</strong> Az APA külön kiemeli az érzékeny viselkedési-egészségügyi adatok adatvédelmi és biztonsági kockázatait, valamint a célhoz illő biztonsági megfelelés szükségességét.<a href="#fn64" class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a></p>
+<p>Használat előtt legalább ezeket kell ellenőrizni:</p>
+<ul>
+<li>Ki az adatkezelő és adatfeldolgozó?</li>
+<li>Hol tárolják és dolgozzák fel az adatot?</li>
+<li>Felhasználják-e modellfejlesztésre vagy emberi ellenőrzésre?</li>
+<li>Mennyi ideig őrzik meg, és törölhető-e?</li>
+<li>Van-e intézményi szerződés, adatfeldolgozási megállapodás és hozzáférés-szabályozás?</li>
+<li>Engedélyezi-e az etikai kérelem és a résztvevői tájékoztató ezt a konkrét feldolgozást?</li>
+<li>Elvégezhető-e a feladat anonimizált, pszeudonimizált vagy szintetikus oktatási adaton?</li>
+</ul>
+</section>
+<section id="tudományos-ellenőrzőlista" class="level2" data-number="4.15">
+<h2 data-number="4.15" class="anchored" data-anchor-id="tudományos-ellenőrzőlista"><span class="header-section-number">4.15</span> Tudományos ellenőrzőlista</h2>
+<section id="forrásellenőrzés" class="level3" data-number="4.15.1">
+<h3 data-number="4.15.1" class="anchored" data-anchor-id="forrásellenőrzés"><span class="header-section-number">4.15.1</span> Forrásellenőrzés</h3>
+<ul>
+<li>Nyisd meg az összes fontos hivatkozást; ne elégedj meg a link vagy DOI puszta létezésével.</li>
+<li>Ellenőrizd, hogy a forrás valóban alátámasztja-e a hozzá kapcsolt állítást.</li>
+<li>Keresd meg az eredeti tanulmányt a másodlagos összefoglaló helyett.</li>
+<li>Vizsgáld meg a populációt, mintaméretet, design-t, mérőeszközt, hatásnagyságot és bizonytalanságot.</li>
+<li>Nézd meg, van-e korrekció, visszavonás vagy későbbi ellentmondó bizonyíték.</li>
+</ul>
+</section>
+<section id="elemzés-ellenőrzés" class="level3" data-number="4.15.2">
+<h3 data-number="4.15.2" class="anchored" data-anchor-id="elemzés-ellenőrzés"><span class="header-section-number">4.15.2</span> Elemzés-ellenőrzés</h3>
+<ul>
+<li>Az elemzési tervet lehetőleg az MI használata előtt rögzítsd.</li>
+<li>Őrizd meg a nyers adatot változatlanul, és dolgozz másolaton.</li>
+<li>Mentsd a promptot, a modell/szolgáltatás nevét, a dátumot, a kódot és az outputot.</li>
+<li>Futtasd újra az elemzést reprodukálható környezetben.</li>
+<li>Ellenőrizd a skálaképzést, hiányzó értékeket, kizárásokat, feltételeket és érzékenységi elemzéseket.</li>
+<li>Ne válassz eredményt csak azért, mert az MI azt találta „érdekesnek”.</li>
+</ul>
+</section>
+<section id="írás-ellenőrzés" class="level3" data-number="4.15.3">
+<h3 data-number="4.15.3" class="anchored" data-anchor-id="írás-ellenőrzés"><span class="header-section-number">4.15.3</span> Írás-ellenőrzés</h3>
+<ul>
+<li>Az MI-t ötlet- és visszajelző partnerként használd, ne rejtett szerzőként.</li>
+<li>Ne adj be olyan mondatot, amelynek jelentését és forrását nem érted.</li>
+<li>Kövesd az egyetem, oktató és folyóirat MI-használati szabályait.</li>
+<li>Tüntesd fel az MI használatát, ha azt a helyi szabályzat vagy a publikációs irányelv előírja.</li>
+<li>Ne használj MI-t adat, idézet, eredmény vagy bibliográfiai tétel kitalálására.</li>
+</ul>
+</section>
+</section>
+<section id="ajánlott-ba-munkafolyamat" class="level2" data-number="4.16">
+<h2 data-number="4.16" class="anchored" data-anchor-id="ajánlott-ba-munkafolyamat"><span class="header-section-number">4.16</span> Ajánlott BA-munkafolyamat</h2>
+<section id="szakdolgozati-témakeresés" class="level3" data-number="4.16.1">
+<h3 data-number="4.16.1" class="anchored" data-anchor-id="szakdolgozati-témakeresés"><span class="header-section-number">4.16.1</span> Szakdolgozati témakeresés</h3>
+<ol type="1">
+<li>Általános chatbot segítségével készíts fogalmi térképet és szinonimalistát.</li>
+<li>Perplexity vagy egy deep research eszköz segítségével azonosíts aktuális vitákat és kulcsforrásokat.</li>
+<li>Elicit, Consensus és Semantic Scholar segítségével keress tudományos tanulmányokat.</li>
+<li>ResearchRabbit vagy Scite segítségével térképezd fel a citációs környezetet.</li>
+<li>Végezz dokumentált keresést a könyvtár által biztosított szakadatbázisokban.</li>
+<li>A bevont cikkeket NotebookLM-ben vagy forrásalapú projektben hasonlítsd össze, de minden adatot ellenőrizz az eredeti PDF-ben.</li>
+</ol>
+</section>
+<section id="empirikus-kutatás" class="level3" data-number="4.16.2">
+<h3 data-number="4.16.2" class="anchored" data-anchor-id="empirikus-kutatás"><span class="header-section-number">4.16.2</span> Empirikus kutatás</h3>
+<ol type="1">
+<li>A kutatási kérdést, hipotézist, operacionalizálást és elemzési tervet emberi szakmai döntéssel rögzítsd.</li>
+<li>A chatbotot kritikus kérdések generálására használd: alternatív magyarázatok, konfúzorok, mérési problémák.</li>
+<li>Az adatfelvételnél csak intézményileg jóváhagyott, adatvédelmileg megfelelő rendszert használj.</li>
+<li>Az elemzést Colabban, R-ben vagy Pythonban reprodukálható kóddal végezd; a copilot által írt kódot soronként vizsgáld át.</li>
+<li>A szöveges eredményértelmezést vesd össze a tényleges táblákkal, ábrákkal és modelloutputtal.</li>
+<li>A jelentésben dokumentáld az MI szerepét, de a módszertani döntéseket saját érvekkel indokold.</li>
+</ol>
+</section>
+<section id="kvalitatív-kutatás-1" class="level3" data-number="4.16.3">
+<h3 data-number="4.16.3" class="anchored" data-anchor-id="kvalitatív-kutatás-1"><span class="header-section-number">4.16.3</span> Kvalitatív kutatás</h3>
+<ol type="1">
+<li>Készíts kutatói pozicionálást, interjúvázlatot és előzetes adatkezelési tervet.</li>
+<li>Átirathoz használhatsz helyben futó Whisper-modellt vagy jóváhagyott szolgáltatást, majd manuálisan ellenőrizd.</li>
+<li>A kódkönyv első változatát ember készítse vagy ember–MI összevetésben alakítsd ki.</li>
+<li>A MAXQDA AI Assist javaslatait hipotézisként kezeld; külön jelöld, melyiket fogadtad el.</li>
+<li>Keress negatív eseteket, alternatív értelmezéseket és az MI által figyelmen kívül hagyott kontextust.</li>
+<li>Tarts meg audit trailt a promptokról, MI-outputokról és kutatói döntésekről.</li>
+</ol>
+</section>
+</section>
+<section id="minimális-eszközkészlet" class="level2" data-number="4.17">
+<h2 data-number="4.17" class="anchored" data-anchor-id="minimális-eszközkészlet"><span class="header-section-number">4.17</span> Minimális eszközkészlet</h2>
+<p>Egy BA-hallgatónak nem kell minden rendszert használnia. Egy átlátható kezdőkészlet lehet:</p>
+<ul>
+<li><strong>Általános gondolkodási partner:</strong> ChatGPT, Claude vagy Gemini közül egy.</li>
+<li><strong>Hivatkozott aktuális keresés:</strong> Perplexity vagy az asszisztens deep research módja.</li>
+<li><strong>Tudományos felfedezés:</strong> Elicit vagy Consensus, kiegészítve Semantic Scholarral.</li>
+<li><strong>Saját cikkek tanulása:</strong> Gemini Notebook.</li>
+<li><strong>Reprodukálható elemzés:</strong> Google Colab, szükség esetén ChatGPT vagy GitHub Copilot segítségével.</li>
+<li><strong>Kvalitatív projekt:</strong> MAXQDA AI Assist, ha az intézmény biztosít hozzáférést és az adatkezelés engedélyezett.</li>
+<li><strong>Transzkripció:</strong> helyben futó Whisper, ha az adatérzékenység és az informatikai feltételek ezt indokolják.</li>
+<li><strong>Prezentáció:</strong> Canva, Gamma vagy Napkin AI, kizárólag ellenőrzött tartalomból.</li>
+</ul>
+<p>A legfontosabb kompetencia nem a sok eszköz ismerete, hanem a <strong>feladat–eszköz illesztés, forráskritika, módszertani ellenőrzés, adatvédelem és reprodukálható dokumentálás</strong>. A WHO szerint az MI-vel támogatott egészségkutatás etikai felügyeletének a teljes kutatási életciklusban kezelnie kell az átláthatóság, torzítás, méltányosság, elszámoltathatóság, magánszféra és lehetséges károk kérdéseit.<a href="#fn65" class="footnote-ref" id="fnref65" role="doc-noteref"><sup>65</sup></a></p>
+<hr>
+</section>
+<section id="references" class="level2" data-number="4.18">
+<h2 data-number="4.18" class="anchored" data-anchor-id="references"><span class="header-section-number">4.18</span> References</h2>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">[PDF] Artificial Intelligence Risk Management Framework: Generative …</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://analysisfunction.civilservice.gov.uk/ai-hub/ai-glossary/">Artificial Intelligence (AI) glossary and prompt library</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://docs.github.com/en/copilot/get-started/about-github-copilot">About GitHub Copilot</a> - Understand how GitHub Copilot helps you ship software faster, how it works, and how to get access.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://ai.google.dev/gemini-api/docs/deep-research">Gemini Deep Research agent | Gemini API | Google AI for Developers</a> - Deep Research is an agent designed to perform complex, long-running context gathering and synthesis …<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://research.google.com/colaboratory/faq.html">Google Colab</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://cloud.google.com/use-cases/data-cloud-agents">Data Cloud Agents: Automating workflows and insights</a> - Learn how AI agents for data cloud to automate data engineering, streamline data science, and provid…<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://cloud.google.com/discover/what-are-ai-agents">What are AI agents? Definition, examples, and types</a> - AI agents are software systems that use AI to pursue goals and complete tasks on behalf of users. Le…<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://cloud.google.com/resources/core-concepts-ai-agents">Core concepts of AI agents</a> - Requirements for scaling a functional agent prototype for production to handle complex demands of gl…<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work">Ways to search</a> - See how Perplexity works: it interprets your question, searches the web with AI models like GPT-5 an…<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://consensus.app/home/research-organizations/">Doctors &amp; Clinicians</a> - Consensus is the AI-powered research platform designed to help the world understand, create and shar…<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://businesslibrary.uflib.ufl.edu/notebook-llm_revised">Notebook LLM: Home - AI - UF Business Library - University of Florida</a> - Learn the basics and recent features<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview">ChatGPT Capabilities Overview - OpenAI Help Center</a> - Learn about ChatGPT’s capabilities and features<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt">Data analysis with ChatGPT - OpenAI Help Center</a> - Use ChatGPT to inspect uploaded data, create tables and charts, and review code-backed analysis.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://help.openai.com/en/articles/8555545-file-uploads-faq">File Uploads FAQ - OpenAI Help Center</a> - File Uploads FAQ<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><a href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt">Deep research in ChatGPT</a> - All deep research outputs include citations or source links so you can verify the information. Compl…<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://www.anthropic.com/news/projects">Collaborate with Claude on Projects</a> - Claude Pro and Team users can now organize chats into Projects. Projects bring together internal kno…<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://support.google.com/gemini/answer/15235603?hl=en">Tips for creating custom Gems - Gemini Apps Help</a><a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://support.google.com/gemini/answer/15146780?hl=en&amp;co=GENIE.Platform=Desktop">Use Gems in Gemini Apps - Computer - Google Help</a> - You can create and save Gems to customize responses in Gemini Apps to your specific needs. What you …<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><a href="https://support.google.com/gemini/answer/15719111?hl=en">Use Deep Research in Gemini Apps - Android - Google Help</a> - You can conduct in-depth and real-time research on almost any subject with Deep Research in Gemini A…<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p><a href="https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work">Ways to search</a> - See how Perplexity works: it interprets your question, searches the web with AI models like GPT-5 an…<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p><a href="https://www.educatorstechnology.com/2026/02/perplexity-ai-for-research.html">Perplexity AI for Research: A Practical Guide</a> - Perplexity AI for research can find sources, analyze papers, and create reports. Learn its features,…<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p><a href="https://businesslibrary.uflib.ufl.edu/notebook-llm_revised">Notebook LLM: Home - AI - UF Business Library - University of Florida</a> - Learn the basics and recent features<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p><a href="https://support.elicit.com/en/articles/14757543-getting-started-with-elicit-which-workflow-or-tool-should-i-use">Getting started with Elicit: Which workflow or tool should I use?</a> - Which Elicit workflow or tool fits your question: Find Papers, Research Report, Systematic Review, E…<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p><a href="https://consensus.app/home/research-organizations/">Doctors &amp; Clinicians</a> - Consensus is the AI-powered research platform designed to help the world understand, create and shar…<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p><a href="https://play.google.com/store/apps/details?id=app.consensus.android">Consensus: AI for Research - Apps on Google Play</a> - Run literature reviews across 250M+ peer-reviewed papers — every claim cited.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p><a href="https://www.semanticscholar.org/product/tldr">TLDR Feature - Semantic Scholar</a> - The new TLDR feature in Semantic Scholar automatically generates single-sentence paper summaries usi…<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p><a href="https://www.researchrabbit.ai/features">Features | ResearchRabbit</a> - Explore the powerful features that make ResearchRabbit unique — interactive maps, personalized recom…<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p><a href="https://www.researchrabbit.ai/solutions/for-researchers">For Researchers | ResearchRabbit</a> - Elevate your research workflow. Use ResearchRabbit to track new publications, visualize paper networ…<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p><a href="https://libguides.nie.edu.sg/c.php?g=975525&amp;p=7104956">Home - Scite - LibGuides at National Institute of Education</a> - LibGuides: Scite: Home<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p><a href="https://asreview.readthedocs.io/en/latest/lab/about.html">Introduction - The ASReview LAB documentation</a><a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p><a href="https://asreview.readthedocs.io/en/latest/about.html">Get Started</a><a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p><a href="https://asreview.nl/screeners/">Faster Literature Screening with ASReview LAB</a> - Our software ASReview is designed to accelerate the step of screening abstracts and titles with a mi…<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn33"><p><a href="https://github.com/asreview">ASReview</a> - ASReview - Active learning for Systematic Reviews. ASReview has 34 repositories available. Follow th…<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34"><p><a href="https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt">Data analysis with ChatGPT - OpenAI Help Center</a> - Use ChatGPT to inspect uploaded data, create tables and charts, and review code-backed analysis.<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn35"><p><a href="https://developers.google.com/colab">Colab | Google for Developers</a> - Colab notebooks let you combine executable code and rich text in a single document, along with image…<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36"><p><a href="https://research.google.com/colaboratory/faq.html">Google Colab</a><a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37"><p><a href="https://docs.github.com/en/copilot/responsible-use/copilot-coding-agent">Customize Your Experience…</a> - Learn how to use Copilot coding agent on GitHub.com responsibly by understanding its purposes, capab…<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn38"><p><a href="https://docs.github.com/en/copilot/get-started/about-github-copilot">About GitHub Copilot</a> - Understand how GitHub Copilot helps you ship software faster, how it works, and how to get access.<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39"><p><a href="https://orangedatamining.com/">Orange Data Mining</a> - Orange Data Mining Toolbox<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn40"><p><a href="https://orangedatamining.com/widget-catalog/">Widget Catalog - Orange Data Mining</a> - Orange Data Mining Toolbox<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn41"><p><a href="https://www.maxqda.com/products/ai-assist">AI Assist for qualitative data analysis</a> - Discover AI Assist, MAXQDA’s AI-powered qualitative research assistant, your partner in uncovering m…<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn42"><p><a href="https://help.maxqda.com/en/support/solutions/articles/80001135283-what-is-maxqda-ai-assist-">What is MAXQDA AI Assist?</a> - MAXQDA AI Assist is a new AI add-on. It is designed to support researchers by generating summaries, …<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn43"><p><a href="https://openai.com/index/whisper/">Introducing Whisper</a> - Whisper is an automatic speech recognition (ASR) system trained on 680,000 hours of multilingual and…<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn44"><p><a href="https://github.com/openai/whisper">openai/whisper: Robust Speech Recognition via Large- …</a> - Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse a…<a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn45"><p><a href="https://otter.ai/features">Otter’s Voice Meeting &amp; Real-time Transcription Features - Otter.ai</a> - Otter has features built to empower users with real-time meeting notes that are shareable, searchabl…<a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn46"><p><a href="https://otter.ai/">Otter Meeting Agent - AI Notetaker, Transcription, Insights</a> - Otter AI Meeting Agent supports real-time transcription, live chat, automated summaries, insights, a…<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn47"><p><a href="https://www.deepl.com/en">DeepL AI Platform: Translation, Voice &amp; API</a> - Explore our AI suite and get more done: Translate speech, text, and media, or integrate the DeepL AP…<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn48"><p><a href="https://www.deepl.com/en/products-overview">Powering the future of AI-driven communication - DeepL Translate</a> - Explore DeepL’s AI-powered suite for translation, writing, and voice. See how businesses worldwide u…<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn49"><p><a href="https://www.grammarly.com/ai-agents/citation-finder">Why Students Love Grammarly</a> - Strengthen your writing with Citation Finder. Find credible sources, verify facts, and generate accu…<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn50"><p><a href="https://www.grammarly.com/research-paper">Research Paper Writing Tips | Grammarly</a> - Take the guesswork out of writing your research paper with the resources and tools you need to creat…<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn51"><p><a href="https://www.grammarly.com/educators">AI writing assistance that enhances student learning</a> - Grammarly acts as a trusted partner for students in every stage of their writing process—helping the…<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn52"><p><a href="https://www.canva.com/newsroom/news/magic-studio/">Introducing Magic Studio: the power of AI, all in one place</a> - We’re excited to unveil the future of Canva with our most game-changing launch ever: Introducing Mag…<a href="#fnref52" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn53"><p><a href="https://www.canva.com/magic/">Meet Magic Studio | Canva’s AI Tools</a> - Discover how Canva’s new AI-powered tools can help you and your team work with more ease, speed, and…<a href="#fnref53" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn54"><p><a href="https://gamma.app/solutions/educators">AI for Teachers | Create Engaging Lessons &amp; Materials | Gamma.app</a> - Build lesson plans, assignments, and visuals in seconds with Gamma’s AI—perfect for any learning env…<a href="#fnref54" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn55"><p><a href="https://gamma.app/explore/content/guides/what-is-gamma-and-how-does-it-use-ai-to-build-presentations">Gamma AI Presentation Guide</a> - Learn what Gamma is and how it uses AI to build presentations automatically — with smart layouts, in…<a href="#fnref55" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn56"><p><a href="https://www.napkin.ai/">Napkin AI - Turn Text into AI Diagrams and Visuals</a> - Just paste your text, and Napkin AI instantly turns it into flowcharts, mind maps, infographics, dia…<a href="#fnref56" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn57"><p><a href="https://www.qualtrics.com/articles/customer-experience/qualtrics-ai-field-guide/">Ai Response Task</a> - A practical guide for CX teams to learn when and how to use features available now to transform your…<a href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn58"><p><a href="https://www.apa.org/topics/artificial-intelligence-machine-learning/ethical-guidance-professional-practice.pdf">Ethical Guidance for AI in the Professional Practice of …</a><a href="#fnref58" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn59"><p><a href="https://www.apa.org/international/networks/global-psychology-alliance/principles-artificial-intelligence.pdf">Top 10 Principles for Understanding Artificial Intelligence in …</a><a href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn60"><p><a href="https://www.apa.org/topics/artificial-intelligence-machine-learning/ethical-guidance-professional-practice-infographic.pdf">Ethical Guidance for AI in the Professional Practice of …</a><a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn61"><p><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">AI Act | Shaping Europe’s digital future - European Union</a> - The AI Act is the first-ever legal framework on AI, which addresses the risks of AI and positions Eu…<a href="#fnref61" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn62"><p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/emotion-recognition-prohibited-workplaceeducation-settings-or-these-purposes-eg-employee">Is emotion recognition prohibited in workplace/education …</a><a href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn63"><p><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5">Article 5: Prohibited AI practices | AI Act Service Desk</a><a href="#fnref63" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn64"><p><a href="https://www.apa.org/topics/artificial-intelligence-machine-learning/ethical-guidance-professional-practice-infographic.pdf">Ethical Guidance for AI in the Professional Practice of …</a><a href="#fnref64" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn65"><p><a href="https://www.who.int/news/item/21-09-2026-new-who-report-calls-for-stronger-ethics-oversight-of-ai-related-health-research">New WHO report calls for stronger ethics oversight of AI …</a> - A new WHO report, Artificial Intelligence-related health research: ethics review and oversight, prov…<a href="#fnref65" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./alapfogalmak.html" class="pagination-link" aria-label="Fogalmak">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fogalmak</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chatgpt.html" class="pagination-link" aria-label="ChatGPT">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ChatGPT</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

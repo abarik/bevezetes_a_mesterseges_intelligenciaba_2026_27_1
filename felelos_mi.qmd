@@ -1,6 +1,6 @@
 # Felelős MI-használat
 
-*Jelen fogalomgyűjtemény a Perplexity AI segítségével készült.*
+*Jelen összefoglaló a Perplexity AI segítségével készült.*
 
 ## Bevezetés {.unnumbered}
 

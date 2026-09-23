@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Gemini Notebook – Bevezetés a mesterséges intelligenciába</title>
+<title>6&nbsp; Gemini Notebook – Bevezetés a mesterséges intelligenciába</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -255,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gemini_notebook.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gemini_notebook.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -309,20 +309,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./eszkozok.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MI-eszközök</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chatgpt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ChatGPT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ChatGPT</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./gemini_notebook.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./felelos_mi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -376,76 +382,76 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tartalomjegyzék</h2>
    
   <ul>
-  <li><a href="#aktualizált-áttekintés-2026.-szeptember" id="toc-aktualizált-áttekintés-2026.-szeptember" class="nav-link active" data-scroll-target="#aktualizált-áttekintés-2026.-szeptember"><span class="header-section-number">5.1</span> Aktualizált áttekintés, 2026. szeptember</a></li>
-  <li><a href="#összefoglaló" id="toc-összefoglaló" class="nav-link" data-scroll-target="#összefoglaló"><span class="header-section-number">5.2</span> Összefoglaló</a></li>
-  <li><a href="#mi-változott-20252026-ban" id="toc-mi-változott-20252026-ban" class="nav-link" data-scroll-target="#mi-változott-20252026-ban"><span class="header-section-number">5.3</span> Mi változott 2025–2026-ban?</a></li>
-  <li><a href="#rendszerarchitektúra" id="toc-rendszerarchitektúra" class="nav-link" data-scroll-target="#rendszerarchitektúra"><span class="header-section-number">5.4</span> Rendszerarchitektúra</a>
+  <li><a href="#aktualizált-áttekintés-2026.-szeptember" id="toc-aktualizált-áttekintés-2026.-szeptember" class="nav-link active" data-scroll-target="#aktualizált-áttekintés-2026.-szeptember"><span class="header-section-number">6.1</span> Aktualizált áttekintés, 2026. szeptember</a></li>
+  <li><a href="#összefoglaló" id="toc-összefoglaló" class="nav-link" data-scroll-target="#összefoglaló"><span class="header-section-number">6.2</span> Összefoglaló</a></li>
+  <li><a href="#mi-változott-20252026-ban" id="toc-mi-változott-20252026-ban" class="nav-link" data-scroll-target="#mi-változott-20252026-ban"><span class="header-section-number">6.3</span> Mi változott 2025–2026-ban?</a></li>
+  <li><a href="#rendszerarchitektúra" id="toc-rendszerarchitektúra" class="nav-link" data-scroll-target="#rendszerarchitektúra"><span class="header-section-number">6.4</span> Rendszerarchitektúra</a>
   <ul class="collapse">
-  <li><a href="#forrásalapú-megalapozottság" id="toc-forrásalapú-megalapozottság" class="nav-link" data-scroll-target="#forrásalapú-megalapozottság"><span class="header-section-number">5.4.1</span> Forrásalapú megalapozottság</a></li>
-  <li><a href="#mit-jelentenek-a-hivatkozások" id="toc-mit-jelentenek-a-hivatkozások" class="nav-link" data-scroll-target="#mit-jelentenek-a-hivatkozások"><span class="header-section-number">5.4.2</span> Mit jelentenek a hivatkozások?</a></li>
-  <li><a href="#a-hárompaneles-felület" id="toc-a-hárompaneles-felület" class="nav-link" data-scroll-target="#a-hárompaneles-felület"><span class="header-section-number">5.4.3</span> A hárompaneles felület</a></li>
+  <li><a href="#forrásalapú-megalapozottság" id="toc-forrásalapú-megalapozottság" class="nav-link" data-scroll-target="#forrásalapú-megalapozottság"><span class="header-section-number">6.4.1</span> Forrásalapú megalapozottság</a></li>
+  <li><a href="#mit-jelentenek-a-hivatkozások" id="toc-mit-jelentenek-a-hivatkozások" class="nav-link" data-scroll-target="#mit-jelentenek-a-hivatkozások"><span class="header-section-number">6.4.2</span> Mit jelentenek a hivatkozások?</a></li>
+  <li><a href="#a-hárompaneles-felület" id="toc-a-hárompaneles-felület" class="nav-link" data-scroll-target="#a-hárompaneles-felület"><span class="header-section-number">6.4.3</span> A hárompaneles felület</a></li>
   </ul></li>
-  <li><a href="#támogatott-források" id="toc-támogatott-források" class="nav-link" data-scroll-target="#támogatott-források"><span class="header-section-number">5.5</span> Támogatott források</a></li>
-  <li><a href="#gemini-integráció" id="toc-gemini-integráció" class="nav-link" data-scroll-target="#gemini-integráció"><span class="header-section-number">5.6</span> Gemini-integráció</a>
+  <li><a href="#támogatott-források" id="toc-támogatott-források" class="nav-link" data-scroll-target="#támogatott-források"><span class="header-section-number">6.5</span> Támogatott források</a></li>
+  <li><a href="#gemini-integráció" id="toc-gemini-integráció" class="nav-link" data-scroll-target="#gemini-integráció"><span class="header-section-number">6.6</span> Gemini-integráció</a>
   <ul class="collapse">
-  <li><a href="#notebookok-a-gemini-alkalmazásban" id="toc-notebookok-a-gemini-alkalmazásban" class="nav-link" data-scroll-target="#notebookok-a-gemini-alkalmazásban"><span class="header-section-number">5.6.1</span> Notebookok a Gemini alkalmazásban</a></li>
-  <li><a href="#modellek" id="toc-modellek" class="nav-link" data-scroll-target="#modellek"><span class="header-section-number">5.6.2</span> Modellek</a></li>
+  <li><a href="#notebookok-a-gemini-alkalmazásban" id="toc-notebookok-a-gemini-alkalmazásban" class="nav-link" data-scroll-target="#notebookok-a-gemini-alkalmazásban"><span class="header-section-number">6.6.1</span> Notebookok a Gemini alkalmazásban</a></li>
+  <li><a href="#modellek" id="toc-modellek" class="nav-link" data-scroll-target="#modellek"><span class="header-section-number">6.6.2</span> Modellek</a></li>
   </ul></li>
-  <li><a href="#kulcsfunkciók" id="toc-kulcsfunkciók" class="nav-link" data-scroll-target="#kulcsfunkciók"><span class="header-section-number">5.7</span> Kulcsfunkciók</a>
+  <li><a href="#kulcsfunkciók" id="toc-kulcsfunkciók" class="nav-link" data-scroll-target="#kulcsfunkciók"><span class="header-section-number">6.7</span> Kulcsfunkciók</a>
   <ul class="collapse">
-  <li><a href="#hivatkozott-chat" id="toc-hivatkozott-chat" class="nav-link" data-scroll-target="#hivatkozott-chat"><span class="header-section-number">5.7.1</span> Hivatkozott chat</a></li>
-  <li><a href="#forrásfelfedezés-és-deep-research" id="toc-forrásfelfedezés-és-deep-research" class="nav-link" data-scroll-target="#forrásfelfedezés-és-deep-research"><span class="header-section-number">5.7.2</span> Forrásfelfedezés és Deep Research</a></li>
-  <li><a href="#audio-overview" id="toc-audio-overview" class="nav-link" data-scroll-target="#audio-overview"><span class="header-section-number">5.7.3</span> Audio Overview</a></li>
-  <li><a href="#video-overview" id="toc-video-overview" class="nav-link" data-scroll-target="#video-overview"><span class="header-section-number">5.7.4</span> Video Overview</a></li>
-  <li><a href="#stúdió-produktumok" id="toc-stúdió-produktumok" class="nav-link" data-scroll-target="#stúdió-produktumok"><span class="header-section-number">5.7.5</span> Stúdió-produktumok</a></li>
-  <li><a href="#mobilalkalmazás" id="toc-mobilalkalmazás" class="nav-link" data-scroll-target="#mobilalkalmazás"><span class="header-section-number">5.7.6</span> Mobilalkalmazás</a></li>
+  <li><a href="#hivatkozott-chat" id="toc-hivatkozott-chat" class="nav-link" data-scroll-target="#hivatkozott-chat"><span class="header-section-number">6.7.1</span> Hivatkozott chat</a></li>
+  <li><a href="#forrásfelfedezés-és-deep-research" id="toc-forrásfelfedezés-és-deep-research" class="nav-link" data-scroll-target="#forrásfelfedezés-és-deep-research"><span class="header-section-number">6.7.2</span> Forrásfelfedezés és Deep Research</a></li>
+  <li><a href="#audio-overview" id="toc-audio-overview" class="nav-link" data-scroll-target="#audio-overview"><span class="header-section-number">6.7.3</span> Audio Overview</a></li>
+  <li><a href="#video-overview" id="toc-video-overview" class="nav-link" data-scroll-target="#video-overview"><span class="header-section-number">6.7.4</span> Video Overview</a></li>
+  <li><a href="#stúdió-produktumok" id="toc-stúdió-produktumok" class="nav-link" data-scroll-target="#stúdió-produktumok"><span class="header-section-number">6.7.5</span> Stúdió-produktumok</a></li>
+  <li><a href="#mobilalkalmazás" id="toc-mobilalkalmazás" class="nav-link" data-scroll-target="#mobilalkalmazás"><span class="header-section-number">6.7.6</span> Mobilalkalmazás</a></li>
   </ul></li>
-  <li><a href="#oktatási-alkalmazások" id="toc-oktatási-alkalmazások" class="nav-link" data-scroll-target="#oktatási-alkalmazások"><span class="header-section-number">5.8</span> Oktatási alkalmazások</a>
+  <li><a href="#oktatási-alkalmazások" id="toc-oktatási-alkalmazások" class="nav-link" data-scroll-target="#oktatási-alkalmazások"><span class="header-section-number">6.8</span> Oktatási alkalmazások</a>
   <ul class="collapse">
-  <li><a href="#forrásalapú-tanulás" id="toc-forrásalapú-tanulás" class="nav-link" data-scroll-target="#forrásalapú-tanulás"><span class="header-section-number">5.8.1</span> Forrásalapú tanulás</a></li>
-  <li><a href="#pszichológia-ba-s-példák" id="toc-pszichológia-ba-s-példák" class="nav-link" data-scroll-target="#pszichológia-ba-s-példák"><span class="header-section-number">5.8.2</span> Pszichológia BA-s példák</a></li>
-  <li><a href="#esszé--és-feladat-előkészítés" id="toc-esszé--és-feladat-előkészítés" class="nav-link" data-scroll-target="#esszé--és-feladat-előkészítés"><span class="header-section-number">5.8.3</span> Esszé- és feladat-előkészítés</a></li>
+  <li><a href="#forrásalapú-tanulás" id="toc-forrásalapú-tanulás" class="nav-link" data-scroll-target="#forrásalapú-tanulás"><span class="header-section-number">6.8.1</span> Forrásalapú tanulás</a></li>
+  <li><a href="#pszichológia-ba-s-példák" id="toc-pszichológia-ba-s-példák" class="nav-link" data-scroll-target="#pszichológia-ba-s-példák"><span class="header-section-number">6.8.2</span> Pszichológia BA-s példák</a></li>
+  <li><a href="#esszé--és-feladat-előkészítés" id="toc-esszé--és-feladat-előkészítés" class="nav-link" data-scroll-target="#esszé--és-feladat-előkészítés"><span class="header-section-number">6.8.3</span> Esszé- és feladat-előkészítés</a></li>
   </ul></li>
-  <li><a href="#kutatási-alkalmazások" id="toc-kutatási-alkalmazások" class="nav-link" data-scroll-target="#kutatási-alkalmazások"><span class="header-section-number">5.9</span> Kutatási alkalmazások</a>
+  <li><a href="#kutatási-alkalmazások" id="toc-kutatási-alkalmazások" class="nav-link" data-scroll-target="#kutatási-alkalmazások"><span class="header-section-number">6.9</span> Kutatási alkalmazások</a>
   <ul class="collapse">
-  <li><a href="#szakirodalmi-tájékozódás" id="toc-szakirodalmi-tájékozódás" class="nav-link" data-scroll-target="#szakirodalmi-tájékozódás"><span class="header-section-number">5.9.1</span> Szakirodalmi tájékozódás</a></li>
-  <li><a href="#kvalitatív-adatok" id="toc-kvalitatív-adatok" class="nav-link" data-scroll-target="#kvalitatív-adatok"><span class="header-section-number">5.9.2</span> Kvalitatív adatok</a></li>
-  <li><a href="#multimodális-kutatás" id="toc-multimodális-kutatás" class="nav-link" data-scroll-target="#multimodális-kutatás"><span class="header-section-number">5.9.3</span> Multimodális kutatás</a></li>
+  <li><a href="#szakirodalmi-tájékozódás" id="toc-szakirodalmi-tájékozódás" class="nav-link" data-scroll-target="#szakirodalmi-tájékozódás"><span class="header-section-number">6.9.1</span> Szakirodalmi tájékozódás</a></li>
+  <li><a href="#kvalitatív-adatok" id="toc-kvalitatív-adatok" class="nav-link" data-scroll-target="#kvalitatív-adatok"><span class="header-section-number">6.9.2</span> Kvalitatív adatok</a></li>
+  <li><a href="#multimodális-kutatás" id="toc-multimodális-kutatás" class="nav-link" data-scroll-target="#multimodális-kutatás"><span class="header-section-number">6.9.3</span> Multimodális kutatás</a></li>
   </ul></li>
-  <li><a href="#a-ppae-hurok" id="toc-a-ppae-hurok" class="nav-link" data-scroll-target="#a-ppae-hurok"><span class="header-section-number">5.10</span> A PPAE-hurok</a>
+  <li><a href="#a-ppae-hurok" id="toc-a-ppae-hurok" class="nav-link" data-scroll-target="#a-ppae-hurok"><span class="header-section-number">6.10</span> A PPAE-hurok</a>
   <ul class="collapse">
-  <li><a href="#kutatási-változat" id="toc-kutatási-változat" class="nav-link" data-scroll-target="#kutatási-változat"><span class="header-section-number">5.10.1</span> Kutatási változat</a></li>
-  <li><a href="#tanulási-változat" id="toc-tanulási-változat" class="nav-link" data-scroll-target="#tanulási-változat"><span class="header-section-number">5.10.2</span> Tanulási változat</a></li>
+  <li><a href="#kutatási-változat" id="toc-kutatási-változat" class="nav-link" data-scroll-target="#kutatási-változat"><span class="header-section-number">6.10.1</span> Kutatási változat</a></li>
+  <li><a href="#tanulási-változat" id="toc-tanulási-változat" class="nav-link" data-scroll-target="#tanulási-változat"><span class="header-section-number">6.10.2</span> Tanulási változat</a></li>
   </ul></li>
-  <li><a href="#prompttervezés" id="toc-prompttervezés" class="nav-link" data-scroll-target="#prompttervezés"><span class="header-section-number">5.11</span> Prompttervezés</a>
+  <li><a href="#prompttervezés" id="toc-prompttervezés" class="nav-link" data-scroll-target="#prompttervezés"><span class="header-section-number">6.11</span> Prompttervezés</a>
   <ul class="collapse">
-  <li><a href="#ötelemű-promptmodell" id="toc-ötelemű-promptmodell" class="nav-link" data-scroll-target="#ötelemű-promptmodell"><span class="header-section-number">5.11.1</span> Ötelemű promptmodell</a></li>
-  <li><a href="#általános-sablon" id="toc-általános-sablon" class="nav-link" data-scroll-target="#általános-sablon"><span class="header-section-number">5.11.2</span> Általános sablon</a></li>
-  <li><a href="#pszichológiai-kutatási-példa" id="toc-pszichológiai-kutatási-példa" class="nav-link" data-scroll-target="#pszichológiai-kutatási-példa"><span class="header-section-number">5.11.3</span> Pszichológiai kutatási példa</a></li>
+  <li><a href="#ötelemű-promptmodell" id="toc-ötelemű-promptmodell" class="nav-link" data-scroll-target="#ötelemű-promptmodell"><span class="header-section-number">6.11.1</span> Ötelemű promptmodell</a></li>
+  <li><a href="#általános-sablon" id="toc-általános-sablon" class="nav-link" data-scroll-target="#általános-sablon"><span class="header-section-number">6.11.2</span> Általános sablon</a></li>
+  <li><a href="#pszichológiai-kutatási-példa" id="toc-pszichológiai-kutatási-példa" class="nav-link" data-scroll-target="#pszichológiai-kutatási-példa"><span class="header-section-number">6.11.3</span> Pszichológiai kutatási példa</a></li>
   </ul></li>
-  <li><a href="#motiváció-és-elköteleződés" id="toc-motiváció-és-elköteleződés" class="nav-link" data-scroll-target="#motiváció-és-elköteleződés"><span class="header-section-number">5.12</span> Motiváció és elköteleződés</a></li>
-  <li><a href="#adatvédelem-és-etika" id="toc-adatvédelem-és-etika" class="nav-link" data-scroll-target="#adatvédelem-és-etika"><span class="header-section-number">5.13</span> Adatvédelem és etika</a>
+  <li><a href="#motiváció-és-elköteleződés" id="toc-motiváció-és-elköteleződés" class="nav-link" data-scroll-target="#motiváció-és-elköteleződés"><span class="header-section-number">6.12</span> Motiváció és elköteleződés</a></li>
+  <li><a href="#adatvédelem-és-etika" id="toc-adatvédelem-és-etika" class="nav-link" data-scroll-target="#adatvédelem-és-etika"><span class="header-section-number">6.13</span> Adatvédelem és etika</a>
   <ul class="collapse">
-  <li><a href="#személyes-és-workspace-fiókok" id="toc-személyes-és-workspace-fiókok" class="nav-link" data-scroll-target="#személyes-és-workspace-fiókok"><span class="header-section-number">5.13.1</span> Személyes és Workspace-fiókok</a></li>
-  <li><a href="#pszichológiai-és-kvalitatív-adatok" id="toc-pszichológiai-és-kvalitatív-adatok" class="nav-link" data-scroll-target="#pszichológiai-és-kvalitatív-adatok"><span class="header-section-number">5.13.2</span> Pszichológiai és kvalitatív adatok</a></li>
-  <li><a href="#akadémiai-integritás" id="toc-akadémiai-integritás" class="nav-link" data-scroll-target="#akadémiai-integritás"><span class="header-section-number">5.13.3</span> Akadémiai integritás</a></li>
+  <li><a href="#személyes-és-workspace-fiókok" id="toc-személyes-és-workspace-fiókok" class="nav-link" data-scroll-target="#személyes-és-workspace-fiókok"><span class="header-section-number">6.13.1</span> Személyes és Workspace-fiókok</a></li>
+  <li><a href="#pszichológiai-és-kvalitatív-adatok" id="toc-pszichológiai-és-kvalitatív-adatok" class="nav-link" data-scroll-target="#pszichológiai-és-kvalitatív-adatok"><span class="header-section-number">6.13.2</span> Pszichológiai és kvalitatív adatok</a></li>
+  <li><a href="#akadémiai-integritás" id="toc-akadémiai-integritás" class="nav-link" data-scroll-target="#akadémiai-integritás"><span class="header-section-number">6.13.3</span> Akadémiai integritás</a></li>
   </ul></li>
-  <li><a href="#korlátok" id="toc-korlátok" class="nav-link" data-scroll-target="#korlátok"><span class="header-section-number">5.14</span> Korlátok</a>
+  <li><a href="#korlátok" id="toc-korlátok" class="nav-link" data-scroll-target="#korlátok"><span class="header-section-number">6.14</span> Korlátok</a>
   <ul class="collapse">
-  <li><a href="#a-forráskorpusz-torzítása" id="toc-a-forráskorpusz-torzítása" class="nav-link" data-scroll-target="#a-forráskorpusz-torzítása"><span class="header-section-number">5.14.1</span> A forráskorpusz torzítása</a></li>
-  <li><a href="#forrásfeldolgozási-hibák" id="toc-forrásfeldolgozási-hibák" class="nav-link" data-scroll-target="#forrásfeldolgozási-hibák"><span class="header-section-number">5.14.2</span> Forrásfeldolgozási hibák</a></li>
-  <li><a href="#szintézis-és-okság" id="toc-szintézis-és-okság" class="nav-link" data-scroll-target="#szintézis-és-okság"><span class="header-section-number">5.14.3</span> Szintézis és okság</a></li>
-  <li><a href="#nem-helyettesít-szakértői-döntést" id="toc-nem-helyettesít-szakértői-döntést" class="nav-link" data-scroll-target="#nem-helyettesít-szakértői-döntést"><span class="header-section-number">5.14.4</span> Nem helyettesít szakértői döntést</a></li>
-  <li><a href="#reprodukálhatóság" id="toc-reprodukálhatóság" class="nav-link" data-scroll-target="#reprodukálhatóság"><span class="header-section-number">5.14.5</span> Reprodukálhatóság</a></li>
+  <li><a href="#a-forráskorpusz-torzítása" id="toc-a-forráskorpusz-torzítása" class="nav-link" data-scroll-target="#a-forráskorpusz-torzítása"><span class="header-section-number">6.14.1</span> A forráskorpusz torzítása</a></li>
+  <li><a href="#forrásfeldolgozási-hibák" id="toc-forrásfeldolgozási-hibák" class="nav-link" data-scroll-target="#forrásfeldolgozási-hibák"><span class="header-section-number">6.14.2</span> Forrásfeldolgozási hibák</a></li>
+  <li><a href="#szintézis-és-okság" id="toc-szintézis-és-okság" class="nav-link" data-scroll-target="#szintézis-és-okság"><span class="header-section-number">6.14.3</span> Szintézis és okság</a></li>
+  <li><a href="#nem-helyettesít-szakértői-döntést" id="toc-nem-helyettesít-szakértői-döntést" class="nav-link" data-scroll-target="#nem-helyettesít-szakértői-döntést"><span class="header-section-number">6.14.4</span> Nem helyettesít szakértői döntést</a></li>
+  <li><a href="#reprodukálhatóság" id="toc-reprodukálhatóság" class="nav-link" data-scroll-target="#reprodukálhatóság"><span class="header-section-number">6.14.5</span> Reprodukálhatóság</a></li>
   </ul></li>
-  <li><a href="#ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" id="toc-ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" class="nav-link" data-scroll-target="#ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak"><span class="header-section-number">5.15</span> Ajánlott munkafolyamat pszichológia BA-hallgatóknak</a>
+  <li><a href="#ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" id="toc-ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" class="nav-link" data-scroll-target="#ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak"><span class="header-section-number">6.15</span> Ajánlott munkafolyamat pszichológia BA-hallgatóknak</a>
   <ul class="collapse">
-  <li><a href="#szemináriumi-feldolgozás" id="toc-szemináriumi-feldolgozás" class="nav-link" data-scroll-target="#szemináriumi-feldolgozás"><span class="header-section-number">5.15.1</span> Szemináriumi feldolgozás</a></li>
-  <li><a href="#mini-irodalmi-áttekintés" id="toc-mini-irodalmi-áttekintés" class="nav-link" data-scroll-target="#mini-irodalmi-áttekintés"><span class="header-section-number">5.15.2</span> Mini-irodalmi áttekintés</a></li>
-  <li><a href="#kvalitatív-gyakorlat" id="toc-kvalitatív-gyakorlat" class="nav-link" data-scroll-target="#kvalitatív-gyakorlat"><span class="header-section-number">5.15.3</span> Kvalitatív gyakorlat</a></li>
+  <li><a href="#szemináriumi-feldolgozás" id="toc-szemináriumi-feldolgozás" class="nav-link" data-scroll-target="#szemináriumi-feldolgozás"><span class="header-section-number">6.15.1</span> Szemináriumi feldolgozás</a></li>
+  <li><a href="#mini-irodalmi-áttekintés" id="toc-mini-irodalmi-áttekintés" class="nav-link" data-scroll-target="#mini-irodalmi-áttekintés"><span class="header-section-number">6.15.2</span> Mini-irodalmi áttekintés</a></li>
+  <li><a href="#kvalitatív-gyakorlat" id="toc-kvalitatív-gyakorlat" class="nav-link" data-scroll-target="#kvalitatív-gyakorlat"><span class="header-section-number">6.15.3</span> Kvalitatív gyakorlat</a></li>
   </ul></li>
-  <li><a href="#gyors-ellenőrzőlista" id="toc-gyors-ellenőrzőlista" class="nav-link" data-scroll-target="#gyors-ellenőrzőlista"><span class="header-section-number">5.16</span> Gyors ellenőrzőlista</a></li>
-  <li><a href="#záró-megállapítás" id="toc-záró-megállapítás" class="nav-link" data-scroll-target="#záró-megállapítás"><span class="header-section-number">5.17</span> Záró megállapítás</a></li>
+  <li><a href="#gyors-ellenőrzőlista" id="toc-gyors-ellenőrzőlista" class="nav-link" data-scroll-target="#gyors-ellenőrzőlista"><span class="header-section-number">6.16</span> Gyors ellenőrzőlista</a></li>
+  <li><a href="#záró-megállapítás" id="toc-záró-megállapítás" class="nav-link" data-scroll-target="#záró-megállapítás"><span class="header-section-number">6.17</span> Záró megállapítás</a></li>
   </ul>
 </nav>
     </div>
@@ -455,7 +461,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Gemini Notebook</span></h1>
 </div>
 
 
@@ -473,20 +479,20 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><em>Jelen összefoglaló a Perplexity AI segítségével készült.</em></p>
-<section id="aktualizált-áttekintés-2026.-szeptember" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="aktualizált-áttekintés-2026.-szeptember"><span class="header-section-number">5.1</span> Aktualizált áttekintés, 2026. szeptember</h2>
+<section id="aktualizált-áttekintés-2026.-szeptember" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="aktualizált-áttekintés-2026.-szeptember"><span class="header-section-number">6.1</span> Aktualizált áttekintés, 2026. szeptember</h2>
 <blockquote class="blockquote">
 <p><strong>Terminológiai frissítés:</strong> a Google 2026 júliusában a <strong>NotebookLM</strong> szolgáltatást <strong>Gemini Notebook</strong> névre nevezte át. Ugyanarról az önálló termékről van szó, a korábbi jegyzetfüzetek megmaradtak, miközben a szolgáltatás szorosabban integrálódik a Gemini alkalmazással és a Google Keresővel.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <strong>Elérés:</strong> <a href="https://notebook.google/">Gemini Notebook</a> · <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind">Google Play</a> · iOS App Store-ban „Gemini Notebook” néven kereshető.</p>
 </blockquote>
 </section>
-<section id="összefoglaló" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="összefoglaló"><span class="header-section-number">5.2</span> Összefoglaló</h2>
+<section id="összefoglaló" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="összefoglaló"><span class="header-section-number">6.2</span> Összefoglaló</h2>
 <p>A Gemini Notebook forrásalapú kutatási és tanulási környezet: a felhasználó dokumentumokat és más forrásokat rendez jegyzetfüzetekbe, majd ezekről kérdezhet, összehasonlításokat készíthet, illetve különböző tanulási és kommunikációs produktumokat generálhat. A válaszokhoz kattintható szövegközi hivatkozások tartoznak, amelyek visszavezetnek a felhasznált forrásrészletekhez.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <p>Egy jegyzetfüzet chatje továbbra is a kiválasztott forrásokra támaszkodik, de a rendszer már <strong>Source Discovery</strong>, <strong>Fast Research</strong> és <strong>Deep Research</strong> funkciókkal maga is kereshet webes forrásokat, amelyeket a felhasználó áttekintés után importálhat a jegyzetfüzetbe. Emellett a Gemini alkalmazásban létrehozott, Gemini Notebookkal szinkronizált jegyzetfüzetek használhatják a Gemini eszközeit és webes keresését is; ezért mindig külön kell választani a <strong>jegyzetfüzet forráskorpuszát</strong> és a <strong>külső forráskeresést</strong>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p>A forrásalapú működés csökkenti a témától elszakadó válaszok kockázatát és jelentősen javítja az ellenőrizhetőséget, de <strong>nem szünteti meg a hibákat</strong>. A rendszer kiválaszthat nem megfelelő részletet, félreértheti a szöveget, kihagyhat ellenpéldákat, összemoshat eltérő eredményeket, vagy pontatlanul értelmezhet táblázatot, ábrát és rosszul felismert szöveget. A Google maga is lehetőséget biztosít a pontatlan válaszok jelentésére, ezért a kattintható hivatkozást ellenőrzési eszköznek, nem igazsággaranciának kell tekinteni.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 </section>
-<section id="mi-változott-20252026-ban" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="mi-változott-20252026-ban"><span class="header-section-number">5.3</span> Mi változott 2025–2026-ban?</h2>
+<section id="mi-változott-20252026-ban" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="mi-változott-20252026-ban"><span class="header-section-number">6.3</span> Mi változott 2025–2026-ban?</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -539,10 +545,10 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="rendszerarchitektúra" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="rendszerarchitektúra"><span class="header-section-number">5.4</span> Rendszerarchitektúra</h2>
-<section id="forrásalapú-megalapozottság" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="forrásalapú-megalapozottság"><span class="header-section-number">5.4.1</span> Forrásalapú megalapozottság</h3>
+<section id="rendszerarchitektúra" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="rendszerarchitektúra"><span class="header-section-number">6.4</span> Rendszerarchitektúra</h2>
+<section id="forrásalapú-megalapozottság" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="forrásalapú-megalapozottság"><span class="header-section-number">6.4.1</span> Forrásalapú megalapozottság</h3>
 <p>A <strong>source grounding</strong> azt jelenti, hogy a rendszer a válasz elkészítésekor a jegyzetfüzet aktív forrásaiból keres releváns részleteket, és ezekre támaszkodva generál szöveget. Ez a visszakereséssel támogatott generálás (retrieval-augmented generation, RAG) egyik felhasználóbarát megvalósítása; oktatási környezetben tanár vagy hallgató által válogatott forráskorpuszt lehet vele a válaszadás alapjává tenni.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
 <p>A megközelítés három fő előnye:</p>
 <ul>
@@ -552,8 +558,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>A „kizárólag a feltöltött dokumentumokból dolgozik” megfogalmazás azonban pontosításra szorul. A chat az <strong>aktuálisan kijelölt notebook-forrásokra</strong> alapozza a válaszát, de a források már nemcsak feltöltésből származhatnak: a felhasználó webes kereséssel, Fast Research vagy Deep Research segítségével is gyűjthet és importálhat anyagokat. A Gemini alkalmazásban használt, szinkronizált notebook esetén a Gemini a kézzel válogatott forrásokat saját eszközeivel és webes kereséssel együtt is használhatja.<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a><a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a><a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></p>
 </section>
-<section id="mit-jelentenek-a-hivatkozások" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="mit-jelentenek-a-hivatkozások"><span class="header-section-number">5.4.2</span> Mit jelentenek a hivatkozások?</h3>
+<section id="mit-jelentenek-a-hivatkozások" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="mit-jelentenek-a-hivatkozások"><span class="header-section-number">6.4.2</span> Mit jelentenek a hivatkozások?</h3>
 <p>A chatválaszokhoz kapcsolt hivatkozási elemek közvetlenül a relevánsnak ítélt forrásrészlethez vezetnek. Ez gyorsabbá teszi az állítás ellenőrzését, de nem bizonyítja automatikusan, hogy:</p>
 <ul>
 <li>a kiválasztott részlet valóban alátámasztja a teljes állítást;</li>
@@ -564,8 +570,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Tudományos munkában ezért minden fontos állításnál meg kell nyitni a hivatkozást, el kell olvasni a környező szöveget, majd szükség esetén az eredeti publikációt is ellenőrizni kell. A forrásalapú működés az auditálhatóságot növeli; nem alakítja át automatikusan a generált szöveget validált tudományos következtetéssé.</p>
 </section>
-<section id="a-hárompaneles-felület" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="a-hárompaneles-felület"><span class="header-section-number">5.4.3</span> A hárompaneles felület</h3>
+<section id="a-hárompaneles-felület" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="a-hárompaneles-felület"><span class="header-section-number">6.4.3</span> A hárompaneles felület</h3>
 <p>A webes felület alapvetően három munkaterületet kapcsol össze:<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></p>
 <ol type="1">
 <li><strong>Források / Sources:</strong> források hozzáadása, áttekintése és be- vagy kikapcsolása. A jelölőnégyzetekkel meghatározható, hogy egy kérdéshez mely dokumentumok legyenek aktívak.</li>
@@ -575,8 +581,8 @@ ul.task-list li input[type="checkbox"] {
 <p>A három panel három külön kutatói műveletet képvisel: <strong>korpuszépítés → forrásalapú kérdezés → kommunikálható vagy tanulást támogató produktum előállítása</strong>.</p>
 </section>
 </section>
-<section id="támogatott-források" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="támogatott-források"><span class="header-section-number">5.5</span> Támogatott források</h2>
+<section id="támogatott-források" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="támogatott-források"><span class="header-section-number">6.5</span> Támogatott források</h2>
 <p>A Gemini Notebook többek között Google Docs- és Slides-fájlokat, PDF-et, egyszerű szöveget és Markdown-fájlt, weboldalt, beillesztett szöveget, nyilvános YouTube-videót és hangfájlt fogad. A 2025 végi bővítés Word-dokumentumokat, képeket, Google Sheets-tartalmat, Drive-URL-eket és közvetlenül a Drive-ból származó PDF-eket is hozzáadott.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a><a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></p>
 <table class="caption-top table">
 <colgroup>
@@ -636,10 +642,10 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>Egyetlen forrás legfeljebb 500 000 szót vagy feltöltött fájl esetén 200 MB-ot tartalmazhat. A csomagtól függő notebook- és forráslimitek változhatnak; az aktuális Workspace-adminisztrációs táblázat 50–600 forrást jelez notebookonként a hozzáférési szinttől függően. A fogyasztói csomagokban 2026 szeptemberétől rugalmas, számításigény-alapú limitek is megjelentek, ezért az egyszerű, fix napi kvóták gyorsan elavulhatnak.<a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a><a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></p>
 </section>
-<section id="gemini-integráció" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="gemini-integráció"><span class="header-section-number">5.6</span> Gemini-integráció</h2>
-<section id="notebookok-a-gemini-alkalmazásban" class="level3" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="notebookok-a-gemini-alkalmazásban"><span class="header-section-number">5.6.1</span> Notebookok a Gemini alkalmazásban</h3>
+<section id="gemini-integráció" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="gemini-integráció"><span class="header-section-number">6.6</span> Gemini-integráció</h2>
+<section id="notebookok-a-gemini-alkalmazásban" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="notebookok-a-gemini-alkalmazásban"><span class="header-section-number">6.6.1</span> Notebookok a Gemini alkalmazásban</h3>
 <p>A Gemini alkalmazás notebookjai projekttérként szervezik a beszélgetéseket, fájlokat és állandó utasításokat. A források szinkronizálódnak a Gemini Notebook önálló felületével, így ugyanaz az anyag használható például a Gemini alkalmazásban esszévázlat készítésére, majd a Gemini Notebookban videós áttekintés vagy infografika létrehozására.<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a><a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a></p>
 <p>A két környezet szerepe nem teljesen azonos:</p>
 <table class="caption-top table">
@@ -665,35 +671,35 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>A hozzáférés életkortól, fióktípustól, régiótól és előfizetéstől függhet. A 2026 tavaszi bevezetés kezdetben személyes, 18 év feletti, fizetős fiókokra koncentrált; az oktatási és Workspace-hozzáférés ettől eltérő ütemben és adminisztrátori beállításokkal bővülhetett.<a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a><a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a></p>
 </section>
-<section id="modellek" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="modellek"><span class="header-section-number">5.6.2</span> Modellek</h3>
+<section id="modellek" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="modellek"><span class="header-section-number">6.6.2</span> Modellek</h3>
 <p>A termékoldal szerint a Gemini Notebook a „legújabb Gemini-modellekre” épül, de nem célszerű a teljes szolgáltatást egyetlen konkrét modellverzióval azonosítani. A különböző funkciók eltérő modelleket és komponenseket használhatnak: a 2026-os Cinematic Video Overview esetében például a Google kifejezetten Gemini 3, Nano Banana Pro és Veo 3 együttműködését nevezte meg.<a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a><a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a><a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a></p>
 <p>Ezért a „Gemini 2.5 és 3 integrációja” helyett pontosabb azt írni, hogy <strong>a termék folyamatosan frissülő Gemini-modelleket használ, és egyes funkciókhoz a Google konkrét modellösszetételt közöl</strong>. A modellnév önmagában nem írja le a visszakeresést, a kontextuskezelést, a médiagenerálást vagy a biztonsági rétegeket.</p>
 </section>
 </section>
-<section id="kulcsfunkciók" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="kulcsfunkciók"><span class="header-section-number">5.7</span> Kulcsfunkciók</h2>
-<section id="hivatkozott-chat" class="level3" data-number="5.7.1">
-<h3 data-number="5.7.1" class="anchored" data-anchor-id="hivatkozott-chat"><span class="header-section-number">5.7.1</span> Hivatkozott chat</h3>
+<section id="kulcsfunkciók" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="kulcsfunkciók"><span class="header-section-number">6.7</span> Kulcsfunkciók</h2>
+<section id="hivatkozott-chat" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="hivatkozott-chat"><span class="header-section-number">6.7.1</span> Hivatkozott chat</h3>
 <p>A chat a kiválasztott források alapján válaszol, összefoglal, összehasonlít és kapcsolatokat keres. Az egymillió tokenes kontextusablak és a bővített beszélgetési előzmény nagyobb dokumentumgyűjtemények hosszabb elemzését támogatja. Ez nem jelenti azt, hogy minden forrást minden kérdésnél egyformán részletesen feldolgoz; a forráskijelölés és a célzott kérdés továbbra is fontos.<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a></p>
 </section>
-<section id="forrásfelfedezés-és-deep-research" class="level3" data-number="5.7.2">
-<h3 data-number="5.7.2" class="anchored" data-anchor-id="forrásfelfedezés-és-deep-research"><span class="header-section-number">5.7.2</span> Forrásfelfedezés és Deep Research</h3>
+<section id="forrásfelfedezés-és-deep-research" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="forrásfelfedezés-és-deep-research"><span class="header-section-number">6.7.2</span> Forrásfelfedezés és Deep Research</h3>
 <p>A <strong>Source Discovery/Fast Research</strong> gyors webes forráskeresést biztosít, majd a felhasználó dönt az importálásról. A <strong>Deep Research</strong> kutatási tervet készít, nagyobb számú weboldalt jár be, forrásalapú jelentést és forrásjavaslatokat készít; ezek utána hozzáadhatók a notebookhoz és felhasználhatók további Stúdió-produktumokhoz.<a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a><a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a></p>
 <p>Ez a funkció hasznos lehet egy tématerület feltérképezésére, de nem azonos egy reprodukálható szisztematikus szakirodalmi kereséssel. A tudományos áttekintéshez továbbra is dokumentálni kell az adatbázisokat, keresőkifejezéseket, dátumot, szűrőket, beválasztási kritériumokat, duplikátumkezelést és a bírálói döntéseket.</p>
 </section>
-<section id="audio-overview" class="level3" data-number="5.7.3">
-<h3 data-number="5.7.3" class="anchored" data-anchor-id="audio-overview"><span class="header-section-number">5.7.3</span> Audio Overview</h3>
+<section id="audio-overview" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="audio-overview"><span class="header-section-number">6.7.3</span> Audio Overview</h3>
 <p>Az Audio Overview a források alapján AI-műsorvezetők beszélgetését generálja. Több mint 80 nyelven készíthető, és a nem angol változatok 2025-ben hosszabb, részletesebb formátumot kaptak.<a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a><a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a></p>
 <p>Az <strong>Interactive Mode</strong> lehetővé teszi, hogy a hallgató kérdéssel megszakítsa a beszélgetést, majd a válasz után folytatódjon az eredeti műsor. Fontos hozzáférési pontosítás: a Google súgójának egyes nyelvi változatai még angol nyelvre korlátozottként jelzik a klasszikus Interactive Mode-ot, miközben 2026 szeptemberében a Google külön, közel 100 nyelvet támogató valós idejű notebook-beszélgetést jelentett be fokozatos bevezetéssel. A két funkció és az aktuális nyelvi hozzáférés ezért nem kezelhető automatikusan azonosként.<a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a><a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a><a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a></p>
 </section>
-<section id="video-overview" class="level3" data-number="5.7.4">
-<h3 data-number="5.7.4" class="anchored" data-anchor-id="video-overview"><span class="header-section-number">5.7.4</span> Video Overview</h3>
+<section id="video-overview" class="level3" data-number="6.7.4">
+<h3 data-number="6.7.4" class="anchored" data-anchor-id="video-overview"><span class="header-section-number">6.7.4</span> Video Overview</h3>
 <p>A Video Overview a forrásokból narrált vizuális magyarázatot készít. A klasszikus változat dokumentumokból származó képeket, diagramokat, idézeteket és számokat is felhasználhat, és célközönség, tanulási cél vagy kiemelt téma alapján alakítható. A hagyományos Video Overview 2025-ben több mint 80 nyelvre bővült.<a href="#fn57" class="footnote-ref" id="fnref57" role="doc-noteref"><sup>57</sup></a><a href="#fn58" class="footnote-ref" id="fnref58" role="doc-noteref"><sup>58</sup></a></p>
 <p>A <strong>Cinematic Video Overview</strong> ennél generatívabb, animáltabb formátum, amelyet 2026 márciusában angol nyelven, Google AI Ultra-előfizetőknek vezettek be. A 2026 szeptemberében bejelentett, körülbelül 60 másodperces <strong>Short Video Overview</strong> több mint 80 nyelven rövid, oktatási animációval kísért magyarázatokat készít.<a href="#fn59" class="footnote-ref" id="fnref59" role="doc-noteref"><sup>59</sup></a><a href="#fn60" class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a><a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a></p>
 </section>
-<section id="stúdió-produktumok" class="level3" data-number="5.7.5">
-<h3 data-number="5.7.5" class="anchored" data-anchor-id="stúdió-produktumok"><span class="header-section-number">5.7.5</span> Stúdió-produktumok</h3>
+<section id="stúdió-produktumok" class="level3" data-number="6.7.5">
+<h3 data-number="6.7.5" class="anchored" data-anchor-id="stúdió-produktumok"><span class="header-section-number">6.7.5</span> Stúdió-produktumok</h3>
 <p>A Stúdióban a forrásokból többféle produktum állítható elő:<a href="#fn62" class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a><a href="#fn63" class="footnote-ref" id="fnref63" role="doc-noteref"><sup>63</sup></a><a href="#fn64" class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a></p>
 <ul>
 <li>Audio és Video Overview;</li>
@@ -706,21 +712,21 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>A diasorok és infografikák stílusa prompttal irányítható, és meglévő forrásanyagból vizuális narratíva készíthető. A generált vizuális produktumok azonban hibás számot, félrevezető diagramot, forrás nélküli képi következtetést vagy túlzottan oksági ábrázolást tartalmazhatnak; publikálás előtt külön tartalmi és vizuális ellenőrzés szükséges.<a href="#fn65" class="footnote-ref" id="fnref65" role="doc-noteref"><sup>65</sup></a></p>
 </section>
-<section id="mobilalkalmazás" class="level3" data-number="5.7.6">
-<h3 data-number="5.7.6" class="anchored" data-anchor-id="mobilalkalmazás"><span class="header-section-number">5.7.6</span> Mobilalkalmazás</h3>
+<section id="mobilalkalmazás" class="level3" data-number="6.7.6">
+<h3 data-number="6.7.6" class="anchored" data-anchor-id="mobilalkalmazás"><span class="header-section-number">6.7.6</span> Mobilalkalmazás</h3>
 <p>A Gemini Notebook Androidon és iOS-en is használható. A mobilalkalmazás támogatja a notebookok megnyitását és létrehozását, a kérdezést, a források megosztási menüből történő hozzáadását, az Audio Overview lejátszását és offline letöltését, továbbá több tanulási produktum elérését.<a href="#fn66" class="footnote-ref" id="fnref66" role="doc-noteref"><sup>66</sup></a><a href="#fn67" class="footnote-ref" id="fnref67" role="doc-noteref"><sup>67</sup></a><a href="#fn68" class="footnote-ref" id="fnref68" role="doc-noteref"><sup>68</sup></a></p>
 <p>A mobil- és webes funkciók nem mindig egyszerre jelennek meg. Egy funkció elérhetősége függhet az operációs rendszertől, a régiótól, a nyelvtől, a fióktól, az előfizetéstől és a fokozatos bevezetés állapotától.</p>
 </section>
 </section>
-<section id="oktatási-alkalmazások" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="oktatási-alkalmazások"><span class="header-section-number">5.8</span> Oktatási alkalmazások</h2>
-<section id="forrásalapú-tanulás" class="level3" data-number="5.8.1">
-<h3 data-number="5.8.1" class="anchored" data-anchor-id="forrásalapú-tanulás"><span class="header-section-number">5.8.1</span> Forrásalapú tanulás</h3>
+<section id="oktatási-alkalmazások" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="oktatási-alkalmazások"><span class="header-section-number">6.8</span> Oktatási alkalmazások</h2>
+<section id="forrásalapú-tanulás" class="level3" data-number="6.8.1">
+<h3 data-number="6.8.1" class="anchored" data-anchor-id="forrásalapú-tanulás"><span class="header-section-number">6.8.1</span> Forrásalapú tanulás</h3>
 <p>A Gemini Notebook akkor a legerősebb, ha a kurzushoz tartozó, oktató által jóváhagyott anyagokat — például tankönyvfejezetet, előadásdiát, tanulmányt és követelményrendszert — egyetlen notebookba rendezzük. Ezekből fogalmi összehasonlítás, tanulási útmutató, kvíz, tanulókártya, gondolattérkép és multimédiás áttekintés készíthető.<a href="#fn69" class="footnote-ref" id="fnref69" role="doc-noteref"><sup>69</sup></a><a href="#fn70" class="footnote-ref" id="fnref70" role="doc-noteref"><sup>70</sup></a></p>
 <p>A korábbi szövegben szereplő „80%-kal csökkenti a memorizálási terhet”, „700 fogalom helyett 15 magelmélet” és „15 alapvető elmélet” állítás nem tekinthető általánosan igazolt kutatási eredménynek. Ezek egy nem hivatalos, AP Psychologyra készült útmutató ajánlásaiból származnak, nem a Gemini Notebook általános hatásvizsgálatából. Helyesebb megfogalmazás: <strong>az eszköz támogatja a fogalmak közötti kapcsolatok gyakorlását és az alkalmazásalapú feladatokat, de a tanulási eredmény a feladat kialakításától, az előzetes tudástól és a hallgató aktív munkájától függ</strong>.<a href="#fn71" class="footnote-ref" id="fnref71" role="doc-noteref"><sup>71</sup></a></p>
 </section>
-<section id="pszichológia-ba-s-példák" class="level3" data-number="5.8.2">
-<h3 data-number="5.8.2" class="anchored" data-anchor-id="pszichológia-ba-s-példák"><span class="header-section-number">5.8.2</span> Pszichológia BA-s példák</h3>
+<section id="pszichológia-ba-s-példák" class="level3" data-number="6.8.2">
+<h3 data-number="6.8.2" class="anchored" data-anchor-id="pszichológia-ba-s-példák"><span class="header-section-number">6.8.2</span> Pszichológia BA-s példák</h3>
 <ul>
 <li><strong>Fogalmi differenciálás:</strong> „Hasonlítsd össze a negatív megerősítést és a büntetést definíció, mechanizmus, példa és gyakori tévhit szerint. Minden cellához adj forráshivatkozást.”</li>
 <li><strong>Elmélet–evidencia kapcsolat:</strong> „Mely empirikus eredmények támogatják, korlátozzák vagy mondanak ellent az X elméletnek?”</li>
@@ -730,20 +736,20 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Szóbeli vizsga:</strong> „Viselkedj vizsgáztatóként; egyszerre egy kérdést tegyél fel, majd a források alapján értékeld a fogalmi pontosságot és az indoklást.”</li>
 </ul>
 </section>
-<section id="esszé--és-feladat-előkészítés" class="level3" data-number="5.8.3">
-<h3 data-number="5.8.3" class="anchored" data-anchor-id="esszé--és-feladat-előkészítés"><span class="header-section-number">5.8.3</span> Esszé- és feladat-előkészítés</h3>
+<section id="esszé--és-feladat-előkészítés" class="level3" data-number="6.8.3">
+<h3 data-number="6.8.3" class="anchored" data-anchor-id="esszé--és-feladat-előkészítés"><span class="header-section-number">6.8.3</span> Esszé- és feladat-előkészítés</h3>
 <p>Az eszköz használható kérdésbontásra, fogalmi térkép készítésére, bizonyítéktáblázatra és vázlatra, de a végső érvelést a hallgatónak kell kialakítania. A tanulást jobban támogatja, ha a rendszer <strong>kérdez, visszajelez, ellenpéldát ad és önálló döntést kér</strong>, mintha kész esszét ír. A pszichológiailag informált GenAI Buddy megközelítés szintén a tervezést, állhatatosságot, önbizalmat, gyakorlást és reflektív tanulást hangsúlyozza a feladatátvétel helyett.<a href="#fn72" class="footnote-ref" id="fnref72" role="doc-noteref"><sup>72</sup></a><a href="#fn73" class="footnote-ref" id="fnref73" role="doc-noteref"><sup>73</sup></a><a href="#fn74" class="footnote-ref" id="fnref74" role="doc-noteref"><sup>74</sup></a></p>
 </section>
 </section>
-<section id="kutatási-alkalmazások" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="kutatási-alkalmazások"><span class="header-section-number">5.9</span> Kutatási alkalmazások</h2>
-<section id="szakirodalmi-tájékozódás" class="level3" data-number="5.9.1">
-<h3 data-number="5.9.1" class="anchored" data-anchor-id="szakirodalmi-tájékozódás"><span class="header-section-number">5.9.1</span> Szakirodalmi tájékozódás</h3>
+<section id="kutatási-alkalmazások" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="kutatási-alkalmazások"><span class="header-section-number">6.9</span> Kutatási alkalmazások</h2>
+<section id="szakirodalmi-tájékozódás" class="level3" data-number="6.9.1">
+<h3 data-number="6.9.1" class="anchored" data-anchor-id="szakirodalmi-tájékozódás"><span class="header-section-number">6.9.1</span> Szakirodalmi tájékozódás</h3>
 <p>A Gemini Notebook alkalmas gondosan válogatott cikkgyűjtemény összefoglalására, tanulmányok összehasonlítására, fogalmi eltérések, kutatási rések és ellentmondások előzetes azonosítására. A Google Literature Insights kísérleti szolgáltatása is erre az alapra épít: tudományos irodalmat keres, strukturált táblákba rendezi, majd forrásalapú chatet és különböző produktumokat biztosít.<a href="#fn75" class="footnote-ref" id="fnref75" role="doc-noteref"><sup>75</sup></a></p>
 <p>Nem alkalmas önmagában teljes, reprodukálható szisztematikus áttekintésre vagy metaanalízisre. A forrásfelfedezés algoritmikus rangsorolása ismeretlen lefedettségi torzításokat okozhat; a kimenetből hiányozhatnak nem angol nyelvű, negatív eredményű, kevésbé idézett vagy nehezebben hozzáférhető tanulmányok.</p>
 </section>
-<section id="kvalitatív-adatok" class="level3" data-number="5.9.2">
-<h3 data-number="5.9.2" class="anchored" data-anchor-id="kvalitatív-adatok"><span class="header-section-number">5.9.2</span> Kvalitatív adatok</h3>
+<section id="kvalitatív-adatok" class="level3" data-number="6.9.2">
+<h3 data-number="6.9.2" class="anchored" data-anchor-id="kvalitatív-adatok"><span class="header-section-number">6.9.2</span> Kvalitatív adatok</h3>
 <p>A Gemini Notebook támogathatja az interjúk és más szöveges adatok <strong>előzetes megismerését</strong>, esetösszefoglalását, idézetkeresését, lehetséges témák feltárását, csoportok összevetését, negatív esetek keresését és alternatív értelmezések megfogalmazását. A hivatkozások segítenek visszalépni az eredeti szöveghelyhez.<a href="#fn76" class="footnote-ref" id="fnref76" role="doc-noteref"><sup>76</sup></a><a href="#fn77" class="footnote-ref" id="fnref77" role="doc-noteref"><sup>77</sup></a></p>
 <p>Az „automatizált kódolás” kifejezést óvatosan kell használni. A Gemini Notebook nem helyettesíti a teljes értékű CAQDAS-rendszert, a következetesen alkalmazott kódkönyvet, a kutatói reflexivitást vagy az interpretatív döntéseket. A generált „téma” lehet csupán felszíni témacsoport; elveszhet az interjúhelyzet, a csend, a hangsúly, a nonverbális információ, a kutatói pozíció és a társadalmi kontextus.<a href="#fn78" class="footnote-ref" id="fnref78" role="doc-noteref"><sup>78</sup></a><a href="#fn79" class="footnote-ref" id="fnref79" role="doc-noteref"><sup>79</sup></a></p>
 <p>Javasolt kvalitatív munkafolyamat:</p>
@@ -757,13 +763,13 @@ ul.task-list li input[type="checkbox"] {
 <li>Külső naplóban őrizze meg a promptokat, forrásverziókat, döntéseket és módosításokat.<a href="#fn80" class="footnote-ref" id="fnref80" role="doc-noteref"><sup>80</sup></a><a href="#fn81" class="footnote-ref" id="fnref81" role="doc-noteref"><sup>81</sup></a></li>
 </ol>
 </section>
-<section id="multimodális-kutatás" class="level3" data-number="5.9.3">
-<h3 data-number="5.9.3" class="anchored" data-anchor-id="multimodális-kutatás"><span class="header-section-number">5.9.3</span> Multimodális kutatás</h3>
+<section id="multimodális-kutatás" class="level3" data-number="6.9.3">
+<h3 data-number="6.9.3" class="anchored" data-anchor-id="multimodális-kutatás"><span class="header-section-number">6.9.3</span> Multimodális kutatás</h3>
 <p>A rendszer képet, dokumentumot, prezentációt, hangot és videóátiratot is képes ugyanazon projektben feldolgozni. Ez hasznos lehet vegyes forrásanyag áttekintéséhez, de nem azonos egy validált multimodális kutatási módszerrel. A képértelmezés, OCR, automatikus átirat és generált vizualizáció mind külön hibaforrást jelent; ezek pontosságát modalitásonként kell ellenőrizni.<a href="#fn82" class="footnote-ref" id="fnref82" role="doc-noteref"><sup>82</sup></a><a href="#fn83" class="footnote-ref" id="fnref83" role="doc-noteref"><sup>83</sup></a></p>
 </section>
 </section>
-<section id="a-ppae-hurok" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="a-ppae-hurok"><span class="header-section-number">5.10</span> A PPAE-hurok</h2>
+<section id="a-ppae-hurok" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="a-ppae-hurok"><span class="header-section-number">6.10</span> A PPAE-hurok</h2>
 <p>A <strong>PPAE — Perceive, Plan, Act, Evaluate</strong> hasznos általános prompt- és munkafolyamat-keret, de <strong>nem a Google hivatalos Gemini Notebook-módszertana</strong>. Egy független NotebookLM-útmutató dolgozta ki a forrásalapú munkamenetek strukturálására.<a href="#fn84" class="footnote-ref" id="fnref84" role="doc-noteref"><sup>84</sup></a><a href="#fn85" class="footnote-ref" id="fnref85" role="doc-noteref"><sup>85</sup></a></p>
 <table class="caption-top table">
 <colgroup>
@@ -807,8 +813,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<section id="kutatási-változat" class="level3" data-number="5.10.1">
-<h3 data-number="5.10.1" class="anchored" data-anchor-id="kutatási-változat"><span class="header-section-number">5.10.1</span> Kutatási változat</h3>
+<section id="kutatási-változat" class="level3" data-number="6.10.1">
+<h3 data-number="6.10.1" class="anchored" data-anchor-id="kutatási-változat"><span class="header-section-number">6.10.1</span> Kutatási változat</h3>
 <ol type="1">
 <li><strong>Feltérképezés:</strong> „Készíts forrásleltárt: típus, év, kutatási design, populáció, relevancia és fő korlát.”</li>
 <li><strong>Tervezés:</strong> jelöld ki, mely források használhatók a konkrét kérdéshez, és milyen összehasonlítási dimenziók szükségesek.</li>
@@ -816,8 +822,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Értékelés:</strong> ellenőrizd az összes kulcsállítást, kérj ellenpéldákat, és jelöld a bizonytalan vagy nem lefedett kérdéseket.</li>
 </ol>
 </section>
-<section id="tanulási-változat" class="level3" data-number="5.10.2">
-<h3 data-number="5.10.2" class="anchored" data-anchor-id="tanulási-változat"><span class="header-section-number">5.10.2</span> Tanulási változat</h3>
+<section id="tanulási-változat" class="level3" data-number="6.10.2">
+<h3 data-number="6.10.2" class="anchored" data-anchor-id="tanulási-változat"><span class="header-section-number">6.10.2</span> Tanulási változat</h3>
 <ol type="1">
 <li><strong>Feltérképezés:</strong> rövid diagnosztikus kérdéssorral azonosítsd a biztos, bizonytalan és hiányzó tudást.</li>
 <li><strong>Tervezés:</strong> válassz kevés, prioritást élvező tanulási célt.</li>
@@ -826,11 +832,11 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </section>
 </section>
-<section id="prompttervezés" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="prompttervezés"><span class="header-section-number">5.11</span> Prompttervezés</h2>
+<section id="prompttervezés" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="prompttervezés"><span class="header-section-number">6.11</span> Prompttervezés</h2>
 <p>A hatékony prompt nem elsősorban „varázsmondat”, hanem <strong>forrásalapú feladatterv</strong>. A szerep megadása csak akkor hasznos, ha ténylegesen módosítja az elvárt műveletet; ennél fontosabb a cél, az evidenciahatár, az elemzési művelet, az output és az ellenőrzési kritérium.<a href="#fn86" class="footnote-ref" id="fnref86" role="doc-noteref"><sup>86</sup></a></p>
-<section id="ötelemű-promptmodell" class="level3" data-number="5.11.1">
-<h3 data-number="5.11.1" class="anchored" data-anchor-id="ötelemű-promptmodell"><span class="header-section-number">5.11.1</span> Ötelemű promptmodell</h3>
+<section id="ötelemű-promptmodell" class="level3" data-number="6.11.1">
+<h3 data-number="6.11.1" class="anchored" data-anchor-id="ötelemű-promptmodell"><span class="header-section-number">6.11.1</span> Ötelemű promptmodell</h3>
 <ol type="1">
 <li><strong>Cél:</strong> milyen kérdésre, döntésre vagy tanulási eredményre van szükség?</li>
 <li><strong>Evidenciahatár:</strong> mely források, fejezetek, dátumok vagy csoportok használhatók?</li>
@@ -839,8 +845,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Minőségellenőrzés:</strong> hivatkozás, bizonytalanság, hiányzó evidencia, ellenpélda és ellenőrzési kör?</li>
 </ol>
 </section>
-<section id="általános-sablon" class="level3" data-number="5.11.2">
-<h3 data-number="5.11.2" class="anchored" data-anchor-id="általános-sablon"><span class="header-section-number">5.11.2</span> Általános sablon</h3>
+<section id="általános-sablon" class="level3" data-number="6.11.2">
+<h3 data-number="6.11.2" class="anchored" data-anchor-id="általános-sablon"><span class="header-section-number">6.11.2</span> Általános sablon</h3>
 <pre class="text"><code>Cél: [Milyen kérdést vagy tanulási célt szolgáljon a válasz?]
 
 Forráskör: Kizárólag [források/fejezetek/csoportok] használhatók.
@@ -857,8 +863,8 @@ Minőségellenőrzés:
 - jelöld az ellentmondásokat és a bizonytalanságot;
 - sorold fel, milyen információ hiányzik a biztos következtetéshez.</code></pre>
 </section>
-<section id="pszichológiai-kutatási-példa" class="level3" data-number="5.11.3">
-<h3 data-number="5.11.3" class="anchored" data-anchor-id="pszichológiai-kutatási-példa"><span class="header-section-number">5.11.3</span> Pszichológiai kutatási példa</h3>
+<section id="pszichológiai-kutatási-példa" class="level3" data-number="6.11.3">
+<h3 data-number="6.11.3" class="anchored" data-anchor-id="pszichológiai-kutatási-példa"><span class="header-section-number">6.11.3</span> Pszichológiai kutatási példa</h3>
 <pre class="text"><code>A kijelölt empirikus tanulmányok alapján hasonlítsd össze az A és B csoport
 mentális egészséggel kapcsolatos metaforáit.
 
@@ -876,21 +882,21 @@ Különítsd el a leíró mintázatot az értelmező következtetéstől.
 Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „előzetes” címkével.</code></pre>
 </section>
 </section>
-<section id="motiváció-és-elköteleződés" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="motiváció-és-elköteleződés"><span class="header-section-number">5.12</span> Motiváció és elköteleződés</h2>
+<section id="motiváció-és-elköteleződés" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="motiváció-és-elköteleződés"><span class="header-section-number">6.12</span> Motiváció és elköteleződés</h2>
 <p>Andrew J. Martin és munkatársai <strong>GenAI Motivation and Learning Buddy</strong> erőforrása nem Gemini Notebook-specifikus funkció, hanem több generatív MI-rendszerbe bemásolható, nyílt promptkészlet. A Motivációs és Elköteleződési Kerék, valamint a Load Reduction Instruction elemei alapján segíti a hallgatót tervezésben, gyakorlásban, visszajelzésben és önálló problémamegoldásban.<a href="#fn87" class="footnote-ref" id="fnref87" role="doc-noteref"><sup>87</sup></a><a href="#fn88" class="footnote-ref" id="fnref88" role="doc-noteref"><sup>88</sup></a><a href="#fn89" class="footnote-ref" id="fnref89" role="doc-noteref"><sup>89</sup></a></p>
 <p>A módszer legfontosabb elve: az MI <strong>coach</strong>, nem feladatvégrehajtó. A rendszer feladata a cél tisztázása, a feladat lépésekre bontása, célzott segítség, gyakorlás, feedback és feedforward biztosítása; a hallgató feladata továbbra is az előhívás, döntés, magyarázat és önálló teljesítés.<a href="#fn90" class="footnote-ref" id="fnref90" role="doc-noteref"><sup>90</sup></a></p>
 <p>A korábbi szöveg „11 specifikus prompt-szkript” állítását nem érdemes változatlanul megtartani. A jelenlegi leírás szerint külön promptok kapcsolódnak a Motivációs és Elköteleződési Kerék egyes részeihez, valamint öt Load Reduction Instruction-alapelvhez; a pontos csomagverziót mindig az eredeti nyílt anyagban kell ellenőrizni.<a href="#fn91" class="footnote-ref" id="fnref91" role="doc-noteref"><sup>91</sup></a><a href="#fn92" class="footnote-ref" id="fnref92" role="doc-noteref"><sup>92</sup></a></p>
 </section>
-<section id="adatvédelem-és-etika" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="adatvédelem-és-etika"><span class="header-section-number">5.13</span> Adatvédelem és etika</h2>
-<section id="személyes-és-workspace-fiókok" class="level3" data-number="5.13.1">
-<h3 data-number="5.13.1" class="anchored" data-anchor-id="személyes-és-workspace-fiókok"><span class="header-section-number">5.13.1</span> Személyes és Workspace-fiókok</h3>
+<section id="adatvédelem-és-etika" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="adatvédelem-és-etika"><span class="header-section-number">6.13</span> Adatvédelem és etika</h2>
+<section id="személyes-és-workspace-fiókok" class="level3" data-number="6.13.1">
+<h3 data-number="6.13.1" class="anchored" data-anchor-id="személyes-és-workspace-fiókok"><span class="header-section-number">6.13.1</span> Személyes és Workspace-fiókok</h3>
 <p>A Google Workspace, Workspace for Education és közszférai ügyfelek esetében a szervezeti adatokra Workspace-védelmek vonatkoznak: az interakciók a szervezeten belül maradnak, és a tartalom engedély nélkül nem használható a domainen kívüli generatív modellek tanítására vagy emberi felülvizsgálatra.<a href="#fn93" class="footnote-ref" id="fnref93" role="doc-noteref"><sup>93</sup></a><a href="#fn94" class="footnote-ref" id="fnref94" role="doc-noteref"><sup>94</sup></a></p>
 <p>Személyes fióknál fontos kivétel a <strong>visszajelzés küldése</strong>. Ha a felhasználó pozitív vagy negatív értékelést és visszajelzést küld, a kapcsolódó promptok, források, feltöltések és generált outputok emberi felülvizsgálatra kerülhetnek, és a leválasztott adatokat akár három évig megőrizhetik. Workspace és Workspace for Education használatakor ez a visszajelzéshez kapcsolódó tartalom sem kerül emberi felülvizsgálatra vagy modelltréningre.<a href="#fn95" class="footnote-ref" id="fnref95" role="doc-noteref"><sup>95</sup></a><a href="#fn96" class="footnote-ref" id="fnref96" role="doc-noteref"><sup>96</sup></a></p>
 </section>
-<section id="pszichológiai-és-kvalitatív-adatok" class="level3" data-number="5.13.2">
-<h3 data-number="5.13.2" class="anchored" data-anchor-id="pszichológiai-és-kvalitatív-adatok"><span class="header-section-number">5.13.2</span> Pszichológiai és kvalitatív adatok</h3>
+<section id="pszichológiai-és-kvalitatív-adatok" class="level3" data-number="6.13.2">
+<h3 data-number="6.13.2" class="anchored" data-anchor-id="pszichológiai-és-kvalitatív-adatok"><span class="header-section-number">6.13.2</span> Pszichológiai és kvalitatív adatok</h3>
 <p>Az adatvédelmi ígéret nem helyettesíti a jogalapot, a kutatásetikai engedélyt, a résztvevői tájékoztatást, az adatminimalizálást és az intézményi szabályokat. Pszichológiai kutatásban különösen érzékeny lehet az interjú, egészségügyi információ, diagnózis, élettörténet, hangfelvétel és a közvetett módon újraazonosítható kontextus.</p>
 <p>Minimumkövetelmények:</p>
 <ul>
@@ -903,32 +909,32 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 <li>az MI szerepének rögzítése a kutatási audit trailben.</li>
 </ul>
 </section>
-<section id="akadémiai-integritás" class="level3" data-number="5.13.3">
-<h3 data-number="5.13.3" class="anchored" data-anchor-id="akadémiai-integritás"><span class="header-section-number">5.13.3</span> Akadémiai integritás</h3>
+<section id="akadémiai-integritás" class="level3" data-number="6.13.3">
+<h3 data-number="6.13.3" class="anchored" data-anchor-id="akadémiai-integritás"><span class="header-section-number">6.13.3</span> Akadémiai integritás</h3>
 <p>A hivatkozott válasz <strong>nem teszi automatikusan plágiummentessé</strong> a beadandót. A hallgatónak el kell olvasnia és meg kell értenie az eredeti forrást, saját érvelést kell kialakítania, pontos bibliográfiai hivatkozást kell készítenie, valamint követnie kell a kurzus és az intézmény MI-használati szabályait.</p>
 <p>A Gemini Notebook által generált Audio Overview, videó, diasor és infografika is MI-eredetű produktum. Megosztáskor célszerű ezt egyértelműen jelezni, és külön ellenőrizni a szerzői jogi, idézési, hozzáférhetőségi és tartalmi követelményeket.</p>
 </section>
 </section>
-<section id="korlátok" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="korlátok"><span class="header-section-number">5.14</span> Korlátok</h2>
-<section id="a-forráskorpusz-torzítása" class="level3" data-number="5.14.1">
-<h3 data-number="5.14.1" class="anchored" data-anchor-id="a-forráskorpusz-torzítása"><span class="header-section-number">5.14.1</span> A forráskorpusz torzítása</h3>
+<section id="korlátok" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="korlátok"><span class="header-section-number">6.14</span> Korlátok</h2>
+<section id="a-forráskorpusz-torzítása" class="level3" data-number="6.14.1">
+<h3 data-number="6.14.1" class="anchored" data-anchor-id="a-forráskorpusz-torzítása"><span class="header-section-number">6.14.1</span> A forráskorpusz torzítása</h3>
 <p>A rendszer legfeljebb annyira kiegyensúlyozott, amennyire a forrásgyűjtemény. Ha a notebook csak angol nyelvű, nyugati, könnyen elérhető vagy egyetlen elméleti álláspontot képviselő forrásokat tartalmaz, a szintézis is ezt a látómezőt örökli. A hiányzó perspektívát a rendszer nem tudja megbízhatóan „észrevenni”, ha nincs összehasonlítási alapja.</p>
 </section>
-<section id="forrásfeldolgozási-hibák" class="level3" data-number="5.14.2">
-<h3 data-number="5.14.2" class="anchored" data-anchor-id="forrásfeldolgozási-hibák"><span class="header-section-number">5.14.2</span> Forrásfeldolgozási hibák</h3>
+<section id="forrásfeldolgozási-hibák" class="level3" data-number="6.14.2">
+<h3 data-number="6.14.2" class="anchored" data-anchor-id="forrásfeldolgozási-hibák"><span class="header-section-number">6.14.2</span> Forrásfeldolgozási hibák</h3>
 <p>Szkennelt PDF, hibás OCR, rossz YouTube-felirat, táblázat, lábjegyzet, matematikai jelölés vagy képi információ elveszhet vagy torzulhat. Feltöltés után érdemes próbakérdéssel ellenőrizni, hogy a kritikus részek valóban kereshetők-e.</p>
 </section>
-<section id="szintézis-és-okság" class="level3" data-number="5.14.3">
-<h3 data-number="5.14.3" class="anchored" data-anchor-id="szintézis-és-okság"><span class="header-section-number">5.14.3</span> Szintézis és okság</h3>
+<section id="szintézis-és-okság" class="level3" data-number="6.14.3">
+<h3 data-number="6.14.3" class="anchored" data-anchor-id="szintézis-és-okság"><span class="header-section-number">6.14.3</span> Szintézis és okság</h3>
 <p>A rendszer együtt járásokat és szöveges mintázatokat foglalhat össze, de ettől még nem igazol oksági kapcsolatot. Különösen pszichológiai kutatásban kell elválasztani a résztvevői beszámolót, a kutatói interpretációt, a statisztikai asszociációt és az oksági következtetést.</p>
 </section>
-<section id="nem-helyettesít-szakértői-döntést" class="level3" data-number="5.14.4">
-<h3 data-number="5.14.4" class="anchored" data-anchor-id="nem-helyettesít-szakértői-döntést"><span class="header-section-number">5.14.4</span> Nem helyettesít szakértői döntést</h3>
+<section id="nem-helyettesít-szakértői-döntést" class="level3" data-number="6.14.4">
+<h3 data-number="6.14.4" class="anchored" data-anchor-id="nem-helyettesít-szakértői-döntést"><span class="header-section-number">6.14.4</span> Nem helyettesít szakértői döntést</h3>
 <p>A Gemini Notebook nem diagnosztikai eszköz, nem klinikai döntéstámogató rendszer és nem kutatásetikai tanácsadó. Nem használható résztvevők vagy kliensek diagnosztizálására, kockázati besorolására, érzelmi állapotának automatikus megállapítására vagy kezelésének kiválasztására validáció, megfelelő jogalap és szakmai felelősség nélkül.</p>
 </section>
-<section id="reprodukálhatóság" class="level3" data-number="5.14.5">
-<h3 data-number="5.14.5" class="anchored" data-anchor-id="reprodukálhatóság"><span class="header-section-number">5.14.5</span> Reprodukálhatóság</h3>
+<section id="reprodukálhatóság" class="level3" data-number="6.14.5">
+<h3 data-number="6.14.5" class="anchored" data-anchor-id="reprodukálhatóság"><span class="header-section-number">6.14.5</span> Reprodukálhatóság</h3>
 <p>A generált válasz változhat a modellfrissítés, a forráskijelölés, a prompt, a beszélgetési előzmény és a szolgáltatás beállításai miatt. Kutatási használat esetén legalább a következőket kell naplózni:</p>
 <ul>
 <li>a szolgáltatás neve és a használat dátuma;</li>
@@ -942,10 +948,10 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 </ul>
 </section>
 </section>
-<section id="ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" class="level2" data-number="5.15">
-<h2 data-number="5.15" class="anchored" data-anchor-id="ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak"><span class="header-section-number">5.15</span> Ajánlott munkafolyamat pszichológia BA-hallgatóknak</h2>
-<section id="szemináriumi-feldolgozás" class="level3" data-number="5.15.1">
-<h3 data-number="5.15.1" class="anchored" data-anchor-id="szemináriumi-feldolgozás"><span class="header-section-number">5.15.1</span> Szemináriumi feldolgozás</h3>
+<section id="ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak" class="level2" data-number="6.15">
+<h2 data-number="6.15" class="anchored" data-anchor-id="ajánlott-munkafolyamat-pszichológia-ba-hallgatóknak"><span class="header-section-number">6.15</span> Ajánlott munkafolyamat pszichológia BA-hallgatóknak</h2>
+<section id="szemináriumi-feldolgozás" class="level3" data-number="6.15.1">
+<h3 data-number="6.15.1" class="anchored" data-anchor-id="szemináriumi-feldolgozás"><span class="header-section-number">6.15.1</span> Szemináriumi feldolgozás</h3>
 <ol type="1">
 <li>Hozz létre egy notebookot egyetlen kurzustémához.</li>
 <li>Töltsd fel az oktató által kijelölt, jogszerűen hozzáférhető forrásokat.</li>
@@ -956,8 +962,8 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 <li>Zárásként, segítség nélkül írd le a fő összefüggéseket, és csak utána hasonlítsd össze a rendszer összefoglalójával.</li>
 </ol>
 </section>
-<section id="mini-irodalmi-áttekintés" class="level3" data-number="5.15.2">
-<h3 data-number="5.15.2" class="anchored" data-anchor-id="mini-irodalmi-áttekintés"><span class="header-section-number">5.15.2</span> Mini-irodalmi áttekintés</h3>
+<section id="mini-irodalmi-áttekintés" class="level3" data-number="6.15.2">
+<h3 data-number="6.15.2" class="anchored" data-anchor-id="mini-irodalmi-áttekintés"><span class="header-section-number">6.15.2</span> Mini-irodalmi áttekintés</h3>
 <ol type="1">
 <li>Fogalmazz meg szűk, válaszolható kutatási kérdést.</li>
 <li>Keress szakirodalmi adatbázisban; a Gemini Notebook forrásfelfedezését kiegészítésként, ne egyedüli keresési csatornaként használd.</li>
@@ -968,8 +974,8 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 <li>Saját szavaiddal készíts szintézist, szabályos bibliográfiai hivatkozásokkal.</li>
 </ol>
 </section>
-<section id="kvalitatív-gyakorlat" class="level3" data-number="5.15.3">
-<h3 data-number="5.15.3" class="anchored" data-anchor-id="kvalitatív-gyakorlat"><span class="header-section-number">5.15.3</span> Kvalitatív gyakorlat</h3>
+<section id="kvalitatív-gyakorlat" class="level3" data-number="6.15.3">
+<h3 data-number="6.15.3" class="anchored" data-anchor-id="kvalitatív-gyakorlat"><span class="header-section-number">6.15.3</span> Kvalitatív gyakorlat</h3>
 <ol type="1">
 <li>Csak etikai engedéllyel és megfelelő adatkezelési feltételekkel dolgozz.</li>
 <li>Deazonosítsd az átiratokat, és ellenőrizd a beszédfelismerési hibákat.</li>
@@ -981,8 +987,8 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 </ol>
 </section>
 </section>
-<section id="gyors-ellenőrzőlista" class="level2" data-number="5.16">
-<h2 data-number="5.16" class="anchored" data-anchor-id="gyors-ellenőrzőlista"><span class="header-section-number">5.16</span> Gyors ellenőrzőlista</h2>
+<section id="gyors-ellenőrzőlista" class="level2" data-number="6.16">
+<h2 data-number="6.16" class="anchored" data-anchor-id="gyors-ellenőrzőlista"><span class="header-section-number">6.16</span> Gyors ellenőrzőlista</h2>
 <p>Egy Gemini Notebook-output felhasználása előtt ellenőrizendő:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Megbízható, releváns és kellően sokoldalú források kerültek a notebookba.</label></li>
@@ -997,8 +1003,8 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 <li><label><input type="checkbox">Az MI-használat megfelel az intézményi akadémiaiintegritás-szabályoknak.</label></li>
 </ul>
 </section>
-<section id="záró-megállapítás" class="level2" data-number="5.17">
-<h2 data-number="5.17" class="anchored" data-anchor-id="záró-megállapítás"><span class="header-section-number">5.17</span> Záró megállapítás</h2>
+<section id="záró-megállapítás" class="level2" data-number="6.17">
+<h2 data-number="6.17" class="anchored" data-anchor-id="záró-megállapítás"><span class="header-section-number">6.17</span> Záró megállapítás</h2>
 <p>A Gemini Notebook 2026-ban már nem pusztán jegyzetelő vagy dokumentum-összefoglaló alkalmazás, hanem a Google ökoszisztémájába integrált, forrásalapú kutatási és tanulási környezet. Legnagyobb értéke az, hogy egy gondosan kialakított forráskorpuszt hivatkozott párbeszéddé, összehasonlítássá, gyakorlóanyaggá és multimédiás produktummá alakít.<a href="#fn97" class="footnote-ref" id="fnref97" role="doc-noteref"><sup>97</sup></a><a href="#fn98" class="footnote-ref" id="fnref98" role="doc-noteref"><sup>98</sup></a><a href="#fn99" class="footnote-ref" id="fnref99" role="doc-noteref"><sup>99</sup></a></p>
 <p>A módszertani előny nem abból fakad, hogy a rendszer „nem hallucinál”, hanem abból, hogy a válaszai <strong>szűkebb evidenciahatáron belül születnek és gyorsabban auditálhatók</strong>. Tudományos és pszichológiai használatban a helyes szerepe ezért: <strong>forrásfeltáró, gondolkodási partner, gyakorlási környezet és előzetes elemzési segédeszköz — nem pedig szerző, autonóm kutató, kvalitatív elemző vagy szakértői döntéshozó</strong>.</p>
 <hr>
@@ -1527,12 +1533,12 @@ Ha egy kategóriát háromnál kevesebb résztvevő támaszt alá, jelöld „el
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./chatgpt.html" class="pagination-link" aria-label="ChatGPT">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ChatGPT</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ChatGPT</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./felelos_mi.html" class="pagination-link" aria-label="Felelős MI-használat">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Felelős MI-használat</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

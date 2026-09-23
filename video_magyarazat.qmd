@@ -1,5 +1,7 @@
 # Fogalmak videóhoz 1.
 
+*Jelen összefoglaló a Perplexity AI segítségével készült.*
+
 Néhány MI fogalom, hogy értelmezni tudjuk az MI-ről szóló következő ismertetőt:
 
 - [Az OpenAI belépett az AGI-érába, az iskolák még csak most barátkoznak az AI-használattal](https://www.youtube.com/watch?v=qyihhjN-n7A){target="_blank"}
