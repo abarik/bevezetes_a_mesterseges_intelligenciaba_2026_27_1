@@ -56,10 +56,11 @@ A specializált eszköz egy szűk munkafázisra optimalizált rendszer: példáu
 | Irodalmi háló feltérképezése | Citációs gráf | ResearchRabbit, Scite | Kulcsszavas adatbázis-kereséssel kiegészíteni |
 | Szisztematikus szűrés | Aktív tanulás | ASReview | Protokoll, kettős szűrés és stopping rule szükséges |
 | Saját PDF-ek tanulása | Forrásalapú asszisztens | Gemini Notebook, Claude Projects | Visszalépni az idézett oldalakhoz |
-| Kvantitatív adatelemzés | Kódoló/adatelemző asszisztens | ChatGPT Data Analysis, Colab, GitHub Copilot | Kód, feltételek és output reprodukálása |
+| Kvantitatív adatelemzés | Kódoló/adatelemző asszisztens | ChatGPT Data Analysis, Julius AI, Colab, GitHub Copilot | Kód, feltételek és output reprodukálása |
 | Kódolás nélküli ML-tanulás | Vizuális adatelemző | Orange Data Mining | Helyes adatfelosztás és mérőszámok ellenőrzése |
 | Interjúk átírása | Beszédfelismerő | Whisper, Otter | Név, szám, szakkifejezés és beszélő ellenőrzése |
 | Kvalitatív elemzés | CAQDAS + MI | MAXQDA AI Assist | Kóddefiníciók és értelmezés kutatói felülvizsgálata |
+| Tudományos írás és hivatkozáskezelés | Írás- és kutatási asszisztens | Jenni AI | Állítások, eredeti források és hivatkozások ellenőrzése |
 | Nyelvi javítás, fordítás | Nyelvi MI | DeepL, Grammarly | Jelentés, terminológia és hivatkozások ellenőrzése |
 | Prezentáció és ábra | Kreatív MI | Canva, Gamma, Napkin AI | Tartalmi és vizuális pontosság ellenőrzése |
 
@@ -183,6 +184,16 @@ A specializált eszköz egy szűk munkafázisra optimalizált rendszer: példáu
 
 **Pszichológiai kutatás:** Segíthet reproducibilis elemzési projekt, online kísérlet, adatellenőrző szkript vagy dokumentáció készítésében. A kód működése és statisztikai érvényessége két külön kérdés: a hibamentesen futó program is megvalósíthat rossz modellt.
 
+### [Julius AI](https://julius.ai/)
+
+**Típus:** természetes nyelvű, kódfuttatásos adatelemző és adatvizualizációs asszisztens.
+
+**Mire használható?** CSV-, Excel- és JSON-fájlok, valamint kapcsolt adatforrások beszélgetéses elemzésére, adattisztításra, leíró statisztikára, hipotézisvizsgálatra, regressziós és előrejelző modellekre, továbbá táblák és ábrák készítésére. A Julius Python- vagy R-kódot írhat és futtathat, az elemzés mögötti kód pedig megtekinthető, ami támogatja az ellenőrzést.[^59][^60][^61]
+
+**Pszichológiai munkafolyamat:** Használható például hiányzóérték-mintázatok feltárására, skálapontszámok képzésére, megbízhatósági elemzésre, csoport-összehasonlításra vagy regressziós modell első változatának elkészítésére. A természetes nyelvű felület azonban nem mentesít a változókódolás, a mérési szint, a statisztikai feltételek, a kizárások, a többszörös tesztelés és a bizonytalanság ellenőrzése alól.
+
+**Korlát:** A generált elemzést és kódot nem szabad pusztán a jól formázott output alapján elfogadni. Az adat-előkészítést, a modellképletet, a hiányzó adatok kezelését és a grafikonok skáláit ellenőrizni kell, a végleges elemzést pedig lehetőleg verziózott R- vagy Python-környezetben is reprodukálni kell. Érzékeny vagy azonosítható kutatási adat csak megfelelő jogalap, intézményi engedély és adatfeldolgozási feltételek mellett tölthető fel.
+
 ### [Orange Data Mining](https://orangedatamining.com/)
 
 **Típus:** vizuális, alacsony kódigényű gépi tanulási és adatvizualizációs eszköz.
@@ -228,6 +239,16 @@ A specializált eszköz egy szűk munkafázisra optimalizált rendszer: példáu
 **Mire használható?** Szövegek és dokumentumok fordítására, terminológiai glosszáriumok használatára, valamint nyelvtan, mondatszerkezet, szóválasztás és hangnem javítására.[^41][^42]
 
 **BA-használat:** Segíthet angol absztrakt vagy magyar–angol szaknyelvi vázlat készítésében. Validált mérőeszköz tételeit azonban nem szabad egyszerű gépi fordítással adaptálni: ehhez engedély, szakértői fordítás, visszafordítás vagy más adaptációs eljárás és pszichometriai vizsgálat szükséges.
+
+### [Jenni AI](https://jenni.ai/)
+
+**Típus:** tudományos írási, forrásfeldolgozó és hivatkozáskezelő MI-asszisztens.
+
+**Mire használható?** Tudományos szöveg vázlatának kialakítására, mondatok folytatására és átdolgozására, saját PDF-ekkel folytatott kérdés–válaszra, források összevetésére, valamint szövegközi hivatkozások és irodalomjegyzék készítésére. PDF-ek tölthetők fel, illetve Zotero- és Mendeley-könyvtárak importálhatók; a forrásalapú javaslatok visszavezethetők az eredeti dokumentum megfelelő részéhez.[^62][^63][^64]
+
+**BA-használat:** Segíthet egy szakdolgozati fejezet szerkezetének kialakításában, bekezdések koherenciájának javításában, szakirodalmi állításokhoz lehetséges források keresésében és a hivatkozási stílus egységesítésében. Célszerű már ellenőrzött forráskönyvtárból dolgozni, és minden állítást, idézetet, oldalszámot, DOI-t és bibliográfiai adatot az eredeti dokumentumban ellenőrizni.
+
+**Korlát:** A forráshivatkozással ellátott, nyelvileg meggyőző mondat sem automatikusan pontos vagy megfelelően alátámasztott. A Jenni AI nem helyettesíti az önálló érvelést, a forráskritikát vagy a szerzőségi felelősséget; használatát az egyetemi, oktatói és folyóirati szabályok szerint dokumentálni kell.
 
 ### [Grammarly](https://www.grammarly.com/)
 
@@ -329,7 +350,7 @@ Használat előtt legalább ezeket kell ellenőrizni:
 3. Elicit, Consensus és Semantic Scholar segítségével keress tudományos tanulmányokat.
 4. ResearchRabbit vagy Scite segítségével térképezd fel a citációs környezetet.
 5. Végezz dokumentált keresést a könyvtár által biztosított szakadatbázisokban.
-6. A bevont cikkeket NotebookLM-ben vagy forrásalapú projektben hasonlítsd össze, de minden adatot ellenőrizz az eredeti PDF-ben.
+6. A bevont cikkeket Gemini Notebookban vagy forrásalapú projektben hasonlítsd össze, de minden adatot ellenőrizz az eredeti PDF-ben.
 
 ### Empirikus kutatás
 
@@ -357,7 +378,8 @@ Egy BA-hallgatónak nem kell minden rendszert használnia. Egy átlátható kezd
 - **Hivatkozott aktuális keresés:** Perplexity vagy az asszisztens deep research módja.
 - **Tudományos felfedezés:** Elicit vagy Consensus, kiegészítve Semantic Scholarral.
 - **Saját cikkek tanulása:** Gemini Notebook.
-- **Reprodukálható elemzés:** Google Colab, szükség esetén ChatGPT vagy GitHub Copilot segítségével.
+- **Reprodukálható elemzés:** Google Colab, szükség esetén ChatGPT, Julius AI vagy GitHub Copilot segítségével.
+- **Tudományos írás és hivatkozáskezelés:** Jenni AI, ha használata megfelel az intézményi szabályoknak, és minden állítás és hivatkozás ellenőrzése megtörténik az eredeti forrásban.
 - **Kvalitatív projekt:** MAXQDA AI Assist, ha az intézmény biztosít hozzáférést és az adatkezelés engedélyezett.
 - **Transzkripció:** helyben futó Whisper, ha az adatérzékenység és az informatikai feltételek ezt indokolják.
 - **Prezentáció:** Canva, Gamma vagy Napkin AI, kizárólag ellenőrzött tartalomból.
@@ -368,7 +390,7 @@ A legfontosabb kompetencia nem a sok eszköz ismerete, hanem a **feladat–eszk�
 
 ## References
 
-[^1]: [[PDF] Artificial Intelligence Risk Management Framework: Generative ...](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
+[^1]: [Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) - A NIST generatív MI-re vonatkozó kockázatkezelési profilja.
 
 [^2]: [Artificial Intelligence (AI) glossary and prompt library](https://analysisfunction.civilservice.gov.uk/ai-hub/ai-glossary/)
 
@@ -484,3 +506,14 @@ A legfontosabb kompetencia nem a sok eszköz ismerete, hanem a **feladat–eszk�
 
 [^58]: [New WHO report calls for stronger ethics oversight of AI ...](https://www.who.int/news/item/21-09-2026-new-who-report-calls-for-stronger-ethics-oversight-of-ai-related-health-research) - A new WHO report, Artificial Intelligence-related health research: ethics review and oversight, prov...
 
+[^59]: [What is Julius AI?](https://julius.ai/docs/get-started/what-is-Julius-AI) - A Julius AI természetes nyelvű adatelemző munkaterének hivatalos bemutatása.
+
+[^60]: [Getting Started - Julius](https://julius.ai/docs/get-started/quickstart) - Útmutató adatfájlok feltöltéséhez, elemzéséhez, vizualizációjához és az eredmények exportálásához.
+
+[^61]: [Introducing R Kernels in Julius](https://julius.ai/articles/introducing-r-kernels-in-julius) - Az R-kód generálásának és futtatásának hivatalos ismertetése.
+
+[^62]: [Introduction - Jenni.ai Documentation](https://docs.jenni.ai/docs/getting-started/introduction/) - A Jenni tudományos és szakmai írási funkcióinak hivatalos áttekintése.
+
+[^63]: [Citation Management - Jenni.ai Documentation](https://docs.jenni.ai/docs/research/citation-management/) - A forráskeresés, szövegközi hivatkozás és automatikus bibliográfia hivatalos dokumentációja.
+
+[^64]: [AI Chat for Research & Writing](https://jenni.ai/ai-chat) - A feltöltött dokumentumokra támaszkodó kérdés–válasz és forrásfeldolgozás bemutatása.

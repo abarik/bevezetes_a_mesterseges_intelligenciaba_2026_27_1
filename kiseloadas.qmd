@@ -1,7 +1,7 @@
 # Kiselőadás ötletek
 
 | Téma – javasolt előadáscím | Mit tartalmazzon az előadás? |
-|------------------------------------|------------------------------------|
+|----|----|
 | **1. Mit mér egy MI-benchmark?** | Vesse össze a benchmarkot a pszichológiai képességteszttel: feladat, pontszám, validitás és általánosíthatóság. Egy magas pontszámból mire *nem* következtethetünk? |
 | **2. AI, AGI és ASI** | Mi a fogalmak jelentése, mikor érhetjük el ezeket a szinteket? |
 | **3. Az MI „intelligens”?** | Hasonlítsa össze az emberi intelligencia pszichológiai fogalmát az AGI különböző értelmezéseivel. Milyen bizonyíték kellene egy erős állításhoz? |
