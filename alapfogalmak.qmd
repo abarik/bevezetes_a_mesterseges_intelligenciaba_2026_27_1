@@ -1,3 +1,7 @@
+---
+date: today
+---
+
 # Fogalmak
 
 *Jelen fogalomgyűjtemény a Perplexity AI segítségével készült.*

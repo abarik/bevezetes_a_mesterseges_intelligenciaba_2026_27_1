@@ -27,7 +27,7 @@ A projekt közös fájljait és instrukcióit a benne indított beszélgetések 
 Egy új projektnél **a projektinstrukciók megírása, a források hozzáadása és a memória tudatos kiválasztása** az első lépés.
 
 
-## Feladatok
+## Feladatok ChatGPT projektekhez
 
 - Készítsünk projektet, amely képen megjelenő táblázatból Word táblázatot készít.
 - Készítsünk projektet, amely képen megjelenő táblázatból Markdown dokumentumot készít.
@@ -39,3 +39,141 @@ Egy új projektnél **a projektinstrukciók megírása, a források hozzáadása
 - Készítsünk projektet, amely egy vázlatos, hiányos bibliográfiát (pl. csak DOI számokat vagy URL-eket tartalmazó listát) automatikusan APA 7. kiadás szerinti formátumú hivatkozáslistává alakít. A kimenet legyen bib, MS Office 2007 XML, Markdown és Word.
 - Készítsünk projektet, amely megadott kulcsszavak alapján automatikusan összegyűjti a legújabb cikkek absztraktjait a PubMed vagy a Google Tudós felületéről, és Markdown formátumú irodalomkutatási naplót készít belőlük.
 
+
+## 10 gyakorlati feladat: kutatás ChatGPT-vel
+
+**Közös téma:** alvás és pszichés jóllét egyetemistáknál.
+
+**Kiinduló, szabadon olvasható cikkek:**
+
+- [A] Hu és mtsai. (2023), keresztmetszeti vizsgálat:
+  https://doi.org/10.3389/fpsyg.2023.1131176
+- [B] Almarzouki és mtsai. (2022), követéses vizsgálat:
+  https://doi.org/10.3390/brainsci12111525
+- [C] Pape és mtsai. (2024), pilot randomizált vizsgálat:
+  https://doi.org/10.1186/s40359-024-02057-1
+- [D] Tadros és mtsai. (2025), szisztematikus áttekintés és metaanalízis:
+  https://doi.org/10.1371/journal.pone.0317125
+
+A cikkek bibliográfiai adatai a mellékelt [forrasok_alvas_egyetemistak.bib](files/forrasok_alvas_egyetemistak.bib)
+fájlban vannak. A folyóiratok oldaláról a teljes szöveg és a PDF is elérhető.
+
+Szükség lesz a feladatok megoldásához a következő fájlokra:
+
+- [adatkinyeres_sablon.csv](files/adatkinyeres_sablon.csv)
+- [allitasok_ellenorzeshez.md](files/allitasok_ellenorzeshez.md)
+
+
+>Segítség a feladatok megoldásához, ha elakadnál: [Tudományos kutatás ChatGPT-vel](kutatas_chatgpt.qmd)
+
+### 1. Írj mély kutatási promptot {.unnumbered}
+
+**Feladat:** Fogalmazz meg egy kutatási kérdést az alvásminőség és a szorongás
+kapcsolatáról egyetemistáknál. Kérd a ChatGPT mély kutatási funkciójától,
+hogy külön tárgyalja a keresztmetszeti, követéses és intervenciós
+bizonyítékokat. Határozd meg az időszakot, a beválasztási feltételeket,
+a kívánt táblázat oszlopait és a forrásellenőrzés módját.
+
+**Legyen meg:** a pontos prompt, a kapott kutatási terv és három mondat arról,
+mit módosítottál a terven indítás előtt.
+
+### 2. Dolgozz kizárólag megadott forrásokkal {.unnumbered}
+
+**Feladat:** Töltsd fel az [A] és [C] cikk PDF-jét egy új beszélgetésbe.
+Kérdezd meg: "Miben különbözik a két vizsgálat kutatási kérdése és
+módszere? Csak a feltöltött cikkekre támaszkodj; minden megállapításhoz
+jelöld a cikket és a szakaszt."
+
+**Legyen meg:** egy legfeljebb 200 szavas válasz, valamint két példa arra,
+hogy a ChatGPT válaszát hogyan ellenőrizted az eredeti PDF-ben.
+
+### 3. Foglalj össze egyetlen tanulmányt {.unnumbered}
+
+**Feladat:** Az [C] cikkből kérj kétféle összefoglalót: egy 120 szavas,
+közérthető változatot és egy módszertani adatlapot a mintáról, a csoportokról,
+a mérőeszközökről, az elsődleges és másodlagos kimenetekről.
+
+**Legyen meg:** a két összefoglaló és három saját javításod az eredeti cikk
+alapján. Külön ellenőrizd, mit találtak az álmatlanságra és mit a szorongásra.
+
+### 4. Keress egy új cikket, majd ellenőrizd {.unnumbered}
+
+**Feladat:** Kérj angol keresőkifejezéseket az egyetemisták alvására és
+szorongására. Keress **egy ötödik, empirikus, teljes szöveggel elérhető**
+cikket, amely nincs a fenti négy között. Nyisd meg a kiadó vagy a folyóirat
+oldalát, és ellenőrizd a címet, szerzőket, évet, DOI-t, mintát és
+vizsgálati tervet.
+
+**Legyen meg:** a keresőkifejezés, az új cikk URL-je, a hat ellenőrzött adat
+és egy mondat arról, miért illik a témához.
+
+### 5. Készíts ötszörös rövidítést {.unnumbered}
+
+**Feladat:** Töltsd le a négy kiinduló cikk PDF-jét. Válassz ki belőlük
+együtt **50 PDF-oldalt**; a kiválasztott fájlokat és oldaltartományokat
+előre jegyezd fel. Kérj legfeljebb 10 oldalas első összefoglalót, majd
+szerkesztesd legfeljebb 5 oldalra. Maradjon benne a vizsgálati terv,
+a minta, a fő eredmény és minden lényeges korlát.
+
+**Legyen meg:** az ötszörös rövidítés, az eredeti oldaltartományok listája
+és öt olyan részlet, amelyet a tömörítés után visszaellenőriztél.
+*Ha a letöltött PDF-ek együtt nem érik el az 50 oldalt, vond be a 4. feladat
+ötödik cikkét is; a ténylegesen feldolgozott oldalszámot mindig tüntesd fel.*
+
+### 6. Nyerd ki az adatokat táblázatba {.unnumbered}
+
+**Feladat:** Töltsd ki a mellékelt `adatkinyeres_sablon.csv` fájlt a négy
+kiinduló cikk alapján. A ChatGPT-vel kérhetsz első adatkinyerést, de
+minden számot ellenőrizz a cikkben. A metaanalízisnél különítsd el a
+beválogatott vizsgálatok számát az összes résztvevő számától.
+
+**Legyen meg:** a kitöltött CSV. A bizonytalan vagy nem közölt adatot ne
+találd ki; írd be, hogy „nincs közölve”, és jelöld az ellenőrzés állapotát.
+
+### 7. Hasonlítsd össze a bizonyítékokat {.unnumbered}
+
+**Feladat:** Kérj összehasonlító táblázatot az [A], [B] és [C] cikkről
+a vizsgálati terv, minta, mérés, kimenet és következtetés szerint.
+Utána írj saját szöveget arról, hogy melyik tanulmány milyen típusú
+kérdésre tud választ adni.
+
+**Legyen meg:** az ellenőrzött táblázat és egy 150–200 szavas értelmezés.
+Jelöld meg, melyik eredményből nem lehet oksági következtetést levonni.
+
+### 8. Javíts ki gyenge állításokat {.unnumbered}
+
+**Feladat:** Nyisd meg az `allitasok_ellenorzeshez.md` mellékletet.
+Kérd meg a ChatGPT-t, hogy bírálja el az öt állítást. Ezután **te magad**
+ellenőrizd mindegyiket az eredeti cikkekben.
+
+**Legyen meg:** állításonként minősítés, pontos forráshely és egy javított,
+óvatosabb mondat. Ha a ChatGPT és a cikk eltér, dokumentáld az eltérést.
+
+### 9. Készíts kutatási beszámoló-vázlatot {.unnumbered}
+
+**Feladat:** A 6–8. feladat ellenőrzött jegyzeteiből kérj
+bevezetés–módszer–eredmények–megbeszélés szerkezetű vázlatot egy rövid
+szakirodalmi beszámolóhoz. A „módszer” rész itt a **saját
+szakirodalom-válogatásod** módját írja le; ne tüntesd fel úgy, mintha
+saját résztvevőkkel végeztél volna kutatást.
+
+**Legyen meg:** egyoldalas vázlat állítás–forrás párokkal, majd egy saját
+írású, 200 szavas megbeszélés. Minden ellenőrizetlen helyet jelölj
+`[ELLENŐRIZENDŐ]` címkével.
+
+### 10. Építs újra használható kutatási gyűjteményt {.unnumbered}
+
+**Feladat:** Hozz létre „Alvás és jóllét – BA gyakorlat” nevű ChatGPT
+Projektet. Add hozzá a négy cikket, a `.bib` fájlt és a kitöltött CSV-t.
+Rögzíts projektutasítást: különítse el a cikkek eredményeit a saját
+következtetéseitől, és minden számhoz kérjen forráshelyet. Ha a fiókodban
+elérhető a Könyvtár, keresd meg és csatold onnan új beszélgetéshez az egyik
+korábban feltöltött fájlt.
+
+**Legyen meg:** képernyőkép a projekt forráslistájáról, a projektutasítás
+szövege és egy rövid példa arra, hogy egy későbbi beszélgetésben hogyan
+használtad újra a forrást.
+
+**Minden feladat közös szabálya:** az AI válasza munkaváltozat. A beadott
+állításokat, számokat és bibliográfiai adatokat az eredeti cikkben ellenőrizd;
+az intézmény AI-használati és hivatkozási előírásait kövesd.

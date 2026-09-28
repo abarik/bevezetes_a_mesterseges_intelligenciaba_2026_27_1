@@ -1,6 +1,8 @@
-# ChatGPT
+---
+date: today
+---
 
-*Frissítve: 2026. szeptember 10.*
+# ChatGPT
 
 ## Mit nyújthat a ChatGPT egy pszichológusnak?
 

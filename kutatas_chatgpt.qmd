@@ -1,0 +1,85 @@
+# Tudományos kutatás ChatGPT-vel
+
+*Jelen összefoglaló a ChatGPT segítségével készült.*
+
+## Gyakorlati útmutató BA-s pszichológushallgatóknak {.unnumbered}
+
+A ChatGPT segíthet szakirodalmat keresni, tanulmányokat megérteni és jegyzeteket rendszerezni. A kutatási döntéseket és a beadott szöveg állításait azonban neked kell ellenőrizned. **Hivatkozásként az eredeti tanulmányt add meg, ne a ChatGPT válaszát.**
+
+### 1. Írj pontos feladatot a mély kutatáshoz {.unnumbered} 
+
+A *Deep research* több forrást összevető, hivatkozásokkal ellátott jelentést készíthet. Add meg a kérdést, a vizsgált népességet, az időhatárt és a kívánt kimenetet. A javasolt kutatási tervet indulás előtt nézd át.
+
+> **Prompt:** „Tekintsd át a 2018 óta megjelent, egyetemisták körében végzett empirikus kutatásokat az alvásminőség és a szorongás kapcsolatáról. Különítsd el a keresztmetszeti és longitudinális vizsgálatokat. Táblázatban add meg a mintát, a mérőeszközöket, a fő eredményt és a korlátokat. Elsősorban lektorált cikkeket használj; minden állításhoz adj ellenőrizhető forrást. Jelezd, ha valamire nem találsz megfelelő bizonyítékot.”
+
+### 2. Add meg a saját forrásaidat {.unnumbered}
+
+Tölts fel PDF-eket, vagy add meg a DOI-t és a cikk linkjét. Mondd ki, hogy a válasz kizárólag ezekre épüljön-e, vagy keressen további forrásokat is.
+
+> **Prompt:** „A feltöltött három tanulmány alapján válaszolj. Minden megállapításnál nevezd meg a cikket és az oldalt vagy szakaszt. Ha egy adat nem található a fájlokban, írd azt, hogy »nem található«.”
+
+Csak olyan teljes szöveget tölts fel, amelynek használatára jogosult vagy. Interjúátiratot, kliensanyagot vagy azonosítható résztvevői adatot ne tölts fel megfelelő engedély nélkül.
+
+### 3. Foglaltass össze egy tanulmányt {.unnumbered}
+
+Az absztrakt után kérj módszertani összefoglalót is: kiket vizsgáltak, hogyan mértek, és pontosan mit mutattak az eredmények.
+
+> **Prompt:** „Foglald össze ezt a cikket 200 szóban, majd add meg: kutatási kérdés; minta és toborzás; vizsgálati terv; mérőeszközök; fő eredmények; szerzők által jelzett korlátok. Külön írd le, milyen következtetés **nem** vonható le belőle.”
+
+Ez gyors tájékozódásra jó. Ha a cikk fontos a dolgozatodhoz, olvasd el az eredeti módszer- és eredményrészt.
+
+### 4. Keress és ellenőrizz forrásokat {.unnumbered}
+
+Kérj keresőkifejezéseket magyarul és angolul, majd ellenőrizd a talált cikkeket a kiadó oldalán, DOI alapján vagy az egyetemi adatbázisban.
+
+> **Prompt:** „Adj keresőkifejezéseket és logikai keresési karakterláncot a serdülők közösségimédia-használata és testkép témához. Utána keress empirikus tanulmányokat. Minden találatnál add meg a címet, szerzőket, évet, DOI-t és azt, hogy miért releváns. Ne egészíts ki hiányzó bibliográfiai adatot találgatással.”
+
+**Ellenőrző lista:** létezik a cikk? Egyezik a szerző, év és DOI? A cikk valóban alátámasztja a hozzá rendelt állítást? A mintája megfelel a te kérdésednek?
+
+### 5. Sűríts 50 oldalt 5 oldalra {.unnumbered}
+
+A cél használható kutatási jegyzet, nem a fontos részletek eltüntetése.
+
+> **Prompt:** „A feltöltött, körülbelül 50 oldalas anyagból készíts legfeljebb 5 oldalas jegyzetet. Őrizd meg a definíciókat, elméleti modelleket, módszertani döntéseket, számszerű eredményeket és korlátokat. Az egyes pontokhoz jelöld az eredeti oldalt. A bizonytalanul kiolvasható részeket jelöld külön.”
+
+Vesd össze a jegyzetet az eredetivel, különösen a táblázatoknál, ábráknál és a szerzők óvatos megfogalmazásainál.
+
+### 6. Nyerd ki az adatokat dokumentumokból {.unnumbered}
+
+Előre rögzített mezőkkel kérj táblázatot. Így könnyebb észrevenni a hiányzó vagy téves adatokat.
+
+> **Prompt:** „Az egyes feltöltött cikkekből készíts táblázatot ezekkel az oszlopokkal: szerző–év, ország, mintaelemszám, életkor, vizsgálati terv, mérőeszköz, fő kimenet, közölt hatásmutató, korlát, forrásoldal. Az eredeti számszerű adatot másold ki; ne számolj vagy következtess új értéket külön kérés nélkül. A hiányzó mező legyen »nincs közölve«.”
+
+A kinyert számokat ellenőrizd a PDF-ben. Szkennelt dokumentumok és összetett táblázatok esetén különösen könnyű félreolvasni egy értéket.
+
+### 7. Hasonlíts össze tanulmányokat {.unnumbered}
+
+Ugyanazt a szempontsorozatot alkalmazd minden cikkre.
+
+> **Prompt:** „Hasonlítsd össze ezt az öt tanulmányt a minta, kutatási terv, mérőeszköz, fő eredmény és korlátok szerint. Utána írd le, mely eredmények egyeznek, melyek térnek el, és milyen módszertani különbség magyarázhatja az eltérést. Ne kezeld az együttjárást oksági bizonyítékként.”
+
+### 8. Keress hiányokat és gyenge állításokat {.unnumbered}
+
+Kérd meg a ChatGPT-t, hogy „kritikus olvasóként” vizsgálja a vázlatodat.
+
+> **Prompt:** „Jelöld meg ebben a szövegben azokat az állításokat, amelyekhez hiányzik forrás, túláltalánosítanak, okságot állítanak korreláció alapján, vagy nem illenek a hivatkozott vizsgálat mintájához. Mindegyikhez javasolj óvatosabb megfogalmazást és írd le, mit kell az eredeti cikkben ellenőriznem.”
+
+A „kevés a kutatás” önmagában nem kutatási rés: írd le, mely népességre, mérésre vagy vizsgálati elrendezésre vonatkozik a hiány.
+
+### 9. Készíts kutatási beszámoló-vázlatot {.unnumbered}
+
+Először szerkezetet és állítás–forrás párokat kérj; a végleges szöveget a saját olvasatod alapján írd vagy szerkeszd.
+
+> **Prompt:** „A feltöltött, ellenőrzött jegyzeteim alapján készíts IMRaD-szerkezetű beszámoló-vázlatot. Minden bekezdéshez add meg a fő állítást és a hozzá tartozó forrást. Ne találj ki eredményt, idézetet vagy hivatkozást. A hiányzó adatokat [ELLENŐRIZENDŐ] jelöléssel hagyd nyitva.”
+
+Az egyetemi kurzus AI-használati és hivatkozási szabályait kövesd; ha előírják, tüntesd fel, mire használtad a ChatGPT-t.
+
+### 10. Építs saját kutatási gyűjteményt {.unnumbered}
+
+Hozz létre egy témánkénti **Projektet**, amelyben együtt vannak a beszélgetések, a forrásfájlok és az állandó utasítások. Az elérhető **Könyvtárban** később újra megkeresheted és felhasználhatod a fájlokat. Az elérhetőség és a feltöltési korlátok fiókonként eltérhetnek.
+
+Használj következetes fájlneveket, például `Szerzo_2024_rovidtema.pdf`, és vezess külön forrásjegyzéket a DOI-val, valamint egy „elolvasva / ellenőrizve / felhasználva” állapottal. A projektutasítás lehet ez:
+
+> „Pszichológiai BA-szakdolgozathoz gyűjtök szakirodalmat. Különítsd el a cikkek tényleges eredményeit a saját következtetéseidtől. Minden számszerű állításnál jelöld a forrást. Ha valamiben nem vagy biztos, mondd ki.”
+
+**Záró szabály:** a ChatGPT legyen kutatási asszisztens és kritikus olvasó. Minden idézetet, számot, hivatkozást és lényeges következtetést az eredeti forrásban ellenőrizz.

@@ -1,3 +1,7 @@
+---
+date: today
+---
+
 # MI-eszközök
 
 *Jelen összefoglaló a Perplexity AI segítségével készült.*

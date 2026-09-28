@@ -22,6 +22,7 @@ book:
     - gyakorlatok.qmd
     - linkek.qmd
     - video_magyarazat.qmd
+    - kutatas_chatgpt.qmd
   
 bibliography: references.bib
 
