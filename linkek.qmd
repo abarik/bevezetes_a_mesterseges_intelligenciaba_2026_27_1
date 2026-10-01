@@ -1,6 +1,6 @@
 # Hasznos linkek
 
-*Frissítve: 2026. szeptember 17.*
+*Frissítve: 2026. október 1.*
 
 - Házi feladat
 
@@ -8,6 +8,7 @@
   2.  [Az OpenAI belépett az AGI-érába, az iskolák még csak most barátkoznak az AI-használattal](https://www.youtube.com/watch?v=qyihhjN-n7A){target="_blank"}
       - [Fogalmak a videó értelmezéséhez](video_magyarazat.qmd){target="_blank"}
   3. [Reinventing Teaching After The Introduction Of AI | Amy Bruckman | TEDxWeber School Youth](https://www.youtube.com/watch?v=sI6LBouiIZo){target="_blank"}
+  4. [Bill Gates Changes His Mind on AI](https://www.youtube.com/watch?v=U4zGLSlLo5A){target="_blank"}
 
 - Érdemes meghallgatni
 
